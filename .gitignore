@@ -11,7 +11,9 @@ dist
 lib
 out
 run
-target
+target/*
+!target/generated-sources
+!target/generated-test-sources
 *.com
 *.class
 *.dll

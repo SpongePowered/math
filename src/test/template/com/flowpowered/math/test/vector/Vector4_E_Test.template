@@ -5,7 +5,7 @@ import static com.flowpowered.math.test.TestUtil#E#.SQRT5;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.test.TestUtil#E#;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -330,9 +330,9 @@ public class Vector4#E#Test {
     @Test
     public void testNormalize() {
         Vector4#E# v1 = new Vector4#E#(1, 1, 0, 0).normalize();
-        TestUtil#E#.assertEquals(v1, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO, 0, 0);
+        TestUtil#E#.assertEquals(v1, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, 0);
         Vector4#E# v2 = new Vector4#E#(0, 1, 0, 1).normalize();
-        TestUtil#E#.assertEquals(v2, 0, (#e#) #ETrig#.HALF_SQRT_OF_TWO, 0, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
+        TestUtil#E#.assertEquals(v2, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test

@@ -5,7 +5,7 @@ import java.lang.Override;
 
 import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.HashFunctions;
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.vector.Vector2#E#;
 
 /**
@@ -267,7 +267,7 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
      * @return The angle in radians of the direction vector of this complex
      */
     public #e# getAngleRad() {
-        return (#e#) #ETrig#.atan2(x, y);
+        return (#e#) TrigMath.atan2(x, y);
     }
 
     /**
@@ -394,7 +394,7 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
      * @return The complex defined by the angle between the vectors
      */
     public static Complex#E# fromRotationTo(Vector2#E# from, Vector2#E# to) {
-        return fromAngleRad(#ETrig#.acos(from.dot(to) / (from.length() * to.length())));
+        return fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
     }
 
     /**
@@ -434,6 +434,6 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
      * @return The complex defined by the angle
      */
     public static Complex#E# fromAngleRad(#e# angle) {
-        return new Complex#E#(#ETrig#.cos(angle), #ETrig#.sin(angle));
+        return new Complex#E#(TrigMath.cos(angle), TrigMath.sin(angle));
     }
 }

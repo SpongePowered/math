@@ -3,7 +3,7 @@ package com.flowpowered.math.test.imaginary;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.imaginary.Complex#E#;
 import com.flowpowered.math.test.TestUtil#E#;
 import com.flowpowered.math.vector.Vector2#E#;
@@ -144,13 +144,13 @@ public class Complex#E#Test {
 
     @Test
     public void testAngleRadians() {
-        #e# f = new Complex#E#((#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO).getAngleRad();
-        TestUtil#E#.assertEquals(f, (#e#) #ETrig#.QUARTER_PI);
+        #e# f = new Complex#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
+        TestUtil#E#.assertEquals(f, (#e#) TrigMath.QUARTER_PI);
     }
 
     @Test
     public void testAngleDegrees() {
-        #e# f = new Complex#E#((#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO).getAngleDeg();
+        #e# f = new Complex#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
         TestUtil#E#.assertEquals(f, 45);
     }
 
@@ -215,24 +215,24 @@ public class Complex#E#Test {
     @Test
     public void testCreateFromDoubleAngleDegrees() {
         Complex#E# complex = Complex#E#.fromAngleDeg(45d);
-        TestUtil#E#.assertEquals(complex, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
+        TestUtil#E#.assertEquals(complex, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test
     public void testCreateFromFloatAngleDegrees() {
         Complex#E# complex = Complex#E#.fromAngleDeg(45);
-        TestUtil#E#.assertEquals(complex, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
+        TestUtil#E#.assertEquals(complex, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test
     public void testCreateFromDoubleAngleRadians() {
-        Complex#E# complex = Complex#E#.fromAngleRad(#ETrig#.QUARTER_PI);
-        TestUtil#E#.assertEquals(complex, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
+        Complex#E# complex = Complex#E#.fromAngleRad(TrigMath.QUARTER_PI);
+        TestUtil#E#.assertEquals(complex, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test
     public void testCreateFromFloatAngleRadians() {
-        Complex#E# complex = Complex#E#.fromAngleRad((#e#) #ETrig#.QUARTER_PI);
-        TestUtil#E#.assertEquals(complex, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
+        Complex#E# complex = Complex#E#.fromAngleRad((#e#) TrigMath.QUARTER_PI);
+        TestUtil#E#.assertEquals(complex, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
     }
 }

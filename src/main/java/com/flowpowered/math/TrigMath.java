@@ -95,18 +95,7 @@ public class TrigMath {
      * @param angle in radians
      * @return the tangent of the angle
      */
-    public static double tan(double angle) {
-        int idx = GenericMath.floor(angle * SIN_CONVERSION_FACTOR);
-        return sinRaw(idx) / (double) cosRaw(idx);
-    }
-
-    /**
-     * Tangent calculations using a table.<br> <i>sin(angle) / cos(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 5th decimal place
-     *
-     * @param angle in radians
-     * @return the tangent of the angle
-     */
-    public static float tan(float angle) {
+    public static float tan(double angle) {
         int idx = GenericMath.floor(angle * SIN_CONVERSION_FACTOR);
         return sinRaw(idx) / cosRaw(idx);
     }
@@ -117,17 +106,7 @@ public class TrigMath {
      * @param angle the angle in radians
      * @return the cosecant of the angle
      */
-    public static double csc(double angle) {
-        return 1.0 / sin(angle);
-    }
-
-    /**
-     * Cosecant calculations using a table.<br> <i>1 / sin(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 5th decimal place
-     *
-     * @param angle the angle in radians
-     * @return the cosecant of the angle
-     */
-    public static float csc(float angle) {
+    public static float csc(double angle) {
         return 1 / sin(angle);
     }
 
@@ -137,17 +116,7 @@ public class TrigMath {
      * @param angle the angle in radians
      * @return the secant of the angle
      */
-    public static double sec(double angle) {
-        return 1.0 / cos(angle);
-    }
-
-    /**
-     * Secant calculations using a table:<br> <i>1 / cos(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 5th decimal place
-     *
-     * @param angle the angle in radians
-     * @return the secant of the angle
-     */
-    public static float sec(float angle) {
+    public static float sec(double angle) {
         return 1 / cos(angle);
     }
 
@@ -157,18 +126,7 @@ public class TrigMath {
      * @param angle in radians
      * @return the cotangent of the angle
      */
-    public static double cot(double angle) {
-        int idx = GenericMath.floor(angle * SIN_CONVERSION_FACTOR);
-        return cosRaw(idx) / (double) sinRaw(idx);
-    }
-
-    /**
-     * Cotangent calculations using a table.<br> <i>cos(angle) / sin(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 5th decimal place
-     *
-     * @param angle in radians
-     * @return the cotangent of the angle
-     */
-    public static float cot(float angle) {
+    public static float cot(double angle) {
         int idx = GenericMath.floor(angle * SIN_CONVERSION_FACTOR);
         return cosRaw(idx) / sinRaw(idx);
     }

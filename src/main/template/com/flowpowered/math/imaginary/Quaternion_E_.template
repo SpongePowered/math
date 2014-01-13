@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.HashFunctions;
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.matrix.Matrix3#E#;
 import com.flowpowered.math.vector.Vector3#E#;
 
@@ -310,7 +310,7 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
      * @return The angle in degrees for each axis, stored in a vector, in the corresponding component
      */
     public Vector3#E# getAxesAngleDeg() {
-        return getAxesAnglesRad().mul(#ETrig#.RAD_TO_DEG);
+        return getAxesAnglesRad().mul(TrigMath.RAD_TO_DEG);
     }
 
     /**
@@ -324,14 +324,14 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
         double yaw;
         final double test = w * x - y * z;
         if (Math.abs(test) < 0.4999) {
-            roll = #ETrig#.atan2(2 * (w * z + x * y), 1 - 2 * (x * x + z * z));
-            pitch = #ETrig#.asin(2 * test);
-            yaw = #ETrig#.atan2(2 * (w * y + z * x), 1 - 2 * (x * x + y * y));
+            roll = TrigMath.atan2(2 * (w * z + x * y), 1 - 2 * (x * x + z * z));
+            pitch = TrigMath.asin(2 * test);
+            yaw = TrigMath.atan2(2 * (w * y + z * x), 1 - 2 * (x * x + y * y));
         } else {
             final int sign = (test < 0) ? -1 : 1;
             roll = 0;
             pitch = sign * Math.PI / 2;
-            yaw = -sign * 2 * #ETrig#.atan2(z, w);
+            yaw = -sign * 2 * TrigMath.atan2(z, w);
         }
         if (yaw > 180) {
             yaw -= 360;
@@ -516,7 +516,7 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
      * @return The quaternion defined by the angle-axis rotation between the vectors
      */
     public static Quaternion#E# fromRotationTo(Vector3#E# from, Vector3#E# to) {
-        return Quaternion#E#.fromAngleRadAxis(#ETrig#.acos(from.dot(to) / (from.length() * to.length())), from.cross(to));
+        return Quaternion#E#.fromAngleRadAxis(TrigMath.acos(from.dot(to) / (from.length() * to.length())), from.cross(to));
     }
 
     /**
@@ -613,8 +613,8 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
      */
     public static Quaternion#E# fromAngleRadAxis(#e# angle, #e# x, #e# y, #e# z) {
         final #e# halfAngle = angle / 2;   //TODO: Maybe use always double here?
-        final double q = #ETrig#.sin(halfAngle) / Math.sqrt(x * x + y * y + z * z);
-        return new Quaternion#E#(x * q, y * q, z * q, #ETrig#.cos(halfAngle));
+        final double q = TrigMath.sin(halfAngle) / Math.sqrt(x * x + y * y + z * z);
+        return new Quaternion#E#(x * q, y * q, z * q, TrigMath.cos(halfAngle));
     }
 
     /**

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.HashFunctions;
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.imaginary.Complex#E#;
 import com.flowpowered.math.imaginary.Quaternion#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -656,7 +656,7 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
      * @return A perspective projection matrix built from the given values
      */
     public static Matrix4#E# createPerspective(#e# fov, #e# aspect, #e# near, #e# far) {
-        final #e# scale = 1 / #ETrig#.tan(fov * (#e#) #ETrig#.HALF_DEG_TO_RAD);
+        final #e# scale = 1 / TrigMath.tan(fov * (#e#) TrigMath.HALF_DEG_TO_RAD);
         return new Matrix4#E#(
                 scale / aspect, 0, 0, 0,
                 0, scale, 0, 0,

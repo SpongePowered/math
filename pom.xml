@@ -284,7 +284,6 @@
                                 <Overload1>int</Overload1>
                                 <Overload2>long</Overload2>
                                 <S>Float</S>
-                                <Trig>TrigMath</Trig>
                                 <eps>0.00001f</eps>
                             </placeholders>
                         </type>
@@ -299,7 +298,6 @@
                                 <Overload1>int</Overload1>
                                 <Overload2>long</Overload2>
                                 <S>Double</S>
-                                <Trig>TrigMath</Trig>
                                 <eps>0.00000006</eps>
                             </placeholders>
                         </type>

@@ -795,10 +795,10 @@ public class GenericMath {
         if (1 - cosineTheta < epsilon) {
             return a.mul(1 - percent).add(b.mul(percent * inverted));
         }
-        final #e# theta = (#e#) #ETrig#.acos(cosineTheta);
-        final #e# sineTheta = #ETrig#.sin(theta);
-        final #e# coefficient1 = #ETrig#.sin((1 - percent) * theta) / sineTheta;
-        final #e# coefficient2 = #ETrig#.sin(percent * theta) / sineTheta * inverted;
+        final #e# theta = (#e#) TrigMath.acos(cosineTheta);
+        final #e# sineTheta = TrigMath.sin(theta);
+        final #e# coefficient1 = TrigMath.sin((1 - percent) * theta) / sineTheta;
+        final #e# coefficient2 = TrigMath.sin(percent * theta) / sineTheta * inverted;
         return a.mul(coefficient1).add(b.mul(coefficient2));
     }
 

@@ -5,7 +5,7 @@ import java.util.Random;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.test.TestUtil#E#;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -314,7 +314,7 @@ public class Vector2#E#Test {
     @Test
     public void testNormalize() {
         Vector2#E# vector = new Vector2#E#(2, 2).normalize();
-        TestUtil#E#.assertEquals(vector, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
+        TestUtil#E#.assertEquals(vector, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test
@@ -416,15 +416,15 @@ public class Vector2#E#Test {
     public void testCreateDirectionFromFloatAngleRadians() {
         Vector2#E# vector1 = Vector2#E#.createDirection(0);
         TestUtil#E#.assertEquals(vector1, 1, 0);
-        Vector2#E# vector2 = Vector2#E#.createDirection((#e#) #ETrig#.QUARTER_PI);
-        TestUtil#E#.assertEquals(vector2, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
-        Vector2#E# vector3 = Vector2#E#.createDirection((#e#) #ETrig#.HALF_PI);
+        Vector2#E# vector2 = Vector2#E#.createDirection((#e#) TrigMath.QUARTER_PI);
+        TestUtil#E#.assertEquals(vector2, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
+        Vector2#E# vector3 = Vector2#E#.createDirection((#e#) TrigMath.HALF_PI);
         TestUtil#E#.assertEquals(vector3, 0, 1);
-        Vector2#E# vector4 = Vector2#E#.createDirection((#e#) #ETrig#.PI);
+        Vector2#E# vector4 = Vector2#E#.createDirection((#e#) TrigMath.PI);
         TestUtil#E#.assertEquals(vector4, -1, 0);
-        Vector2#E# vector5 = Vector2#E#.createDirection((#e#) #ETrig#.THREE_PI_HALVES);
+        Vector2#E# vector5 = Vector2#E#.createDirection((#e#) TrigMath.THREE_PI_HALVES);
         TestUtil#E#.assertEquals(vector5, 0, -1);
-        Vector2#E# vector6 = Vector2#E#.createDirection((#e#) #ETrig#.TWO_PI);
+        Vector2#E# vector6 = Vector2#E#.createDirection((#e#) TrigMath.TWO_PI);
         TestUtil#E#.assertEquals(vector6, 1, 0);
     }
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.imaginary.Complex#E#;
 import com.flowpowered.math.imaginary.Quaternion#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -616,7 +616,7 @@ public MatrixN#E#(MatrixN#E# m) {
             throw new IllegalArgumentException("Minimum matrix size is 4");
         }
         final MatrixN#E# perspective = new MatrixN#E#(size);
-        final #e# scale = 1 / #ETrig#.tan(fov * (#e#) #ETrig#.HALF_DEG_TO_RAD);
+        final #e# scale = 1 / TrigMath.tan(fov * (#e#) TrigMath.HALF_DEG_TO_RAD);
         perspective.set(0, 0, scale / aspect);
         perspective.set(1, 1, scale);
         perspective.set(2, 2, (far + near) / (near - far));

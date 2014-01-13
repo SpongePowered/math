@@ -8,7 +8,7 @@ import java.util.Random;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.#ETrig#;
+import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.test.TestUtil#E#;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -343,7 +343,7 @@ public class Vector3#E#Test {
     @Test
     public void testNormalize() {
         Vector3#E# vector = new Vector3#E#(2, 2, 0).normalize();
-        TestUtil#E#.assertEquals(vector, (#e#) #ETrig#.HALF_SQRT_OF_TWO, (#e#) #ETrig#.HALF_SQRT_OF_TWO, 0);
+        TestUtil#E#.assertEquals(vector, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0);
     }
 
     @Test
@@ -437,15 +437,15 @@ public class Vector3#E#Test {
     public void testCreateDirectionFromFloatAnglesRadians() {
         Vector3#E# vector1 = Vector3#E#.createDirection(0, 0);
         TestUtil#E#.assertEquals(vector1, 1, 0, 0);
-        Vector3#E# vector2 = Vector3#E#.createDirection((#e#) #ETrig#.QUARTER_PI, 0);
-        TestUtil#E#.assertEquals(vector2, (#e#) #ETrig#.HALF_SQRT_OF_TWO, 0, (#e#) #ETrig#.HALF_SQRT_OF_TWO);
-        Vector3#E# vector3 = Vector3#E#.createDirection((#e#) #ETrig#.HALF_PI, (#e#) #ETrig#.HALF_PI);
+        Vector3#E# vector2 = Vector3#E#.createDirection((#e#) TrigMath.QUARTER_PI, 0);
+        TestUtil#E#.assertEquals(vector2, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO);
+        Vector3#E# vector3 = Vector3#E#.createDirection((#e#) TrigMath.HALF_PI, (#e#) TrigMath.HALF_PI);
         TestUtil#E#.assertEquals(vector3, 0, 1, 0);
-        Vector3#E# vector4 = Vector3#E#.createDirection((#e#) #ETrig#.PI, (#e#) #ETrig#.PI);
+        Vector3#E# vector4 = Vector3#E#.createDirection((#e#) TrigMath.PI, (#e#) TrigMath.PI);
         TestUtil#E#.assertEquals(vector4, 1, 0, 0);
-        Vector3#E# vector5 = Vector3#E#.createDirection((#e#) #ETrig#.THREE_PI_HALVES, (#e#) #ETrig#.THREE_PI_HALVES);
+        Vector3#E# vector5 = Vector3#E#.createDirection((#e#) TrigMath.THREE_PI_HALVES, (#e#) TrigMath.THREE_PI_HALVES);
         TestUtil#E#.assertEquals(vector5, 0, -1, 0);
-        Vector3#E# vector6 = Vector3#E#.createDirection((#e#) #ETrig#.TWO_PI, (#e#) #ETrig#.TWO_PI);
+        Vector3#E# vector6 = Vector3#E#.createDirection((#e#) TrigMath.TWO_PI, (#e#) TrigMath.TWO_PI);
         TestUtil#E#.assertEquals(vector6, 1, 0, 0);
     }
 }

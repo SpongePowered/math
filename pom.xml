@@ -191,7 +191,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <templateDir>${basedir}/src/main/templatei</templateDir>
+                            <templateDir>${basedir}/src/main/template/integer</templateDir>
                             <types>
                                 <type>
                                     <primitive>int</primitive>
@@ -229,7 +229,7 @@
                             <goal>test-generate</goal>
                         </goals>
                         <configuration>
-                            <templateDir>${basedir}/src/test/templatei</templateDir>
+                            <templateDir>${basedir}/src/test/template/integer</templateDir>
                             <types>
                                 <type>
                                     <primitive>int</primitive>
@@ -262,6 +262,9 @@
                         <goals>
                             <goal>generate</goal>
                         </goals>
+                        <configuration>
+                            <templateDir>${basedir}/src/main/template/float</templateDir>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>test-generate</id>
@@ -269,6 +272,9 @@
                         <goals>
                             <goal>test-generate</goal>
                         </goals>
+                        <configuration>
+                            <templateDir>${basedir}/src/test/template/float</templateDir>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>

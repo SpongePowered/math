@@ -10,7 +10,7 @@ after_success:
   # Get files for use with build, namely the custom Maven settings.xml
   - "git clone https://github.com/flow/travis-ci-resources.git target/travis"
   # Check if commit is not a pull request, if repo is official, and branch is master, generate and deploy artifacts and reports
-  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/flow-math ]] && [[ $TRAVIS_BRANCH == master ]] && mvn javadoc:jar source:jar cobertura:cobertura coveralls:cobertura -DserviceJobId=$TRAVIS_JOB_ID deploy --settings target/travis/settings.xml"
+  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/flow-math ]] && [[ $TRAVIS_BRANCH == master ]] && mvn javadoc:jar source:jar deploy --settings target/travis/settings.xml"
 
 # Notification services
 notifications:

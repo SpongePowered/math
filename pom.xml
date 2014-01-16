@@ -191,7 +191,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <templateDir>${basedir}/src/main/template/integer</templateDir>
+                            <templateDir>src/main/template/integer</templateDir>
                             <types>
                                 <type>
                                     <primitive>int</primitive>
@@ -229,7 +229,7 @@
                             <goal>test-generate</goal>
                         </goals>
                         <configuration>
-                            <templateDir>${basedir}/src/test/template/integer</templateDir>
+                            <templateDir>src/test/template/integer</templateDir>
                             <types>
                                 <type>
                                     <primitive>int</primitive>
@@ -263,7 +263,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <templateDir>${basedir}/src/main/template/float</templateDir>
+                            <templateDir>src/main/template/float</templateDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -273,7 +273,7 @@
                             <goal>test-generate</goal>
                         </goals>
                         <configuration>
-                            <templateDir>${basedir}/src/test/template/float</templateDir>
+                            <templateDir>src/test/template/float</templateDir>
                         </configuration>
                     </execution>
                 </executions>
@@ -355,6 +355,9 @@
                 <configuration>
                     <format>xml</format>
                     <maxmem>256m</maxmem>
+                    <sourceDirectories>
+                        <sourceDirectory>target/generated-sources/*</sourceDirectory>
+                    </sourceDirectories>
                 </configuration>
             </plugin>
         </plugins>

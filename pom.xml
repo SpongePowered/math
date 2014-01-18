@@ -348,7 +348,7 @@
                 <version>2.1.0</version>
                 <configuration>
                     <sourceDirectories>
-                        <sourceDirectory>target/generated-sources/**</sourceDirectory>
+                        <sourceDirectory>target/generated-sources/template</sourceDirectory>
                     </sourceDirectories>
                 </configuration>
             </plugin>

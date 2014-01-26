@@ -336,9 +336,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            result = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
-            hashCode = 31 * result + (z != +0.0f ? HashFunctions.hash(z) : 0);
+            hashCode = ((HashFunctions.hash(x) * 211 + HashFunctions.hash(y)) * 97 + HashFunctions.hash(z));
             hashed = true;
         }
         return hashCode;

@@ -36,8 +36,8 @@ import com.flowpowered.math.vector.Vector3i;
 
 public final class HashTest {
 
-    private static final int NUM_LIN_VECS = 100;
-    private static final int M_NUM_LIN_VECS = -100;
+    private static final int NUM_LIN_VECS = 50;
+    private static final int M_NUM_LIN_VECS = -50;
     private final Map<Integer, Integer> linearCols = new HashMap<Integer, Integer>();
     private final Set<Vector3i> lVecList = new HashSet<Vector3i>();
     private int[] lColCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

@@ -31,7 +31,9 @@ public class Vector3f implements Vectorf, Comparable<Vector3f>, Serializable, Cl
         this(v, 0);
     }
 
-    // TODO: float overload
+    public Vector3f(Vector2f v, double z) {
+        this(v, (float) z);
+    }
 
     public Vector3f(Vector2f v, float z) {
         this(v.getX(), v.getY(), z);
@@ -394,21 +396,52 @@ public class Vector3f implements Vectorf, Comparable<Vector3f>, Serializable, Cl
      * @return the random direction vector
      */
     public static Vector3f createRandomDirection(Random random) {
-        return createDirection(random.nextFloat() * (float) TrigMath.TWO_PI,
+        return createDirectionRad(random.nextFloat() * (float) TrigMath.TWO_PI,
                 random.nextFloat() * (float) TrigMath.TWO_PI);
     }
 
-    // TODO: add overloads for doubles and degree angles
+    /**
+     * Gets the direction vector of a certain theta and phi in degrees. This uses the standard math spherical coordinate system.
+     *
+     * @param theta in degrees
+     * @param phi in degrees
+     * @return the direction vector
+     */
+    public static Vector3f createDirectionDeg(double theta, double phi) {
+        return createDirectionDeg((float) theta, (float) phi);
+    }
 
     /**
-     * Gets the direction vector of a certain yaw and pitch.
+     * Gets the direction vector of a certain theta and phi in degrees. This uses the standard math spherical coordinate system.
      *
-     * @param azimuth in radians
-     * @param inclination in radians
-     * @return the random direction vector
+     * @param theta in degrees
+     * @param phi in degrees
+     * @return the direction vector
      */
-    public static Vector3f createDirection(float azimuth, float inclination) {
-        final float yFact = TrigMath.cos(inclination);
-        return new Vector3f(yFact * TrigMath.cos(azimuth), TrigMath.sin(inclination), yFact * TrigMath.sin(azimuth));
+    public static Vector3f createDirectionDeg(float theta, float phi) {
+        return createDirectionRad((float) Math.toRadians(theta), (float) Math.toRadians(phi));
+    }
+
+    /**
+     * Gets the direction vector of a certain theta and phi in radians. This uses the standard math spherical coordinate system.
+     *
+     * @param theta in radians
+     * @param phi in radians
+     * @return the direction vector
+     */
+    public static Vector3f createDirectionRad(double theta, double phi) {
+        return createDirectionRad((float) theta, (float) phi);
+    }
+
+    /**
+     * Gets the direction vector of a certain theta and phi in radians. This uses the standard math spherical coordinate system.
+     *
+     * @param theta in radians
+     * @param phi in radians
+     * @return the direction vector
+     */
+    public static Vector3f createDirectionRad(float theta, float phi) {
+        final float f = TrigMath.sin(phi);
+        return new Vector3f(f * TrigMath.cos(theta), f * TrigMath.sin(theta), TrigMath.cos(phi));
     }
 }

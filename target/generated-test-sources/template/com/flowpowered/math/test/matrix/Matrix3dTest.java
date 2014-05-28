@@ -155,9 +155,21 @@ public class Matrix3dTest {
     }
 
     @Test
+    public void testTranslateDoubleComponents() {
+        Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).translate(1d, 0d);
+        TestUtild.assertEquals(matrix, 1, 0, 1, 0, 1, 0, 0, 0, 1);
+    }
+
+    @Test
     public void testTranslateFloatComponents() {
         Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).translate(1, 0);
         TestUtild.assertEquals(matrix, 1, 0, 1, 0, 1, 0, 0, 0, 1);
+    }
+
+    @Test
+    public void testScaleDoubleFactor() {
+        Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2d);
+        TestUtild.assertEquals(matrix, 2, 0, 0, 0, 2, 0, 0, 0, 2);
     }
 
     @Test
@@ -168,14 +180,20 @@ public class Matrix3dTest {
 
     @Test
     public void testScaleVector3() {
-        Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(new Vector3d(2, 2, 2));
-        TestUtild.assertEquals(matrix, 2, 0, 0, 0, 2, 0, 0, 0, 2);
+        Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(new Vector3d(2, 3, 4));
+        TestUtild.assertEquals(matrix, 2, 0, 0, 0, 3, 0, 0, 0, 4);
+    }
+
+    @Test
+    public void testScaleDoubleComponents() {
+        Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2d, 3d, 4d);
+        TestUtild.assertEquals(matrix, 2, 0, 0, 0, 3, 0, 0, 0, 4);
     }
 
     @Test
     public void testScaleFloatComponents() {
-        Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2d);
-        TestUtild.assertEquals(matrix, 2, 0, 0, 0, 2, 0, 0, 0, 2);
+        Matrix3d matrix = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2, 3, 4);
+        TestUtild.assertEquals(matrix, 2, 0, 0, 0, 3, 0, 0, 0, 4);
     }
 
     @Test
@@ -199,6 +217,12 @@ public class Matrix3dTest {
     @Test
     public void testTransformVector3() {
         Vector3d vector = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2, 3, 1).translate(4, 5).transform(new Vector3d(3, 2, 1));
+        TestUtild.assertEquals(vector, 10, 11, 1);
+    }
+
+    @Test
+    public void testTransformDoubleComponents() {
+        Vector3d vector = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2, 3, 1).translate(4, 5).transform(3d, 2d, 1d);
         TestUtild.assertEquals(vector, 10, 11, 1);
     }
 
@@ -273,9 +297,6 @@ public class Matrix3dTest {
                 (double) (-5/18d), (double) (7/18d), (double) (1/18d),
                 (double) (1/18d), (double) (-5/18d), (double) (7/18d),
                 (double) (7/18d), (double) (1/18d), (double) (-5/18d));
-/*                -0.2777777777f, 0.3888888888f, 0.0555555555f,
-                0.0555555555f, -0.2777777777f, 0.3888888888f,
-                0.3888888888f, 0.0555555555f, -0.2777777777f);*/
         }
 
     @Test
@@ -339,6 +360,12 @@ public class Matrix3dTest {
     }
 
     @Test
+    public void testCreateFromScalingDoubleComponents() {
+        Matrix3d matrix = Matrix3d.createScaling(1d, 2d, 3d);
+        TestUtild.assertEquals(matrix, 1, 0, 0, 0, 2, 0, 0, 0, 3);
+    }
+
+    @Test
     public void testCreateFromScalingFloatComponents() {
         Matrix3d matrix = Matrix3d.createScaling(1, 2, 3);
         TestUtild.assertEquals(matrix, 1, 0, 0, 0, 2, 0, 0, 0, 3);
@@ -349,6 +376,14 @@ public class Matrix3dTest {
         Matrix3d matrix1 = Matrix3d.createTranslation(new Vector2d(1, 0));
         TestUtild.assertEquals(matrix1, 1, 0, 1, 0, 1, 0, 0, 0, 1);
         Matrix3d matrix2 = Matrix3d.createTranslation(new Vector2d(0, 1));
+        TestUtild.assertEquals(matrix2, 1, 0, 0, 0, 1, 1, 0, 0, 1);
+    }
+
+    @Test
+    public void testCreateTranslationDoubleComponents() {
+        Matrix3d matrix1 = Matrix3d.createTranslation(1d, 0d);
+        TestUtild.assertEquals(matrix1, 1, 0, 1, 0, 1, 0, 0, 0, 1);
+        Matrix3d matrix2 = Matrix3d.createTranslation(0d, 1d);
         TestUtild.assertEquals(matrix2, 1, 0, 0, 0, 1, 1, 0, 0, 1);
     }
 

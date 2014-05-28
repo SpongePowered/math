@@ -599,7 +599,19 @@ public MatrixN#E#(MatrixN#E# m) {
         return mat.translate(eye.mul(-1).toVectorN());
     }
 
-    // TODO: add #EOverload# overload
+    /**
+     * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
+     *
+     * @param size The size of the matrix, minimum of 4
+     * @param fov The field of view in the x direction
+     * @param aspect The aspect ratio, usually width/height
+     * @param near The near plane, cannot be 0
+     * @param far the far plane, zFar cannot equal zNear
+     * @return A perspective projection matrix built from the given values
+     */
+    public static MatrixN#E# createPerspective(int size, #EOverload# fov, #EOverload# aspect, #EOverload# near, #EOverload# far) {
+        return createPerspective(size, (#e#) fov, (#e#) aspect, (#e#) near, (#e#) far);
+    }
 
     /**
      * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
@@ -626,7 +638,22 @@ public MatrixN#E#(MatrixN#E# m) {
         return perspective;
     }
 
-    // TODO: add #EOverload# overload
+    /**
+     * Creates an orthographic viewing frustum built from the provided values
+     *
+     * @param size The size of the matrix, minimum of 4
+     * @param right the right most plane of the viewing frustum
+     * @param left the left most plane of the viewing frustum
+     * @param top the top plane of the viewing frustum
+     * @param bottom the bottom plane of the viewing frustum
+     * @param near the near plane of the viewing frustum
+     * @param far the far plane of the viewing frustum
+     * @return A viewing frustum built from the provided values
+     */
+    public static MatrixN#E# createOrthographic(int size, #EOverload# right, #EOverload# left, #EOverload# top, #EOverload# bottom,
+                                             #EOverload# near, #EOverload# far) {
+        return createOrthographic(size, (#e#) right, (#e#) left, (#e#) top, (#e#) bottom, (#e#) near, (#e#) far);
+    }
 
     /**
      * Creates an orthographic viewing frustum built from the provided values

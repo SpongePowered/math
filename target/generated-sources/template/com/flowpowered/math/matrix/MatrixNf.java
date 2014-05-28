@@ -599,7 +599,19 @@ public MatrixNf(MatrixNf m) {
         return mat.translate(eye.mul(-1).toVectorN());
     }
 
-    // TODO: add double overload
+    /**
+     * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
+     *
+     * @param size The size of the matrix, minimum of 4
+     * @param fov The field of view in the x direction
+     * @param aspect The aspect ratio, usually width/height
+     * @param near The near plane, cannot be 0
+     * @param far the far plane, zFar cannot equal zNear
+     * @return A perspective projection matrix built from the given values
+     */
+    public static MatrixNf createPerspective(int size, double fov, double aspect, double near, double far) {
+        return createPerspective(size, (float) fov, (float) aspect, (float) near, (float) far);
+    }
 
     /**
      * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
@@ -626,7 +638,22 @@ public MatrixNf(MatrixNf m) {
         return perspective;
     }
 
-    // TODO: add double overload
+    /**
+     * Creates an orthographic viewing frustum built from the provided values
+     *
+     * @param size The size of the matrix, minimum of 4
+     * @param right the right most plane of the viewing frustum
+     * @param left the left most plane of the viewing frustum
+     * @param top the top plane of the viewing frustum
+     * @param bottom the bottom plane of the viewing frustum
+     * @param near the near plane of the viewing frustum
+     * @param far the far plane of the viewing frustum
+     * @return A viewing frustum built from the provided values
+     */
+    public static MatrixNf createOrthographic(int size, double right, double left, double top, double bottom,
+                                             double near, double far) {
+        return createOrthographic(size, (float) right, (float) left, (float) top, (float) bottom, (float) near, (float) far);
+    }
 
     /**
      * Creates an orthographic viewing frustum built from the provided values

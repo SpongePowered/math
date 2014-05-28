@@ -155,9 +155,21 @@ public class Matrix3#E#Test {
     }
 
     @Test
+    public void testTranslateDoubleComponents() {
+        Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).translate(1d, 0d);
+        TestUtil#E#.assertEquals(matrix, 1, 0, 1, 0, 1, 0, 0, 0, 1);
+    }
+
+    @Test
     public void testTranslateFloatComponents() {
         Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).translate(1, 0);
         TestUtil#E#.assertEquals(matrix, 1, 0, 1, 0, 1, 0, 0, 0, 1);
+    }
+
+    @Test
+    public void testScaleDoubleFactor() {
+        Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2d);
+        TestUtil#E#.assertEquals(matrix, 2, 0, 0, 0, 2, 0, 0, 0, 2);
     }
 
     @Test
@@ -168,14 +180,20 @@ public class Matrix3#E#Test {
 
     @Test
     public void testScaleVector3() {
-        Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(new Vector3#E#(2, 2, 2));
-        TestUtil#E#.assertEquals(matrix, 2, 0, 0, 0, 2, 0, 0, 0, 2);
+        Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(new Vector3#E#(2, 3, 4));
+        TestUtil#E#.assertEquals(matrix, 2, 0, 0, 0, 3, 0, 0, 0, 4);
+    }
+
+    @Test
+    public void testScaleDoubleComponents() {
+        Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2d, 3d, 4d);
+        TestUtil#E#.assertEquals(matrix, 2, 0, 0, 0, 3, 0, 0, 0, 4);
     }
 
     @Test
     public void testScaleFloatComponents() {
-        Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2d);
-        TestUtil#E#.assertEquals(matrix, 2, 0, 0, 0, 2, 0, 0, 0, 2);
+        Matrix3#E# matrix = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2, 3, 4);
+        TestUtil#E#.assertEquals(matrix, 2, 0, 0, 0, 3, 0, 0, 0, 4);
     }
 
     @Test
@@ -199,6 +217,12 @@ public class Matrix3#E#Test {
     @Test
     public void testTransformVector3() {
         Vector3#E# vector = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2, 3, 1).translate(4, 5).transform(new Vector3#E#(3, 2, 1));
+        TestUtil#E#.assertEquals(vector, 10, 11, 1);
+    }
+
+    @Test
+    public void testTransformDoubleComponents() {
+        Vector3#E# vector = new Matrix3#E#(1, 0, 0, 0, 1, 0, 0, 0, 1).scale(2, 3, 1).translate(4, 5).transform(3d, 2d, 1d);
         TestUtil#E#.assertEquals(vector, 10, 11, 1);
     }
 
@@ -273,9 +297,6 @@ public class Matrix3#E#Test {
                 (#e#) (-5/18d), (#e#) (7/18d), (#e#) (1/18d),
                 (#e#) (1/18d), (#e#) (-5/18d), (#e#) (7/18d),
                 (#e#) (7/18d), (#e#) (1/18d), (#e#) (-5/18d));
-/*                -0.2777777777f, 0.3888888888f, 0.0555555555f,
-                0.0555555555f, -0.2777777777f, 0.3888888888f,
-                0.3888888888f, 0.0555555555f, -0.2777777777f);*/
         }
 
     @Test
@@ -339,6 +360,12 @@ public class Matrix3#E#Test {
     }
 
     @Test
+    public void testCreateFromScalingDoubleComponents() {
+        Matrix3#E# matrix = Matrix3#E#.createScaling(1d, 2d, 3d);
+        TestUtil#E#.assertEquals(matrix, 1, 0, 0, 0, 2, 0, 0, 0, 3);
+    }
+
+    @Test
     public void testCreateFromScalingFloatComponents() {
         Matrix3#E# matrix = Matrix3#E#.createScaling(1, 2, 3);
         TestUtil#E#.assertEquals(matrix, 1, 0, 0, 0, 2, 0, 0, 0, 3);
@@ -349,6 +376,14 @@ public class Matrix3#E#Test {
         Matrix3#E# matrix1 = Matrix3#E#.createTranslation(new Vector2#E#(1, 0));
         TestUtil#E#.assertEquals(matrix1, 1, 0, 1, 0, 1, 0, 0, 0, 1);
         Matrix3#E# matrix2 = Matrix3#E#.createTranslation(new Vector2#E#(0, 1));
+        TestUtil#E#.assertEquals(matrix2, 1, 0, 0, 0, 1, 1, 0, 0, 1);
+    }
+
+    @Test
+    public void testCreateTranslationDoubleComponents() {
+        Matrix3#E# matrix1 = Matrix3#E#.createTranslation(1d, 0d);
+        TestUtil#E#.assertEquals(matrix1, 1, 0, 1, 0, 1, 0, 0, 0, 1);
+        Matrix3#E# matrix2 = Matrix3#E#.createTranslation(0d, 1d);
         TestUtil#E#.assertEquals(matrix2, 1, 0, 0, 0, 1, 1, 0, 0, 1);
     }
 

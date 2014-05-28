@@ -252,7 +252,6 @@ public class GenericMath {
         return a.mul(1 - percent).add(b.mul(percent));
     }
 
-
     /**
      * Calculates the linear interpolation between a and b with the given percent
      *
@@ -261,11 +260,9 @@ public class GenericMath {
      * @param percent The percent
      * @return the interpolated vector
      */
-    public static Vector3d lerp(Vector3d a, Vector3d b, float percent) {
+    public static Vector3d lerp(Vector3d a, Vector3d b, double percent) {
         return a.mul(1 - percent).add(b.mul(percent));
     }
-
-
 
     /**
      * Calculates the linear interpolation between a and b with the given percent
@@ -279,7 +276,6 @@ public class GenericMath {
         return a.mul(1 - percent).add(b.mul(percent));
     }
 
-
     /**
      * Calculates the linear interpolation between a and b with the given percent
      *
@@ -288,11 +284,9 @@ public class GenericMath {
      * @param percent The percent
      * @return the interpolated vector
      */
-    public static Vector2d lerp(Vector2d a, Vector2d b, float percent) {
+    public static Vector2d lerp(Vector2d a, Vector2d b, double percent) {
         return a.mul(1 - percent).add(b.mul(percent));
     }
-
-
 
     /**
      * Calculates the value at x using linear interpolation
@@ -341,8 +335,7 @@ public class GenericMath {
         } else {
             inverted = 1;
         }
-        final float epsilon = 0.00001f; //TODO: Move it to some constant. Maybe use different epsilon?
-        if (1 - cosineTheta < epsilon) {
+        if (1 - cosineTheta < GenericMath.FLT_EPSILON) {
             return a.mul(1 - percent).add(b.mul(percent * inverted));
         }
         final float theta = (float) TrigMath.acos(cosineTheta);
@@ -352,7 +345,6 @@ public class GenericMath {
         return a.mul(coefficient1).add(b.mul(coefficient2));
     }
 
-
     /**
      * Interpolates a quaternion between two others using spherical linear interpolation.
      *
@@ -361,8 +353,8 @@ public class GenericMath {
      * @param percent The percent for the interpolation, between 0 and 1 inclusively
      * @return The interpolated quaternion
      */
-    public static Quaterniond slerp(Quaterniond a, Quaterniond b, float percent) {
-        final float inverted;
+    public static Quaterniond slerp(Quaterniond a, Quaterniond b, double percent) {
+        final double inverted;
         double cosineTheta = a.dot(b);
         if (cosineTheta < 0) {
             cosineTheta = -cosineTheta;
@@ -370,8 +362,7 @@ public class GenericMath {
         } else {
             inverted = 1;
         }
-        final float epsilon = 0.00001f; //TODO: Move it to some constant. Maybe use different epsilon?
-        if (1 - cosineTheta < epsilon) {
+        if (1 - cosineTheta < GenericMath.DBL_EPSILON) {
             return a.mul(1 - percent).add(b.mul(percent * inverted));
         }
         final double theta = (double) TrigMath.acos(cosineTheta);
@@ -380,8 +371,6 @@ public class GenericMath {
         final double coefficient2 = TrigMath.sin(percent * theta) / sineTheta * inverted;
         return a.mul(coefficient1).add(b.mul(coefficient2));
     }
-
-
 
     /**
      * Calculates the value at x,y using bilinear interpolation

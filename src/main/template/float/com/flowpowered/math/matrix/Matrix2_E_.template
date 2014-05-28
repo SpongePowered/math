@@ -154,7 +154,9 @@ public class Matrix2#E# implements Matrix#E#, Serializable, Cloneable {
                 Math.pow(m10, pow), Math.pow(m11, pow));
     }
 
-    // TODO: add #EOverload# overload
+    public Matrix2#E# translate(#EOverload# x) {
+        return translate((#e#) x);
+    }
 
     public Matrix2#E# translate(#e# x) {
         return createTranslation(x).mul(this);
@@ -172,7 +174,9 @@ public class Matrix2#E# implements Matrix#E#, Serializable, Cloneable {
         return scale(v.getX(), v.getY());
     }
 
-    // TODO: add #EOverload# overload
+    public Matrix2#E# scale(#EOverload# x, #EOverload# y) {
+        return scale((#e#) x, (#e#) y);
+    }
 
     public Matrix2#E# scale(#e# x, #e# y) {
         return createScaling(x, y).mul(this);
@@ -186,7 +190,9 @@ public class Matrix2#E# implements Matrix#E#, Serializable, Cloneable {
         return transform(v.getX(), v.getY());
     }
 
-    // TODO: add #EOverload# overload
+    public Vector2#E# transform(#EOverload# x, #EOverload# y) {
+        return transform((#e#) x, (#e#) y);
+    }
 
     public Vector2#E# transform(#e# x, #e# y) {
         return new Vector2#E#(
@@ -356,7 +362,9 @@ public class Matrix2#E# implements Matrix#E#, Serializable, Cloneable {
         return createScaling(v.getX(), v.getY());
     }
 
-    // TODO: add #EOverload# overload
+    public static Matrix2#E# createScaling(#EOverload# x, #EOverload# y) {
+        return createScaling((#e#) x, (#e#) y);
+    }
 
     public static Matrix2#E# createScaling(#e# x, #e# y) {
         return new Matrix2#E#(
@@ -364,7 +372,9 @@ public class Matrix2#E# implements Matrix#E#, Serializable, Cloneable {
                 0, y);
     }
 
-    // TODO: add #EOverload# overload
+    public static Matrix2#E# createTranslation(#EOverload# x) {
+        return createTranslation((#e#) x);
+    }
 
     public static Matrix2#E# createTranslation(#e# x) {
         return new Matrix2#E#(

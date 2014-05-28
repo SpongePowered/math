@@ -832,12 +832,22 @@ public class MatrixNdTest {
     }
 
     @Test
-    public void testCreatePerspective() {
+    public void testCreatePerspectiveDouble() {
         // TODO: figure out a test for this
     }
 
     @Test
-    public void testCreateOrthographic() {
+    public void testCreatePerspectiveFloat() {
+        // TODO: figure out a test for this
+    }
+
+    @Test
+    public void testCreateOrthographicDouble() {
+        // TODO: figure out a test for this
+    }
+
+    @Test
+    public void testCreateOrthographicFloat() {
         // TODO: figure out a test for this
     }
 }

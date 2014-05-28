@@ -340,6 +340,21 @@ public class Matrix4fTest {
     }
 
     @Test
+    public void testTranslateDoubleComponents() {
+        Matrix4f matrix = new Matrix4f(
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1);
+        matrix = matrix.translate(2d, 3d, 4d);
+        TestUtilf.assertEquals(matrix,
+                1, 0, 0, 2,
+                0, 1, 0, 3,
+                0, 0, 1, 4,
+                0, 0, 0, 1);
+    }
+
+    @Test
     public void testTranslateFloatComponents() {
         Matrix4f matrix = new Matrix4f(
                 1, 0, 0, 0,
@@ -400,6 +415,21 @@ public class Matrix4fTest {
     }
 
     @Test
+    public void testScaleDoubleComponents() {
+        Matrix4f matrix = new Matrix4f(
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1);
+        matrix = matrix.scale(2d, 3d, 4d, 5d);
+        TestUtilf.assertEquals(matrix,
+                2, 0, 0, 0,
+                0, 3, 0, 0,
+                0, 0, 4, 0,
+                0, 0, 0, 5);
+    }
+
+    @Test
     public void testScaleFloatComponents() {
         Matrix4f matrix = new Matrix4f(
                 1, 0, 0, 0,
@@ -452,6 +482,17 @@ public class Matrix4fTest {
                 0, 0, 1, 0,
                 0, 0, 0, 1);
         Vector4f vector = matrix.scale(2, 3, 4, 1).translate(4, 5, 3).transform(new Vector4f(3, 2, 8, 1));
+        TestUtilf.assertEquals(vector, 10, 11, 35, 1);
+    }
+
+    @Test
+    public void testTransformDoubleComponents() {
+        Matrix4f matrix = new Matrix4f(
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1);
+        Vector4f vector = matrix.scale(2, 3, 4, 1).translate(4, 5, 3).transform(3d, 2d, 8d, 1d);
         TestUtilf.assertEquals(vector, 10, 11, 35, 1);
     }
 
@@ -743,6 +784,16 @@ public class Matrix4fTest {
     }
 
     @Test
+    public void testCreateFromScalingDoubleComponents() {
+        Matrix4f matrix = Matrix4f.createScaling(1d, 2d, 3d, 4d);
+        TestUtilf.assertEquals(matrix,
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+    }
+
+    @Test
     public void testCreateFromScalingFloatComponents() {
         Matrix4f matrix = Matrix4f.createScaling(1, 2, 3, 4);
         TestUtilf.assertEquals(matrix,
@@ -755,6 +806,16 @@ public class Matrix4fTest {
     @Test
     public void testCreateTranslationVector3() {
         Matrix4f matrix = Matrix4f.createTranslation(new Vector3f(1, 2, 3));
+        TestUtilf.assertEquals(matrix,
+                1, 0, 0, 1,
+                0, 1, 0, 2,
+                0, 0, 1, 3,
+                0, 0, 0, 1);
+    }
+
+    @Test
+    public void testCreateTranslationDoubleComponents() {
+        Matrix4f matrix = Matrix4f.createTranslation(1d, 2d, 3d);
         TestUtilf.assertEquals(matrix,
                 1, 0, 0, 1,
                 0, 1, 0, 2,
@@ -776,8 +837,6 @@ public class Matrix4fTest {
     public void testCreateRotationFromComplex() {
         Matrix4f matrix = Matrix4f.createRotation(new Complexf(2, 3));
         TestUtilf.assertEquals(matrix,
-/*                (float) 0.5547001962252291, (float) -0.8320502943378437, 0, 0,
-                (float) 0.8320502943378437, (float) 0.5547001962252291, 0, 0,*/
                 (float) (2/SQRT13), (float) (-3/SQRT13), 0, 0,
                 (float) (3/SQRT13), (float) (2/SQRT13), 0, 0,
                 0, 0, 1, 0,
@@ -788,9 +847,6 @@ public class Matrix4fTest {
     public void testCreateRotationFromQuaternion() {
         Matrix4f matrix = Matrix4f.createRotation(new Quaternionf(4, 3, 2, 0));
         TestUtilf.assertEquals(matrix,
-/*                (float) 0.10344827586206896, (float) 0.8275862068965517, (float) 0.5517241379310345, 0,
-                (float) 0.8275862068965517, (float) -0.3793103448275862, (float) 0.41379310344827586, 0,
-                (float) 0.5517241379310345, (float) 0.41379310344827586, (float) -0.7241379310344828, 0,*/
                 (float) (3/29d), (float) (24/29d), (float) (16/29d), 0,
                 (float) (24/29d), (float) (-11/29d), (float) (12/29d), 0,
                 (float) (16/29d), (float) (12/29d), (float) (-21/29d), 0,
@@ -803,12 +859,22 @@ public class Matrix4fTest {
     }
 
     @Test
-    public void testCreatePerspective() {
+    public void testCreatePerspectiveDouble() {
         // TODO: figure out a test for this
     }
 
     @Test
-    public void testCreateOrthographic() {
+    public void testCreatePerspectiveFloat() {
+        // TODO: figure out a test for this
+    }
+
+    @Test
+    public void testCreateOrthographicDouble() {
+        // TODO: figure out a test for this
+    }
+
+    @Test
+    public void testCreateOrthographicFloat() {
         // TODO: figure out a test for this
     }
 }

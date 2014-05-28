@@ -119,6 +119,33 @@ public class Complex#E#Test {
     }
 
     @Test
+    public void testComplexDivision() {
+        Complex#E# complex1 = new Complex#E#(7, 3);
+        Complex#E# complex2 = new Complex#E#(2, 5);
+        Complex#E# div = complex1.div(complex2);
+        Complex#E# invMul = complex1.mul(complex2.invert());
+        TestUtil#E#.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
+    public void testDoubleComponentsDivision() {
+        Complex#E# complex1 = new Complex#E#(7, 3);
+        Complex#E# complex2 = new Complex#E#(2, 5);
+        Complex#E# div = complex1.div((double) complex2.getX(), (double) complex2.getY());
+        Complex#E# invMul = complex1.mul(complex2.invert());
+        TestUtil#E#.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
+    public void testFloatComponentsDivision() {
+        Complex#E# complex1 = new Complex#E#(7, 3);
+        Complex#E# complex2 = new Complex#E#(2, 5);
+        Complex#E# div = complex1.div(complex2.getX(), complex2.getY());
+        Complex#E# invMul = complex1.mul(complex2.invert());
+        TestUtil#E#.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
     public void testComplexDotProduct() {
         #e# f = new Complex#E#(2, 3).dot(new Complex#E#(4, 5));
         TestUtil#E#.assertEquals(f, 23);

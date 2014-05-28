@@ -257,7 +257,46 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
         return new Quaterniond(x / a, y / a, z / a, w / a);
     }
 
-    // TODO: quaternion division?
+    /**
+     * Divides this quaternions by another one.
+     *
+     * @param q The quaternion to divide with
+     * @return The quotient of the two quaternions
+     */
+    public Quaterniond div(Quaterniond q) {
+        return div(q.x, q.y, q.z, q.w);
+    }
+
+    /**
+     * Divides this quaternions by the float components of another one.
+     *
+     * @param x The x (imaginary) component of the quaternion to divide with
+     * @param y The y (imaginary) component of the quaternion to divide with
+     * @param z The z (imaginary) component of the quaternion to divide with
+     * @param w The w (real) component of the quaternion to divide with
+     * @return The quotient of the two quaternions
+     */
+    public Quaterniond div(float x, float y, float z, float w) {
+        return div((double) x, (double) y, (double) z, (double) w);
+    }
+
+    /**
+     * Divides this quaternions by the double components of another one.
+     *
+     * @param x The x (imaginary) component of the quaternion to divide with
+     * @param y The y (imaginary) component of the quaternion to divide with
+     * @param z The z (imaginary) component of the quaternion to divide with
+     * @param w The w (real) component of the quaternion to divide with
+     * @return The quotient of the two quaternions
+     */
+    public Quaterniond div(double x, double y, double z, double w) {
+        final double d = x * x + y * y + z * z + w * w;
+        return new Quaterniond(
+                (this.x * w - this.w * x - this.z * y + this.y * z) / d,
+                (this.y * w + this.z * x - this.w * y - this.x * z) / d,
+                (this.z * w - this.y * x + this.x * y - this.w * z) / d,
+                (this.w * w + this.x * x + this.y * y + this.z * z) / d);
+    }
 
     /**
      * Returns the dot product of this quaternion with another one.
@@ -612,8 +651,8 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
      * @return The quaternion defined by the rotation around the axis
      */
     public static Quaterniond fromAngleRadAxis(double angle, double x, double y, double z) {
-        final double halfAngle = angle / 2;   //TODO: Maybe use always double here?
-        final double q = TrigMath.sin(halfAngle) / Math.sqrt(x * x + y * y + z * z);
+        final double halfAngle = angle / 2;
+        final double q = TrigMath.sin(halfAngle) / (double) Math.sqrt(x * x + y * y + z * z);
         return new Quaterniond(x * q, y * q, z * q, TrigMath.cos(halfAngle));
     }
 
@@ -628,7 +667,6 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
         if (trace < 0) {
             if (matrix.get(1, 1) > matrix.get(0, 0)) {
                 if (matrix.get(2, 2) > matrix.get(1, 1)) {
-                    //TODO: Maybe use always doubles here?
                     final double r = (double) Math.sqrt(matrix.get(2, 2) - matrix.get(0, 0) - matrix.get(1, 1) + 1);
                     final double s = 0.5f / r;
                     return new Quaterniond(

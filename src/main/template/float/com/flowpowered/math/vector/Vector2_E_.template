@@ -363,18 +363,46 @@ public class Vector2#E# implements Vector#E#, Comparable<Vector2#E#>, Serializab
      * @return the random direction vector
      */
     public static Vector2#E# createRandomDirection(Random random) {
-        return createDirection(random.next#ES#() * (#e#) TrigMath.TWO_PI);
+        return createDirectionRad(random.next#ES#() * (#e#) TrigMath.TWO_PI);
     }
 
-    // TODO: add overloads for #EOverload#s and degree angles
+    /**
+     * Gets the direction vector of a certain angle in degrees.
+     *
+     * @param angle in degrees
+     * @return the direction vector
+     */
+    public static Vector2#E# createDirectionDeg(#EOverload# angle) {
+        return createDirectionDeg((#e#) angle);
+    }
 
     /**
-     * Gets the direction vector of a certain angle.
+     * Gets the direction vector of a certain angle in degrees.
+     *
+     * @param angle in degrees
+     * @return the direction vector
+     */
+    public static Vector2#E# createDirectionDeg(#e# angle) {
+        return createDirectionRad((#e#) Math.toRadians(angle));
+    }
+
+    /**
+     * Gets the direction vector of a certain angle in radians.
      *
      * @param angle in radians
      * @return the direction vector
      */
-    public static Vector2#E# createDirection(#e# angle) {
+    public static Vector2#E# createDirectionRad(#EOverload# angle) {
+        return createDirectionRad((#e#) angle);
+    }
+
+    /**
+     * Gets the direction vector of a certain angle in radians.
+     *
+     * @param angle in radians
+     * @return the direction vector
+     */
+    public static Vector2#E# createDirectionRad(#e# angle) {
         return new Vector2#E#(TrigMath.cos(angle), TrigMath.sin(angle));
     }
 }

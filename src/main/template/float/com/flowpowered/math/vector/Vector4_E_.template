@@ -28,7 +28,9 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
         this(v, 0, 0);
     }
 
-    // TODO: add #EOverload# overloads
+    public Vector4#E#(Vector2#E# v, #EOverload# z, #EOverload# w) {
+        this(v, (#e#) z, (#e#) w);
+    }
 
     public Vector4#E#(Vector2#E# v, #e# z, #e# w) {
         this(v.getX(), v.getY(), z, w);
@@ -38,7 +40,9 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
         this(v, 0);
     }
 
-    // TODO: add #EOverload# overloads
+    public Vector4#E#(Vector3#E# v, #EOverload# w) {
+        this(v, (#e#) w);
+    }
 
     public Vector4#E#(Vector3#E# v, #e# w) {
         this(v.getX(), v.getY(), v.getZ(), w);

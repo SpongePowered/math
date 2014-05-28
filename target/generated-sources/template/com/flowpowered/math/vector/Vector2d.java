@@ -363,18 +363,46 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
      * @return the random direction vector
      */
     public static Vector2d createRandomDirection(Random random) {
-        return createDirection(random.nextDouble() * (double) TrigMath.TWO_PI);
+        return createDirectionRad(random.nextDouble() * (double) TrigMath.TWO_PI);
     }
 
-    // TODO: add overloads for floats and degree angles
+    /**
+     * Gets the direction vector of a certain angle in degrees.
+     *
+     * @param angle in degrees
+     * @return the direction vector
+     */
+    public static Vector2d createDirectionDeg(float angle) {
+        return createDirectionDeg((double) angle);
+    }
 
     /**
-     * Gets the direction vector of a certain angle.
+     * Gets the direction vector of a certain angle in degrees.
+     *
+     * @param angle in degrees
+     * @return the direction vector
+     */
+    public static Vector2d createDirectionDeg(double angle) {
+        return createDirectionRad((double) Math.toRadians(angle));
+    }
+
+    /**
+     * Gets the direction vector of a certain angle in radians.
      *
      * @param angle in radians
      * @return the direction vector
      */
-    public static Vector2d createDirection(double angle) {
+    public static Vector2d createDirectionRad(float angle) {
+        return createDirectionRad((double) angle);
+    }
+
+    /**
+     * Gets the direction vector of a certain angle in radians.
+     *
+     * @param angle in radians
+     * @return the direction vector
+     */
+    public static Vector2d createDirectionRad(double angle) {
         return new Vector2d(TrigMath.cos(angle), TrigMath.sin(angle));
     }
 }

@@ -154,7 +154,9 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
                 Math.pow(m10, pow), Math.pow(m11, pow));
     }
 
-    // TODO: add double overload
+    public Matrix2f translate(double x) {
+        return translate((float) x);
+    }
 
     public Matrix2f translate(float x) {
         return createTranslation(x).mul(this);
@@ -172,7 +174,9 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
         return scale(v.getX(), v.getY());
     }
 
-    // TODO: add double overload
+    public Matrix2f scale(double x, double y) {
+        return scale((float) x, (float) y);
+    }
 
     public Matrix2f scale(float x, float y) {
         return createScaling(x, y).mul(this);
@@ -186,7 +190,9 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
         return transform(v.getX(), v.getY());
     }
 
-    // TODO: add double overload
+    public Vector2f transform(double x, double y) {
+        return transform((float) x, (float) y);
+    }
 
     public Vector2f transform(float x, float y) {
         return new Vector2f(
@@ -356,7 +362,9 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
         return createScaling(v.getX(), v.getY());
     }
 
-    // TODO: add double overload
+    public static Matrix2f createScaling(double x, double y) {
+        return createScaling((float) x, (float) y);
+    }
 
     public static Matrix2f createScaling(float x, float y) {
         return new Matrix2f(
@@ -364,7 +372,9 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
                 0, y);
     }
 
-    // TODO: add double overload
+    public static Matrix2f createTranslation(double x) {
+        return createTranslation((float) x);
+    }
 
     public static Matrix2f createTranslation(float x) {
         return new Matrix2f(

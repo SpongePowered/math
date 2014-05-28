@@ -28,7 +28,9 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
         this(v, 0, 0);
     }
 
-    // TODO: add double overloads
+    public Vector4f(Vector2f v, double z, double w) {
+        this(v, (float) z, (float) w);
+    }
 
     public Vector4f(Vector2f v, float z, float w) {
         this(v.getX(), v.getY(), z, w);
@@ -38,7 +40,9 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
         this(v, 0);
     }
 
-    // TODO: add double overloads
+    public Vector4f(Vector3f v, double w) {
+        this(v, (float) w);
+    }
 
     public Vector4f(Vector3f v, float w) {
         this(v.getX(), v.getY(), v.getZ(), w);

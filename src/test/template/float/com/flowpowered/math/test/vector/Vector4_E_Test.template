@@ -26,6 +26,12 @@ public class Vector4#E#Test {
     }
 
     @Test
+    public void testCopyVector2DoubleZWConstructor() {
+        Vector4#E# vector = new Vector4#E#(new Vector2#E#(0, 1), 1d, 2d);
+        TestUtil#E#.assertEquals(vector, 0, 1, 1, 2);
+    }
+
+    @Test
     public void testCopyVector2FloatZWConstructor() {
         Vector4#E# vector = new Vector4#E#(new Vector2#E#(0, 1), 1, 2);
         TestUtil#E#.assertEquals(vector, 0, 1, 1, 2);
@@ -35,6 +41,12 @@ public class Vector4#E#Test {
     public void testCopyVector3DefaultWConstructor() {
         Vector4#E# vector = new Vector4#E#(new Vector3#E#(0, 1, 1));
         TestUtil#E#.assertEquals(vector, 0, 1, 1, 0);
+    }
+
+    @Test
+    public void testCopyVector3DoubleWConstructor() {
+        Vector4#E# vector = new Vector4#E#(new Vector3#E#(0, 1, 1), 2d);
+        TestUtil#E#.assertEquals(vector, 0, 1, 1, 2);
     }
 
     @Test

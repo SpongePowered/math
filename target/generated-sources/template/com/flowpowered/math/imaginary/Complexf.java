@@ -218,7 +218,40 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
         return new Complexf(x / a, y / a);
     }
 
-    // TODO: complex division?
+    /**
+     * Divides this complex by another one.
+     *
+     * @param c The complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complexf div(Complexf c) {
+        return div(c.x, c.y);
+    }
+
+    /**
+     * Divides this complex by the double components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complexf div(double x, double y) {
+        return div((float) x, (float) y);
+    }
+
+    /**
+     * Divides this complex by the float components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complexf div(float x, float y) {
+        final float d = x * x + y * y;
+        return new Complexf(
+                (this.x * x + this.y * y) / d,
+                (this.y * x - this.x * y) / d);
+    }
 
     /**
      * Returns the dot product of this complex with another one.

@@ -208,7 +208,9 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
         return translate(v.getX(), v.getY());
     }
 
-    // TODO: add float overload
+    public Matrix3d translate(float x, float y) {
+        return translate((double) x, (double) y);
+    }
 
     public Matrix3d translate(double x, double y) {
         return createTranslation(x, y).mul(this);
@@ -226,7 +228,9 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
         return scale(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add float overload
+    public Matrix3d scale(float x, float y, float z) {
+        return scale((double) x, (double) y, (double) z);
+    }
 
     public Matrix3d scale(double x, double y, double z) {
         return createScaling(x, y, z).mul(this);
@@ -244,7 +248,9 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
         return transform(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add float overload
+    public Vector3d transform(float x, float y, float z) {
+        return transform((double) x, (double) y, (double) z);
+    }
 
     public Vector3d transform(double x, double y, double z) {
         return new Vector3d(
@@ -454,7 +460,9 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
         return createScaling(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add float overload
+    public static Matrix3d createScaling(float x, float y, float z) {
+        return createScaling((double) x, (double) y, (double) z);
+    }
 
     public static Matrix3d createScaling(double x, double y, double z) {
         return new Matrix3d(
@@ -467,7 +475,9 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
         return createTranslation(v.getX(), v.getY());
     }
 
-    // TODO: add float overload
+    public static Matrix3d createTranslation(float x, float y) {
+        return createTranslation((double) x, (double) y);
+    }
 
     public static Matrix3d createTranslation(double x, double y) {
         return new Matrix3d(

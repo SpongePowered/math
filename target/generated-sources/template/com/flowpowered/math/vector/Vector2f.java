@@ -363,18 +363,46 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
      * @return the random direction vector
      */
     public static Vector2f createRandomDirection(Random random) {
-        return createDirection(random.nextFloat() * (float) TrigMath.TWO_PI);
+        return createDirectionRad(random.nextFloat() * (float) TrigMath.TWO_PI);
     }
 
-    // TODO: add overloads for doubles and degree angles
+    /**
+     * Gets the direction vector of a certain angle in degrees.
+     *
+     * @param angle in degrees
+     * @return the direction vector
+     */
+    public static Vector2f createDirectionDeg(double angle) {
+        return createDirectionDeg((float) angle);
+    }
 
     /**
-     * Gets the direction vector of a certain angle.
+     * Gets the direction vector of a certain angle in degrees.
+     *
+     * @param angle in degrees
+     * @return the direction vector
+     */
+    public static Vector2f createDirectionDeg(float angle) {
+        return createDirectionRad((float) Math.toRadians(angle));
+    }
+
+    /**
+     * Gets the direction vector of a certain angle in radians.
      *
      * @param angle in radians
      * @return the direction vector
      */
-    public static Vector2f createDirection(float angle) {
+    public static Vector2f createDirectionRad(double angle) {
+        return createDirectionRad((float) angle);
+    }
+
+    /**
+     * Gets the direction vector of a certain angle in radians.
+     *
+     * @param angle in radians
+     * @return the direction vector
+     */
+    public static Vector2f createDirectionRad(float angle) {
         return new Vector2f(TrigMath.cos(angle), TrigMath.sin(angle));
     }
 }

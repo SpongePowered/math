@@ -119,6 +119,33 @@ public class ComplexfTest {
     }
 
     @Test
+    public void testComplexDivision() {
+        Complexf complex1 = new Complexf(7, 3);
+        Complexf complex2 = new Complexf(2, 5);
+        Complexf div = complex1.div(complex2);
+        Complexf invMul = complex1.mul(complex2.invert());
+        TestUtilf.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
+    public void testDoubleComponentsDivision() {
+        Complexf complex1 = new Complexf(7, 3);
+        Complexf complex2 = new Complexf(2, 5);
+        Complexf div = complex1.div((double) complex2.getX(), (double) complex2.getY());
+        Complexf invMul = complex1.mul(complex2.invert());
+        TestUtilf.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
+    public void testFloatComponentsDivision() {
+        Complexf complex1 = new Complexf(7, 3);
+        Complexf complex2 = new Complexf(2, 5);
+        Complexf div = complex1.div(complex2.getX(), complex2.getY());
+        Complexf invMul = complex1.mul(complex2.invert());
+        TestUtilf.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
     public void testComplexDotProduct() {
         float f = new Complexf(2, 3).dot(new Complexf(4, 5));
         TestUtilf.assertEquals(f, 23);

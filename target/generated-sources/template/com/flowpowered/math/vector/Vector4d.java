@@ -28,7 +28,9 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
         this(v, 0, 0);
     }
 
-    // TODO: add float overloads
+    public Vector4d(Vector2d v, float z, float w) {
+        this(v, (double) z, (double) w);
+    }
 
     public Vector4d(Vector2d v, double z, double w) {
         this(v.getX(), v.getY(), z, w);
@@ -38,7 +40,9 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
         this(v, 0);
     }
 
-    // TODO: add float overloads
+    public Vector4d(Vector3d v, float w) {
+        this(v, (double) w);
+    }
 
     public Vector4d(Vector3d v, double w) {
         this(v.getX(), v.getY(), v.getZ(), w);

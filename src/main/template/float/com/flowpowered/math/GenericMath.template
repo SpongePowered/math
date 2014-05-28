@@ -242,9 +242,7 @@ public class GenericMath {
 
 #REPLICATED1#
 
-
 #REPLICATED2#
-
 
     /**
      * Calculates the value at x using linear interpolation
@@ -277,7 +275,6 @@ public class GenericMath {
     }
 
 #REPLICATED3#
-
 
     /**
      * Calculates the value at x,y using bilinear interpolation
@@ -754,11 +751,11 @@ public class GenericMath {
      * @param percent The percent
      * @return the interpolated vector
      */
-    public static Vector3#E# lerp(Vector3#E# a, Vector3#E# b, float percent) {
+    public static Vector3#E# lerp(Vector3#E# a, Vector3#E# b, #e# percent) {
         return a.mul(1 - percent).add(b.mul(percent));
     }
-
 =====END_REPLICATED_CONTENT #1=====
+
 ====START_REPLICATED_CONTENT #2====
     /**
      * Calculates the linear interpolation between a and b with the given percent
@@ -768,11 +765,11 @@ public class GenericMath {
      * @param percent The percent
      * @return the interpolated vector
      */
-    public static Vector2#E# lerp(Vector2#E# a, Vector2#E# b, float percent) {
+    public static Vector2#E# lerp(Vector2#E# a, Vector2#E# b, #e# percent) {
         return a.mul(1 - percent).add(b.mul(percent));
     }
-
 =====END_REPLICATED_CONTENT #2=====
+
 ====START_REPLICATED_CONTENT #3====
     /**
      * Interpolates a quaternion between two others using spherical linear interpolation.
@@ -782,8 +779,8 @@ public class GenericMath {
      * @param percent The percent for the interpolation, between 0 and 1 inclusively
      * @return The interpolated quaternion
      */
-    public static Quaternion#E# slerp(Quaternion#E# a, Quaternion#E# b, float percent) {
-        final float inverted;
+    public static Quaternion#E# slerp(Quaternion#E# a, Quaternion#E# b, #e# percent) {
+        final #e# inverted;
         #e# cosineTheta = a.dot(b);
         if (cosineTheta < 0) {
             cosineTheta = -cosineTheta;
@@ -791,8 +788,7 @@ public class GenericMath {
         } else {
             inverted = 1;
         }
-        final float epsilon = 0.00001f; //TODO: Move it to some constant. Maybe use different epsilon?
-        if (1 - cosineTheta < epsilon) {
+        if (1 - cosineTheta < #Eeps#) {
             return a.mul(1 - percent).add(b.mul(percent * inverted));
         }
         final #e# theta = (#e#) TrigMath.acos(cosineTheta);
@@ -801,5 +797,4 @@ public class GenericMath {
         final #e# coefficient2 = TrigMath.sin(percent * theta) / sineTheta * inverted;
         return a.mul(coefficient1).add(b.mul(coefficient2));
     }
-
 =====END_REPLICATED_CONTENT #3=====

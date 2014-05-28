@@ -26,6 +26,12 @@ public class Vector4dTest {
     }
 
     @Test
+    public void testCopyVector2DoubleZWConstructor() {
+        Vector4d vector = new Vector4d(new Vector2d(0, 1), 1d, 2d);
+        TestUtild.assertEquals(vector, 0, 1, 1, 2);
+    }
+
+    @Test
     public void testCopyVector2FloatZWConstructor() {
         Vector4d vector = new Vector4d(new Vector2d(0, 1), 1, 2);
         TestUtild.assertEquals(vector, 0, 1, 1, 2);
@@ -35,6 +41,12 @@ public class Vector4dTest {
     public void testCopyVector3DefaultWConstructor() {
         Vector4d vector = new Vector4d(new Vector3d(0, 1, 1));
         TestUtild.assertEquals(vector, 0, 1, 1, 0);
+    }
+
+    @Test
+    public void testCopyVector3DoubleWConstructor() {
+        Vector4d vector = new Vector4d(new Vector3d(0, 1, 1), 2d);
+        TestUtild.assertEquals(vector, 0, 1, 1, 2);
     }
 
     @Test

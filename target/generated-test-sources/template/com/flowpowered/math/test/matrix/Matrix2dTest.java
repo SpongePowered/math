@@ -140,6 +140,12 @@ public class Matrix2dTest {
     }
 
     @Test
+    public void testTranslateDoubleDistance() {
+        Matrix2d matrix = new Matrix2d(1, 0, 0, 1).translate(5d);
+        TestUtild.assertEquals(matrix, 1, 5, 0, 1);
+    }
+
+    @Test
     public void testTranslateFloatDistance() {
         Matrix2d matrix = new Matrix2d(1, 0, 0, 1).translate(5f);
         TestUtild.assertEquals(matrix, 1, 5, 0, 1);
@@ -164,6 +170,12 @@ public class Matrix2dTest {
     }
 
     @Test
+    public void testScaleDoubleComponents() {
+        Matrix2d matrix = new Matrix2d(1, 0, 0, 1).scale(2d, 3d);
+        TestUtild.assertEquals(matrix, 2, 0, 0, 3);
+    }
+
+    @Test
     public void testScaleFloatComponents() {
         Matrix2d matrix = new Matrix2d(1, 0, 0, 1).scale(2, 3);
         TestUtild.assertEquals(matrix, 2, 0, 0, 3);
@@ -178,6 +190,12 @@ public class Matrix2dTest {
     @Test
     public void testTransformVector2() {
         Vector2d vector = new Matrix2d(1, 0, 0, 1).scale(2, 1).translate(4).transform(new Vector2d(3, 1));
+        TestUtild.assertEquals(vector, 10, 1);
+    }
+
+    @Test
+    public void testTransformDoubleComponents() {
+        Vector2d vector = new Matrix2d(1, 0, 0, 1).scale(2, 1).translate(4).transform(3d, 1d);
         TestUtild.assertEquals(vector, 10, 1);
     }
 
@@ -303,13 +321,26 @@ public class Matrix2dTest {
 
     @Test
     public void testCreateFromScalingDoubleComponents() {
-        Matrix2d matrix = Matrix2d.createScaling(2, (double) 1.5);
+        Matrix2d matrix = Matrix2d.createScaling(2, 1.5);
+        TestUtild.assertEquals(matrix, 2, 0, 0, (double) 1.5);
+    }
+
+    @Test
+    public void testCreateFromScalingFloatComponents() {
+        Matrix2d matrix = Matrix2d.createScaling(2, 1.5f);
         TestUtild.assertEquals(matrix, 2, 0, 0, (double) 1.5);
     }
 
     @Test
     public void testCreateTranslationFromDoubleDistance() {
-        Matrix2d matrix = Matrix2d.createTranslation((double) 5d);
+        Matrix2d matrix = Matrix2d.createTranslation(5d);
+        TestUtild.assertEquals(matrix, 1, 5, 0, 1);
+    }
+
+
+    @Test
+    public void testCreateTranslationFromFloatDistance() {
+        Matrix2d matrix = Matrix2d.createTranslation(5);
         TestUtild.assertEquals(matrix, 1, 5, 0, 1);
     }
 

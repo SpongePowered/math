@@ -282,7 +282,9 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
         return translate(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add #EOverload# overload
+    public Matrix4#E# translate(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return translate((#e#) x, (#e#) y, (#e#) z);
+    }
 
     public Matrix4#E# translate(#e# x, #e# y, #e# z) {
         return createTranslation(x, y, z).mul(this);
@@ -300,7 +302,9 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
         return scale(v.getX(), v.getY(), v.getZ(), v.getW());
     }
 
-    // TODO: add #EOverload# overload
+    public Matrix4#E# scale(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
+        return scale((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+    }
 
     public Matrix4#E# scale(#e# x, #e# y, #e# z, #e# w) {
         return createScaling(x, y, z, w).mul(this);
@@ -318,7 +322,9 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
         return transform(v.getX(), v.getY(), v.getZ(), v.getW());
     }
 
-    // TODO: add #EOverload# overload
+    public Vector4#E# transform(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
+        return transform((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+    }
 
     public Vector4#E# transform(#e# x, #e# y, #e# z, #e# w) {
         return new Vector4#E#(
@@ -576,7 +582,9 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
         return createScaling(v.getX(), v.getY(), v.getZ(), v.getW());
     }
 
-    // TODO: add #EOverload# overload
+    public static Matrix4#E# createScaling(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
+        return createScaling((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+    }
 
     public static Matrix4#E# createScaling(#e# x, #e# y, #e# z, #e# w) {
         return new Matrix4#E#(
@@ -590,7 +598,9 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
         return createTranslation(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add #EOverload# overload
+    public static Matrix4#E# createTranslation(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return createTranslation((#e#) x, (#e#) y, (#e#) z);
+    }
 
     public static Matrix4#E# createTranslation(#e# x, #e# y, #e# z) {
         return new Matrix4#E#(
@@ -644,7 +654,18 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
         return mat.translate(eye.negate());
     }
 
-    // TODO: add #EOverload# overload
+    /**
+     * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
+     *
+     * @param fov The field of view in the x direction
+     * @param aspect The aspect ratio, usually width/height
+     * @param near The near plane, cannot be 0
+     * @param far the far plane, far cannot equal near
+     * @return A perspective projection matrix built from the given values
+     */
+    public static Matrix4#E# createPerspective(#EOverload# fov, #EOverload# aspect, #EOverload# near, #EOverload# far) {
+        return createPerspective((#e#) fov, (#e#) aspect, (#e#) near, (#e#) far);
+    }
 
     /**
      * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
@@ -664,7 +685,21 @@ public class Matrix4#E# implements Matrix#E#, Serializable, Cloneable {
                 0, 0, -1, 0);
     }
 
-    // TODO: add #EOverload# overload
+    /**
+     * Creates an orthographic viewing frustum built from the provided values
+     *
+     * @param right the right most plane of the viewing frustum
+     * @param left the left most plane of the viewing frustum
+     * @param top the top plane of the viewing frustum
+     * @param bottom the bottom plane of the viewing frustum
+     * @param near the near plane of the viewing frustum
+     * @param far the far plane of the viewing frustum
+     * @return A viewing frustum built from the provided values
+     */
+    public static Matrix4#E# createOrthographic(#EOverload# right, #EOverload# left, #EOverload# top, #EOverload# bottom,
+            #EOverload# near, #EOverload# far) {
+        return createOrthographic((#e#) right, (#e#) left, (#e#) top, (#e#) bottom, (#e#) near, (#e#) far);
+    }
 
     /**
      * Creates an orthographic viewing frustum built from the provided values

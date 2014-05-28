@@ -208,7 +208,9 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
         return translate(v.getX(), v.getY());
     }
 
-    // TODO: add double overload
+    public Matrix3f translate(double x, double y) {
+        return translate((float) x, (float) y);
+    }
 
     public Matrix3f translate(float x, float y) {
         return createTranslation(x, y).mul(this);
@@ -226,7 +228,9 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
         return scale(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add double overload
+    public Matrix3f scale(double x, double y, double z) {
+        return scale((float) x, (float) y, (float) z);
+    }
 
     public Matrix3f scale(float x, float y, float z) {
         return createScaling(x, y, z).mul(this);
@@ -244,7 +248,9 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
         return transform(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add double overload
+    public Vector3f transform(double x, double y, double z) {
+        return transform((float) x, (float) y, (float) z);
+    }
 
     public Vector3f transform(float x, float y, float z) {
         return new Vector3f(
@@ -454,7 +460,9 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
         return createScaling(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add double overload
+    public static Matrix3f createScaling(double x, double y, double z) {
+        return createScaling((float) x, (float) y, (float) z);
+    }
 
     public static Matrix3f createScaling(float x, float y, float z) {
         return new Matrix3f(
@@ -467,7 +475,9 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
         return createTranslation(v.getX(), v.getY());
     }
 
-    // TODO: add double overload
+    public static Matrix3f createTranslation(double x, double y) {
+        return createTranslation((float) x, (float) y);
+    }
 
     public static Matrix3f createTranslation(float x, float y) {
         return new Matrix3f(

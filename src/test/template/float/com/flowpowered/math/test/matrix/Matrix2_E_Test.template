@@ -140,6 +140,12 @@ public class Matrix2#E#Test {
     }
 
     @Test
+    public void testTranslateDoubleDistance() {
+        Matrix2#E# matrix = new Matrix2#E#(1, 0, 0, 1).translate(5d);
+        TestUtil#E#.assertEquals(matrix, 1, 5, 0, 1);
+    }
+
+    @Test
     public void testTranslateFloatDistance() {
         Matrix2#E# matrix = new Matrix2#E#(1, 0, 0, 1).translate(5f);
         TestUtil#E#.assertEquals(matrix, 1, 5, 0, 1);
@@ -164,6 +170,12 @@ public class Matrix2#E#Test {
     }
 
     @Test
+    public void testScaleDoubleComponents() {
+        Matrix2#E# matrix = new Matrix2#E#(1, 0, 0, 1).scale(2d, 3d);
+        TestUtil#E#.assertEquals(matrix, 2, 0, 0, 3);
+    }
+
+    @Test
     public void testScaleFloatComponents() {
         Matrix2#E# matrix = new Matrix2#E#(1, 0, 0, 1).scale(2, 3);
         TestUtil#E#.assertEquals(matrix, 2, 0, 0, 3);
@@ -178,6 +190,12 @@ public class Matrix2#E#Test {
     @Test
     public void testTransformVector2() {
         Vector2#E# vector = new Matrix2#E#(1, 0, 0, 1).scale(2, 1).translate(4).transform(new Vector2#E#(3, 1));
+        TestUtil#E#.assertEquals(vector, 10, 1);
+    }
+
+    @Test
+    public void testTransformDoubleComponents() {
+        Vector2#E# vector = new Matrix2#E#(1, 0, 0, 1).scale(2, 1).translate(4).transform(3d, 1d);
         TestUtil#E#.assertEquals(vector, 10, 1);
     }
 
@@ -302,14 +320,27 @@ public class Matrix2#E#Test {
     }
 
     @Test
-    public void testCreateFromScaling#ES#Components() {
-        Matrix2#E# matrix = Matrix2#E#.createScaling(2, (#e#) 1.5);
+    public void testCreateFromScalingDoubleComponents() {
+        Matrix2#E# matrix = Matrix2#E#.createScaling(2, 1.5);
         TestUtil#E#.assertEquals(matrix, 2, 0, 0, (#e#) 1.5);
     }
 
     @Test
-    public void testCreateTranslationFrom#ES#Distance() {
-        Matrix2#E# matrix = Matrix2#E#.createTranslation((#e#) 5d);
+    public void testCreateFromScalingFloatComponents() {
+        Matrix2#E# matrix = Matrix2#E#.createScaling(2, 1.5f);
+        TestUtil#E#.assertEquals(matrix, 2, 0, 0, (#e#) 1.5);
+    }
+
+    @Test
+    public void testCreateTranslationFromDoubleDistance() {
+        Matrix2#E# matrix = Matrix2#E#.createTranslation(5d);
+        TestUtil#E#.assertEquals(matrix, 1, 5, 0, 1);
+    }
+
+
+    @Test
+    public void testCreateTranslationFromFloatDistance() {
+        Matrix2#E# matrix = Matrix2#E#.createTranslation(5);
         TestUtil#E#.assertEquals(matrix, 1, 5, 0, 1);
     }
 

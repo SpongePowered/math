@@ -218,7 +218,40 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
         return new Complex#E#(x / a, y / a);
     }
 
-    // TODO: complex division?
+    /**
+     * Divides this complex by another one.
+     *
+     * @param c The complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complex#E# div(Complex#E# c) {
+        return div(c.x, c.y);
+    }
+
+    /**
+     * Divides this complex by the #EOverload# components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complex#E# div(#EOverload# x, #EOverload# y) {
+        return div((#e#) x, (#e#) y);
+    }
+
+    /**
+     * Divides this complex by the #e# components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complex#E# div(#e# x, #e# y) {
+        final #e# d = x * x + y * y;
+        return new Complex#E#(
+                (this.x * x + this.y * y) / d,
+                (this.y * x - this.x * y) / d);
+    }
 
     /**
      * Returns the dot product of this complex with another one.

@@ -257,7 +257,46 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
         return new Quaternion#E#(x / a, y / a, z / a, w / a);
     }
 
-    // TODO: quaternion division?
+    /**
+     * Divides this quaternions by another one.
+     *
+     * @param q The quaternion to divide with
+     * @return The quotient of the two quaternions
+     */
+    public Quaternion#E# div(Quaternion#E# q) {
+        return div(q.x, q.y, q.z, q.w);
+    }
+
+    /**
+     * Divides this quaternions by the #EOverload# components of another one.
+     *
+     * @param x The x (imaginary) component of the quaternion to divide with
+     * @param y The y (imaginary) component of the quaternion to divide with
+     * @param z The z (imaginary) component of the quaternion to divide with
+     * @param w The w (real) component of the quaternion to divide with
+     * @return The quotient of the two quaternions
+     */
+    public Quaternion#E# div(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
+        return div((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+    }
+
+    /**
+     * Divides this quaternions by the #e# components of another one.
+     *
+     * @param x The x (imaginary) component of the quaternion to divide with
+     * @param y The y (imaginary) component of the quaternion to divide with
+     * @param z The z (imaginary) component of the quaternion to divide with
+     * @param w The w (real) component of the quaternion to divide with
+     * @return The quotient of the two quaternions
+     */
+    public Quaternion#E# div(#e# x, #e# y, #e# z, #e# w) {
+        final #e# d = x * x + y * y + z * z + w * w;
+        return new Quaternion#E#(
+                (this.x * w - this.w * x - this.z * y + this.y * z) / d,
+                (this.y * w + this.z * x - this.w * y - this.x * z) / d,
+                (this.z * w - this.y * x + this.x * y - this.w * z) / d,
+                (this.w * w + this.x * x + this.y * y + this.z * z) / d);
+    }
 
     /**
      * Returns the dot product of this quaternion with another one.
@@ -612,8 +651,8 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
      * @return The quaternion defined by the rotation around the axis
      */
     public static Quaternion#E# fromAngleRadAxis(#e# angle, #e# x, #e# y, #e# z) {
-        final #e# halfAngle = angle / 2;   //TODO: Maybe use always double here?
-        final double q = TrigMath.sin(halfAngle) / Math.sqrt(x * x + y * y + z * z);
+        final #e# halfAngle = angle / 2;
+        final #e# q = TrigMath.sin(halfAngle) / (#e#) Math.sqrt(x * x + y * y + z * z);
         return new Quaternion#E#(x * q, y * q, z * q, TrigMath.cos(halfAngle));
     }
 
@@ -628,7 +667,6 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
         if (trace < 0) {
             if (matrix.get(1, 1) > matrix.get(0, 0)) {
                 if (matrix.get(2, 2) > matrix.get(1, 1)) {
-                    //TODO: Maybe use always doubles here?
                     final #e# r = (#e#) Math.sqrt(matrix.get(2, 2) - matrix.get(0, 0) - matrix.get(1, 1) + 1);
                     final #e# s = 0.5f / r;
                     return new Quaternion#E#(

@@ -119,6 +119,33 @@ public class ComplexdTest {
     }
 
     @Test
+    public void testComplexDivision() {
+        Complexd complex1 = new Complexd(7, 3);
+        Complexd complex2 = new Complexd(2, 5);
+        Complexd div = complex1.div(complex2);
+        Complexd invMul = complex1.mul(complex2.invert());
+        TestUtild.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
+    public void testDoubleComponentsDivision() {
+        Complexd complex1 = new Complexd(7, 3);
+        Complexd complex2 = new Complexd(2, 5);
+        Complexd div = complex1.div((double) complex2.getX(), (double) complex2.getY());
+        Complexd invMul = complex1.mul(complex2.invert());
+        TestUtild.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
+    public void testFloatComponentsDivision() {
+        Complexd complex1 = new Complexd(7, 3);
+        Complexd complex2 = new Complexd(2, 5);
+        Complexd div = complex1.div(complex2.getX(), complex2.getY());
+        Complexd invMul = complex1.mul(complex2.invert());
+        TestUtild.assertEquals(div, invMul.getX(), invMul.getY());
+    }
+
+    @Test
     public void testComplexDotProduct() {
         double f = new Complexd(2, 3).dot(new Complexd(4, 5));
         TestUtild.assertEquals(f, 23);

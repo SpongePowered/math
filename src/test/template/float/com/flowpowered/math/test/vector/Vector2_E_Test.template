@@ -413,18 +413,66 @@ public class Vector2#E#Test {
     }
 
     @Test
-    public void testCreateDirectionFromFloatAngleRadians() {
-        Vector2#E# vector1 = Vector2#E#.createDirection(0);
+    public void testCreateDirectionFromDoubleAngleDegrees() {
+        Vector2#E# vector1 = Vector2#E#.createDirectionDeg(0d);
         TestUtil#E#.assertEquals(vector1, 1, 0);
-        Vector2#E# vector2 = Vector2#E#.createDirection((#e#) TrigMath.QUARTER_PI);
+        Vector2#E# vector2 = Vector2#E#.createDirectionDeg(45d);
         TestUtil#E#.assertEquals(vector2, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
-        Vector2#E# vector3 = Vector2#E#.createDirection((#e#) TrigMath.HALF_PI);
+        Vector2#E# vector3 = Vector2#E#.createDirectionDeg(90d);
         TestUtil#E#.assertEquals(vector3, 0, 1);
-        Vector2#E# vector4 = Vector2#E#.createDirection((#e#) TrigMath.PI);
+        Vector2#E# vector4 = Vector2#E#.createDirectionDeg(180d);
         TestUtil#E#.assertEquals(vector4, -1, 0);
-        Vector2#E# vector5 = Vector2#E#.createDirection((#e#) TrigMath.THREE_PI_HALVES);
+        Vector2#E# vector5 = Vector2#E#.createDirectionDeg(270d);
         TestUtil#E#.assertEquals(vector5, 0, -1);
-        Vector2#E# vector6 = Vector2#E#.createDirection((#e#) TrigMath.TWO_PI);
+        Vector2#E# vector6 = Vector2#E#.createDirectionDeg(360d);
+        TestUtil#E#.assertEquals(vector6, 1, 0);
+    }
+
+    @Test
+    public void testCreateDirectionFromFloatAngleDegrees() {
+        Vector2#E# vector1 = Vector2#E#.createDirectionDeg(0);
+        TestUtil#E#.assertEquals(vector1, 1, 0);
+        Vector2#E# vector2 = Vector2#E#.createDirectionDeg(45);
+        TestUtil#E#.assertEquals(vector2, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
+        Vector2#E# vector3 = Vector2#E#.createDirectionDeg(90);
+        TestUtil#E#.assertEquals(vector3, 0, 1);
+        Vector2#E# vector4 = Vector2#E#.createDirectionDeg(180);
+        TestUtil#E#.assertEquals(vector4, -1, 0);
+        Vector2#E# vector5 = Vector2#E#.createDirectionDeg(270);
+        TestUtil#E#.assertEquals(vector5, 0, -1);
+        Vector2#E# vector6 = Vector2#E#.createDirectionDeg(360);
+        TestUtil#E#.assertEquals(vector6, 1, 0);
+    }
+
+    @Test
+    public void testCreateDirectionFromDoubleAngleRadians() {
+        Vector2#E# vector1 = Vector2#E#.createDirectionRad(0d);
+        TestUtil#E#.assertEquals(vector1, 1, 0);
+        Vector2#E# vector2 = Vector2#E#.createDirectionRad(TrigMath.QUARTER_PI);
+        TestUtil#E#.assertEquals(vector2, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
+        Vector2#E# vector3 = Vector2#E#.createDirectionRad(TrigMath.HALF_PI);
+        TestUtil#E#.assertEquals(vector3, 0, 1);
+        Vector2#E# vector4 = Vector2#E#.createDirectionRad(TrigMath.PI);
+        TestUtil#E#.assertEquals(vector4, -1, 0);
+        Vector2#E# vector5 = Vector2#E#.createDirectionRad(TrigMath.THREE_PI_HALVES);
+        TestUtil#E#.assertEquals(vector5, 0, -1);
+        Vector2#E# vector6 = Vector2#E#.createDirectionRad(TrigMath.TWO_PI);
+        TestUtil#E#.assertEquals(vector6, 1, 0);
+    }
+
+    @Test
+    public void testCreateDirectionFromFloatAngleRadians() {
+        Vector2#E# vector1 = Vector2#E#.createDirectionRad(0);
+        TestUtil#E#.assertEquals(vector1, 1, 0);
+        Vector2#E# vector2 = Vector2#E#.createDirectionRad((float) TrigMath.QUARTER_PI);
+        TestUtil#E#.assertEquals(vector2, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO);
+        Vector2#E# vector3 = Vector2#E#.createDirectionRad((float) TrigMath.HALF_PI);
+        TestUtil#E#.assertEquals(vector3, 0, 1);
+        Vector2#E# vector4 = Vector2#E#.createDirectionRad((float) TrigMath.PI);
+        TestUtil#E#.assertEquals(vector4, -1, 0);
+        Vector2#E# vector5 = Vector2#E#.createDirectionRad((float) TrigMath.THREE_PI_HALVES);
+        TestUtil#E#.assertEquals(vector5, 0, -1);
+        Vector2#E# vector6 = Vector2#E#.createDirectionRad((float) TrigMath.TWO_PI);
         TestUtil#E#.assertEquals(vector6, 1, 0);
     }
 }

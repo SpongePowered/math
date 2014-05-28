@@ -282,7 +282,9 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
         return translate(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add double overload
+    public Matrix4f translate(double x, double y, double z) {
+        return translate((float) x, (float) y, (float) z);
+    }
 
     public Matrix4f translate(float x, float y, float z) {
         return createTranslation(x, y, z).mul(this);
@@ -300,7 +302,9 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
         return scale(v.getX(), v.getY(), v.getZ(), v.getW());
     }
 
-    // TODO: add double overload
+    public Matrix4f scale(double x, double y, double z, double w) {
+        return scale((float) x, (float) y, (float) z, (float) w);
+    }
 
     public Matrix4f scale(float x, float y, float z, float w) {
         return createScaling(x, y, z, w).mul(this);
@@ -318,7 +322,9 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
         return transform(v.getX(), v.getY(), v.getZ(), v.getW());
     }
 
-    // TODO: add double overload
+    public Vector4f transform(double x, double y, double z, double w) {
+        return transform((float) x, (float) y, (float) z, (float) w);
+    }
 
     public Vector4f transform(float x, float y, float z, float w) {
         return new Vector4f(
@@ -576,7 +582,9 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
         return createScaling(v.getX(), v.getY(), v.getZ(), v.getW());
     }
 
-    // TODO: add double overload
+    public static Matrix4f createScaling(double x, double y, double z, double w) {
+        return createScaling((float) x, (float) y, (float) z, (float) w);
+    }
 
     public static Matrix4f createScaling(float x, float y, float z, float w) {
         return new Matrix4f(
@@ -590,7 +598,9 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
         return createTranslation(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add double overload
+    public static Matrix4f createTranslation(double x, double y, double z) {
+        return createTranslation((float) x, (float) y, (float) z);
+    }
 
     public static Matrix4f createTranslation(float x, float y, float z) {
         return new Matrix4f(
@@ -644,7 +654,18 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
         return mat.translate(eye.negate());
     }
 
-    // TODO: add double overload
+    /**
+     * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
+     *
+     * @param fov The field of view in the x direction
+     * @param aspect The aspect ratio, usually width/height
+     * @param near The near plane, cannot be 0
+     * @param far the far plane, far cannot equal near
+     * @return A perspective projection matrix built from the given values
+     */
+    public static Matrix4f createPerspective(double fov, double aspect, double near, double far) {
+        return createPerspective((float) fov, (float) aspect, (float) near, (float) far);
+    }
 
     /**
      * Creates a perspective projection matrix with the given (x) FOV, aspect, near and far planes
@@ -664,7 +685,21 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
                 0, 0, -1, 0);
     }
 
-    // TODO: add double overload
+    /**
+     * Creates an orthographic viewing frustum built from the provided values
+     *
+     * @param right the right most plane of the viewing frustum
+     * @param left the left most plane of the viewing frustum
+     * @param top the top plane of the viewing frustum
+     * @param bottom the bottom plane of the viewing frustum
+     * @param near the near plane of the viewing frustum
+     * @param far the far plane of the viewing frustum
+     * @return A viewing frustum built from the provided values
+     */
+    public static Matrix4f createOrthographic(double right, double left, double top, double bottom,
+            double near, double far) {
+        return createOrthographic((float) right, (float) left, (float) top, (float) bottom, (float) near, (float) far);
+    }
 
     /**
      * Creates an orthographic viewing frustum built from the provided values

@@ -208,7 +208,9 @@ public class Matrix3#E# implements Matrix#E#, Serializable, Cloneable {
         return translate(v.getX(), v.getY());
     }
 
-    // TODO: add #EOverload# overload
+    public Matrix3#E# translate(#EOverload# x, #EOverload# y) {
+        return translate((#e#) x, (#e#) y);
+    }
 
     public Matrix3#E# translate(#e# x, #e# y) {
         return createTranslation(x, y).mul(this);
@@ -226,7 +228,9 @@ public class Matrix3#E# implements Matrix#E#, Serializable, Cloneable {
         return scale(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add #EOverload# overload
+    public Matrix3#E# scale(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return scale((#e#) x, (#e#) y, (#e#) z);
+    }
 
     public Matrix3#E# scale(#e# x, #e# y, #e# z) {
         return createScaling(x, y, z).mul(this);
@@ -244,7 +248,9 @@ public class Matrix3#E# implements Matrix#E#, Serializable, Cloneable {
         return transform(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add #EOverload# overload
+    public Vector3#E# transform(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return transform((#e#) x, (#e#) y, (#e#) z);
+    }
 
     public Vector3#E# transform(#e# x, #e# y, #e# z) {
         return new Vector3#E#(
@@ -454,7 +460,9 @@ public class Matrix3#E# implements Matrix#E#, Serializable, Cloneable {
         return createScaling(v.getX(), v.getY(), v.getZ());
     }
 
-    // TODO: add #EOverload# overload
+    public static Matrix3#E# createScaling(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return createScaling((#e#) x, (#e#) y, (#e#) z);
+    }
 
     public static Matrix3#E# createScaling(#e# x, #e# y, #e# z) {
         return new Matrix3#E#(
@@ -467,7 +475,9 @@ public class Matrix3#E# implements Matrix#E#, Serializable, Cloneable {
         return createTranslation(v.getX(), v.getY());
     }
 
-    // TODO: add #EOverload# overload
+    public static Matrix3#E# createTranslation(#EOverload# x, #EOverload# y) {
+        return createTranslation((#e#) x, (#e#) y);
+    }
 
     public static Matrix3#E# createTranslation(#e# x, #e# y) {
         return new Matrix3#E#(

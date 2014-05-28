@@ -218,7 +218,40 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
         return new Complexd(x / a, y / a);
     }
 
-    // TODO: complex division?
+    /**
+     * Divides this complex by another one.
+     *
+     * @param c The complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complexd div(Complexd c) {
+        return div(c.x, c.y);
+    }
+
+    /**
+     * Divides this complex by the float components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complexd div(float x, float y) {
+        return div((double) x, (double) y);
+    }
+
+    /**
+     * Divides this complex by the double components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complexd div(double x, double y) {
+        final double d = x * x + y * y;
+        return new Complexd(
+                (this.x * x + this.y * y) / d,
+                (this.y * x - this.x * y) / d);
+    }
 
     /**
      * Returns the dot product of this complex with another one.

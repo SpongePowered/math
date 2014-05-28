@@ -124,6 +124,33 @@ public class QuaterniondTest {
     }
 
     @Test
+    public void testQuaternionDivision() {
+        Quaterniond quaternion1 = new Quaterniond(7, 3, 1, 9);
+        Quaterniond quaternion2 = new Quaterniond(2, 3, 4, 5);
+        Quaterniond div = quaternion1.div(quaternion2);
+        Quaterniond invMul = quaternion2.invert().mul(quaternion1);
+        TestUtild.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+    }
+
+    @Test
+    public void testDoubleComponentsDivision() {
+        Quaterniond quaternion1 = new Quaterniond(7, 3, 1, 9);
+        Quaterniond quaternion2 = new Quaterniond(2, 3, 4, 5);
+        Quaterniond div = quaternion1.div((double) quaternion2.getX(), (double) quaternion2.getY(), (double) quaternion2.getZ(), (double) quaternion2.getW());
+        Quaterniond invMul = quaternion2.invert().mul(quaternion1);
+        TestUtild.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+    }
+
+    @Test
+    public void testFloatComponentsDivision() {
+        Quaterniond quaternion1 = new Quaterniond(7, 3, 1, 9);
+        Quaterniond quaternion2 = new Quaterniond(2, 3, 4, 5);
+        Quaterniond div = quaternion1.div(quaternion2.getX(), quaternion2.getY(), quaternion2.getZ(), quaternion2.getW());
+        Quaterniond invMul = quaternion2.invert().mul(quaternion1);
+        TestUtild.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+    }
+
+    @Test
     public void testQuaternionDotProduct() {
         double f = new Quaterniond(2, 3, 4, 5).dot(new Quaterniond(6, 7, 8, 9));
         TestUtild.assertEquals(f, 110);

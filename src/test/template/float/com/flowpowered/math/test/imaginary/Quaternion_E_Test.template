@@ -124,6 +124,33 @@ public class Quaternion#E#Test {
     }
 
     @Test
+    public void testQuaternionDivision() {
+        Quaternion#E# quaternion1 = new Quaternion#E#(7, 3, 1, 9);
+        Quaternion#E# quaternion2 = new Quaternion#E#(2, 3, 4, 5);
+        Quaternion#E# div = quaternion1.div(quaternion2);
+        Quaternion#E# invMul = quaternion2.invert().mul(quaternion1);
+        TestUtil#E#.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+    }
+
+    @Test
+    public void testDoubleComponentsDivision() {
+        Quaternion#E# quaternion1 = new Quaternion#E#(7, 3, 1, 9);
+        Quaternion#E# quaternion2 = new Quaternion#E#(2, 3, 4, 5);
+        Quaternion#E# div = quaternion1.div((double) quaternion2.getX(), (double) quaternion2.getY(), (double) quaternion2.getZ(), (double) quaternion2.getW());
+        Quaternion#E# invMul = quaternion2.invert().mul(quaternion1);
+        TestUtil#E#.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+    }
+
+    @Test
+    public void testFloatComponentsDivision() {
+        Quaternion#E# quaternion1 = new Quaternion#E#(7, 3, 1, 9);
+        Quaternion#E# quaternion2 = new Quaternion#E#(2, 3, 4, 5);
+        Quaternion#E# div = quaternion1.div(quaternion2.getX(), quaternion2.getY(), quaternion2.getZ(), quaternion2.getW());
+        Quaternion#E# invMul = quaternion2.invert().mul(quaternion1);
+        TestUtil#E#.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+    }
+
+    @Test
     public void testQuaternionDotProduct() {
         #e# f = new Quaternion#E#(2, 3, 4, 5).dot(new Quaternion#E#(6, 7, 8, 9));
         TestUtil#E#.assertEquals(f, 110);

@@ -413,18 +413,66 @@ public class Vector2fTest {
     }
 
     @Test
-    public void testCreateDirectionFromFloatAngleRadians() {
-        Vector2f vector1 = Vector2f.createDirection(0);
+    public void testCreateDirectionFromDoubleAngleDegrees() {
+        Vector2f vector1 = Vector2f.createDirectionDeg(0d);
         TestUtilf.assertEquals(vector1, 1, 0);
-        Vector2f vector2 = Vector2f.createDirection((float) TrigMath.QUARTER_PI);
+        Vector2f vector2 = Vector2f.createDirectionDeg(45d);
         TestUtilf.assertEquals(vector2, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO);
-        Vector2f vector3 = Vector2f.createDirection((float) TrigMath.HALF_PI);
+        Vector2f vector3 = Vector2f.createDirectionDeg(90d);
         TestUtilf.assertEquals(vector3, 0, 1);
-        Vector2f vector4 = Vector2f.createDirection((float) TrigMath.PI);
+        Vector2f vector4 = Vector2f.createDirectionDeg(180d);
         TestUtilf.assertEquals(vector4, -1, 0);
-        Vector2f vector5 = Vector2f.createDirection((float) TrigMath.THREE_PI_HALVES);
+        Vector2f vector5 = Vector2f.createDirectionDeg(270d);
         TestUtilf.assertEquals(vector5, 0, -1);
-        Vector2f vector6 = Vector2f.createDirection((float) TrigMath.TWO_PI);
+        Vector2f vector6 = Vector2f.createDirectionDeg(360d);
+        TestUtilf.assertEquals(vector6, 1, 0);
+    }
+
+    @Test
+    public void testCreateDirectionFromFloatAngleDegrees() {
+        Vector2f vector1 = Vector2f.createDirectionDeg(0);
+        TestUtilf.assertEquals(vector1, 1, 0);
+        Vector2f vector2 = Vector2f.createDirectionDeg(45);
+        TestUtilf.assertEquals(vector2, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO);
+        Vector2f vector3 = Vector2f.createDirectionDeg(90);
+        TestUtilf.assertEquals(vector3, 0, 1);
+        Vector2f vector4 = Vector2f.createDirectionDeg(180);
+        TestUtilf.assertEquals(vector4, -1, 0);
+        Vector2f vector5 = Vector2f.createDirectionDeg(270);
+        TestUtilf.assertEquals(vector5, 0, -1);
+        Vector2f vector6 = Vector2f.createDirectionDeg(360);
+        TestUtilf.assertEquals(vector6, 1, 0);
+    }
+
+    @Test
+    public void testCreateDirectionFromDoubleAngleRadians() {
+        Vector2f vector1 = Vector2f.createDirectionRad(0d);
+        TestUtilf.assertEquals(vector1, 1, 0);
+        Vector2f vector2 = Vector2f.createDirectionRad(TrigMath.QUARTER_PI);
+        TestUtilf.assertEquals(vector2, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO);
+        Vector2f vector3 = Vector2f.createDirectionRad(TrigMath.HALF_PI);
+        TestUtilf.assertEquals(vector3, 0, 1);
+        Vector2f vector4 = Vector2f.createDirectionRad(TrigMath.PI);
+        TestUtilf.assertEquals(vector4, -1, 0);
+        Vector2f vector5 = Vector2f.createDirectionRad(TrigMath.THREE_PI_HALVES);
+        TestUtilf.assertEquals(vector5, 0, -1);
+        Vector2f vector6 = Vector2f.createDirectionRad(TrigMath.TWO_PI);
+        TestUtilf.assertEquals(vector6, 1, 0);
+    }
+
+    @Test
+    public void testCreateDirectionFromFloatAngleRadians() {
+        Vector2f vector1 = Vector2f.createDirectionRad(0);
+        TestUtilf.assertEquals(vector1, 1, 0);
+        Vector2f vector2 = Vector2f.createDirectionRad((float) TrigMath.QUARTER_PI);
+        TestUtilf.assertEquals(vector2, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO);
+        Vector2f vector3 = Vector2f.createDirectionRad((float) TrigMath.HALF_PI);
+        TestUtilf.assertEquals(vector3, 0, 1);
+        Vector2f vector4 = Vector2f.createDirectionRad((float) TrigMath.PI);
+        TestUtilf.assertEquals(vector4, -1, 0);
+        Vector2f vector5 = Vector2f.createDirectionRad((float) TrigMath.THREE_PI_HALVES);
+        TestUtilf.assertEquals(vector5, 0, -1);
+        Vector2f vector6 = Vector2f.createDirectionRad((float) TrigMath.TWO_PI);
         TestUtilf.assertEquals(vector6, 1, 0);
     }
 }

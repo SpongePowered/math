@@ -249,7 +249,7 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
     @Override
     public Matrix2f invert() {
         final float det = determinant();
-        if (det == 0) {
+        if (Math.abs(det) <= GenericMath.FLT_EPSILON) {
             return null;
         }
         return new Matrix2f(

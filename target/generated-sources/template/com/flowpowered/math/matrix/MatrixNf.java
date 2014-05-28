@@ -404,7 +404,7 @@ public MatrixNf(MatrixNf m) {
 
     @Override
     public MatrixNf invert() {
-        if (determinant() == 0) {
+        if (Math.abs(determinant()) <= GenericMath.FLT_EPSILON) {
             return null;
         }
         final int size = size();

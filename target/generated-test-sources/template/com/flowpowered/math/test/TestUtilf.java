@@ -2,6 +2,7 @@ package com.flowpowered.math.test;
 
 import org.junit.Assert;
 
+import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.imaginary.Complexf;
 import com.flowpowered.math.imaginary.Quaternionf;
 import com.flowpowered.math.matrix.Matrix2f;

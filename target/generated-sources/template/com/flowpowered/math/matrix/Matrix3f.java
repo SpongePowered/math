@@ -314,7 +314,7 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
     @Override
     public Matrix3f invert() {
         final float det = determinant();
-        if (det == 0) {
+        if (Math.abs(det) <= GenericMath.FLT_EPSILON) {
             return null;
         }
         return new Matrix3f(

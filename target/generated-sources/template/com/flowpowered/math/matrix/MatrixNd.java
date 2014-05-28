@@ -404,7 +404,7 @@ public MatrixNd(MatrixNd m) {
 
     @Override
     public MatrixNd invert() {
-        if (determinant() == 0) {
+        if (Math.abs(determinant()) <= GenericMath.DBL_EPSILON) {
             return null;
         }
         final int size = size();

@@ -249,7 +249,7 @@ public class Matrix2d implements Matrixd, Serializable, Cloneable {
     @Override
     public Matrix2d invert() {
         final double det = determinant();
-        if (det == 0) {
+        if (Math.abs(det) <= GenericMath.DBL_EPSILON) {
             return null;
         }
         return new Matrix2d(

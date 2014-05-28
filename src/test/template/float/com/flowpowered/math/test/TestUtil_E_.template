@@ -2,6 +2,7 @@ package com.flowpowered.math.test;
 
 import org.junit.Assert;
 
+import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.imaginary.Complex#E#;
 import com.flowpowered.math.imaginary.Quaternion#E#;
 import com.flowpowered.math.matrix.Matrix2#E#;
@@ -20,7 +21,7 @@ public class TestUtil#E# {
     public static final #e# SQRT13 = (#e#) Math.sqrt(13);
     public static final #e# SQRT54 = (#e#) Math.sqrt(54);
 
-    private static final #e# EPSILON = #Eeps#;
+    private static final #e# EPSILON = #Eteps#;
 
     public static void assertEquals(#e# value, #e# expected) {
         Assert.assertEquals(expected, value, EPSILON);

@@ -314,7 +314,7 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
     @Override
     public Matrix3d invert() {
         final double det = determinant();
-        if (det == 0) {
+        if (Math.abs(det) <= GenericMath.DBL_EPSILON) {
             return null;
         }
         return new Matrix3d(

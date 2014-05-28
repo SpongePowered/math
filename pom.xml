@@ -290,8 +290,9 @@
                                 <Overload1>int</Overload1>
                                 <Overload2>long</Overload2>
                                 <S>Float</S>
-                                <eps>0.00001f</eps>
-                            </placeholders>
+                                <eps>GenericMath.FLT_EPSILON</eps>
+								<teps>0.00001f</teps>
+							</placeholders>
                         </type>
                         <type>
                             <primitive>double</primitive>
@@ -304,7 +305,8 @@
                                 <Overload1>int</Overload1>
                                 <Overload2>long</Overload2>
                                 <S>Double</S>
-                                <eps>0.00000006</eps>
+                                <eps>GenericMath.DBL_EPSILON</eps>
+								<teps>0.00000006</teps>
                             </placeholders>
                         </type>
                     </types>

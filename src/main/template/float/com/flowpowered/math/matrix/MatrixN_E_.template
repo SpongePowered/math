@@ -404,7 +404,7 @@ public MatrixN#E#(MatrixN#E# m) {
 
     @Override
     public MatrixN#E# invert() {
-        if (determinant() == 0) {
+        if (Math.abs(determinant()) <= #Eeps#) {
             return null;
         }
         final int size = size();

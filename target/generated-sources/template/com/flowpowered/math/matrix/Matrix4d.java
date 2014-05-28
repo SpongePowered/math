@@ -398,7 +398,7 @@ public class Matrix4d implements Matrixd, Serializable, Cloneable {
     @Override
     public Matrix4d invert() {
         final double det = determinant();
-        if (det == 0) {
+        if (Math.abs(det) <= GenericMath.DBL_EPSILON) {
             return null;
         }
         return new Matrix4d(

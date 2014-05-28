@@ -314,7 +314,7 @@ public class Matrix3#E# implements Matrix#E#, Serializable, Cloneable {
     @Override
     public Matrix3#E# invert() {
         final #e# det = determinant();
-        if (det == 0) {
+        if (Math.abs(det) <= #Eeps#) {
             return null;
         }
         return new Matrix3#E#(

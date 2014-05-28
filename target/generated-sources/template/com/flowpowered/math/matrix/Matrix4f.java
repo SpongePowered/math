@@ -398,7 +398,7 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
     @Override
     public Matrix4f invert() {
         final float det = determinant();
-        if (det == 0) {
+        if (Math.abs(det) <= GenericMath.FLT_EPSILON) {
             return null;
         }
         return new Matrix4f(

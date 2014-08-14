@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>7</version>
+        <version>9</version>
     </parent>
 
     <!-- Build properties -->
@@ -30,7 +30,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>http://www.tldrlegal.com/license/mit-license</url>
+            <url>https://tldrlegal.com/license/mit-license</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -38,7 +38,7 @@
     <!-- Organization information -->
     <organization>
         <name>Spout LLC</name>
-        <url>http://www.spout.org</url>
+        <url>https://spout.org</url>
     </organization>
 
     <!-- Project developers -->
@@ -186,10 +186,6 @@
                 <executions>
                     <execution>
                         <id>generatei</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
                         <configuration>
                             <templateDir>src/main/template/integer</templateDir>
                             <types>
@@ -221,13 +217,13 @@
                                 </type>
                             </types>
                         </configuration>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
                     </execution>
                     <execution>
                         <id>test-generatei</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>test-generate</goal>
-                        </goals>
                         <configuration>
                             <templateDir>src/test/template/integer</templateDir>
                             <types>
@@ -255,26 +251,30 @@
                                 </type>
                             </types>
                         </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <templateDir>src/main/template/float</templateDir>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>test-generate</id>
                         <phase>generate-test-sources</phase>
                         <goals>
                             <goal>test-generate</goal>
                         </goals>
+                    </execution>
+                    <execution>
+                        <id>generate</id>
+                        <configuration>
+                            <templateDir>src/main/template/float</templateDir>
+                        </configuration>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-generate</id>
                         <configuration>
                             <templateDir>src/test/template/float</templateDir>
                         </configuration>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>test-generate</goal>
+                        </goals>
                     </execution>
                 </executions>
                 <configuration>
@@ -291,8 +291,8 @@
                                 <Overload2>long</Overload2>
                                 <S>Float</S>
                                 <eps>GenericMath.FLT_EPSILON</eps>
-								<teps>0.00001f</teps>
-							</placeholders>
+                                <teps>0.00001f</teps>
+                            </placeholders>
                         </type>
                         <type>
                             <primitive>double</primitive>
@@ -306,7 +306,7 @@
                                 <Overload2>long</Overload2>
                                 <S>Double</S>
                                 <eps>GenericMath.DBL_EPSILON</eps>
-								<teps>0.00000006</teps>
+                                <teps>0.00000006</teps>
                             </placeholders>
                         </type>
                     </types>
@@ -332,22 +332,32 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.5</version>
                 <configuration>
                     <archive>
                         <manifestEntries>
                             <Specification-Title>${project.name}</Specification-Title>
                             <Specification-Version>${project.version}+${ciSystem}-b${buildNumber}.git-${commit}</Specification-Version>
-                            <Specification-Vendor>${project.organization.name}</Specification-Vendor>
+                            <Specification-Vendor>${project.organization.name} - ${project.organization.url}</Specification-Vendor>
                         </manifestEntries>
                     </archive>
+                </configuration>
+            </plugin>
+            <!-- Javadoc creation plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <author>false</author>
+                    <version>false</version>
                 </configuration>
             </plugin>
             <!-- Coveralls reporting plugin  -->
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
-                <version>2.1.0</version>
+                <version>2.2.0</version>
                 <configuration>
                     <sourceDirectories>
                         <sourceDirectory>src/main/java</sourceDirectory>

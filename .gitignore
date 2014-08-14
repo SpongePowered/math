@@ -11,7 +11,7 @@ dist
 lib
 out
 run
-target/*
+target
 !target/generated-sources
 !target/generated-test-sources
 *.com
@@ -31,10 +31,14 @@ target/*
 ############
 *.7z
 *.dmg
+*.ear
 *.gz
 *.iso
+*.jar
+!/gradle/wrapper/gradle-wrapper.jar
 *.rar
 *.tar
+*.war
 *.zip
 
 # Repository #
@@ -49,6 +53,7 @@ target/*
 # Misc #
 ########
 *.bak
+*.tmp
 
 # System #
 ##########
@@ -58,7 +63,9 @@ Thumbs.db
 
 # Project #
 ###########
+.buildpath
 .classpath
+.cproject
 .externalToolBuilders
 .gradle
 .idea
@@ -71,3 +78,6 @@ nb-configuration.xml
 *.iml
 *.ipr
 *.iws
+*.launch
+*.pydevproject
+

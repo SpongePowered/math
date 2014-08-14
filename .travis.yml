@@ -3,7 +3,8 @@ language: java
 jdk: oraclejdk7
 
 # Compile and package JAR and set build properties
-install: mvn package -DbuildNumber=$TRAVIS_BUILD_NUMBER -DciSystem=travis -Dcommit=${TRAVIS_COMMIT:0:7}
+install: mvn dependency:go-offline
+script: mvn package -DbuildNumber=$TRAVIS_BUILD_NUMBER -DciSystem=travis -Dcommit=${TRAVIS_COMMIT:0:7}
 
 # Perform steps after compilation/test success
 after_success:

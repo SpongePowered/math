@@ -403,6 +403,8 @@ public class Vector4fTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new Vector4f(10, 20, 30, 40).compareTo(new Vector4f(10, 10, 30, 40));
         Assert.assertTrue(c3 > 0);
+        int c4 = new Vector4f(0.2, 0.2, 0.2, 0.2).compareTo(new Vector4f(0.1, 0.1, 0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test

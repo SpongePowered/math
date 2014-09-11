@@ -410,7 +410,7 @@ public class VectorNd implements Vectord, Comparable<VectorNd>, Serializable, Cl
 
     @Override
     public int compareTo(VectorNd v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

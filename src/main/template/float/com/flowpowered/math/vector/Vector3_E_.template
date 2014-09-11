@@ -344,7 +344,7 @@ public class Vector3#E# implements Vector#E#, Comparable<Vector3#E#>, Serializab
 
     @Override
     public int compareTo(Vector3#E# v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

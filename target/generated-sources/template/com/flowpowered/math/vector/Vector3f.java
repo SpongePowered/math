@@ -344,7 +344,7 @@ public class Vector3f implements Vectorf, Comparable<Vector3f>, Serializable, Cl
 
     @Override
     public int compareTo(Vector3f v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

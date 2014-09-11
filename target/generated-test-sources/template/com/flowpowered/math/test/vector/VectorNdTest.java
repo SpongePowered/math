@@ -364,6 +364,8 @@ public class VectorNdTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new VectorNd(10, 20, 30, 40).compareTo(new VectorNd(10, 10, 30, 40));
         Assert.assertTrue(c3 > 0);
+        int c4 = new VectorNd(0.2, 0.2, 0.2, 0.2).compareTo(new VectorNd(0.1, 0.1, 0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test

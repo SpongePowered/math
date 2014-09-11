@@ -344,7 +344,7 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
 
     @Override
     public int compareTo(Vector3d v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

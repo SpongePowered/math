@@ -406,7 +406,7 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
 
     @Override
     public int compareTo(Complexf c) {
-        return (int) (lengthSquared() - c.lengthSquared());
+        return (int) Math.signum(lengthSquared() - c.lengthSquared());
     }
 
     @Override

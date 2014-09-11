@@ -410,7 +410,7 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
 
     @Override
     public int compareTo(VectorNf v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

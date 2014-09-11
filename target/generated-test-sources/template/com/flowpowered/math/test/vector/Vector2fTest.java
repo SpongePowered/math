@@ -389,6 +389,8 @@ public class Vector2fTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new Vector2f(10, 20).compareTo(new Vector2f(10, 10));
         Assert.assertTrue(c3 > 0);
+        int c4 = new Vector2f(0.2, 0.2).compareTo(new Vector2f(0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test

@@ -406,7 +406,7 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
 
     @Override
     public int compareTo(Complexd c) {
-        return (int) (lengthSquared() - c.lengthSquared());
+        return (int) Math.signum(lengthSquared() - c.lengthSquared());
     }
 
     @Override

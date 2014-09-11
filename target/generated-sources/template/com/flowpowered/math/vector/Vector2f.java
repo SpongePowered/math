@@ -315,7 +315,7 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
 
     @Override
     public int compareTo(Vector2f v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

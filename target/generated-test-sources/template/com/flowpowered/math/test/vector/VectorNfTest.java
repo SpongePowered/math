@@ -364,6 +364,8 @@ public class VectorNfTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new VectorNf(10, 20, 30, 40).compareTo(new VectorNf(10, 10, 30, 40));
         Assert.assertTrue(c3 > 0);
+        int c4 = new VectorNf(0.2, 0.2, 0.2, 0.2).compareTo(new VectorNf(0.1, 0.1, 0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test

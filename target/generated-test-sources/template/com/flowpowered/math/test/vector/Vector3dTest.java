@@ -416,6 +416,8 @@ public class Vector3dTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new Vector3d(10, 20, 30).compareTo(new Vector3d(10, 10, 30));
         Assert.assertTrue(c3 > 0);
+        int c4 = new Vector3d(0.2, 0.2, 0.2).compareTo(new Vector3d(0.1, 0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test
@@ -438,7 +440,7 @@ public class Vector3dTest {
             TestUtild.assertEquals(vector.length(), 1);
         }
     }
-    
+
     @Test
     public void testCreateDirectionFromDoubleAnglesDegrees() {
         Vector3d vector1 = Vector3d.createDirectionDeg(0d, 0d);

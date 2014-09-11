@@ -315,7 +315,7 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
 
     @Override
     public int compareTo(Vector2d v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

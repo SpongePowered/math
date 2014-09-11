@@ -389,6 +389,8 @@ public class Vector2dTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new Vector2d(10, 20).compareTo(new Vector2d(10, 10));
         Assert.assertTrue(c3 > 0);
+        int c4 = new Vector2d(0.2, 0.2).compareTo(new Vector2d(0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test

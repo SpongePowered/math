@@ -482,7 +482,7 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
 
     @Override
     public int compareTo(Quaternion#E# q) {
-        return (int) (lengthSquared() - q.lengthSquared());
+        return (int) Math.signum(lengthSquared() - q.lengthSquared());
     }
 
     @Override

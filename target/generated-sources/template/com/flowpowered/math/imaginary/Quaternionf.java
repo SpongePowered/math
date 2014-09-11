@@ -482,7 +482,7 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
 
     @Override
     public int compareTo(Quaternionf q) {
-        return (int) (lengthSquared() - q.lengthSquared());
+        return (int) Math.signum(lengthSquared() - q.lengthSquared());
     }
 
     @Override

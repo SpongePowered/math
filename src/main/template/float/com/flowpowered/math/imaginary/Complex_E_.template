@@ -406,7 +406,7 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
 
     @Override
     public int compareTo(Complex#E# c) {
-        return (int) (lengthSquared() - c.lengthSquared());
+        return (int) Math.signum(lengthSquared() - c.lengthSquared());
     }
 
     @Override

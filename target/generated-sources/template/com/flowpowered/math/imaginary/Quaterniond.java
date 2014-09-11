@@ -482,7 +482,7 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
 
     @Override
     public int compareTo(Quaterniond q) {
-        return (int) (lengthSquared() - q.lengthSquared());
+        return (int) Math.signum(lengthSquared() - q.lengthSquared());
     }
 
     @Override

@@ -360,7 +360,7 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
 
     @Override
     public int compareTo(Vector4f v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+        return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
 
     @Override

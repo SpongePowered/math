@@ -225,6 +225,8 @@ public class ComplexdTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new Complexd(10, 20).compareTo(new Complexd(10, 10));
         Assert.assertTrue(c3 > 0);
+        int c4 = new Complexd(0.2, 0.2).compareTo(new Complexd(0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test

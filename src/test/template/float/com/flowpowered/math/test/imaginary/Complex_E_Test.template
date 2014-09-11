@@ -225,6 +225,8 @@ public class Complex#E#Test {
         Assert.assertTrue(c2 == 0);
         int c3 = new Complex#E#(10, 20).compareTo(new Complex#E#(10, 10));
         Assert.assertTrue(c3 > 0);
+        int c4 = new Complex#E#(0.2, 0.2).compareTo(new Complex#E#(0.1, 0.1));
+        Assert.assertTrue(c4 > 0);
     }
 
     @Test

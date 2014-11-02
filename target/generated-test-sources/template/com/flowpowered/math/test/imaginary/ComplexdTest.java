@@ -171,14 +171,22 @@ public class ComplexdTest {
 
     @Test
     public void testAngleRadians() {
-        double f = new Complexd((double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
-        TestUtild.assertEquals(f, (double) TrigMath.QUARTER_PI);
+        double f1 = new Complexd(1, 0).getAngleRad();
+        TestUtild.assertEquals(f1, 0);
+        double f2 = new Complexd(0, 1).getAngleRad();
+        TestUtild.assertEquals(f2, (double) TrigMath.HALF_PI);
+        double f3 = new Complexd((double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
+        TestUtild.assertEquals(f3, (double) TrigMath.QUARTER_PI);
     }
 
     @Test
     public void testAngleDegrees() {
-        double f = new Complexd((double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
-        TestUtild.assertEquals(f, 45);
+        double f1 = new Complexd(1, 0).getAngleDeg();
+        TestUtild.assertEquals(f1, 0);
+        double f2 = new Complexd(0, 1).getAngleDeg();
+        TestUtild.assertEquals(f2, 90);
+        double f3 = new Complexd((double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
+        TestUtild.assertEquals(f3, 45);
     }
 
     @Test

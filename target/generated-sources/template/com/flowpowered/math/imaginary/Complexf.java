@@ -300,7 +300,7 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
      * @return The angle in radians of the direction vector of this complex
      */
     public float getAngleRad() {
-        return (float) TrigMath.atan2(x, y);
+        return (float) TrigMath.atan2(y, x);
     }
 
     /**

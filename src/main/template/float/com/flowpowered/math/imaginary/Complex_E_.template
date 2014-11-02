@@ -300,7 +300,7 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
      * @return The angle in radians of the direction vector of this complex
      */
     public #e# getAngleRad() {
-        return (#e#) TrigMath.atan2(x, y);
+        return (#e#) TrigMath.atan2(y, x);
     }
 
     /**

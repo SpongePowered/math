@@ -171,14 +171,22 @@ public class ComplexfTest {
 
     @Test
     public void testAngleRadians() {
-        float f = new Complexf((float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
-        TestUtilf.assertEquals(f, (float) TrigMath.QUARTER_PI);
+        float f1 = new Complexf(1, 0).getAngleRad();
+        TestUtilf.assertEquals(f1, 0);
+        float f2 = new Complexf(0, 1).getAngleRad();
+        TestUtilf.assertEquals(f2, (float) TrigMath.HALF_PI);
+        float f3 = new Complexf((float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
+        TestUtilf.assertEquals(f3, (float) TrigMath.QUARTER_PI);
     }
 
     @Test
     public void testAngleDegrees() {
-        float f = new Complexf((float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
-        TestUtilf.assertEquals(f, 45);
+        float f1 = new Complexf(1, 0).getAngleDeg();
+        TestUtilf.assertEquals(f1, 0);
+        float f2 = new Complexf(0, 1).getAngleDeg();
+        TestUtilf.assertEquals(f2, 90);
+        float f3 = new Complexf((float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
+        TestUtilf.assertEquals(f3, 45);
     }
 
     @Test

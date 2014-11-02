@@ -171,14 +171,22 @@ public class Complex#E#Test {
 
     @Test
     public void testAngleRadians() {
-        #e# f = new Complex#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
-        TestUtil#E#.assertEquals(f, (#e#) TrigMath.QUARTER_PI);
+        #e# f1 = new Complex#E#(1, 0).getAngleRad();
+        TestUtil#E#.assertEquals(f1, 0);
+        #e# f2 = new Complex#E#(0, 1).getAngleRad();
+        TestUtil#E#.assertEquals(f2, (#e#) TrigMath.HALF_PI);
+        #e# f3 = new Complex#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
+        TestUtil#E#.assertEquals(f3, (#e#) TrigMath.QUARTER_PI);
     }
 
     @Test
     public void testAngleDegrees() {
-        #e# f = new Complex#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
-        TestUtil#E#.assertEquals(f, 45);
+        #e# f1 = new Complex#E#(1, 0).getAngleDeg();
+        TestUtil#E#.assertEquals(f1, 0);
+        #e# f2 = new Complex#E#(0, 1).getAngleDeg();
+        TestUtil#E#.assertEquals(f2, 90);
+        #e# f3 = new Complex#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
+        TestUtil#E#.assertEquals(f3, 45);
     }
 
     @Test

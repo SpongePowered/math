@@ -300,7 +300,7 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
      * @return The angle in radians of the direction vector of this complex
      */
     public double getAngleRad() {
-        return (double) TrigMath.atan2(x, y);
+        return (double) TrigMath.atan2(y, x);
     }
 
     /**

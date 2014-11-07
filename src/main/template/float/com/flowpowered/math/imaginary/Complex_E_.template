@@ -367,6 +367,14 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
         return new Complex#E#(x / length, y / length);
     }
 
+    public Quaternion#E# toQuaternion() {
+        return toQuaternion(Vector3#E#.UNIT_Z);
+    }
+
+    public Quaternion#E# toQuaternion(Vector3#E# axis) {
+        return Quaternion#E#.fromAngleRadAxis(getAngleRad(), axis);
+    }
+
     @Override
     public Complexf toFloat() {
         return new Complexf(x, y);

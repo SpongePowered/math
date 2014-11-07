@@ -367,6 +367,14 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
         return new Complexd(x / length, y / length);
     }
 
+    public Quaterniond toQuaternion() {
+        return toQuaternion(Vector3d.UNIT_Z);
+    }
+
+    public Quaterniond toQuaternion(Vector3d axis) {
+        return Quaterniond.fromAngleRadAxis(getAngleRad(), axis);
+    }
+
     @Override
     public Complexf toFloat() {
         return new Complexf(x, y);

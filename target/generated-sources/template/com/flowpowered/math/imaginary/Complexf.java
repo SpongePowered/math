@@ -367,6 +367,14 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
         return new Complexf(x / length, y / length);
     }
 
+    public Quaternionf toQuaternion() {
+        return toQuaternion(Vector3f.UNIT_Z);
+    }
+
+    public Quaternionf toQuaternion(Vector3f axis) {
+        return Quaternionf.fromAngleRadAxis(getAngleRad(), axis);
+    }
+
     @Override
     public Complexf toFloat() {
         return new Complexf(x, y);

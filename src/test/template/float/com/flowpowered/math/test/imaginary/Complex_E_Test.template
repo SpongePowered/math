@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.imaginary.Complex#E#;
+import com.flowpowered.math.imaginary.Quaternion#E#;
+import com.flowpowered.math.matrix.Matrix3#E#;
 import com.flowpowered.math.test.TestUtil#E#;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -218,6 +220,38 @@ public class Complex#E#Test {
     public void testNormalize() {
         Complex#E# complex = new Complex#E#(3, 4).normalize();
         TestUtil#E#.assertEquals(complex, (#e#) 0.6, (#e#) 0.8);
+    }
+
+    @Test
+    public void testConvertToQuaternionDefaultAxis() {
+        Complex#E# complex = new Complex#E#(3, 4);
+        Vector3#E# axis = Vector3#E#.UNIT_Z;
+        Vector3#E# axisPerpendicular = new Vector3#E#(axis.getZ(), -axis.getX(), 0);
+        Quaternion#E# quaternion = complex.toQuaternion();
+        Matrix3#E# quaternionMatrix = Matrix3#E#.createRotation(quaternion);
+        Vector3#E# quaternionAxis = quaternionMatrix.transform(axis);
+        Vector3#E# quaternionAxisPerpendicular = new Vector3#E#(quaternionAxis.getZ(), -quaternionAxis.getX(), 0);
+        Vector3#E# rotatedAxisPerpendicular = quaternionMatrix.transform(axisPerpendicular);
+        Complex#E# quaternionComplex = Complex#E#.fromRotationTo(quaternionAxisPerpendicular, rotatedAxisPerpendicular);
+        complex = complex.normalize();
+        TestUtil#E#.assertEquals(quaternionAxis, axis.getX(), axis.getY(), axis.getZ());
+        TestUtil#E#.assertEquals(quaternionComplex, complex.getX(), complex.getY());
+    }
+
+    @Test
+    public void testConvertToQuaternionAxis() {
+        Complex#E# complex = new Complex#E#(3, 4);
+        Vector3#E# axis = new Vector3#E#(-2, 1, 4);
+        Vector3#E# axisPerpendicular = new Vector3#E#(axis.getY(), -axis.getX(), 0);
+        Quaternion#E# quaternion = complex.toQuaternion(axis);
+        Matrix3#E# quaternionMatrix = Matrix3#E#.createRotation(quaternion);
+        Vector3#E# quaternionAxis = quaternionMatrix.transform(axis);
+        Vector3#E# quaternionAxisPerpendicular = new Vector3#E#(quaternionAxis.getY(), -quaternionAxis.getX(), 0);
+        Vector3#E# rotatedAxisPerpendicular = quaternionMatrix.transform(axisPerpendicular);
+        Complex#E# quaternionComplex = Complex#E#.fromRotationTo(quaternionAxisPerpendicular, rotatedAxisPerpendicular);
+        complex = complex.normalize();
+        TestUtil#E#.assertEquals(quaternionAxis, axis.getX(), axis.getY(), axis.getZ());
+        TestUtil#E#.assertEquals(quaternionComplex, complex.getX(), complex.getY());
     }
 
     @Test

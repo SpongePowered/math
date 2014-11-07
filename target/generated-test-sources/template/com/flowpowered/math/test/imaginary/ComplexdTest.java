@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.imaginary.Complexd;
+import com.flowpowered.math.imaginary.Quaterniond;
+import com.flowpowered.math.matrix.Matrix3d;
 import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.Vector2d;
 import com.flowpowered.math.vector.Vector3d;
@@ -218,6 +220,38 @@ public class ComplexdTest {
     public void testNormalize() {
         Complexd complex = new Complexd(3, 4).normalize();
         TestUtild.assertEquals(complex, (double) 0.6, (double) 0.8);
+    }
+
+    @Test
+    public void testConvertToQuaternionDefaultAxis() {
+        Complexd complex = new Complexd(3, 4);
+        Vector3d axis = Vector3d.UNIT_Z;
+        Vector3d axisPerpendicular = new Vector3d(axis.getZ(), -axis.getX(), 0);
+        Quaterniond quaternion = complex.toQuaternion();
+        Matrix3d quaternionMatrix = Matrix3d.createRotation(quaternion);
+        Vector3d quaternionAxis = quaternionMatrix.transform(axis);
+        Vector3d quaternionAxisPerpendicular = new Vector3d(quaternionAxis.getZ(), -quaternionAxis.getX(), 0);
+        Vector3d rotatedAxisPerpendicular = quaternionMatrix.transform(axisPerpendicular);
+        Complexd quaternionComplex = Complexd.fromRotationTo(quaternionAxisPerpendicular, rotatedAxisPerpendicular);
+        complex = complex.normalize();
+        TestUtild.assertEquals(quaternionAxis, axis.getX(), axis.getY(), axis.getZ());
+        TestUtild.assertEquals(quaternionComplex, complex.getX(), complex.getY());
+    }
+
+    @Test
+    public void testConvertToQuaternionAxis() {
+        Complexd complex = new Complexd(3, 4);
+        Vector3d axis = new Vector3d(-2, 1, 4);
+        Vector3d axisPerpendicular = new Vector3d(axis.getY(), -axis.getX(), 0);
+        Quaterniond quaternion = complex.toQuaternion(axis);
+        Matrix3d quaternionMatrix = Matrix3d.createRotation(quaternion);
+        Vector3d quaternionAxis = quaternionMatrix.transform(axis);
+        Vector3d quaternionAxisPerpendicular = new Vector3d(quaternionAxis.getY(), -quaternionAxis.getX(), 0);
+        Vector3d rotatedAxisPerpendicular = quaternionMatrix.transform(axisPerpendicular);
+        Complexd quaternionComplex = Complexd.fromRotationTo(quaternionAxisPerpendicular, rotatedAxisPerpendicular);
+        complex = complex.normalize();
+        TestUtild.assertEquals(quaternionAxis, axis.getX(), axis.getY(), axis.getZ());
+        TestUtild.assertEquals(quaternionComplex, complex.getX(), complex.getY());
     }
 
     @Test

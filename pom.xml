@@ -306,7 +306,7 @@
                                 <Overload2>long</Overload2>
                                 <S>Double</S>
                                 <eps>GenericMath.DBL_EPSILON</eps>
-                                <teps>0.00000006</teps>
+                                <teps>0.0000007</teps>
                             </placeholders>
                         </type>
                     </types>

@@ -21,7 +21,7 @@ public class TestUtild {
     public static final double SQRT13 = (double) Math.sqrt(13);
     public static final double SQRT54 = (double) Math.sqrt(54);
 
-    private static final double EPSILON = 0.00000006;
+    private static final double EPSILON = 0.0000007;
 
     public static void assertEquals(double value, double expected) {
         Assert.assertEquals(expected, value, EPSILON);

@@ -7,6 +7,7 @@ import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.imaginary.Complexd;
 import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.Vector2d;
+import com.flowpowered.math.vector.Vector3d;
 
 public class ComplexdTest {
     @Test
@@ -246,6 +247,12 @@ public class ComplexdTest {
     @Test
     public void testCreateFromRotationBetweenTwoVector2() {
         Complexd complex = Complexd.fromRotationTo(new Vector2d(0, 1), new Vector2d(-1, 0));
+        TestUtild.assertEquals(complex, 0, 1);
+    }
+
+    @Test
+    public void testCreateFromRotationBetweenTwoVector3() {
+        Complexd complex = Complexd.fromRotationTo(new Vector3d(0, 0, 1), new Vector3d(0, -1, 0));
         TestUtild.assertEquals(complex, 0, 1);
     }
 

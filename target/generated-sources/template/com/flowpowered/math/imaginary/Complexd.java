@@ -7,6 +7,7 @@ import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.HashFunctions;
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.vector.Vector2d;
+import com.flowpowered.math.vector.Vector3d;
 
 /**
  * Represent a complex number of the form <code>x + yi</code>. The x and y components are stored as doubles. This class is immutable.
@@ -427,6 +428,17 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
      * @return The complex defined by the angle between the vectors
      */
     public static Complexd fromRotationTo(Vector2d from, Vector2d to) {
+        return fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
+    }
+
+    /**
+     * Creates a new complex from the angle defined from the first to the second vector.
+     *
+     * @param from The first vector
+     * @param to The second vector
+     * @return The complex defined by the angle between the vectors
+     */
+    public static Complexd fromRotationTo(Vector3d from, Vector3d to) {
         return fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
     }
 

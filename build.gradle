@@ -19,8 +19,8 @@ ext.url = 'http://flowpowered.com'
 ext.description = 'Immutable math library for the Flow collection.'
 
 // Organization information
-ext.organization = 'Spout LLC'
-ext.organizationUrl = 'https://spout.org'
+ext.organization = 'Flow Powered'
+ext.organizationUrl = 'https://flowpowered.com'
 
 // Build properties
 ext.buildNumber = project.hasProperty('buildNumber') ? buildNumber : '0'
@@ -82,8 +82,8 @@ license {
 
 // Source compiler configuration
 configure([compileJava, compileTestJava]) {
-    sourceCompatibility = '1.7'
-    targetCompatibility = '1.7'
+    sourceCompatibility = '1.6'
+    targetCompatibility = '1.6'
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:all'
     options.compilerArgs << '-Xlint:-path'

@@ -257,6 +257,11 @@ public class Matrix2dTest {
     public void testInvert() {
         Matrix2d matrix = new Matrix2d(1, 2, 3, 4).invert();
         TestUtild.assertEquals(matrix, -2, 1, (double) 1.5, (double) -0.5);
+        try {
+            Matrix2d.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

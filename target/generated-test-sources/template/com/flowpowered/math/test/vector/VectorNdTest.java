@@ -306,6 +306,11 @@ public class VectorNdTest {
         TestUtild.assertEquals(v1, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO, 0, 0);
         VectorNd v2 = new VectorNd(0, 1, 0, 1).normalize();
         TestUtild.assertEquals(v2, 0, (double) TrigMath.HALF_SQRT_OF_TWO, 0, (double) TrigMath.HALF_SQRT_OF_TWO);
+        try {
+            VectorNd.ZERO_3.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

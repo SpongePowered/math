@@ -204,6 +204,11 @@ public class QuaternionfTest {
     public void testInvert() {
         Quaternionf quaternion = new Quaternionf(2, 3, 4, 5).invert();
         TestUtilf.assertEquals(quaternion, (float) (-2/54d), (float) (-3/54d), (float) (-4/54d),(float) (5/54d));
+        try {
+            Quaternionf.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test
@@ -222,6 +227,11 @@ public class QuaternionfTest {
     public void testNormalize() {
         Quaternionf quaternion = new Quaternionf(2, 3, 4, 5).normalize();
         TestUtilf.assertEquals(quaternion, (float) (2/SQRT54), (float) (3/SQRT54), (float) (4/SQRT54), (float) (5/SQRT54));
+        try {
+            Quaternionf.ZERO.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

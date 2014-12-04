@@ -320,8 +320,8 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
     @Override
     public Matrix3d invert() {
         final double det = determinant();
-        if (Math.abs(det) <= GenericMath.DBL_EPSILON) {
-            return null;
+        if (Math.abs(det) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         return new Matrix3d(
                 (m11 * m22 - m21 * m12) / det, -(m01 * m22 - m21 * m02) / det, (m01 * m12 - m02 * m11) / det,

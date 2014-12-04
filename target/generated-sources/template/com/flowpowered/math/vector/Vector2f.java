@@ -237,6 +237,9 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
     @Override
     public Vector2f normalize() {
         final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
         return new Vector2f(x / length, y / length);
     }
 

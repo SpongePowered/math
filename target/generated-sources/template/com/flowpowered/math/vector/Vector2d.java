@@ -237,6 +237,9 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
     @Override
     public Vector2d normalize() {
         final double length = length();
+        if (Math.abs(length) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
         return new Vector2d(x / length, y / length);
     }
 

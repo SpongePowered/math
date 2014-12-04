@@ -389,7 +389,7 @@ public MatrixNd(MatrixNd m) {
         double det;
         for (int i = 0; i < size - 1; i++) {
             for (int col = i + 1; col < size; col++) {
-                det = m[i][col] / m[i][i];
+                det = m[i][i] < GenericMath.DBL_EPSILON ? 0 : m[i][col] / m[i][i];
                 for (int row = i; row < size; row++) {
                     m[row][col] -= det * m[row][i];
                 }
@@ -404,8 +404,8 @@ public MatrixNd(MatrixNd m) {
 
     @Override
     public MatrixNd invert() {
-        if (Math.abs(determinant()) <= GenericMath.DBL_EPSILON) {
-            return null;
+        if (Math.abs(determinant()) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         final int size = size();
         final AugmentedMatrixN augMat = new AugmentedMatrixN(this);

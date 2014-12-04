@@ -257,6 +257,11 @@ public class Matrix2fTest {
     public void testInvert() {
         Matrix2f matrix = new Matrix2f(1, 2, 3, 4).invert();
         TestUtilf.assertEquals(matrix, -2, 1, (float) 1.5, (float) -0.5);
+        try {
+            Matrix2f.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

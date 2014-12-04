@@ -14,9 +14,13 @@ import com.flowpowered.math.vector.Vector3d;
 public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
     /**
+     * An immutable identity (0, 0, 0, 0) quaternion.
+     */
+    public static final Quaterniond ZERO = new Quaterniond(0, 0, 0, 0);
+    /**
      * An immutable identity (0, 0, 0, 1) quaternion.
      */
-    public static final Quaterniond IDENTITY = new Quaterniond();
+    public static final Quaterniond IDENTITY = new Quaterniond(0, 0, 0, 1);
     private final double x;
     private final double y;
     private final double z;
@@ -400,7 +404,11 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
      */
     @Override
     public Quaterniond invert() {
-        return conjugate().div(lengthSquared());
+        final double lengthSquared = lengthSquared();
+        if (Math.abs(lengthSquared) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot invert a quaternion of length zero");
+        }
+        return conjugate().div(lengthSquared);
     }
 
     /**
@@ -431,6 +439,9 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
     @Override
     public Quaterniond normalize() {
         final double length = length();
+        if (Math.abs(length) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero quaternion");
+        }
         return new Quaterniond(x / length, y / length, z / length, w / length);
     }
 

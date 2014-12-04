@@ -623,13 +623,16 @@ public class MatrixNfTest {
 
     @Test
     public void testDeterminant() {
-        MatrixNf matrix = new MatrixNf(
+        MatrixNf matrix1 = new MatrixNf(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        float value = matrix.determinant();
-        TestUtilf.assertEquals(value, 24);
+        float value1 = matrix1.determinant();
+        TestUtilf.assertEquals(value1, 24);
+        MatrixNf matrix2 = new MatrixNf(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        float value2 = matrix2.determinant();
+        TestUtilf.assertEquals(value2, 0);
     }
 
     @Test
@@ -645,6 +648,15 @@ public class MatrixNfTest {
                 (float) 0.0625, (float) -0.225, (float) 0.3125, (float) -0.05,
                 (float) 0.4375, (float) 0.025, (float) 0.1875, (float) -0.55,
                 (float) -0.0625, (float) 0.025, (float) -0.3125, (float) 0.45);
+        try {
+            new MatrixNf(
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0).invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

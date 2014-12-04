@@ -270,6 +270,9 @@ public class Vector3f implements Vectorf, Comparable<Vector3f>, Serializable, Cl
     @Override
     public Vector3f normalize() {
         final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
         return new Vector3f(x / length, y / length, z / length);
     }
 

@@ -623,13 +623,16 @@ public class MatrixNdTest {
 
     @Test
     public void testDeterminant() {
-        MatrixNd matrix = new MatrixNd(
+        MatrixNd matrix1 = new MatrixNd(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        double value = matrix.determinant();
-        TestUtild.assertEquals(value, 24);
+        double value1 = matrix1.determinant();
+        TestUtild.assertEquals(value1, 24);
+        MatrixNd matrix2 = new MatrixNd(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        double value2 = matrix2.determinant();
+        TestUtild.assertEquals(value2, 0);
     }
 
     @Test
@@ -645,6 +648,15 @@ public class MatrixNdTest {
                 (double) 0.0625, (double) -0.225, (double) 0.3125, (double) -0.05,
                 (double) 0.4375, (double) 0.025, (double) 0.1875, (double) -0.55,
                 (double) -0.0625, (double) 0.025, (double) -0.3125, (double) 0.45);
+        try {
+            new MatrixNd(
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0).invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

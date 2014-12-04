@@ -334,8 +334,11 @@ public class VectorNd implements Vectord, Comparable<VectorNd>, Serializable, Cl
 
     @Override
     public VectorNd normalize() {
-        final int size = size();
         final double length = length();
+        if (Math.abs(length) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
+        final int size = size();
         final VectorNd d = new VectorNd(size);
         for (int comp = 0; comp < size; comp++) {
             d.vec[comp] = (double) (vec[comp] / length);

@@ -202,6 +202,11 @@ public class ComplexfTest {
     public void testInvert() {
         Complexf complex = new Complexf(2, 3).invert();
         TestUtilf.assertEquals(complex, (float) (2/13d), (float) (-3/13d));
+        try {
+            Complexf.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test
@@ -220,6 +225,11 @@ public class ComplexfTest {
     public void testNormalize() {
         Complexf complex = new Complexf(3, 4).normalize();
         TestUtilf.assertEquals(complex, (float) 0.6, (float) 0.8);
+        try {
+            Complexf.ZERO.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

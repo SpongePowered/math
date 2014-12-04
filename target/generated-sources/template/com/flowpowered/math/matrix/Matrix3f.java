@@ -320,8 +320,8 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
     @Override
     public Matrix3f invert() {
         final float det = determinant();
-        if (Math.abs(det) <= GenericMath.FLT_EPSILON) {
-            return null;
+        if (Math.abs(det) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         return new Matrix3f(
                 (m11 * m22 - m21 * m12) / det, -(m01 * m22 - m21 * m02) / det, (m01 * m12 - m02 * m11) / det,

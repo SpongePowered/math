@@ -345,6 +345,11 @@ public class Vector4#E#Test {
         TestUtil#E#.assertEquals(v1, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, 0);
         Vector4#E# v2 = new Vector4#E#(0, 1, 0, 1).normalize();
         TestUtil#E#.assertEquals(v2, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO);
+        try {
+            Vector4#E#.ZERO.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

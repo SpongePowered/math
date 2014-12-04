@@ -255,8 +255,8 @@ public class Matrix2d implements Matrixd, Serializable, Cloneable {
     @Override
     public Matrix2d invert() {
         final double det = determinant();
-        if (Math.abs(det) <= GenericMath.DBL_EPSILON) {
-            return null;
+        if (Math.abs(det) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         return new Matrix2d(
                 m11 / det, -m01 / det,

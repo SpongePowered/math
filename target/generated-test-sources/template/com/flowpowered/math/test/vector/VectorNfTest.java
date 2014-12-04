@@ -306,6 +306,11 @@ public class VectorNfTest {
         TestUtilf.assertEquals(v1, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO, 0, 0);
         VectorNf v2 = new VectorNf(0, 1, 0, 1).normalize();
         TestUtilf.assertEquals(v2, 0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO);
+        try {
+            VectorNf.ZERO_3.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

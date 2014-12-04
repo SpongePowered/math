@@ -14,9 +14,13 @@ import com.flowpowered.math.vector.Vector3#E#;
 public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
     /**
+     * An immutable identity (0, 0, 0, 0) quaternion.
+     */
+    public static final Quaternion#E# ZERO = new Quaternion#E#(0, 0, 0, 0);
+    /**
      * An immutable identity (0, 0, 0, 1) quaternion.
      */
-    public static final Quaternion#E# IDENTITY = new Quaternion#E#();
+    public static final Quaternion#E# IDENTITY = new Quaternion#E#(0, 0, 0, 1);
     private final #e# x;
     private final #e# y;
     private final #e# z;
@@ -400,7 +404,11 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
      */
     @Override
     public Quaternion#E# invert() {
-        return conjugate().div(lengthSquared());
+        final #e# lengthSquared = lengthSquared();
+        if (Math.abs(lengthSquared) < #Eeps#) {
+            throw new ArithmeticException("Cannot invert a quaternion of length zero");
+        }
+        return conjugate().div(lengthSquared);
     }
 
     /**
@@ -431,6 +439,9 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
     @Override
     public Quaternion#E# normalize() {
         final #e# length = length();
+        if (Math.abs(length) < #Eeps#) {
+            throw new ArithmeticException("Cannot normalize the zero quaternion");
+        }
         return new Quaternion#E#(x / length, y / length, z / length, w / length);
     }
 

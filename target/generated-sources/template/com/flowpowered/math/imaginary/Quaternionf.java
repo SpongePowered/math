@@ -14,9 +14,13 @@ import com.flowpowered.math.vector.Vector3f;
 public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
     /**
+     * An immutable identity (0, 0, 0, 0) quaternion.
+     */
+    public static final Quaternionf ZERO = new Quaternionf(0, 0, 0, 0);
+    /**
      * An immutable identity (0, 0, 0, 1) quaternion.
      */
-    public static final Quaternionf IDENTITY = new Quaternionf();
+    public static final Quaternionf IDENTITY = new Quaternionf(0, 0, 0, 1);
     private final float x;
     private final float y;
     private final float z;
@@ -400,7 +404,11 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
      */
     @Override
     public Quaternionf invert() {
-        return conjugate().div(lengthSquared());
+        final float lengthSquared = lengthSquared();
+        if (Math.abs(lengthSquared) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot invert a quaternion of length zero");
+        }
+        return conjugate().div(lengthSquared);
     }
 
     /**
@@ -431,6 +439,9 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
     @Override
     public Quaternionf normalize() {
         final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero quaternion");
+        }
         return new Quaternionf(x / length, y / length, z / length, w / length);
     }
 

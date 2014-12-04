@@ -270,6 +270,9 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
     @Override
     public Vector3d normalize() {
         final double length = length();
+        if (Math.abs(length) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
         return new Vector3d(x / length, y / length, z / length);
     }
 

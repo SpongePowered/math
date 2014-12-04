@@ -404,8 +404,8 @@ public class Matrix4d implements Matrixd, Serializable, Cloneable {
     @Override
     public Matrix4d invert() {
         final double det = determinant();
-        if (Math.abs(det) <= GenericMath.DBL_EPSILON) {
-            return null;
+        if (Math.abs(det) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         return new Matrix4d(
                 det3(m11, m21, m31, m12, m22, m32, m13, m23, m33) / det, -det3(m01, m21, m31, m02, m22, m32, m03, m23, m33) / det,

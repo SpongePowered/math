@@ -15,9 +15,13 @@ import com.flowpowered.math.vector.Vector3#E#;
 public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
     /**
+     * An immutable identity (0, 0) complex.
+     */
+    public static final Complex#E# ZERO = new Complex#E#(0, 0);
+    /**
      * An immutable identity (1, 0) complex.
      */
-    public static final Complex#E# IDENTITY = new Complex#E#();
+    public static final Complex#E# IDENTITY = new Complex#E#(1, 0);
     private final #e# x;
     private final #e# y;
     private transient volatile boolean hashed = false;
@@ -333,7 +337,11 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
      */
     @Override
     public Complex#E# invert() {
-        return conjugate().div(lengthSquared());
+        final #e# lengthSquared = lengthSquared();
+        if (Math.abs(lengthSquared) < #Eeps#) {
+            throw new ArithmeticException("Cannot invert a complex of length zero");
+        }
+        return conjugate().div(lengthSquared);
     }
 
     /**
@@ -364,6 +372,9 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
     @Override
     public Complex#E# normalize() {
         final #e# length = length();
+        if (Math.abs(length) < #Eeps#) {
+            throw new ArithmeticException("Cannot normalize the zero complex");
+        }
         return new Complex#E#(x / length, y / length);
     }
 

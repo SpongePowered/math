@@ -255,8 +255,8 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
     @Override
     public Matrix2f invert() {
         final float det = determinant();
-        if (Math.abs(det) <= GenericMath.FLT_EPSILON) {
-            return null;
+        if (Math.abs(det) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         return new Matrix2f(
                 m11 / det, -m01 / det,

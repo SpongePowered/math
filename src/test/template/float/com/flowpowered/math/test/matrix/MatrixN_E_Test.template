@@ -623,13 +623,16 @@ public class MatrixN#E#Test {
 
     @Test
     public void testDeterminant() {
-        MatrixN#E# matrix = new MatrixN#E#(
+        MatrixN#E# matrix1 = new MatrixN#E#(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        #e# value = matrix.determinant();
-        TestUtil#E#.assertEquals(value, 24);
+        #e# value1 = matrix1.determinant();
+        TestUtil#E#.assertEquals(value1, 24);
+        MatrixN#E# matrix2 = new MatrixN#E#(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        #e# value2 = matrix2.determinant();
+        TestUtil#E#.assertEquals(value2, 0);
     }
 
     @Test
@@ -645,6 +648,15 @@ public class MatrixN#E#Test {
                 (#e#) 0.0625, (#e#) -0.225, (#e#) 0.3125, (#e#) -0.05,
                 (#e#) 0.4375, (#e#) 0.025, (#e#) 0.1875, (#e#) -0.55,
                 (#e#) -0.0625, (#e#) 0.025, (#e#) -0.3125, (#e#) 0.45);
+        try {
+            new MatrixN#E#(
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0).invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

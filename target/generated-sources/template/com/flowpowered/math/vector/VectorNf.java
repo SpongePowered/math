@@ -334,8 +334,11 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
 
     @Override
     public VectorNf normalize() {
-        final int size = size();
         final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
+        final int size = size();
         final VectorNf d = new VectorNf(size);
         for (int comp = 0; comp < size; comp++) {
             d.vec[comp] = (float) (vec[comp] / length);

@@ -643,6 +643,11 @@ public class Matrix4dTest {
                 (double) 0.0625, (double) -0.225, (double) 0.3125, (double) -0.05,
                 (double) 0.4375, (double) 0.025, (double) 0.1875, (double) -0.55,
                 (double) -0.0625, (double) 0.025, (double) -0.3125, (double) 0.45);
+        try {
+            Matrix4d.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

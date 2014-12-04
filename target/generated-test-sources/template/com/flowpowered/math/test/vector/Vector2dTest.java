@@ -315,6 +315,11 @@ public class Vector2dTest {
     public void testNormalize() {
         Vector2d vector = new Vector2d(2, 2).normalize();
         TestUtild.assertEquals(vector, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO);
+        try {
+            Vector2d.ZERO.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

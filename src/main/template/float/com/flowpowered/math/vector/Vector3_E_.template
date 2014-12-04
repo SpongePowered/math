@@ -270,6 +270,9 @@ public class Vector3#E# implements Vector#E#, Comparable<Vector3#E#>, Serializab
     @Override
     public Vector3#E# normalize() {
         final #e# length = length();
+        if (Math.abs(length) < #Eeps#) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
         return new Vector3#E#(x / length, y / length, z / length);
     }
 

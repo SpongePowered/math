@@ -255,8 +255,8 @@ public class Matrix2#E# implements Matrix#E#, Serializable, Cloneable {
     @Override
     public Matrix2#E# invert() {
         final #e# det = determinant();
-        if (Math.abs(det) <= #Eeps#) {
-            return null;
+        if (Math.abs(det) < #Eeps#) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         return new Matrix2#E#(
                 m11 / det, -m01 / det,

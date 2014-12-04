@@ -643,6 +643,11 @@ public class Matrix4fTest {
                 (float) 0.0625, (float) -0.225, (float) 0.3125, (float) -0.05,
                 (float) 0.4375, (float) 0.025, (float) 0.1875, (float) -0.55,
                 (float) -0.0625, (float) 0.025, (float) -0.3125, (float) 0.45);
+        try {
+            Matrix4f.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

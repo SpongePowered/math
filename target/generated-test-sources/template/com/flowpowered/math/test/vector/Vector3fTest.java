@@ -350,6 +350,11 @@ public class Vector3fTest {
     public void testNormalize() {
         Vector3f vector = new Vector3f(2, 2, 0).normalize();
         TestUtilf.assertEquals(vector, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO, 0);
+        try {
+            Vector3f.ZERO.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

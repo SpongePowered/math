@@ -272,6 +272,9 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
     @Override
     public Vector4d normalize() {
         final double length = length();
+        if (Math.abs(length) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
         return new Vector4d(x / length, y / length, z / length, w / length);
     }
 

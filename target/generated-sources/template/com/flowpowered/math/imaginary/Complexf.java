@@ -15,9 +15,13 @@ import com.flowpowered.math.vector.Vector3f;
 public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
     /**
+     * An immutable identity (0, 0) complex.
+     */
+    public static final Complexf ZERO = new Complexf(0, 0);
+    /**
      * An immutable identity (1, 0) complex.
      */
-    public static final Complexf IDENTITY = new Complexf();
+    public static final Complexf IDENTITY = new Complexf(1, 0);
     private final float x;
     private final float y;
     private transient volatile boolean hashed = false;
@@ -333,7 +337,11 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
      */
     @Override
     public Complexf invert() {
-        return conjugate().div(lengthSquared());
+        final float lengthSquared = lengthSquared();
+        if (Math.abs(lengthSquared) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot invert a complex of length zero");
+        }
+        return conjugate().div(lengthSquared);
     }
 
     /**
@@ -364,6 +372,9 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
     @Override
     public Complexf normalize() {
         final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero complex");
+        }
         return new Complexf(x / length, y / length);
     }
 

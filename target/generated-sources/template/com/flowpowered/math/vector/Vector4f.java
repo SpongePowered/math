@@ -272,6 +272,9 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
     @Override
     public Vector4f normalize() {
         final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero vector");
+        }
         return new Vector4f(x / length, y / length, z / length, w / length);
     }
 

@@ -15,9 +15,13 @@ import com.flowpowered.math.vector.Vector3d;
 public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
     /**
+     * An immutable identity (0, 0) complex.
+     */
+    public static final Complexd ZERO = new Complexd(0, 0);
+    /**
      * An immutable identity (1, 0) complex.
      */
-    public static final Complexd IDENTITY = new Complexd();
+    public static final Complexd IDENTITY = new Complexd(1, 0);
     private final double x;
     private final double y;
     private transient volatile boolean hashed = false;
@@ -333,7 +337,11 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
      */
     @Override
     public Complexd invert() {
-        return conjugate().div(lengthSquared());
+        final double lengthSquared = lengthSquared();
+        if (Math.abs(lengthSquared) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot invert a complex of length zero");
+        }
+        return conjugate().div(lengthSquared);
     }
 
     /**
@@ -364,6 +372,9 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
     @Override
     public Complexd normalize() {
         final double length = length();
+        if (Math.abs(length) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot normalize the zero complex");
+        }
         return new Complexd(x / length, y / length);
     }
 

@@ -284,8 +284,6 @@ public class Matrix3dTest {
 
     @Test
     public void testInvert() {
-        Matrix3d matrix1 = new Matrix3d(0, 1, 2, 3, 4, 5, 6, 7, 8).invert();
-        Assert.assertEquals(matrix1, null);
         Matrix3d matrix2 = new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1).invert();
         TestUtild.assertEquals(matrix2, 1, 0, 0, 0, 1, 0, 0, 0, 1);
         Matrix3d matrix3 = new Matrix3d(
@@ -297,7 +295,12 @@ public class Matrix3dTest {
                 (double) (-5/18d), (double) (7/18d), (double) (1/18d),
                 (double) (1/18d), (double) (-5/18d), (double) (7/18d),
                 (double) (7/18d), (double) (1/18d), (double) (-5/18d));
+        try {
+            Matrix3d.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
         }
+    }
 
     @Test
     public void testConvertToMatrix2() {

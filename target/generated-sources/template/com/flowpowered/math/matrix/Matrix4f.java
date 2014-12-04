@@ -404,8 +404,8 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
     @Override
     public Matrix4f invert() {
         final float det = determinant();
-        if (Math.abs(det) <= GenericMath.FLT_EPSILON) {
-            return null;
+        if (Math.abs(det) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
         return new Matrix4f(
                 det3(m11, m21, m31, m12, m22, m32, m13, m23, m33) / det, -det3(m01, m21, m31, m02, m22, m32, m03, m23, m33) / det,

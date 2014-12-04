@@ -345,6 +345,11 @@ public class Vector4fTest {
         TestUtilf.assertEquals(v1, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO, 0, 0);
         Vector4f v2 = new Vector4f(0, 1, 0, 1).normalize();
         TestUtilf.assertEquals(v2, 0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO);
+        try {
+            Vector4f.ZERO.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

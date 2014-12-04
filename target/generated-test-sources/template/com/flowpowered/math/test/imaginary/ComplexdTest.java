@@ -202,6 +202,11 @@ public class ComplexdTest {
     public void testInvert() {
         Complexd complex = new Complexd(2, 3).invert();
         TestUtild.assertEquals(complex, (double) (2/13d), (double) (-3/13d));
+        try {
+            Complexd.ZERO.invert();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test
@@ -220,6 +225,11 @@ public class ComplexdTest {
     public void testNormalize() {
         Complexd complex = new Complexd(3, 4).normalize();
         TestUtild.assertEquals(complex, (double) 0.6, (double) 0.8);
+        try {
+            Complexd.ZERO.normalize();
+            Assert.fail();
+        } catch (ArithmeticException ex) {
+        }
     }
 
     @Test

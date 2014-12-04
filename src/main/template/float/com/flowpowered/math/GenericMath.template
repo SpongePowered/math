@@ -740,6 +740,14 @@ public class GenericMath {
         }
         return shift;
     }
+
+#REPLICATED4#
+
+#REPLICATED5#
+
+#REPLICATED6#
+
+#REPLICATED7#
 }
 
 ====START_REPLICATED_CONTENT #1====
@@ -798,3 +806,67 @@ public class GenericMath {
         return a.mul(coefficient1).add(b.mul(coefficient2));
     }
 =====END_REPLICATED_CONTENT #3=====
+
+====START_REPLICATED_CONTENT #4====
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector2#E# normalizeSafe(Vector2#E# v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector2#E#.ZERO;
+        }
+    }
+=====END_REPLICATED_CONTENT #4=====
+
+====START_REPLICATED_CONTENT #5====
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector3#E# normalizeSafe(Vector3#E# v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector3#E#.ZERO;
+        }
+    }
+=====END_REPLICATED_CONTENT #5=====
+
+====START_REPLICATED_CONTENT #6====
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector4#E# normalizeSafe(Vector4#E# v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector4#E#.ZERO;
+        }
+    }
+=====END_REPLICATED_CONTENT #6=====
+
+====START_REPLICATED_CONTENT #7====
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static VectorN#E# normalizeSafe(VectorN#E# v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return new VectorN#E#(v.size());
+        }
+    }
+=====END_REPLICATED_CONTENT #7=====

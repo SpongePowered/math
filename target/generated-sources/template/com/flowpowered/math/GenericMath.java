@@ -836,4 +836,116 @@ public class GenericMath {
         }
         return shift;
     }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector2f normalizeSafe(Vector2f v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector2f.ZERO;
+        }
+    }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector2d normalizeSafe(Vector2d v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector2d.ZERO;
+        }
+    }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector3f normalizeSafe(Vector3f v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector3f.ZERO;
+        }
+    }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector3d normalizeSafe(Vector3d v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector3d.ZERO;
+        }
+    }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector4f normalizeSafe(Vector4f v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector4f.ZERO;
+        }
+    }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static Vector4d normalizeSafe(Vector4d v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return Vector4d.ZERO;
+        }
+    }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static VectorNf normalizeSafe(VectorNf v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return new VectorNf(v.size());
+        }
+    }
+
+    /**
+     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
+     *
+     * @param v The vector to attempt to normalize
+     * @return The normalized vector, or the zero vector if it couldn't be normalized.
+     */
+    public static VectorNd normalizeSafe(VectorNd v) {
+        try {
+            return v.normalize();
+        } catch (ArithmeticException ex) {
+            return new VectorNd(v.size());
+        }
+    }
 }

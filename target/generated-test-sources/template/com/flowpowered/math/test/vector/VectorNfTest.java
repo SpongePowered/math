@@ -45,26 +45,20 @@ public class VectorNfTest {
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+    public void testComponentsConstructor() {
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5);
         TestUtilf.assertEquals(vector, 0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5);
     }
 
     @Test
-    public void testFloatComponentsConstructor() {
-        VectorNf vector = new VectorNf(0, 1.1f, 2.2f, 3.3f, 4.4f, 5.5f);
-        TestUtilf.assertEquals(vector, 0, 1.1f, 2.2f, 3.3f, 4.4f, 5.5f);
-    }
-
-    @Test
     public void testSize() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5);
         assertEquals(vector.size(), 6);
     }
 
     @Test
     public void testGetter() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5);
         TestUtilf.assertEquals(vector.get(0), 0);
         TestUtilf.assertEquals(vector.get(1), (float) 1.1);
         TestUtilf.assertEquals(vector.get(2), (float) 2.2);
@@ -75,7 +69,7 @@ public class VectorNfTest {
 
     @Test
     public void testFlooredGetter() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5, -6.6);
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5, (float) -6.6);
         TestUtilf.assertEquals(vector.getFloored(0), 0);
         TestUtilf.assertEquals(vector.getFloored(1), 1);
         TestUtilf.assertEquals(vector.getFloored(2), 2);
@@ -87,14 +81,14 @@ public class VectorNfTest {
 
     @Test
     public void testSetterFloatValue() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5);
         vector.set(0, (float) 6.6);
         TestUtilf.assertEquals(vector.get(0), (float) 6.6);
     }
 
     @Test
     public void testSetZero() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2);
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2);
         vector.setZero();
         TestUtilf.assertEquals(vector.get(0), 0);
         TestUtilf.assertEquals(vector.get(1), 0);
@@ -103,10 +97,10 @@ public class VectorNfTest {
 
     @Test
     public void testResize() {
-        VectorNf vector1 = new VectorNf(0, 1.1, 2.2);
+        VectorNf vector1 = new VectorNf(0, (float) 1.1, (float) 2.2);
         VectorNf resize1 = vector1.resize(2);
         TestUtilf.assertEquals(resize1.size(), 2);
-        VectorNf vector2 = new VectorNf(0, 1.1, 2.2);
+        VectorNf vector2 = new VectorNf(0, (float) 1.1, (float) 2.2);
         VectorNf resize2 = vector2.resize(4);
         TestUtilf.assertEquals(resize2.size(), 4);
         TestUtilf.assertEquals(resize2.get(3), 0);
@@ -114,49 +108,37 @@ public class VectorNfTest {
 
     @Test
     public void testVectorNAddition() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5).add(new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5));
-        TestUtilf.assertEquals(vector, 0, (float) 2.2, (float) 4.4, (float) 6.6, (float) 8.8, 11);
-    }
-
-    @Test
-    public void testFloatComponentsAddition() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5).add(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5);
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5).add(new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5));
         TestUtilf.assertEquals(vector, 0, (float) 2.2, (float) 4.4, (float) 6.6, (float) 8.8, 11);
     }
 
     @Test
     public void testVectorNSubtraction() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5).sub(new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5));
-        TestUtilf.assertEquals(vector, 0, 0, 0, 0, 0, 0);
-    }
-
-    @Test
-    public void testFloatComponentsSubtraction() {
-        VectorNf vector = new VectorNf(0, 1.1, 2.2, 3.3, 4.4, 5.5).sub(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5);
+        VectorNf vector = new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5).sub(new VectorNf(0, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5));
         TestUtilf.assertEquals(vector, 0, 0, 0, 0, 0, 0);
     }
 
     @Test
     public void testDoubleFactorMultiplication() {
-        VectorNf vector = new VectorNf(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2d);
+        VectorNf vector = new VectorNf((float) 0.1, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5).mul(2d);
         TestUtilf.assertEquals(vector, (float) 0.2, (float) 2.2, (float) 4.4, (float) 6.6, (float) 8.8, 11);
     }
 
     @Test
     public void testFloatFactorMultiplication() {
-        VectorNf vector = new VectorNf(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2);
+        VectorNf vector = new VectorNf((float) 0.1, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5).mul(2);
         TestUtilf.assertEquals(vector, 0.2f, 2.2f, (float) 4.4, (float) 6.6, (float) 8.8, 11f);
     }
 
     @Test
     public void testVectorNMultiplication() {
-        VectorNf vector = new VectorNf(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(new VectorNf(1, 2, 3, 4, 5, 6));
+        VectorNf vector = new VectorNf((float) 0.1, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5).mul(new VectorNf(1, 2, 3, 4, 5, 6));
         TestUtilf.assertEquals(vector, (float) 0.1, (float) 2.2, (float) 6.6, (float) 13.2, 22, 33);
     }
 
     @Test
     public void testFloatComponentsMultiplication() {
-        VectorNf vector = new VectorNf(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2, 2, 3, 3, 4, 4);
+        VectorNf vector = new VectorNf((float) 0.1, (float) 1.1, (float) 2.2, (float) 3.3, (float) 4.4, (float) 5.5).mul(2, 2, 3, 3, 4, 4);
         TestUtilf.assertEquals(vector, (float) 0.2, (float) 2.2, (float) 6.6, (float) 9.9, (float) 17.6, 22);
     }
 
@@ -198,45 +180,45 @@ public class VectorNfTest {
 
     @Test
     public void testRaiseToDoublePower() {
-        VectorNf vector = new VectorNf(2, 6, 8, 5.5).pow(2d);
+        VectorNf vector = new VectorNf(2, 6, 8, (float) 5.5).pow(2d);
         TestUtilf.assertEquals(vector, 4, 36, 64, (float) 30.25);
     }
 
     @Test
     public void testRaiseToFloatPower() {
-        VectorNf vector = new VectorNf(2, 6, 8, 5.5f).pow(2);
+        VectorNf vector = new VectorNf(2, 6, 8, (float) 5.5).pow(2);
         TestUtilf.assertEquals(vector, 4, 36, 64, 30.25f);
     }
 
     @Test
     public void testCeiling() {
-        VectorNf vector = new VectorNf(2.5, 6.7, 7.9, 8.1).ceil();
+        VectorNf vector = new VectorNf((float) 2.5, (float) 6.7, (float) 7.9, (float) 8.1).ceil();
         TestUtilf.assertEquals(vector, 3, 7, 8, 9);
     }
 
     @Test
     public void testFloor() {
-        VectorNf vector = new VectorNf(2.5, 6.7, 7.8, 9.1).floor();
+        VectorNf vector = new VectorNf((float) 2.5, (float) 6.7, (float) 7.8, (float) 9.1).floor();
         TestUtilf.assertEquals(vector, 2, 6, 7, 9);
     }
 
     @Test
     public void testRound() {
-        VectorNf vector = new VectorNf(2.2, 6.7, 7.8, 9.1).round();
+        VectorNf vector = new VectorNf((float) 2.2, (float) 6.7, (float) 7.8, (float) 9.1).round();
         TestUtilf.assertEquals(vector, 2, 7, 8, 9);
     }
 
     @Test
     public void testAbsolute() {
-        VectorNf vector1 = new VectorNf(-2.5, -6.7, -55, 0).abs();
+        VectorNf vector1 = new VectorNf((float) -2.5, (float) -6.7, (float) -55, 0).abs();
         TestUtilf.assertEquals(vector1, (float) 2.5, (float) 6.7, 55, 0);
-        VectorNf vector2 = new VectorNf(2.5, 6.7, 55, 0).abs();
+        VectorNf vector2 = new VectorNf((float) 2.5, (float) 6.7, 55, 0).abs();
         TestUtilf.assertEquals(vector2, (float) 2.5, (float) 6.7, 55, 0);
     }
 
     @Test
     public void testNegate() {
-        VectorNf vector = new VectorNf(2.2, -6.7, 15.8, 20).negate();
+        VectorNf vector = new VectorNf((float) 2.2, (float) -6.7, (float) 15.8, 20).negate();
         TestUtilf.assertEquals(vector, (float) -2.2, (float) 6.7, (float) -15.8, -20);
     }
 
@@ -369,7 +351,7 @@ public class VectorNfTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new VectorNf(10, 20, 30, 40).compareTo(new VectorNf(10, 10, 30, 40));
         Assert.assertTrue(c3 > 0);
-        int c4 = new VectorNf(0.2, 0.2, 0.2, 0.2).compareTo(new VectorNf(0.1, 0.1, 0.1, 0.1));
+        int c4 = new VectorNf((float) 0.2, (float) 0.2, (float) 0.2, (float) 0.2).compareTo(new VectorNf((float) 0.1, (float) 0.1, (float) 0.1, (float) 0.1));
         Assert.assertTrue(c4 > 0);
     }
 

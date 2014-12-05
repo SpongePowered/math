@@ -213,7 +213,10 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public int distanceSquared(int x, int y, int z) {
-        return (int) GenericMath.lengthSquared(this.x - x, this.y - y, this.z - z);
+        final int dx = this.x - x;
+        final int dy = this.y - y;
+        final int dz = this.z - z;
+        return dx * dx + dy * dy + dz * dz;
     }
 
     public int distance(Vector3i v) {
@@ -225,17 +228,17 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public int distance(int x, int y, int z) {
-        return (int) GenericMath.length(this.x - x, this.y - y, this.z - z);
+        return (int) Math.sqrt(distanceSquared(x, y, z));
     }
 
     @Override
     public int lengthSquared() {
-        return (int) GenericMath.lengthSquared(x, y, z);
+        return x * x + y * y + z * z;
     }
 
     @Override
     public int length() {
-        return (int) GenericMath.length(x, y, z);
+        return (int) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -321,13 +324,13 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
             return false;
         }
         final Vector3i vector3 = (Vector3i) o;
-        if (Integer.compare(vector3.x, x) != 0) {
+        if (vector3.x != x) {
             return false;
         }
-        if (Integer.compare(vector3.y, y) != 0) {
+        if (vector3.y != y) {
             return false;
         }
-        if (Integer.compare(vector3.z, z) != 0) {
+        if (vector3.z != z) {
             return false;
         }
         return true;

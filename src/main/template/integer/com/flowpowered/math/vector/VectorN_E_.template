@@ -37,27 +37,6 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         vec = v.clone();
     }
 
-    public VectorN#E#(#EOverload#... v) {
-        vec = new #e#[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (#e#) v[i];
-        }
-    }
-
-    public VectorN#E#(#EOverload1#... v) {
-        vec = new #e#[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (#e#) v[i];
-        }
-    }
-
-    public VectorN#E#(#EOverload2#... v) {
-        vec = new #e#[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (#e#) v[i];
-        }
-    }
-
     public int size() {
         return vec.length;
     }
@@ -263,11 +242,12 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
-        final #e#[] d = new #e#[size];
+        #e# d = 0;
         for (int comp = 0; comp < size; comp++) {
-            d[comp] = (#e#)(vec[comp] - v[comp]);
+            final #e# delta = vec[comp] - v[comp];
+            d += delta * delta;
         }
-        return lengthSquared(d);
+        return d;
     }
 
     public #e# distance(VectorN#E# v) {
@@ -275,25 +255,22 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
     }
 
     public #e# distance(#e#... v) {
-        final int size = size();
-        if (size != v.length) {
-            throw new IllegalArgumentException("Vector sizes must be the same");
-        }
-        final #e#[] d = new #e#[size];
-        for (int comp = 0; comp < size; comp++) {
-            d[comp] = (#e#)(vec[comp] - v[comp]);
-        }
-        return length(d);
+        return (#e#) Math.sqrt(distanceSquared(v));
     }
 
     @Override
     public #e# lengthSquared() {
-        return lengthSquared(vec);
+        final int size = size();
+        #e# l = 0;
+        for (int comp = 0; comp < size; comp++) {
+            l += vec[comp] * vec[comp];
+        }
+        return l;
     }
 
     @Override
     public #e# length() {
-        return length(vec);
+        return (#e#) Math.sqrt(lengthSquared());
     }
 
     @Override
@@ -343,24 +320,43 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
 
     @Override
     public VectorNi toInt() {
-        return new VectorNi(vec);
+        final int size = size();
+        final int[] intVec = new int[size];
+        for (int comp = 0; comp < size; comp++) {
+            intVec[comp] = (int) vec[comp];
+        }
+        return new VectorNi(intVec);
     }
 
     @Override
     public VectorNl toLong() {
-        return new VectorNl(vec);
+        final int size = size();
+        final long[] longVec = new long[size];
+        for (int comp = 0; comp < size; comp++) {
+            longVec[comp] = (long) vec[comp];
+        }
+        return new VectorNl(longVec);
     }
 
     @Override
     public VectorNf toFloat() {
-        return new VectorNf(vec);
+        final int size = size();
+        final float[] floatVec = new float[size];
+        for (int comp = 0; comp < size; comp++) {
+            floatVec[comp] = (float) vec[comp];
+        }
+        return new VectorNf(floatVec);
     }
 
     @Override
     public VectorNd toDouble() {
-        return new VectorNd(vec);
+        final int size = size();
+        final double[] doubleVec = new double[size];
+        for (int comp = 0; comp < size; comp++) {
+            doubleVec[comp] = (double) vec[comp];
+        }
+        return new VectorNd(doubleVec);
     }
-
 
     @Override
     public int compareTo(VectorN#E# v) {
@@ -393,24 +389,8 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         return Arrays.toString(vec).replace('[', '(').replace(']', ')');
     }
 
-    private static #e# length(#e#... vec) {
-        return (#e#) Math.sqrt(lengthSquared(vec));
-    }
-
-    private static #e# lengthSquared(#e#... vec) {
-        #e# lengthSquared = 0;
-        for (#e# comp : vec) {
-            lengthSquared += (#e#) (comp * comp);
-        }
-        return lengthSquared;
-    }
-
     private static class ImmutableZeroVectorN extends VectorN#E# {
         public ImmutableZeroVectorN(#e#... v) {
-            super(v);
-        }
-
-        public ImmutableZeroVectorN(#EOverload#... v) {
             super(v);
         }
 

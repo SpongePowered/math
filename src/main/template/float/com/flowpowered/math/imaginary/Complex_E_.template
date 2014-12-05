@@ -351,7 +351,7 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
      */
     @Override
     public #e# lengthSquared() {
-        return (#e#) GenericMath.lengthSquared(x, y);
+        return x * x + y * y;
     }
 
     /**
@@ -361,7 +361,7 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
      */
     @Override
     public #e# length() {
-        return (#e#) GenericMath.length(x, y);
+        return (#e#) Math.sqrt(lengthSquared());
     }
 
     /**

@@ -45,26 +45,20 @@ public class VectorNdTest {
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+    public void testComponentsConstructor() {
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5);
         TestUtild.assertEquals(vector, 0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5);
     }
 
     @Test
-    public void testFloatComponentsConstructor() {
-        VectorNd vector = new VectorNd(0, 1.1f, 2.2f, 3.3f, 4.4f, 5.5f);
-        TestUtild.assertEquals(vector, 0, 1.1f, 2.2f, 3.3f, 4.4f, 5.5f);
-    }
-
-    @Test
     public void testSize() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5);
         assertEquals(vector.size(), 6);
     }
 
     @Test
     public void testGetter() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5);
         TestUtild.assertEquals(vector.get(0), 0);
         TestUtild.assertEquals(vector.get(1), (double) 1.1);
         TestUtild.assertEquals(vector.get(2), (double) 2.2);
@@ -75,7 +69,7 @@ public class VectorNdTest {
 
     @Test
     public void testFlooredGetter() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5, -6.6);
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5, (double) -6.6);
         TestUtild.assertEquals(vector.getFloored(0), 0);
         TestUtild.assertEquals(vector.getFloored(1), 1);
         TestUtild.assertEquals(vector.getFloored(2), 2);
@@ -87,14 +81,14 @@ public class VectorNdTest {
 
     @Test
     public void testSetterDoubleValue() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5);
         vector.set(0, (double) 6.6);
         TestUtild.assertEquals(vector.get(0), (double) 6.6);
     }
 
     @Test
     public void testSetZero() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2);
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2);
         vector.setZero();
         TestUtild.assertEquals(vector.get(0), 0);
         TestUtild.assertEquals(vector.get(1), 0);
@@ -103,10 +97,10 @@ public class VectorNdTest {
 
     @Test
     public void testResize() {
-        VectorNd vector1 = new VectorNd(0, 1.1, 2.2);
+        VectorNd vector1 = new VectorNd(0, (double) 1.1, (double) 2.2);
         VectorNd resize1 = vector1.resize(2);
         TestUtild.assertEquals(resize1.size(), 2);
-        VectorNd vector2 = new VectorNd(0, 1.1, 2.2);
+        VectorNd vector2 = new VectorNd(0, (double) 1.1, (double) 2.2);
         VectorNd resize2 = vector2.resize(4);
         TestUtild.assertEquals(resize2.size(), 4);
         TestUtild.assertEquals(resize2.get(3), 0);
@@ -114,49 +108,37 @@ public class VectorNdTest {
 
     @Test
     public void testVectorNAddition() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5).add(new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5));
-        TestUtild.assertEquals(vector, 0, (double) 2.2, (double) 4.4, (double) 6.6, (double) 8.8, 11);
-    }
-
-    @Test
-    public void testDoubleComponentsAddition() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5).add(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5);
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5).add(new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5));
         TestUtild.assertEquals(vector, 0, (double) 2.2, (double) 4.4, (double) 6.6, (double) 8.8, 11);
     }
 
     @Test
     public void testVectorNSubtraction() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5).sub(new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5));
-        TestUtild.assertEquals(vector, 0, 0, 0, 0, 0, 0);
-    }
-
-    @Test
-    public void testDoubleComponentsSubtraction() {
-        VectorNd vector = new VectorNd(0, 1.1, 2.2, 3.3, 4.4, 5.5).sub(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5);
+        VectorNd vector = new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5).sub(new VectorNd(0, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5));
         TestUtild.assertEquals(vector, 0, 0, 0, 0, 0, 0);
     }
 
     @Test
     public void testDoubleFactorMultiplication() {
-        VectorNd vector = new VectorNd(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2d);
+        VectorNd vector = new VectorNd((double) 0.1, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5).mul(2d);
         TestUtild.assertEquals(vector, (double) 0.2, (double) 2.2, (double) 4.4, (double) 6.6, (double) 8.8, 11);
     }
 
     @Test
     public void testFloatFactorMultiplication() {
-        VectorNd vector = new VectorNd(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2);
+        VectorNd vector = new VectorNd((double) 0.1, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5).mul(2);
         TestUtild.assertEquals(vector, 0.2f, 2.2f, (double) 4.4, (double) 6.6, (double) 8.8, 11f);
     }
 
     @Test
     public void testVectorNMultiplication() {
-        VectorNd vector = new VectorNd(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(new VectorNd(1, 2, 3, 4, 5, 6));
+        VectorNd vector = new VectorNd((double) 0.1, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5).mul(new VectorNd(1, 2, 3, 4, 5, 6));
         TestUtild.assertEquals(vector, (double) 0.1, (double) 2.2, (double) 6.6, (double) 13.2, 22, 33);
     }
 
     @Test
     public void testDoubleComponentsMultiplication() {
-        VectorNd vector = new VectorNd(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2, 2, 3, 3, 4, 4);
+        VectorNd vector = new VectorNd((double) 0.1, (double) 1.1, (double) 2.2, (double) 3.3, (double) 4.4, (double) 5.5).mul(2, 2, 3, 3, 4, 4);
         TestUtild.assertEquals(vector, (double) 0.2, (double) 2.2, (double) 6.6, (double) 9.9, (double) 17.6, 22);
     }
 
@@ -198,45 +180,45 @@ public class VectorNdTest {
 
     @Test
     public void testRaiseToDoublePower() {
-        VectorNd vector = new VectorNd(2, 6, 8, 5.5).pow(2d);
+        VectorNd vector = new VectorNd(2, 6, 8, (double) 5.5).pow(2d);
         TestUtild.assertEquals(vector, 4, 36, 64, (double) 30.25);
     }
 
     @Test
     public void testRaiseToFloatPower() {
-        VectorNd vector = new VectorNd(2, 6, 8, 5.5f).pow(2);
+        VectorNd vector = new VectorNd(2, 6, 8, (double) 5.5).pow(2);
         TestUtild.assertEquals(vector, 4, 36, 64, 30.25f);
     }
 
     @Test
     public void testCeiling() {
-        VectorNd vector = new VectorNd(2.5, 6.7, 7.9, 8.1).ceil();
+        VectorNd vector = new VectorNd((double) 2.5, (double) 6.7, (double) 7.9, (double) 8.1).ceil();
         TestUtild.assertEquals(vector, 3, 7, 8, 9);
     }
 
     @Test
     public void testFloor() {
-        VectorNd vector = new VectorNd(2.5, 6.7, 7.8, 9.1).floor();
+        VectorNd vector = new VectorNd((double) 2.5, (double) 6.7, (double) 7.8, (double) 9.1).floor();
         TestUtild.assertEquals(vector, 2, 6, 7, 9);
     }
 
     @Test
     public void testRound() {
-        VectorNd vector = new VectorNd(2.2, 6.7, 7.8, 9.1).round();
+        VectorNd vector = new VectorNd((double) 2.2, (double) 6.7, (double) 7.8, (double) 9.1).round();
         TestUtild.assertEquals(vector, 2, 7, 8, 9);
     }
 
     @Test
     public void testAbsolute() {
-        VectorNd vector1 = new VectorNd(-2.5, -6.7, -55, 0).abs();
+        VectorNd vector1 = new VectorNd((double) -2.5, (double) -6.7, (double) -55, 0).abs();
         TestUtild.assertEquals(vector1, (double) 2.5, (double) 6.7, 55, 0);
-        VectorNd vector2 = new VectorNd(2.5, 6.7, 55, 0).abs();
+        VectorNd vector2 = new VectorNd((double) 2.5, (double) 6.7, 55, 0).abs();
         TestUtild.assertEquals(vector2, (double) 2.5, (double) 6.7, 55, 0);
     }
 
     @Test
     public void testNegate() {
-        VectorNd vector = new VectorNd(2.2, -6.7, 15.8, 20).negate();
+        VectorNd vector = new VectorNd((double) 2.2, (double) -6.7, (double) 15.8, 20).negate();
         TestUtild.assertEquals(vector, (double) -2.2, (double) 6.7, (double) -15.8, -20);
     }
 
@@ -369,7 +351,7 @@ public class VectorNdTest {
         Assert.assertTrue(c2 == 0);
         int c3 = new VectorNd(10, 20, 30, 40).compareTo(new VectorNd(10, 10, 30, 40));
         Assert.assertTrue(c3 > 0);
-        int c4 = new VectorNd(0.2, 0.2, 0.2, 0.2).compareTo(new VectorNd(0.1, 0.1, 0.1, 0.1));
+        int c4 = new VectorNd((double) 0.2, (double) 0.2, (double) 0.2, (double) 0.2).compareTo(new VectorNd((double) 0.1, (double) 0.1, (double) 0.1, (double) 0.1));
         Assert.assertTrue(c4 > 0);
     }
 

@@ -512,10 +512,10 @@ public class MatrixNdTest {
     @Test
     public void testFloor() {
         MatrixNd matrix = new MatrixNd(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (double) -1.1, (double) 2.5, (double) 2.9, (double) 3.2,
+                (double) -6.3, (double) 2.2, (double) 2.1, (double) 5.6,
+                (double) -8.8, (double) 8.1, (double) 4.6, (double) 6.7,
+                (double) -1.3, (double) 1.7, (double) 7.3, (double) 7.6);
         matrix = matrix.floor();
         TestUtild.assertEquals(matrix,
                 -2, 2, 2, 3,
@@ -527,10 +527,10 @@ public class MatrixNdTest {
     @Test
     public void testCeiling() {
         MatrixNd matrix = new MatrixNd(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (double) -1.1, (double) 2.5, (double) 2.9, (double) 3.2,
+                (double) -6.3, (double) 2.2, (double) 2.1, (double) 5.6,
+                (double) -8.8, (double) 8.1, (double) 4.6, (double) 6.7,
+                (double) -1.3, (double) 1.7, (double) 7.3, (double) 7.6);
         matrix = matrix.ceil();
         TestUtild.assertEquals(matrix,
                 -1, 3, 3, 4,
@@ -542,10 +542,10 @@ public class MatrixNdTest {
     @Test
     public void testRound() {
         MatrixNd matrix = new MatrixNd(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (double) -1.1, (double) 2.5, (double) 2.9, (double) 3.2,
+                (double) -6.3, (double) 2.2, (double) 2.1, (double) 5.6,
+                (double) -8.8, (double) 8.1, (double) 4.6, (double) 6.7,
+                (double) -1.3, (double) 1.7, (double) 7.3, (double) 7.6);
         matrix = matrix.round();
         TestUtild.assertEquals(matrix,
                 -1, 3, 3, 3,

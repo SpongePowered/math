@@ -67,25 +67,7 @@ public class MatrixNd implements Matrixd, Serializable, Cloneable {
         }
     }
 
-    public MatrixNd(float... m) {
-        if (m.length < 4) {
-            throw new IllegalArgumentException("Minimum matrix size is 2");
-        }
-        final int size = (int) Math.ceil(Math.sqrt(m.length));
-        mat = new double[size][size];
-        for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size; col++) {
-                final int index = col + row * size;
-                if (index < m.length) {
-                    mat[row][col] = (double) m[index];
-                } else {
-                    mat[row][col] = 0;
-                }
-            }
-        }
-    }
-
-public MatrixNd(MatrixNd m) {
+    public MatrixNd(MatrixNd m) {
         mat = deepClone(m.mat);
     }
 
@@ -447,12 +429,26 @@ public MatrixNd(MatrixNd m) {
 
     @Override
     public MatrixNf toFloat() {
-        return new MatrixNf(toArray(false));
+        final int size = size();
+        final float[] m = new float[size * size];
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                m[col + row * size] = (float) get(row, col);
+            }
+        }
+        return new MatrixNf(m);
     }
 
     @Override
     public MatrixNd toDouble() {
-        return new MatrixNd(toArray(false));
+        final int size = size();
+        final double[] m = new double[size * size];
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                m[col + row * size] = (double) get(row, col);
+            }
+        }
+        return new MatrixNd(m);
     }
 
     @Override

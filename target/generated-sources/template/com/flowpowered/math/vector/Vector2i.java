@@ -185,7 +185,9 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public int distanceSquared(int x, int y) {
-        return (int) GenericMath.lengthSquared(this.x - x, this.y - y);
+        final int dx = this.x - x;
+        final int dy = this.y - y;
+        return dx * dx + dy * dy;
     }
 
     public int distance(Vector2i v) {
@@ -197,17 +199,17 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public int distance(int x, int y) {
-        return (int) GenericMath.length(this.x - x, this.y - y);
+        return (int) Math.sqrt(distanceSquared(x, y));
     }
 
     @Override
     public int lengthSquared() {
-        return (int) GenericMath.lengthSquared(x, y);
+        return x * x + y * y;
     }
 
     @Override
     public int length() {
-        return (int) GenericMath.length(x, y);
+        return (int) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -297,10 +299,10 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
             return false;
         }
         final Vector2i vector2 = (Vector2i) o;
-        if (Integer.compare(vector2.x, x) != 0) {
+        if (vector2.x != x) {
             return false;
         }
-        if (Integer.compare(vector2.y, y) != 0) {
+        if (vector2.y != y) {
             return false;
         }
         return true;

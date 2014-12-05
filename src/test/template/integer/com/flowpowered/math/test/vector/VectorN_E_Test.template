@@ -44,14 +44,8 @@ public class VectorN#E#Test {
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5);
-        TestUtil#E#.assertEquals(vector, (#e#) 0, (#e#) 1, (#e#) 2, (#e#) 3, (#e#) 4, (#e#) 5);
-    }
-
-    @Test
-    public void test#ES#ComponentsConstructor() {
-        VectorN#E# vector = new VectorN#E#((#e#) 0, (#e#) 1, (#e#) 2, (#e#) 3, (#e#) 4, (#e#) 5);
+    public void testComponentsConstructor() {
+        VectorN#E# vector = new VectorN#E#(0, 1, 2, 3, 4, 5);
         TestUtil#E#.assertEquals(vector, (#e#) 0, (#e#) 1, (#e#) 2, (#e#) 3, (#e#) 4, (#e#) 5);
     }
 
@@ -190,7 +184,7 @@ public class VectorN#E#Test {
 
     @Test
     public void testRaiseTo#ES#Power() {
-        VectorN#E# vector = new VectorN#E#(2, 6, 8, 5.5f).pow((#e#) 2);
+        VectorN#E# vector = new VectorN#E#(2, 6, 8, (#e#) 5.5).pow((#e#) 2);
         TestUtil#E#.assertEquals(vector, (#e#) 4, (#e#) 36, (#e#) 64, (#e#) 25);
     }
 

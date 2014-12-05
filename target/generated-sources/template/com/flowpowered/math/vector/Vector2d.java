@@ -209,7 +209,9 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
     }
 
     public double distanceSquared(double x, double y) {
-        return (double) GenericMath.lengthSquared(this.x - x, this.y - y);
+        final double dx = this.x - x;
+        final double dy = this.y - y;
+        return dx * dx + dy * dy;
     }
 
     public double distance(Vector2d v) {
@@ -221,17 +223,17 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
     }
 
     public double distance(double x, double y) {
-        return (double) GenericMath.length(this.x - x, this.y - y);
+        return (double) Math.sqrt(distanceSquared(x, y));
     }
 
     @Override
     public double lengthSquared() {
-        return (double) GenericMath.lengthSquared(x, y);
+        return x * x + y * y;
     }
 
     @Override
     public double length() {
-        return (double) GenericMath.length(x, y);
+        return (double) Math.sqrt(lengthSquared());
     }
 
     @Override

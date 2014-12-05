@@ -44,14 +44,8 @@ public class VectorNlTest {
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
-        VectorNl vector = new VectorNl(0, 1.1, 2.2, 3.3, 4.4, 5.5);
-        TestUtill.assertEquals(vector, (long) 0, (long) 1, (long) 2, (long) 3, (long) 4, (long) 5);
-    }
-
-    @Test
-    public void testLongComponentsConstructor() {
-        VectorNl vector = new VectorNl((long) 0, (long) 1, (long) 2, (long) 3, (long) 4, (long) 5);
+    public void testComponentsConstructor() {
+        VectorNl vector = new VectorNl(0, 1, 2, 3, 4, 5);
         TestUtill.assertEquals(vector, (long) 0, (long) 1, (long) 2, (long) 3, (long) 4, (long) 5);
     }
 
@@ -190,7 +184,7 @@ public class VectorNlTest {
 
     @Test
     public void testRaiseToLongPower() {
-        VectorNl vector = new VectorNl(2, 6, 8, 5.5f).pow((long) 2);
+        VectorNl vector = new VectorNl(2, 6, 8, (long) 5.5).pow((long) 2);
         TestUtill.assertEquals(vector, (long) 4, (long) 36, (long) 64, (long) 25);
     }
 

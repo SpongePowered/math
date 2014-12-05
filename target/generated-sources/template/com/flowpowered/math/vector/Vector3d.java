@@ -242,7 +242,10 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
     }
 
     public double distanceSquared(double x, double y, double z) {
-        return (double) GenericMath.lengthSquared(this.x - x, this.y - y, this.z - z);
+        final double dx = this.x - x;
+        final double dy = this.y - y;
+        final double dz = this.z - z;
+        return dx * dx + dy * dy + dz * dz;
     }
 
     public double distance(Vector3d v) {
@@ -254,17 +257,17 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
     }
 
     public double distance(double x, double y, double z) {
-        return (double) GenericMath.length(this.x - x, this.y - y, this.z - z);
+        return (double) Math.sqrt(distanceSquared(x, y, z));
     }
 
     @Override
     public double lengthSquared() {
-        return (double) GenericMath.lengthSquared(x, y, z);
+        return x * x + y * y + z * z;
     }
 
     @Override
     public double length() {
-        return (double) GenericMath.length(x, y, z);
+        return (double) Math.sqrt(lengthSquared());
     }
 
     @Override

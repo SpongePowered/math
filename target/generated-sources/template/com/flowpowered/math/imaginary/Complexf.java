@@ -351,7 +351,7 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
      */
     @Override
     public float lengthSquared() {
-        return (float) GenericMath.lengthSquared(x, y);
+        return x * x + y * y;
     }
 
     /**
@@ -361,7 +361,7 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
      */
     @Override
     public float length() {
-        return (float) GenericMath.length(x, y);
+        return (float) Math.sqrt(lengthSquared());
     }
 
     /**

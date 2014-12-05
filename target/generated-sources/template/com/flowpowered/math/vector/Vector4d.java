@@ -244,7 +244,11 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
     }
 
     public double distanceSquared(double x, double y, double z, double w) {
-        return (double) GenericMath.lengthSquared(this.x - x, this.y - y, this.z - z, this.w - w);
+        final double dx = this.x - x;
+        final double dy = this.y - y;
+        final double dz = this.z - z;
+        final double dw = this.w - w;
+        return dx * dx + dy * dy + dz * dz + dw * dw;
     }
 
     public double distance(Vector4d v) {
@@ -256,17 +260,17 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
     }
 
     public double distance(double x, double y, double z, double w) {
-        return (double) GenericMath.length(this.x - x, this.y - y, this.z - z, this.w - w);
+        return (double) Math.sqrt(distanceSquared(x, y, z, w));
     }
 
     @Override
     public double lengthSquared() {
-        return (double) GenericMath.lengthSquared(x, y, z, w);
+        return x * x + y * y + z * z + w * w;
     }
 
     @Override
     public double length() {
-        return (double) GenericMath.length(x, y, z, w);
+        return (double) Math.sqrt(lengthSquared());
     }
 
     @Override

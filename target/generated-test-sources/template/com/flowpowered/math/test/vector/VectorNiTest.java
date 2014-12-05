@@ -44,14 +44,8 @@ public class VectorNiTest {
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
-        VectorNi vector = new VectorNi(0, 1.1, 2.2, 3.3, 4.4, 5.5);
-        TestUtili.assertEquals(vector, (int) 0, (int) 1, (int) 2, (int) 3, (int) 4, (int) 5);
-    }
-
-    @Test
-    public void testIntComponentsConstructor() {
-        VectorNi vector = new VectorNi((int) 0, (int) 1, (int) 2, (int) 3, (int) 4, (int) 5);
+    public void testComponentsConstructor() {
+        VectorNi vector = new VectorNi(0, 1, 2, 3, 4, 5);
         TestUtili.assertEquals(vector, (int) 0, (int) 1, (int) 2, (int) 3, (int) 4, (int) 5);
     }
 
@@ -190,7 +184,7 @@ public class VectorNiTest {
 
     @Test
     public void testRaiseToIntPower() {
-        VectorNi vector = new VectorNi(2, 6, 8, 5.5f).pow((int) 2);
+        VectorNi vector = new VectorNi(2, 6, 8, (int) 5.5).pow((int) 2);
         TestUtili.assertEquals(vector, (int) 4, (int) 36, (int) 64, (int) 25);
     }
 

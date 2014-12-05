@@ -418,7 +418,7 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
      */
     @Override
     public float lengthSquared() {
-        return (float) GenericMath.lengthSquared(x, y, z, w);
+        return x * x + y * y + z * z + w * w;
     }
 
     /**
@@ -428,7 +428,7 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
      */
     @Override
     public float length() {
-        return (float) GenericMath.length(x, y, z, w);
+        return (float) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -463,17 +463,17 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
         if (!(o instanceof Quaternionf)) {
             return false;
         }
-        final Quaternionf that = (Quaternionf) o;
-        if (Float.compare(that.w, w) != 0) {
+        final Quaternionf quaternion = (Quaternionf) o;
+        if (Float.compare(quaternion.w, w) != 0) {
             return false;
         }
-        if (Float.compare(that.x, x) != 0) {
+        if (Float.compare(quaternion.x, x) != 0) {
             return false;
         }
-        if (Float.compare(that.y, y) != 0) {
+        if (Float.compare(quaternion.y, y) != 0) {
             return false;
         }
-        if (Float.compare(that.z, z) != 0) {
+        if (Float.compare(quaternion.z, z) != 0) {
             return false;
         }
         return true;

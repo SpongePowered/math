@@ -39,27 +39,6 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
         vec = v.clone();
     }
 
-    public VectorNf(double... v) {
-        vec = new float[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (float) v[i];
-        }
-    }
-
-    public VectorNf(int... v) {
-        vec = new float[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (float) v[i];
-        }
-    }
-
-    public VectorNf(long... v) {
-        vec = new float[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (float) v[i];
-        }
-    }
-
     public int size() {
         return vec.length;
     }
@@ -70,6 +49,10 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
 
     public int getFloored(int comp) {
         return GenericMath.floor(get(comp));
+    }
+
+    public void set(int comp, double val) {
+        set(comp, (float) val);
     }
 
     public void set(int comp, float val) {
@@ -299,11 +282,12 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
-        final float[] d = new float[size];
+        float d = 0;
         for (int comp = 0; comp < size; comp++) {
-            d[comp] = vec[comp] - v[comp];
+            final float delta = vec[comp] - v[comp];
+            d += delta * delta;
         }
-        return lengthSquared(d);
+        return d;
     }
 
     public float distance(VectorNf v) {
@@ -311,25 +295,22 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
     }
 
     public float distance(float... v) {
-        final int size = size();
-        if (size != v.length) {
-            throw new IllegalArgumentException("Vector sizes must be the same");
-        }
-        final float[] d = new float[size];
-        for (int comp = 0; comp < size; comp++) {
-            d[comp] = vec[comp] - v[comp];
-        }
-        return length(d);
+        return (float) Math.sqrt(distanceSquared(v));
     }
 
     @Override
     public float lengthSquared() {
-        return lengthSquared(vec);
+        final int size = size();
+        float l = 0;
+        for (int comp = 0; comp < size; comp++) {
+            l += vec[comp] * vec[comp];
+        }
+        return l;
     }
 
     @Override
     public float length() {
-        return length(vec);
+        return (float) Math.sqrt(lengthSquared());
     }
 
     @Override
@@ -393,22 +374,42 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
 
     @Override
     public VectorNi toInt() {
-        return new VectorNi(vec);
+        final int size = size();
+        final int[] intVec = new int[size];
+        for (int comp = 0; comp < size; comp++) {
+            intVec[comp] = (int) vec[comp];
+        }
+        return new VectorNi(intVec);
     }
 
     @Override
     public VectorNl toLong() {
-        return new VectorNl(vec);
+        final int size = size();
+        final long[] longVec = new long[size];
+        for (int comp = 0; comp < size; comp++) {
+            longVec[comp] = (long) vec[comp];
+        }
+        return new VectorNl(longVec);
     }
 
     @Override
     public VectorNf toFloat() {
-        return new VectorNf(vec);
+        final int size = size();
+        final float[] floatVec = new float[size];
+        for (int comp = 0; comp < size; comp++) {
+            floatVec[comp] = (float) vec[comp];
+        }
+        return new VectorNf(floatVec);
     }
 
     @Override
     public VectorNd toDouble() {
-        return new VectorNd(vec);
+        final int size = size();
+        final double[] doubleVec = new double[size];
+        for (int comp = 0; comp < size; comp++) {
+            doubleVec[comp] = (double) vec[comp];
+        }
+        return new VectorNd(doubleVec);
     }
 
     @Override
@@ -440,18 +441,6 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
     @Override
     public String toString() {
         return Arrays.toString(vec).replace('[', '(').replace(']', ')');
-    }
-
-    private static float length(float... vec) {
-        return (float) Math.sqrt(lengthSquared(vec));
-    }
-
-    private static float lengthSquared(float... vec) {
-        float lengthSquared = 0;
-        for (float comp : vec) {
-            lengthSquared += comp * comp;
-        }
-        return lengthSquared;
     }
 
     private static class ImmutableZeroVectorN extends VectorNf {

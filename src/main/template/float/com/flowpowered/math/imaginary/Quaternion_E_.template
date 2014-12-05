@@ -418,7 +418,7 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
      */
     @Override
     public #e# lengthSquared() {
-        return (#e#) GenericMath.lengthSquared(x, y, z, w);
+        return x * x + y * y + z * z + w * w;
     }
 
     /**
@@ -428,7 +428,7 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
      */
     @Override
     public #e# length() {
-        return (#e#) GenericMath.length(x, y, z, w);
+        return (#e#) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -463,17 +463,17 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
         if (!(o instanceof Quaternion#E#)) {
             return false;
         }
-        final Quaternion#E# that = (Quaternion#E#) o;
-        if (#ET#.compare(that.w, w) != 0) {
+        final Quaternion#E# quaternion = (Quaternion#E#) o;
+        if (#ET#.compare(quaternion.w, w) != 0) {
             return false;
         }
-        if (#ET#.compare(that.x, x) != 0) {
+        if (#ET#.compare(quaternion.x, x) != 0) {
             return false;
         }
-        if (#ET#.compare(that.y, y) != 0) {
+        if (#ET#.compare(quaternion.y, y) != 0) {
             return false;
         }
-        if (#ET#.compare(that.z, z) != 0) {
+        if (#ET#.compare(quaternion.z, z) != 0) {
             return false;
         }
         return true;

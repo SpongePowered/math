@@ -213,7 +213,10 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public long distanceSquared(long x, long y, long z) {
-        return (long) GenericMath.lengthSquared(this.x - x, this.y - y, this.z - z);
+        final long dx = this.x - x;
+        final long dy = this.y - y;
+        final long dz = this.z - z;
+        return dx * dx + dy * dy + dz * dz;
     }
 
     public long distance(Vector3l v) {
@@ -225,17 +228,17 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public long distance(long x, long y, long z) {
-        return (long) GenericMath.length(this.x - x, this.y - y, this.z - z);
+        return (long) Math.sqrt(distanceSquared(x, y, z));
     }
 
     @Override
     public long lengthSquared() {
-        return (long) GenericMath.lengthSquared(x, y, z);
+        return x * x + y * y + z * z;
     }
 
     @Override
     public long length() {
-        return (long) GenericMath.length(x, y, z);
+        return (long) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -321,13 +324,13 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
             return false;
         }
         final Vector3l vector3 = (Vector3l) o;
-        if (Long.compare(vector3.x, x) != 0) {
+        if (vector3.x != x) {
             return false;
         }
-        if (Long.compare(vector3.y, y) != 0) {
+        if (vector3.y != y) {
             return false;
         }
-        if (Long.compare(vector3.z, z) != 0) {
+        if (vector3.z != z) {
             return false;
         }
         return true;

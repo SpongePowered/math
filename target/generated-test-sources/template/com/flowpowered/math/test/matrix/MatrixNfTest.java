@@ -512,10 +512,10 @@ public class MatrixNfTest {
     @Test
     public void testFloor() {
         MatrixNf matrix = new MatrixNf(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (float) -1.1, (float) 2.5, (float) 2.9, (float) 3.2,
+                (float) -6.3, (float) 2.2, (float) 2.1, (float) 5.6,
+                (float) -8.8, (float) 8.1, (float) 4.6, (float) 6.7,
+                (float) -1.3, (float) 1.7, (float) 7.3, (float) 7.6);
         matrix = matrix.floor();
         TestUtilf.assertEquals(matrix,
                 -2, 2, 2, 3,
@@ -527,10 +527,10 @@ public class MatrixNfTest {
     @Test
     public void testCeiling() {
         MatrixNf matrix = new MatrixNf(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (float) -1.1, (float) 2.5, (float) 2.9, (float) 3.2,
+                (float) -6.3, (float) 2.2, (float) 2.1, (float) 5.6,
+                (float) -8.8, (float) 8.1, (float) 4.6, (float) 6.7,
+                (float) -1.3, (float) 1.7, (float) 7.3, (float) 7.6);
         matrix = matrix.ceil();
         TestUtilf.assertEquals(matrix,
                 -1, 3, 3, 4,
@@ -542,10 +542,10 @@ public class MatrixNfTest {
     @Test
     public void testRound() {
         MatrixNf matrix = new MatrixNf(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (float) -1.1, (float) 2.5, (float) 2.9, (float) 3.2,
+                (float) -6.3, (float) 2.2, (float) 2.1, (float) 5.6,
+                (float) -8.8, (float) 8.1, (float) 4.6, (float) 6.7,
+                (float) -1.3, (float) 1.7, (float) 7.3, (float) 7.6);
         matrix = matrix.round();
         TestUtilf.assertEquals(matrix,
                 -1, 3, 3, 3,

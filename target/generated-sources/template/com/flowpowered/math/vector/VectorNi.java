@@ -37,27 +37,6 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         vec = v.clone();
     }
 
-    public VectorNi(double... v) {
-        vec = new int[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (int) v[i];
-        }
-    }
-
-    public VectorNi(float... v) {
-        vec = new int[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (int) v[i];
-        }
-    }
-
-    public VectorNi(long... v) {
-        vec = new int[v.length];
-        for (int i = 0; i < v.length; ++i) {
-            vec[i] = (int) v[i];
-        }
-    }
-
     public int size() {
         return vec.length;
     }
@@ -263,11 +242,12 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
-        final int[] d = new int[size];
+        int d = 0;
         for (int comp = 0; comp < size; comp++) {
-            d[comp] = (int)(vec[comp] - v[comp]);
+            final int delta = vec[comp] - v[comp];
+            d += delta * delta;
         }
-        return lengthSquared(d);
+        return d;
     }
 
     public int distance(VectorNi v) {
@@ -275,25 +255,22 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
     }
 
     public int distance(int... v) {
-        final int size = size();
-        if (size != v.length) {
-            throw new IllegalArgumentException("Vector sizes must be the same");
-        }
-        final int[] d = new int[size];
-        for (int comp = 0; comp < size; comp++) {
-            d[comp] = (int)(vec[comp] - v[comp]);
-        }
-        return length(d);
+        return (int) Math.sqrt(distanceSquared(v));
     }
 
     @Override
     public int lengthSquared() {
-        return lengthSquared(vec);
+        final int size = size();
+        int l = 0;
+        for (int comp = 0; comp < size; comp++) {
+            l += vec[comp] * vec[comp];
+        }
+        return l;
     }
 
     @Override
     public int length() {
-        return length(vec);
+        return (int) Math.sqrt(lengthSquared());
     }
 
     @Override
@@ -343,24 +320,43 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
 
     @Override
     public VectorNi toInt() {
-        return new VectorNi(vec);
+        final int size = size();
+        final int[] intVec = new int[size];
+        for (int comp = 0; comp < size; comp++) {
+            intVec[comp] = (int) vec[comp];
+        }
+        return new VectorNi(intVec);
     }
 
     @Override
     public VectorNl toLong() {
-        return new VectorNl(vec);
+        final int size = size();
+        final long[] longVec = new long[size];
+        for (int comp = 0; comp < size; comp++) {
+            longVec[comp] = (long) vec[comp];
+        }
+        return new VectorNl(longVec);
     }
 
     @Override
     public VectorNf toFloat() {
-        return new VectorNf(vec);
+        final int size = size();
+        final float[] floatVec = new float[size];
+        for (int comp = 0; comp < size; comp++) {
+            floatVec[comp] = (float) vec[comp];
+        }
+        return new VectorNf(floatVec);
     }
 
     @Override
     public VectorNd toDouble() {
-        return new VectorNd(vec);
+        final int size = size();
+        final double[] doubleVec = new double[size];
+        for (int comp = 0; comp < size; comp++) {
+            doubleVec[comp] = (double) vec[comp];
+        }
+        return new VectorNd(doubleVec);
     }
-
 
     @Override
     public int compareTo(VectorNi v) {
@@ -393,24 +389,8 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         return Arrays.toString(vec).replace('[', '(').replace(']', ')');
     }
 
-    private static int length(int... vec) {
-        return (int) Math.sqrt(lengthSquared(vec));
-    }
-
-    private static int lengthSquared(int... vec) {
-        int lengthSquared = 0;
-        for (int comp : vec) {
-            lengthSquared += (int) (comp * comp);
-        }
-        return lengthSquared;
-    }
-
     private static class ImmutableZeroVectorN extends VectorNi {
         public ImmutableZeroVectorN(int... v) {
-            super(v);
-        }
-
-        public ImmutableZeroVectorN(double... v) {
             super(v);
         }
 

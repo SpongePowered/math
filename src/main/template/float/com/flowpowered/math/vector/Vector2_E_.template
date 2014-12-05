@@ -209,7 +209,9 @@ public class Vector2#E# implements Vector#E#, Comparable<Vector2#E#>, Serializab
     }
 
     public #e# distanceSquared(#e# x, #e# y) {
-        return (#e#) GenericMath.lengthSquared(this.x - x, this.y - y);
+        final #e# dx = this.x - x;
+        final #e# dy = this.y - y;
+        return dx * dx + dy * dy;
     }
 
     public #e# distance(Vector2#E# v) {
@@ -221,17 +223,17 @@ public class Vector2#E# implements Vector#E#, Comparable<Vector2#E#>, Serializab
     }
 
     public #e# distance(#e# x, #e# y) {
-        return (#e#) GenericMath.length(this.x - x, this.y - y);
+        return (#e#) Math.sqrt(distanceSquared(x, y));
     }
 
     @Override
     public #e# lengthSquared() {
-        return (#e#) GenericMath.lengthSquared(x, y);
+        return x * x + y * y;
     }
 
     @Override
     public #e# length() {
-        return (#e#) GenericMath.length(x, y);
+        return (#e#) Math.sqrt(lengthSquared());
     }
 
     @Override

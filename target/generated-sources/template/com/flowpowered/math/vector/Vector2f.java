@@ -209,7 +209,9 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
     }
 
     public float distanceSquared(float x, float y) {
-        return (float) GenericMath.lengthSquared(this.x - x, this.y - y);
+        final float dx = this.x - x;
+        final float dy = this.y - y;
+        return dx * dx + dy * dy;
     }
 
     public float distance(Vector2f v) {
@@ -221,17 +223,17 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
     }
 
     public float distance(float x, float y) {
-        return (float) GenericMath.length(this.x - x, this.y - y);
+        return (float) Math.sqrt(distanceSquared(x, y));
     }
 
     @Override
     public float lengthSquared() {
-        return (float) GenericMath.lengthSquared(x, y);
+        return x * x + y * y;
     }
 
     @Override
     public float length() {
-        return (float) GenericMath.length(x, y);
+        return (float) Math.sqrt(lengthSquared());
     }
 
     @Override

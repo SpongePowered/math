@@ -209,7 +209,11 @@ public class Vector4l implements Vectorl, Comparable<Vector4l>, Serializable, Cl
     }
 
     public long distanceSquared(long x, long y, long z, long w) {
-        return (long) GenericMath.lengthSquared(this.x - x, this.y - y, this.z - z, this.w - w);
+        final long dx = this.x - x;
+        final long dy = this.y - y;
+        final long dz = this.z - z;
+        final long dw = this.w - w;
+        return dx * dx + dy * dy + dz * dz + dw * dw;
     }
 
     public long distance(Vector4l v) {
@@ -221,17 +225,17 @@ public class Vector4l implements Vectorl, Comparable<Vector4l>, Serializable, Cl
     }
 
     public long distance(long x, long y, long z, long w) {
-        return (long) GenericMath.length(this.x - x, this.y - y, this.z - z, this.w - w);
+        return (long) Math.sqrt(distanceSquared(x, y, z, w));
     }
 
     @Override
     public long lengthSquared() {
-        return (long) GenericMath.lengthSquared(x, y, z, w);
+        return x * x + y * y + z * z + w * w;
     }
 
     @Override
     public long length() {
-        return (long) GenericMath.length(x, y, z, w);
+        return (long) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -332,16 +336,16 @@ public class Vector4l implements Vectorl, Comparable<Vector4l>, Serializable, Cl
             return false;
         }
         final Vector4l vector4 = (Vector4l) o;
-        if (Long.compare(vector4.w, w) != 0) {
+        if (vector4.x != x) {
             return false;
         }
-        if (Long.compare(vector4.x, x) != 0) {
+        if (vector4.y != y) {
             return false;
         }
-        if (Long.compare(vector4.y, y) != 0) {
+        if (vector4.z != z) {
             return false;
         }
-        if (Long.compare(vector4.z, z) != 0) {
+        if (vector4.w != w) {
             return false;
         }
         return true;

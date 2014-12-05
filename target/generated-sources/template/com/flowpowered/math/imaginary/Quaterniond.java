@@ -418,7 +418,7 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
      */
     @Override
     public double lengthSquared() {
-        return (double) GenericMath.lengthSquared(x, y, z, w);
+        return x * x + y * y + z * z + w * w;
     }
 
     /**
@@ -428,7 +428,7 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
      */
     @Override
     public double length() {
-        return (double) GenericMath.length(x, y, z, w);
+        return (double) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -463,17 +463,17 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
         if (!(o instanceof Quaterniond)) {
             return false;
         }
-        final Quaterniond that = (Quaterniond) o;
-        if (Double.compare(that.w, w) != 0) {
+        final Quaterniond quaternion = (Quaterniond) o;
+        if (Double.compare(quaternion.w, w) != 0) {
             return false;
         }
-        if (Double.compare(that.x, x) != 0) {
+        if (Double.compare(quaternion.x, x) != 0) {
             return false;
         }
-        if (Double.compare(that.y, y) != 0) {
+        if (Double.compare(quaternion.y, y) != 0) {
             return false;
         }
-        if (Double.compare(that.z, z) != 0) {
+        if (Double.compare(quaternion.z, z) != 0) {
             return false;
         }
         return true;

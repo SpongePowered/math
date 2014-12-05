@@ -209,7 +209,11 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public int distanceSquared(int x, int y, int z, int w) {
-        return (int) GenericMath.lengthSquared(this.x - x, this.y - y, this.z - z, this.w - w);
+        final int dx = this.x - x;
+        final int dy = this.y - y;
+        final int dz = this.z - z;
+        final int dw = this.w - w;
+        return dx * dx + dy * dy + dz * dz + dw * dw;
     }
 
     public int distance(Vector4i v) {
@@ -221,17 +225,17 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public int distance(int x, int y, int z, int w) {
-        return (int) GenericMath.length(this.x - x, this.y - y, this.z - z, this.w - w);
+        return (int) Math.sqrt(distanceSquared(x, y, z, w));
     }
 
     @Override
     public int lengthSquared() {
-        return (int) GenericMath.lengthSquared(x, y, z, w);
+        return x * x + y * y + z * z + w * w;
     }
 
     @Override
     public int length() {
-        return (int) GenericMath.length(x, y, z, w);
+        return (int) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -332,16 +336,16 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
             return false;
         }
         final Vector4i vector4 = (Vector4i) o;
-        if (Integer.compare(vector4.w, w) != 0) {
+        if (vector4.x != x) {
             return false;
         }
-        if (Integer.compare(vector4.x, x) != 0) {
+        if (vector4.y != y) {
             return false;
         }
-        if (Integer.compare(vector4.y, y) != 0) {
+        if (vector4.z != z) {
             return false;
         }
-        if (Integer.compare(vector4.z, z) != 0) {
+        if (vector4.w != w) {
             return false;
         }
         return true;

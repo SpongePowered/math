@@ -512,10 +512,10 @@ public class MatrixN#E#Test {
     @Test
     public void testFloor() {
         MatrixN#E# matrix = new MatrixN#E#(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (#e#) -1.1, (#e#) 2.5, (#e#) 2.9, (#e#) 3.2,
+                (#e#) -6.3, (#e#) 2.2, (#e#) 2.1, (#e#) 5.6,
+                (#e#) -8.8, (#e#) 8.1, (#e#) 4.6, (#e#) 6.7,
+                (#e#) -1.3, (#e#) 1.7, (#e#) 7.3, (#e#) 7.6);
         matrix = matrix.floor();
         TestUtil#E#.assertEquals(matrix,
                 -2, 2, 2, 3,
@@ -527,10 +527,10 @@ public class MatrixN#E#Test {
     @Test
     public void testCeiling() {
         MatrixN#E# matrix = new MatrixN#E#(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (#e#) -1.1, (#e#) 2.5, (#e#) 2.9, (#e#) 3.2,
+                (#e#) -6.3, (#e#) 2.2, (#e#) 2.1, (#e#) 5.6,
+                (#e#) -8.8, (#e#) 8.1, (#e#) 4.6, (#e#) 6.7,
+                (#e#) -1.3, (#e#) 1.7, (#e#) 7.3, (#e#) 7.6);
         matrix = matrix.ceil();
         TestUtil#E#.assertEquals(matrix,
                 -1, 3, 3, 4,
@@ -542,10 +542,10 @@ public class MatrixN#E#Test {
     @Test
     public void testRound() {
         MatrixN#E# matrix = new MatrixN#E#(
-                -1.1, 2.5, 2.9, 3.2,
-                -6.3, 2.2, 2.1, 5.6,
-                -8.8, 8.1, 4.6, 6.7,
-                -1.3, 1.7, 7.3, 7.6);
+                (#e#) -1.1, (#e#) 2.5, (#e#) 2.9, (#e#) 3.2,
+                (#e#) -6.3, (#e#) 2.2, (#e#) 2.1, (#e#) 5.6,
+                (#e#) -8.8, (#e#) 8.1, (#e#) 4.6, (#e#) 6.7,
+                (#e#) -1.3, (#e#) 1.7, (#e#) 7.3, (#e#) 7.6);
         matrix = matrix.round();
         TestUtil#E#.assertEquals(matrix,
                 -1, 3, 3, 3,

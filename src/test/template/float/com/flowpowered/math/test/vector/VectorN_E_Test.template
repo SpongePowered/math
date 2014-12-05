@@ -45,26 +45,20 @@ public class VectorN#E#Test {
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+    public void testComponentsConstructor() {
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5);
         TestUtil#E#.assertEquals(vector, 0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5);
     }
 
     @Test
-    public void testFloatComponentsConstructor() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1f, 2.2f, 3.3f, 4.4f, 5.5f);
-        TestUtil#E#.assertEquals(vector, 0, 1.1f, 2.2f, 3.3f, 4.4f, 5.5f);
-    }
-
-    @Test
     public void testSize() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5);
         assertEquals(vector.size(), 6);
     }
 
     @Test
     public void testGetter() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5);
         TestUtil#E#.assertEquals(vector.get(0), 0);
         TestUtil#E#.assertEquals(vector.get(1), (#e#) 1.1);
         TestUtil#E#.assertEquals(vector.get(2), (#e#) 2.2);
@@ -75,7 +69,7 @@ public class VectorN#E#Test {
 
     @Test
     public void testFlooredGetter() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5, -6.6);
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5, (#e#) -6.6);
         TestUtil#E#.assertEquals(vector.getFloored(0), 0);
         TestUtil#E#.assertEquals(vector.getFloored(1), 1);
         TestUtil#E#.assertEquals(vector.getFloored(2), 2);
@@ -87,14 +81,14 @@ public class VectorN#E#Test {
 
     @Test
     public void testSetter#ES#Value() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5);
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5);
         vector.set(0, (#e#) 6.6);
         TestUtil#E#.assertEquals(vector.get(0), (#e#) 6.6);
     }
 
     @Test
     public void testSetZero() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2);
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2);
         vector.setZero();
         TestUtil#E#.assertEquals(vector.get(0), 0);
         TestUtil#E#.assertEquals(vector.get(1), 0);
@@ -103,10 +97,10 @@ public class VectorN#E#Test {
 
     @Test
     public void testResize() {
-        VectorN#E# vector1 = new VectorN#E#(0, 1.1, 2.2);
+        VectorN#E# vector1 = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2);
         VectorN#E# resize1 = vector1.resize(2);
         TestUtil#E#.assertEquals(resize1.size(), 2);
-        VectorN#E# vector2 = new VectorN#E#(0, 1.1, 2.2);
+        VectorN#E# vector2 = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2);
         VectorN#E# resize2 = vector2.resize(4);
         TestUtil#E#.assertEquals(resize2.size(), 4);
         TestUtil#E#.assertEquals(resize2.get(3), 0);
@@ -114,49 +108,37 @@ public class VectorN#E#Test {
 
     @Test
     public void testVectorNAddition() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5).add(new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5));
-        TestUtil#E#.assertEquals(vector, 0, (#e#) 2.2, (#e#) 4.4, (#e#) 6.6, (#e#) 8.8, 11);
-    }
-
-    @Test
-    public void test#ES#ComponentsAddition() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5).add(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5);
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5).add(new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5));
         TestUtil#E#.assertEquals(vector, 0, (#e#) 2.2, (#e#) 4.4, (#e#) 6.6, (#e#) 8.8, 11);
     }
 
     @Test
     public void testVectorNSubtraction() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5).sub(new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5));
-        TestUtil#E#.assertEquals(vector, 0, 0, 0, 0, 0, 0);
-    }
-
-    @Test
-    public void test#ES#ComponentsSubtraction() {
-        VectorN#E# vector = new VectorN#E#(0, 1.1, 2.2, 3.3, 4.4, 5.5).sub(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5);
+        VectorN#E# vector = new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5).sub(new VectorN#E#(0, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5));
         TestUtil#E#.assertEquals(vector, 0, 0, 0, 0, 0, 0);
     }
 
     @Test
     public void testDoubleFactorMultiplication() {
-        VectorN#E# vector = new VectorN#E#(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2d);
+        VectorN#E# vector = new VectorN#E#((#e#) 0.1, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5).mul(2d);
         TestUtil#E#.assertEquals(vector, (#e#) 0.2, (#e#) 2.2, (#e#) 4.4, (#e#) 6.6, (#e#) 8.8, 11);
     }
 
     @Test
     public void testFloatFactorMultiplication() {
-        VectorN#E# vector = new VectorN#E#(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2);
+        VectorN#E# vector = new VectorN#E#((#e#) 0.1, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5).mul(2);
         TestUtil#E#.assertEquals(vector, 0.2f, 2.2f, (#e#) 4.4, (#e#) 6.6, (#e#) 8.8, 11f);
     }
 
     @Test
     public void testVectorNMultiplication() {
-        VectorN#E# vector = new VectorN#E#(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(new VectorN#E#(1, 2, 3, 4, 5, 6));
+        VectorN#E# vector = new VectorN#E#((#e#) 0.1, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5).mul(new VectorN#E#(1, 2, 3, 4, 5, 6));
         TestUtil#E#.assertEquals(vector, (#e#) 0.1, (#e#) 2.2, (#e#) 6.6, (#e#) 13.2, 22, 33);
     }
 
     @Test
     public void test#ES#ComponentsMultiplication() {
-        VectorN#E# vector = new VectorN#E#(0.1, 1.1, 2.2, 3.3, 4.4, 5.5).mul(2, 2, 3, 3, 4, 4);
+        VectorN#E# vector = new VectorN#E#((#e#) 0.1, (#e#) 1.1, (#e#) 2.2, (#e#) 3.3, (#e#) 4.4, (#e#) 5.5).mul(2, 2, 3, 3, 4, 4);
         TestUtil#E#.assertEquals(vector, (#e#) 0.2, (#e#) 2.2, (#e#) 6.6, (#e#) 9.9, (#e#) 17.6, 22);
     }
 
@@ -198,45 +180,45 @@ public class VectorN#E#Test {
 
     @Test
     public void testRaiseToDoublePower() {
-        VectorN#E# vector = new VectorN#E#(2, 6, 8, 5.5).pow(2d);
+        VectorN#E# vector = new VectorN#E#(2, 6, 8, (#e#) 5.5).pow(2d);
         TestUtil#E#.assertEquals(vector, 4, 36, 64, (#e#) 30.25);
     }
 
     @Test
     public void testRaiseToFloatPower() {
-        VectorN#E# vector = new VectorN#E#(2, 6, 8, 5.5f).pow(2);
+        VectorN#E# vector = new VectorN#E#(2, 6, 8, (#e#) 5.5).pow(2);
         TestUtil#E#.assertEquals(vector, 4, 36, 64, 30.25f);
     }
 
     @Test
     public void testCeiling() {
-        VectorN#E# vector = new VectorN#E#(2.5, 6.7, 7.9, 8.1).ceil();
+        VectorN#E# vector = new VectorN#E#((#e#) 2.5, (#e#) 6.7, (#e#) 7.9, (#e#) 8.1).ceil();
         TestUtil#E#.assertEquals(vector, 3, 7, 8, 9);
     }
 
     @Test
     public void testFloor() {
-        VectorN#E# vector = new VectorN#E#(2.5, 6.7, 7.8, 9.1).floor();
+        VectorN#E# vector = new VectorN#E#((#e#) 2.5, (#e#) 6.7, (#e#) 7.8, (#e#) 9.1).floor();
         TestUtil#E#.assertEquals(vector, 2, 6, 7, 9);
     }
 
     @Test
     public void testRound() {
-        VectorN#E# vector = new VectorN#E#(2.2, 6.7, 7.8, 9.1).round();
+        VectorN#E# vector = new VectorN#E#((#e#) 2.2, (#e#) 6.7, (#e#) 7.8, (#e#) 9.1).round();
         TestUtil#E#.assertEquals(vector, 2, 7, 8, 9);
     }
 
     @Test
     public void testAbsolute() {
-        VectorN#E# vector1 = new VectorN#E#(-2.5, -6.7, -55, 0).abs();
+        VectorN#E# vector1 = new VectorN#E#((#e#) -2.5, (#e#) -6.7, (#e#) -55, 0).abs();
         TestUtil#E#.assertEquals(vector1, (#e#) 2.5, (#e#) 6.7, 55, 0);
-        VectorN#E# vector2 = new VectorN#E#(2.5, 6.7, 55, 0).abs();
+        VectorN#E# vector2 = new VectorN#E#((#e#) 2.5, (#e#) 6.7, 55, 0).abs();
         TestUtil#E#.assertEquals(vector2, (#e#) 2.5, (#e#) 6.7, 55, 0);
     }
 
     @Test
     public void testNegate() {
-        VectorN#E# vector = new VectorN#E#(2.2, -6.7, 15.8, 20).negate();
+        VectorN#E# vector = new VectorN#E#((#e#) 2.2, (#e#) -6.7, (#e#) 15.8, 20).negate();
         TestUtil#E#.assertEquals(vector, (#e#) -2.2, (#e#) 6.7, (#e#) -15.8, -20);
     }
 
@@ -369,7 +351,7 @@ public class VectorN#E#Test {
         Assert.assertTrue(c2 == 0);
         int c3 = new VectorN#E#(10, 20, 30, 40).compareTo(new VectorN#E#(10, 10, 30, 40));
         Assert.assertTrue(c3 > 0);
-        int c4 = new VectorN#E#(0.2, 0.2, 0.2, 0.2).compareTo(new VectorN#E#(0.1, 0.1, 0.1, 0.1));
+        int c4 = new VectorN#E#((#e#) 0.2, (#e#) 0.2, (#e#) 0.2, (#e#) 0.2).compareTo(new VectorN#E#((#e#) 0.1, (#e#) 0.1, (#e#) 0.1, (#e#) 0.1));
         Assert.assertTrue(c4 > 0);
     }
 

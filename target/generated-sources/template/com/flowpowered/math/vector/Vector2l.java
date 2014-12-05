@@ -185,7 +185,9 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public long distanceSquared(long x, long y) {
-        return (long) GenericMath.lengthSquared(this.x - x, this.y - y);
+        final long dx = this.x - x;
+        final long dy = this.y - y;
+        return dx * dx + dy * dy;
     }
 
     public long distance(Vector2l v) {
@@ -197,17 +199,17 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public long distance(long x, long y) {
-        return (long) GenericMath.length(this.x - x, this.y - y);
+        return (long) Math.sqrt(distanceSquared(x, y));
     }
 
     @Override
     public long lengthSquared() {
-        return (long) GenericMath.lengthSquared(x, y);
+        return x * x + y * y;
     }
 
     @Override
     public long length() {
-        return (long) GenericMath.length(x, y);
+        return (long) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -297,10 +299,10 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
             return false;
         }
         final Vector2l vector2 = (Vector2l) o;
-        if (Long.compare(vector2.x, x) != 0) {
+        if (vector2.x != x) {
             return false;
         }
-        if (Long.compare(vector2.y, y) != 0) {
+        if (vector2.y != y) {
             return false;
         }
         return true;

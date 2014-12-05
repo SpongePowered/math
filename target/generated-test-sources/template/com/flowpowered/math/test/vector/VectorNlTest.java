@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.test.TestUtill;
 import com.flowpowered.math.test.TestUtili;
+import com.flowpowered.math.test.TestUtill;
 import com.flowpowered.math.vector.Vector2l;
 import com.flowpowered.math.vector.Vector3l;
 import com.flowpowered.math.vector.Vector4l;
@@ -302,6 +302,18 @@ public class VectorNlTest {
     public void testConvertToVector4() {
         VectorNl vector = new VectorNl(1, 2, 3, 4);
         TestUtill.assertEquals(vector.toVector4(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorInteger() {
+        VectorNl vector = new VectorNl(1, 2, 3, 4);
+        TestUtili.assertEquals(vector.toInt(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorLong() {
+        VectorNl vector = new VectorNl(1, 2, 3, 4);
+        TestUtill.assertEquals(vector.toLong(), 1, 2, 3, 4);
     }
 
     @Test

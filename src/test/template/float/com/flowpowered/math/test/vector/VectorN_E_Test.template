@@ -7,7 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.TrigMath;
-import com.flowpowered.math.test.TestUtil#E#;
+import com.flowpowered.math.test.TestUtilf;
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
 import com.flowpowered.math.vector.Vector4#E#;
@@ -335,6 +336,18 @@ public class VectorN#E#Test {
     public void testConvertToVector4() {
         VectorN#E# vector = new VectorN#E#(1, 2, 3, 4);
         TestUtil#E#.assertEquals(vector.toVector4(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorFloat() {
+        VectorN#E# vector = new VectorN#E#(1, 2, 3, 4);
+        TestUtilf.assertEquals(vector.toFloat(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorDouble() {
+        VectorN#E# vector = new VectorN#E#(1, 2, 3, 4);
+        TestUtild.assertEquals(vector.toDouble(), 1, 2, 3, 4);
     }
 
     @Test

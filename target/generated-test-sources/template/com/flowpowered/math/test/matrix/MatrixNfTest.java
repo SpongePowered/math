@@ -13,7 +13,9 @@ import com.flowpowered.math.matrix.Matrix2f;
 import com.flowpowered.math.matrix.Matrix3f;
 import com.flowpowered.math.matrix.Matrix4f;
 import com.flowpowered.math.matrix.MatrixNf;
+import com.flowpowered.math.matrix.MatrixNd;
 import com.flowpowered.math.test.TestUtilf;
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.VectorNf;
 
 public class MatrixNfTest {
@@ -695,6 +697,36 @@ public class MatrixNfTest {
                 0, 0, 0, 4);
         Matrix4f matrix4 = matrix.toMatrix4();
         TestUtilf.assertEquals(matrix4,
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+    }
+
+    @Test
+    public void testConvertToMatrixf() {
+        MatrixNf matrix = new MatrixNf(
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+        MatrixNf matrixN = matrix.toFloat();
+        TestUtilf.assertEquals(matrixN,
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+    }
+
+    @Test
+    public void testConvertToMatrixd() {
+        MatrixNf matrix = new MatrixNf(
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+        MatrixNd matrixN = matrix.toDouble();
+        TestUtild.assertEquals(matrixN,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,

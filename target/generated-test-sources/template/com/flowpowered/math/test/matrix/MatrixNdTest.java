@@ -12,7 +12,9 @@ import com.flowpowered.math.imaginary.Quaterniond;
 import com.flowpowered.math.matrix.Matrix2d;
 import com.flowpowered.math.matrix.Matrix3d;
 import com.flowpowered.math.matrix.Matrix4d;
+import com.flowpowered.math.matrix.MatrixNf;
 import com.flowpowered.math.matrix.MatrixNd;
+import com.flowpowered.math.test.TestUtilf;
 import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.VectorNd;
 
@@ -695,6 +697,36 @@ public class MatrixNdTest {
                 0, 0, 0, 4);
         Matrix4d matrix4 = matrix.toMatrix4();
         TestUtild.assertEquals(matrix4,
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+    }
+
+    @Test
+    public void testConvertToMatrixf() {
+        MatrixNd matrix = new MatrixNd(
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+        MatrixNf matrixN = matrix.toFloat();
+        TestUtilf.assertEquals(matrixN,
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+    }
+
+    @Test
+    public void testConvertToMatrixd() {
+        MatrixNd matrix = new MatrixNd(
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+        MatrixNd matrixN = matrix.toDouble();
+        TestUtild.assertEquals(matrixN,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,

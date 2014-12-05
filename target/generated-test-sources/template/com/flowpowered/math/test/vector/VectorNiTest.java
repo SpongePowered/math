@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtili;
-import com.flowpowered.math.test.TestUtili;
+import com.flowpowered.math.test.TestUtill;
 import com.flowpowered.math.vector.Vector2i;
 import com.flowpowered.math.vector.Vector3i;
 import com.flowpowered.math.vector.Vector4i;
@@ -302,6 +302,18 @@ public class VectorNiTest {
     public void testConvertToVector4() {
         VectorNi vector = new VectorNi(1, 2, 3, 4);
         TestUtili.assertEquals(vector.toVector4(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorInteger() {
+        VectorNi vector = new VectorNi(1, 2, 3, 4);
+        TestUtili.assertEquals(vector.toInt(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorLong() {
+        VectorNi vector = new VectorNi(1, 2, 3, 4);
+        TestUtill.assertEquals(vector.toLong(), 1, 2, 3, 4);
     }
 
     @Test

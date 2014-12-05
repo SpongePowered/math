@@ -12,8 +12,10 @@ import com.flowpowered.math.imaginary.Quaternion#E#;
 import com.flowpowered.math.matrix.Matrix2#E#;
 import com.flowpowered.math.matrix.Matrix3#E#;
 import com.flowpowered.math.matrix.Matrix4#E#;
-import com.flowpowered.math.matrix.MatrixN#E#;
-import com.flowpowered.math.test.TestUtil#E#;
+import com.flowpowered.math.matrix.MatrixNf;
+import com.flowpowered.math.matrix.MatrixNd;
+import com.flowpowered.math.test.TestUtilf;
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.VectorN#E#;
 
 public class MatrixN#E#Test {
@@ -695,6 +697,36 @@ public class MatrixN#E#Test {
                 0, 0, 0, 4);
         Matrix4#E# matrix4 = matrix.toMatrix4();
         TestUtil#E#.assertEquals(matrix4,
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+    }
+
+    @Test
+    public void testConvertToMatrixf() {
+        MatrixN#E# matrix = new MatrixN#E#(
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+        MatrixNf matrixN = matrix.toFloat();
+        TestUtilf.assertEquals(matrixN,
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+    }
+
+    @Test
+    public void testConvertToMatrixd() {
+        MatrixN#E# matrix = new MatrixN#E#(
+                1, 0, 0, 0,
+                0, 2, 0, 0,
+                0, 0, 3, 0,
+                0, 0, 0, 4);
+        MatrixNd matrixN = matrix.toDouble();
+        TestUtild.assertEquals(matrixN,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,

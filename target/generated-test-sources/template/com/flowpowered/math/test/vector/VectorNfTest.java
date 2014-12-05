@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.test.TestUtilf;
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.Vector2f;
 import com.flowpowered.math.vector.Vector3f;
 import com.flowpowered.math.vector.Vector4f;
@@ -335,6 +336,18 @@ public class VectorNfTest {
     public void testConvertToVector4() {
         VectorNf vector = new VectorNf(1, 2, 3, 4);
         TestUtilf.assertEquals(vector.toVector4(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorFloat() {
+        VectorNf vector = new VectorNf(1, 2, 3, 4);
+        TestUtilf.assertEquals(vector.toFloat(), 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testConvertToVectorDouble() {
+        VectorNf vector = new VectorNf(1, 2, 3, 4);
+        TestUtild.assertEquals(vector.toDouble(), 1, 2, 3, 4);
     }
 
     @Test

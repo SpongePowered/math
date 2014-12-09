@@ -1,7 +1,7 @@
 /*
  * This file is part of Flow Math, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2013 Spout LLC <https://spout.org/>
+ * Copyright (c) 2013 Flow Powered <https://flowpowered.com/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,9 @@
  */
 package com.flowpowered.math.test;
 
-import com.flowpowered.math.TrigMath;
-
 import org.junit.Test;
+
+import com.flowpowered.math.TrigMath;
 
 import static org.junit.Assert.assertTrue;
 

@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project information -->
@@ -8,8 +9,8 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <inceptionYear>2013</inceptionYear>
-    <url>http://flowpowered.com</url>
-    <description>Immutable math library for the Flow collection.</description>
+    <url>https://flowpowered.com</url>
+    <description>Immutable math library for Java with a focus on games and computer graphics.</description>
 
     <!-- Parent information -->
     <parent>
@@ -30,19 +31,24 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://tldrlegal.com/license/mit-license</url>
+            <url>https://tldrlegal.com/l/mit</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <!-- Organization information -->
     <organization>
-        <name>Spout LLC</name>
-        <url>https://spout.org</url>
+        <name>Flow Powered</name>
+        <url>https://flowpowered.com</url>
     </organization>
 
     <!-- Project developers -->
     <developers>
+        <developer>
+            <id>DDoS</id>
+            <name>Aleksi Sapon</name>
+            <email>qctechs@gmail.com</email>
+        </developer>
         <developer>
             <id>kitskub</id>
             <name>Jack Huey</name>
@@ -62,54 +68,22 @@
 
     <!-- Source code access -->
     <scm>
-        <connection>scm:git:git://github.com/flow/flow-math.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:flow/flow-math.git</developerConnection>
-        <url>https://github.com/flow/flow-math</url>
+        <connection>scm:git:git://github.com/flow/math.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:flow/math.git</developerConnection>
+        <url>https://github.com/flow/math</url>
     </scm>
 
     <!-- Continuous integration -->
     <ciManagement>
         <system>travis</system>
-        <url>https://travis-ci.org/flow/flow-math</url>
+        <url>https://travis-ci.org/flow/math</url>
     </ciManagement>
 
     <!-- Issue management -->
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/flow/flow-math/issues</url>
+        <url>https://github.com/flow/math/issues</url>
     </issueManagement>
-
-    <!-- Dependency repositories -->
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-releases</id>
-            <url>https://oss.sonatype.org/content/repositories/releases</url>
-        </repository>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <!-- Build plugin repositories -->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-nexus-releases</id>
-            <url>https://oss.sonatype.org/content/repositories/releases</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 
     <!-- Project dependencies -->
     <dependencies>
@@ -182,7 +156,7 @@
             <plugin>
                 <groupId>com.github.wolf480pl.maven-plugins</groupId>
                 <artifactId>template-maven-plugin</artifactId>
-                <version>1.0.1-SNAPSHOT</version>
+                <version>1.0.1</version>
                 <executions>
                     <execution>
                         <id>generatei</id>
@@ -316,7 +290,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.2</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -347,7 +321,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>2.10.1</version>
                 <configuration>
                     <author>false</author>
                     <version>false</version>
@@ -357,7 +331,7 @@
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
-                <version>2.2.0</version>
+                <version>3.0.1</version>
                 <configuration>
                     <sourceDirectories>
                         <sourceDirectory>src/main/java</sourceDirectory>

@@ -1,7 +1,5 @@
 package com.flowpowered.math.test.matrix;
 
-import static com.flowpowered.math.test.TestUtilf.SQRT13;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,6 +12,8 @@ import com.flowpowered.math.matrix.MatrixNf;
 import com.flowpowered.math.test.TestUtilf;
 import com.flowpowered.math.vector.Vector3f;
 import com.flowpowered.math.vector.Vector4f;
+
+import static com.flowpowered.math.test.TestUtilf.SQRT13;
 
 public class Matrix4fTest {
     @Test

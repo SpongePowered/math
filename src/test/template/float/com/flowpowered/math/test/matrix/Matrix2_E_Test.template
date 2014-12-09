@@ -1,7 +1,5 @@
 package com.flowpowered.math.test.matrix;
 
-import static com.flowpowered.math.test.TestUtil#E#.SQRT13;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,6 +10,8 @@ import com.flowpowered.math.matrix.Matrix4#E#;
 import com.flowpowered.math.matrix.MatrixN#E#;
 import com.flowpowered.math.test.TestUtil#E#;
 import com.flowpowered.math.vector.Vector2#E#;
+
+import static com.flowpowered.math.test.TestUtil#E#.SQRT13;
 
 public class Matrix2#E#Test {
     @Test

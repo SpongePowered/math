@@ -1,7 +1,7 @@
 /*
  * This file is part of Flow Math, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2013 Spout LLC <https://spout.org/>
+ * Copyright (c) 2013 Flow Powered <https://flowpowered.com/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,15 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-// Copyright (c) 1999 CERN - European Organization for Nuclear Research.
-
-// Permission to use, copy, modify, distribute and sell this software and
-// its documentation for any purpose is hereby granted without fee,
-// provided that the above copyright notice appear in all copies and that
-// both that copyright notice and this permission notice appear in
-// supporting documentation. CERN makes no representations about the
-// suitability of this software for any purpose. It is provided "as is"
-// without expressed or implied warranty.
+/* Copyright (c) 1999 CERN - European Organization for Nuclear Research.
+ *
+ * Permission to use, copy, modify, distribute and sell this software and
+ * its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and that
+ * both that copyright notice and this permission notice appear in
+ * supporting documentation. CERN makes no representations about the
+ * suitability of this software for any purpose. It is provided "as is"
+ * without expressed or implied warranty.
+ */
 package com.flowpowered.math;
 
 /**
@@ -50,8 +51,7 @@ public final class HashFunctions {
         long bits = Double.doubleToLongBits(value);
         return (int) (bits ^ (bits >>> 32));
         //return (int) Double.doubleToLongBits(value*663608941.737);
-        //this avoids excessive hashCollisions in the case values are
-        //of the form (1.0, 2.0, 3.0, ...)
+        // This avoids excessive hashCollisions in the case values are of the form (1.0, 2.0, 3.0, ...)
     }
 
     /**
@@ -63,8 +63,7 @@ public final class HashFunctions {
         assert !Float.isNaN(value) : "Values of NaN are not supported.";
 
         return Float.floatToIntBits(value * 663608941.737f);
-        // this avoids excessive hashCollisions in the case values are
-        // of the form (1.0, 2.0, 3.0, ...)
+        // This avoids excessive hashCollisions in the case values are of the form (1.0, 2.0, 3.0, ...)
     }
 
     /**

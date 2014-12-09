@@ -2,8 +2,10 @@
 defaultTasks 'clean', 'licenseFormat', 'build', 'install'
 
 // Apply plugins
-apply plugin: 'cobertura'
-apply plugin: 'coveralls'
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+apply plugin: 'cobertura' // Coveralls dependency
+apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'license'
 apply plugin: 'maven'
 apply plugin: 'signing'
@@ -15,8 +17,8 @@ archivesBaseName = 'flow-math'
 version = '0.1.0-SNAPSHOT'
 ext.packaging = 'jar'
 ext.inceptionYear = '2013'
-ext.url = 'http://flowpowered.com'
-ext.description = 'Immutable math library for the Flow collection.'
+ext.url = 'https://flowpowered.com'
+ext.description = 'Immutable math library for Java with a focus on games and computer graphics.'
 
 // Organization information
 ext.organization = 'Flow Powered'
@@ -38,9 +40,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.9.0'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.5.0'
-        classpath 'net.saliman:gradle-cobertura-plugin:2.2.4' // Coveralls plugin dependency
+        classpath 'net.saliman:gradle-cobertura-plugin:2.2.5' // Coveralls dependency
+        classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.10.0'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
     }
 }
 
@@ -56,7 +58,7 @@ repositories {
 
 // Project dependencies
 dependencies {
-    testCompile 'junit:junit:4.11'
+    testCompile 'junit:junit:4.12'
 }
 
 // Filter, process, and include resources
@@ -156,15 +158,15 @@ uploadArchives {
             description project.ext.description
 
             scm {
-                connection 'scm:git:git://github.com/flow/flow-math.git'
-                developerConnection 'scm:git:ssh://git@github.com:flow/flow-math.git'
-                url 'https://github.com/flow/flow-math'
+                connection 'scm:git:git://github.com/flow/math.git'
+                developerConnection 'scm:git:ssh://git@github.com:flow/math.git'
+                url 'https://github.com/flow/math'
             }
 
             licenses {
                 license {
                     name 'MIT License'
-                    url 'https://tldrlegal.com/license/mit-license'
+                    url 'https://tldrlegal.com/l/mit'
                     distribution 'repo'
                 }
             }
@@ -175,6 +177,11 @@ uploadArchives {
             }
 
             developers {
+                developer {
+                    id 'DDoS'
+                    name 'Aleksi Sapon'
+                    email 'qctechs@gmail.com'
+                }
                 developer {
                     id 'kitskub'
                     name 'Jack Huey'

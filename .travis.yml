@@ -8,10 +8,23 @@ script: mvn package -DbuildNumber=$TRAVIS_BUILD_NUMBER -DciSystem=travis -Dcommi
 
 # Perform steps after compilation/test success
 after_success:
-  # Get files for use with build, namely the custom Maven settings.xml
-  - "git clone https://github.com/flow/travis-ci-resources.git target/travis"
-  # Check if commit is not a pull request, if repo is official, and branch is master, generate and deploy artifacts and reports
-  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/flow-math ]] && [[ $TRAVIS_BRANCH == master ]] && mvn javadoc:jar source:jar cobertura:cobertura coveralls:cobertura -DserviceJobId=$TRAVIS_JOB_ID deploy --settings target/travis/settings.xml"
+  # Get files for use with build, namely the custom Maven settings.xml and scripts
+  - "git clone https://github.com/flow/travis-ci-resources.git $HOME/build/flow/travis"
+  # Generate Javadocs and source artifacts and reports
+  - "mvn javadoc:jar source:jar cobertura:cobertura coveralls:report -DserviceJobId=$TRAVIS_JOB_ID"
+  # SNAPSHOTS: Check if commit is not a pull request, if repo is official, if branch is not master; then generate, sign, and deploy artifacts and reports
+  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/math ]] && [[ $TRAVIS_BRANCH != master ]] && mvn deploy --settings $HOME/build/flow/travis/settings.xml"
+  # RELEASES: Check if commit is not a pull request, if repo is official, if branch is master; then run deployment script
+  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/math ]] && [[ $TRAVIS_BRANCH == master ]] && $HOME/build/flow/travis/deploy.sh"
+
+# RELEASES: Deploy main JAR to GitHub Releases
+deploy:
+  provider: releases
+  api-key: $GITHUB_TOKEN
+  file: "target/flow-math-`cat version.txt`.jar"
+  skip_cleanup: true
+  on:
+    branch: master
 
 # Notification services
 notifications:
@@ -27,5 +40,7 @@ env:
     # Make the log output cleaner
     - TERM=dumb
     # Super secure, encrypted variables! Ssssh!
-    - secure: "CygQI161DxLVVz5BbL+tX4w3IGQJu9rtnbUwBh1QSgO9KbIGOj/m2rA5oZTJ8QUnVL9O/7OgR4YlPbOCRllduhMdLo4e49iHo6EoPuyAMV0SS2PH+gWxBF9rvtz3Xr2p2vY9qICLWOTao722H1qU3g7Dy+9LfH8TvPwM9xLfUKc="
-    - secure: "Jg5uMxCjqT/Xyp9X/p93qDkKK4ZqQYJpip1csgBN/1NGi/qD/tnuhspwSt0CS9Jy9LDbRZvKX+UabZG2MM6cPay3FssVZZ1Ajn+iA8nv8kzQmYmXo5lEfq3e+0AiinUte60UbJCl9ohBpXkeojJSX2QHgvFrTQxd7r20WRnIUzQ="
+    - secure: "YhnCvshzsTFTbQwNmrMsnAtxM92ZGXyTtIZycdEukYJC8mo46irxTBS48oc271xL6bRdt4VCnw3S8kS9d9RbW+tsbHuolF/T6TM65b1q8rIKG0JECKdDi52UR2P4yEbi+EMYbVymCHOlWn9zteZNwMvpme1ERyuphvSSd1N0NNw="
+    - secure: "HGKAJKPtz2nazfY4IwaVj8AfkD5algQsG7QMr0kT1y6CKKoVWyYl4rIdHRnkXt7x7IJ4c5hASG//ozGCkFAmnwZWmusWaS4nqcvvV5xfUUpx/ucKoIpV59m/K9hIC968P4KfloSy2toYYigONyHnKDuCaWNvFJOnJ0M3CMShZEU="
+    - secure: "AMV2j4og2o1VcXhCkjvhZIUKbmS/I41FvVst3mrujYBJ4FCadgSLBPzlpTT/JljTtZJizNO4lDfY6zUwC2S5bOhm3X/hbgod5UN1FQYWBmBoB2Eb59U8UUuDyLCQKSWblbLxrCMuDjG7t31mAtwaublntOWGbkiYclTV1CjMtL4="
+    - secure: "rgTp8cSPFTFyS2DojvCicdcnROeTLYwJMFtAIpd/aFeeeA9iM+S2+uHoT1iaAynclBL29IU5YlejUv+acMRvaEl2pzddOjuVAX49RqElEgG6hi0u6B5g3h56xZucZeqGo4mREaOrvFhL1IxxuK/0dX2sS/MnyDSwwk5ooPpAikQ="

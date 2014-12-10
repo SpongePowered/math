@@ -20,11 +20,9 @@ The following dependencies are only needed if you compiling the tests included w
 * [junit:junit](https://oss.sonatype.org/#nexus-search;gav~junit~junit~~~)
 
 ## Building from Source
-This project can be built with the _latest_ [Java Development Kit](http://oracle.com/technetwork/java/javase/downloads) and [Maven](https://maven.apache.org/) or [Gradle](https://www.gradle.org/). Maven and Gradle are used to simplify dependency management, but using either of them is optional.
+This project can be built with the _latest_ [Java Development Kit](http://oracle.com/technetwork/java/javase/downloads) and [Maven](https://maven.apache.org/). Maven is used to simplify dependency management, but using it is optional.
 
 For Maven, the command `mvn clean package` will build the project and will put the compiled JAR in `target`, and `mvn clean install` will copy it to your local Maven repository.
-
-For Gradle, the command `gradlew` will build the project and will put the compiled JAR in `~/build/distributions`, and `gradlew install` will copy it to your local Maven repository.
 
 ## Contributing
 Are you a talented programmer looking to contribute some code? We'd love the help!
@@ -65,8 +63,6 @@ If you'd prefer to manually import the latest .jar file, you can get it [here](h
 Want to get friendly with the project and put it to good use? Check out the latest [Javadocs](https://flowpowered.com/math).
 
 To generate the the Javadocs with Maven, use the `mvn javadoc:javadoc` command. To view the javadocs simply go to `target/site/apidocs/` and open `index.html` in a web browser.
-
-To generate Javadocs with Gradle, use the `gradlew javadoc` command. To view the javadocs simply go to `build/docs/javadoc/` and open `index.html` in a web browser.
 
 ## Version Control
 We've adopted the [git flow branching model](http://nvie.com/posts/a-successful-git-branching-model/) in our projects. The creators of git flow released a [short intro video](http://vimeo.com/16018419) to explain the model.

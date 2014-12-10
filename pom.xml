@@ -25,6 +25,7 @@
         <buildNumber>0</buildNumber>
         <ciSystem>unknown</ciSystem>
         <commit>unknown</commit>
+        <additionalparam>-Xdoclint:none</additionalparam>
     </properties>
 
     <!-- License information -->

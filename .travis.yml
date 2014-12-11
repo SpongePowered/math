@@ -1,6 +1,6 @@
 # Source language and JDK version to use
 language: java
-jdk: oraclejdk7
+jdk: oraclejdk8
 
 # Compile and package JAR and set build properties
 install: mvn dependency:go-offline

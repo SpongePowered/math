@@ -8,7 +8,7 @@
     <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <inceptionYear>2013</inceptionYear>
-    <url>https://flowpowered.com</url>
+    <url>https://flowpowered.com/math</url>
     <description>Immutable math library for Java with a focus on games and computer graphics.</description>
 
     <!-- Parent information -->
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

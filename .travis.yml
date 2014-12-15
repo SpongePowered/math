@@ -9,12 +9,14 @@ install: mvn dependency:go-offline
 script:
   # Get files for use with build, namely the custom Maven settings.xml and scripts
   - "git clone https://github.com/flow/travis-ci-resources.git $HOME/build/flow/travis"
-  # SNAPSHOTS: Check if commit is not a pull request, if repo is official, if branch is not master; then generate, sign, and deploy artifacts and reports
-  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/math ]] && [[ $TRAVIS_BRANCH != master ]] && mvn package -DbuildNumber=$TRAVIS_BUILD_NUMBER -DciSystem=travis -Dcommit=${TRAVIS_COMMIT:0:7} javadoc:jar source:jar cobertura:cobertura coveralls:report -DserviceJobId=$TRAVIS_JOB_ID deploy --settings $HOME/build/flow/travis/settings.xml"
-  # RELEASES: Check if commit is not a pull request, if repo is official, if branch is master; then run deployment script
+  # Check if branch is not master or develop; then generate artifacts and reports
+  - "[[ $TRAVIS_BRANCH != master ]] && [[ $TRAVIS_BRANCH != develop ]] && mvn clean -DbuildNumber=$TRAVIS_BUILD_NUMBER -DciSystem=travis -Dcommit=${TRAVIS_COMMIT:0:7} javadoc:javadoc cobertura:cobertura coveralls:report -DserviceJobId=$TRAVIS_JOB_ID"
+  # DEVELOP: Check if commit is not a pull request, if repo is official, if branch is not master; then generate and deploy artifacts and reports
+  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/math ]] && [[ $TRAVIS_BRANCH == develop ]] && mvn package -DbuildNumber=$TRAVIS_BUILD_NUMBER -DciSystem=travis -Dcommit=${TRAVIS_COMMIT:0:7} javadoc:jar source:jar cobertura:cobertura coveralls:report -DserviceJobId=$TRAVIS_JOB_ID deploy --settings $HOME/build/flow/travis/settings.xml"
+  # RELEASE: Check if commit is not a pull request, if repo is official, if branch is master; then run deployment script
   - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/math ]] && [[ $TRAVIS_BRANCH == master ]] && $HOME/build/flow/travis/deploy.sh && $HOME/build/flow/travis/gh-pages.sh"
 
-# RELEASES: Deploy main JAR to GitHub Releases
+# RELEASE: Deploy main JAR to GitHub Releases
 deploy:
   provider: releases
   api-key: $GITHUB_TOKEN

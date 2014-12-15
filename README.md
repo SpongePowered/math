@@ -33,7 +33,7 @@ Are you a talented programmer looking to contribute some code? We'd love the hel
 
 Love the project? Feel free to [donate] to help continue development! Flow projects are open-source and powered by community members, like yourself. Without you, we wouldn't be here today!
 
-Please don't forget to follow and star our repo! Join our growing community to keep up to date with the latest Flow development.
+Don't forget to watch and star our repo to keep up-to-date with the latest Flow development!
 
 ## Usage
 If you're using [Maven](https://maven.apache.org/download.html) to manage project dependencies, simply include the following in your `pom.xml` file:

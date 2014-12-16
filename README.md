@@ -62,7 +62,7 @@ If you'd prefer to manually import the latest .jar file, you can get it [here](h
 ## Documentation
 Want to get friendly with the project and put it to good use? Check out the latest [Javadocs](https://flowpowered.com/math).
 
-To generate Javadocs with Maven, use the `mvn javadoc:javadoc` command. To view the javadocs simply go to `target/site/apidocs/` and open `index.html` in a web browser.
+To generate Javadocs with Maven, use the `mvn javadoc:javadoc` command. To view the Javadocs simply go to `target/site/apidocs/` and open `index.html` in a web browser.
 
 ## Version Control
 We've adopted the [git flow branching model](http://nvie.com/posts/a-successful-git-branching-model/) in our projects. The creators of git flow released a [short intro video](http://vimeo.com/16018419) to explain the model.

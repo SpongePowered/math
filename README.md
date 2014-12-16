@@ -1,4 +1,4 @@
-# Flow Math [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)][License] [![Flattr this](http://img.shields.io/badge/flattr-donate-lightgrey.svg?style=flat)][Donate] [![Build Status](http://img.shields.io/travis/flow/math/master.svg?style=flat)](https://travis-ci.org/flow/math) [![Coverage Status](http://img.shields.io/coveralls/flow/math/master.svg?style=flat)](https://coveralls.io/r/flow/math)
+# Flow Math [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)][License] [![Flattr this](http://img.shields.io/badge/flattr-donate-lightgrey.svg?style=flat)][Donate] [![Build Status](http://img.shields.io/travis/flow/math/develop.svg?style=flat)](https://travis-ci.org/flow/math) [![Coverage Status](http://img.shields.io/coveralls/flow/math/develop.svg?style=flat)](https://coveralls.io/r/flow/math)
 
 Immutable math library for Java that offers easy conversion between math types, fast trigonometric functions, vectors, matrices, complex numbers, quaternions, and operation chaining, with a focus on games and computer graphics.
 
@@ -13,7 +13,7 @@ The latest and greatest source can be found here on [GitHub](https://github.com/
 
     git clone git://github.com/flow/math.git
 
-Or download the [latest zip archive](https://github.com/flow/math/archive/master.zip).
+Or download the latest [development archive](https://github.com/flow/math/archive/develop.zip) or the latest [stable archive](https://github.com/flow/math/archive/master.zip).
 
 ## Test Dependencies
 The following dependencies are only needed if you compiling the tests included with this project. Gotta test 'em all!

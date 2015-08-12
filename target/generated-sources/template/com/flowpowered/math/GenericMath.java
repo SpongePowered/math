@@ -301,6 +301,30 @@ public class GenericMath {
     }
 
     /**
+     * Interpolates a quaternion between two others using linear interpolation.
+     *
+     * @param a The first quaternion
+     * @param b The second quaternion
+     * @param percent The percent for the interpolation, between 0 and 1 inclusively
+     * @return The interpolated quaternion
+     */
+    public static Quaternionf lerp(Quaternionf a, Quaternionf b, float percent) {
+        return a.mul(1 - percent).add(b.mul(percent));
+    }
+
+    /**
+     * Interpolates a quaternion between two others using linear interpolation.
+     *
+     * @param a The first quaternion
+     * @param b The second quaternion
+     * @param percent The percent for the interpolation, between 0 and 1 inclusively
+     * @return The interpolated quaternion
+     */
+    public static Quaterniond lerp(Quaterniond a, Quaterniond b, double percent) {
+        return a.mul(1 - percent).add(b.mul(percent));
+    }
+
+    /**
      * Calculates the value at x,y using bilinear interpolation
      *
      * @param x the X coord of the value to interpolate
@@ -447,6 +471,34 @@ public class GenericMath {
      */
     public static int floor(float x) {
         int y = (int) x;
+        if (x < y) {
+            return y - 1;
+        }
+        return y;
+    }
+
+    /**
+     * Rounds x down to the closest long
+     *
+     * @param x The value to floor
+     * @return The closest long
+     */
+    public static long floorl(double x) {
+        long y = (long) x;
+        if (x < y) {
+            return y - 1;
+        }
+        return y;
+    }
+
+    /**
+     * Rounds x down to the closest long
+     *
+     * @param x The value to floor
+     * @return The closest long
+     */
+    public static long floorl(float x) {
+        long y = (long) x;
         if (x < y) {
             return y - 1;
         }

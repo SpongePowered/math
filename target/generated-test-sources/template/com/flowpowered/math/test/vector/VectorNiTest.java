@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.flowpowered.math.test.TestUtilf;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.test.TestUtill;
 import com.flowpowered.math.vector.Vector2i;
@@ -240,20 +241,20 @@ public class VectorNiTest {
 
     @Test
     public void testVectorNDistance() {
-        int f = new VectorNi(0, 2, 4, 8).distance(new VectorNi(0, 8, 16, 8));
-        TestUtili.assertEquals(f, 13);
+        float f = new VectorNi(0, 6, 13, 8).distance(new VectorNi(2, 8, 16, 16));
+        TestUtilf.assertEquals(f, 9);
     }
 
     @Test
     public void testIntComponentsDistance() {
-        int f = new VectorNi(0, 2, 4, 8).distance((int) 0, (int) 8, (int) 16, (int) 8);
-        TestUtili.assertEquals(f, 13);
+        float f = new VectorNi(0, 6, 13, 8).distance((int) 2, (int) 8, (int) 16, (int) 16);
+        TestUtilf.assertEquals(f, 9);
     }
 
     @Test
     public void testLength() {
-        int f = new VectorNi(3, 4, 5, 6).length();
-        TestUtili.assertEquals(f, 9);
+        float f = new VectorNi(2, 2, 3, 8).length();
+        TestUtilf.assertEquals(f, 9);
     }
 
     @Test

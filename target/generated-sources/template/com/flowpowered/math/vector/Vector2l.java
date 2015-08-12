@@ -1,8 +1,6 @@
 package com.flowpowered.math.vector;
 
 import java.io.Serializable;
-import java.lang.Override;
-import java.util.Random;
 
 import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.HashFunctions;
@@ -39,7 +37,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l(double x, double y) {
-        this((long) x, (long) y);
+        this(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public Vector2l(long x, long y) {
@@ -60,7 +58,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l add(double x, double y) {
-        return add((long) x, (long) y);
+        return add(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public Vector2l add(long x, long y) {
@@ -72,7 +70,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l sub(double x, double y) {
-        return sub((long) x, (long) y);
+        return sub(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public Vector2l sub(long x, long y) {
@@ -80,7 +78,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l mul(double a) {
-        return mul((long) a);
+        return mul(GenericMath.floorl(a));
     }
 
     @Override
@@ -93,7 +91,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l mul(double x, double y) {
-        return mul((long) x, (long) y);
+        return mul(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public Vector2l mul(long x, long y) {
@@ -101,7 +99,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l div(double a) {
-        return div((long) a);
+        return div(GenericMath.floorl(a));
     }
 
     @Override
@@ -114,7 +112,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l div(double x, double y) {
-        return div((long) x, (long) y);
+        return div(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public Vector2l div(long x, long y) {
@@ -126,15 +124,15 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public long dot(double x, double y) {
-        return dot((long) x, (long) y);
+        return dot(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public long dot(long x, long y) {
-        return (long) (this.x * x + this.y * y);
+        return this.x * x + this.y * y;
     }
 
     public Vector2l pow(double pow) {
-        return pow((long) pow);
+        return pow(GenericMath.floorl(pow));
     }
 
     @Override
@@ -157,7 +155,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l min(double x, double y) {
-        return min((long) x, (long) y);
+        return min(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public Vector2l min(long x, long y) {
@@ -169,7 +167,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector2l max(double x, double y) {
-        return max((long) x, (long) y);
+        return max(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public Vector2l max(long x, long y) {
@@ -181,7 +179,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public long distanceSquared(double x, double y) {
-        return distanceSquared((long) x, (long) y);
+        return distanceSquared(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
     public long distanceSquared(long x, long y) {
@@ -190,16 +188,16 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
         return dx * dx + dy * dy;
     }
 
-    public long distance(Vector2l v) {
+    public double distance(Vector2l v) {
         return distance(v.x, v.y);
     }
 
-    public long distance(double x, double y) {
-        return distance((long) x, (long) y);
+    public double distance(double x, double y) {
+        return distance(GenericMath.floorl(x), GenericMath.floorl(y));
     }
 
-    public long distance(long x, long y) {
-        return (long) Math.sqrt(distanceSquared(x, y));
+    public double distance(long x, long y) {
+        return (double) Math.sqrt(distanceSquared(x, y));
     }
 
     @Override
@@ -208,8 +206,8 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     @Override
-    public long length() {
-        return (long) Math.sqrt(lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -237,7 +235,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector3l toVector3(double z) {
-        return toVector3((long) z);
+        return toVector3(GenericMath.floorl(z));
     }
 
     public Vector3l toVector3(long z) {
@@ -249,7 +247,7 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     }
 
     public Vector4l toVector4(double z, double w) {
-        return toVector4((long) z, (long) w);
+        return toVector4(GenericMath.floorl(z), GenericMath.floorl(w));
     }
 
     public Vector4l toVector4(long z, long w) {

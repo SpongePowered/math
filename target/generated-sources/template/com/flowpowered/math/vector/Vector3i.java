@@ -28,10 +28,12 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i(Vector2i v) {
-        this(v, (int) 0);
+        this(v, 0);
     }
 
-    // TODO: int overload
+    public Vector3i(Vector2i v, double z) {
+        this(v, GenericMath.floor(z));
+    }
 
     public Vector3i(Vector2i v, int z) {
         this(v.getX(), v.getY(), z);
@@ -50,7 +52,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i(double x, double y, double z) {
-        this((int) x, (int) y, (int) z);
+        this(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i(int x, int y, int z) {
@@ -76,7 +78,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i add(double x, double y, double z) {
-        return add((int) x, (int) y, (int) z);
+        return add(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i add(int x, int y, int z) {
@@ -88,7 +90,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i sub(double x, double y, double z) {
-        return sub((int) x, (int) y, (int) z);
+        return sub(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i sub(int x, int y, int z) {
@@ -96,7 +98,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i mul(double a) {
-        return mul((int) a);
+        return mul(GenericMath.floor(a));
     }
 
     @Override
@@ -109,7 +111,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i mul(double x, double y, double z) {
-        return mul((int) x, (int) y, (int) z);
+        return mul(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i mul(int x, int y, int z) {
@@ -117,7 +119,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i div(double a) {
-        return div((int) a);
+        return div(GenericMath.floor(a));
     }
 
     @Override
@@ -130,7 +132,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i div(double x, double y, double z) {
-        return div((int) x, (int) y, (int) z);
+        return div(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i div(int x, int y, int z) {
@@ -142,11 +144,11 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public int dot(double x, double y, double z) {
-        return dot((int) x, (int) y, (int) z);
+        return dot(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public int dot(int x, int y, int z) {
-        return (int) (this.x * x + this.y * y + this.z * z);
+        return this.x * x + this.y * y + this.z * z;
     }
 
     public Vector3i cross(Vector3i v) {
@@ -154,7 +156,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i cross(double x, double y, double z) {
-        return cross((int) x, (int) y, (int) z);
+        return cross(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i cross(int x, int y, int z) {
@@ -162,7 +164,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i pow(double pow) {
-        return pow((int) pow);
+        return pow(GenericMath.floor(pow));
     }
 
     @Override
@@ -185,7 +187,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i min(double x, double y, double z) {
-        return min((int) x, (int) y, (int) z);
+        return min(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i min(int x, int y, int z) {
@@ -197,7 +199,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector3i max(double x, double y, double z) {
-        return max((int) x, (int) y, (int) z);
+        return max(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public Vector3i max(int x, int y, int z) {
@@ -209,7 +211,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public int distanceSquared(double x, double y, double z) {
-        return distanceSquared((int) x, (int) y, (int) z);
+        return distanceSquared(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
     public int distanceSquared(int x, int y, int z) {
@@ -219,16 +221,16 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
         return dx * dx + dy * dy + dz * dz;
     }
 
-    public int distance(Vector3i v) {
+    public float distance(Vector3i v) {
         return distance(v.x, v.y, v.z);
     }
 
-    public int distance(double x, double y, double z) {
-        return distance((int) x, (int) y, (int) z);
+    public float distance(double x, double y, double z) {
+        return distance(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
     }
 
-    public int distance(int x, int y, int z) {
-        return (int) Math.sqrt(distanceSquared(x, y, z));
+    public float distance(int x, int y, int z) {
+        return (float) Math.sqrt(distanceSquared(x, y, z));
     }
 
     @Override
@@ -237,8 +239,8 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     @Override
-    public int length() {
-        return (int) Math.sqrt(lengthSquared());
+    public float length() {
+        return (float) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -274,7 +276,7 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     }
 
     public Vector4i toVector4(double w) {
-        return toVector4((int) w);
+        return toVector4(GenericMath.floor(w));
     }
 
     public Vector4i toVector4(int w) {

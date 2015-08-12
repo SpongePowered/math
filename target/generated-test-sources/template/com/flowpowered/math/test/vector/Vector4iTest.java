@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtili;
+import com.flowpowered.math.test.TestUtilf;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2i;
 import com.flowpowered.math.vector.Vector3i;
@@ -83,7 +84,7 @@ public class Vector4iTest {
     @Test
     public void testDoubleComponentsAddition() {
         Vector4i vector = new Vector4i(0, 1, 1, 1).add(5.5, -2.5, 3.8, 5.5);
-        TestUtili.assertEquals(vector, 5, -1, 4, 6);
+        TestUtili.assertEquals(vector, 5, -2, 4, 6);
     }
 
     @Test
@@ -223,7 +224,7 @@ public class Vector4iTest {
     @Test
     public void testDoubleComponentsMinimum() {
         Vector4i vector = new Vector4i(2, 6, -1, 0).min(3, 4, 10, -1.1);
-        TestUtili.assertEquals(vector, 2, 4, -1, -1);
+        TestUtili.assertEquals(vector, 2, 4, -1, -2);
     }
 
     @Test
@@ -252,8 +253,8 @@ public class Vector4iTest {
 
     @Test
     public void testVector4DistanceSquared() {
-        int f = new Vector3i(2, 3, 4).distanceSquared(new Vector3i(5, 6, 7));
-        TestUtili.assertEquals(f, 27);
+        int f = new Vector4i(2, 3, 4, 5).distanceSquared(new Vector4i(5, 6, 7, 8));
+        TestUtili.assertEquals(f, 36);
     }
 
     @Test
@@ -270,26 +271,26 @@ public class Vector4iTest {
 
     @Test
     public void testVector4Distance() {
-        int f = new Vector4i(0, 2, 4, 8).distance(new Vector4i(0, 8, 16, 8));
-        TestUtili.assertEquals(f, 13);
+        float f = new Vector4i(0, 6, 13, 8).distance(new Vector4i(2, 8, 16, 16));
+        TestUtilf.assertEquals(f, 9);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        int f = new Vector4i(0, 2, 4, 8).distance(new Vector4i(0d, 8.3, 16.5, 8.1));
-        TestUtili.assertEquals(f, 13);
+        float f = new Vector4i(0, 6, 13, 8).distance(new Vector4i(2d, 8.3, 16.5, 16.1));
+        TestUtilf.assertEquals(f, 9);
     }
 
     @Test
     public void testIntComponentsDistance() {
-        int f = new Vector4i(0, 2, 4, 8).distance(new Vector4i((int) 0, (int) 8, (int) 16, (int) 8));
-        TestUtili.assertEquals(f, 13);
+        float f = new Vector4i(0, 6, 13, 8).distance(new Vector4i((int) 2, (int) 8, (int) 16, (int) 16));
+        TestUtilf.assertEquals(f, 9);
     }
 
     @Test
     public void testLength() {
-        int f = new Vector4i(3, 4, 5, 6).length();
-        TestUtili.assertEquals(f, 9);
+        float f = new Vector4i(2, 2, 3, 8).length();
+        TestUtilf.assertEquals(f, 9);
     }
 
     @Test

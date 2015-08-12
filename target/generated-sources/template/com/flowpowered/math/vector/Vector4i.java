@@ -25,20 +25,24 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i(Vector2i v) {
-        this(v, (int) 0, (int) 0);
+        this(v, 0, 0);
     }
 
-    // TODO: add double overloads
+    public Vector4i(Vector2i v, double z, double w) {
+        this(v, GenericMath.floor(z), GenericMath.floor(w));
+    }
 
     public Vector4i(Vector2i v, int z, int w) {
         this(v.getX(), v.getY(), z, w);
     }
 
     public Vector4i(Vector3i v) {
-        this(v, (int) 0);
+        this(v, 0);
     }
 
-    // TODO: add double overloads
+    public Vector4i(Vector3i v, double w) {
+        this(v, GenericMath.floor(w));
+    }
 
     public Vector4i(Vector3i v, int w) {
         this(v.getX(), v.getY(), v.getZ(), w);
@@ -53,7 +57,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i(double x, double y, double z, double w) {
-        this((int) x, (int) y, (int) z, (int) w);
+        this(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i(int x, int y, int z, int w) {
@@ -84,7 +88,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i add(double x, double y, double z, double w) {
-        return add((int) x, (int) y, (int) z, (int) w);
+        return add(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i add(int x, int y, int z, int w) {
@@ -96,7 +100,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i sub(double x, double y, double z, double w) {
-        return sub((int) x, (int) y, (int) z, (int) w);
+        return sub(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i sub(int x, int y, int z, int w) {
@@ -104,7 +108,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i mul(double a) {
-        return mul((int) a);
+        return mul(GenericMath.floor(a));
     }
 
     @Override
@@ -117,7 +121,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i mul(double x, double y, double z, double w) {
-        return mul((int) x, (int) y, (int) z, (int) w);
+        return mul(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i mul(int x, int y, int z, int w) {
@@ -125,7 +129,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i div(double a) {
-        return div((int) a);
+        return div(GenericMath.floor(a));
     }
 
     @Override
@@ -138,7 +142,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i div(double x, double y, double z, double w) {
-        return div((int) x, (int) y, (int) z, (int) w);
+        return div(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i div(int x, int y, int z, int w) {
@@ -150,15 +154,15 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public int dot(double x, double y, double z, double w) {
-        return dot((int) x, (int) y, (int) z, (int) w);
+        return dot(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public int dot(int x, int y, int z, int w) {
-        return (int) (this.x * x + this.y * y + this.z * z + this.w * w);
+        return this.x * x + this.y * y + this.z * z + this.w * w;
     }
 
     public Vector4i pow(double pow) {
-        return pow((int) pow);
+        return pow(GenericMath.floor(pow));
     }
 
     @Override
@@ -181,7 +185,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i min(double x, double y, double z, double w) {
-        return min((int) x, (int) y, (int) z, (int) w);
+        return min(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i min(int x, int y, int z, int w) {
@@ -193,7 +197,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public Vector4i max(double x, double y, double z, double w) {
-        return max((int) x, (int) y, (int) z, (int) w);
+        return max(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i max(int x, int y, int z, int w) {
@@ -205,7 +209,7 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     public int distanceSquared(double x, double y, double z, double w) {
-        return distanceSquared((int) x, (int) y, (int) z, (int) w);
+        return distanceSquared(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public int distanceSquared(int x, int y, int z, int w) {
@@ -216,16 +220,16 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
         return dx * dx + dy * dy + dz * dz + dw * dw;
     }
 
-    public int distance(Vector4i v) {
+    public float distance(Vector4i v) {
         return distance(v.x, v.y, v.z, v.w);
     }
 
-    public int distance(double x, double y, double z, double w) {
-        return distance((int) x, (int) y, (int) z, (int) w);
+    public float distance(double x, double y, double z, double w) {
+        return distance(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
     }
 
-    public int distance(int x, int y, int z, int w) {
-        return (int) Math.sqrt(distanceSquared(x, y, z, w));
+    public float distance(int x, int y, int z, int w) {
+        return (float) Math.sqrt(distanceSquared(x, y, z, w));
     }
 
     @Override
@@ -234,8 +238,8 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     }
 
     @Override
-    public int length() {
-        return (int) Math.sqrt(lengthSquared());
+    public float length() {
+        return (float) Math.sqrt(lengthSquared());
     }
 
     /**

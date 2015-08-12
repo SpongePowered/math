@@ -28,10 +28,12 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l(Vector2l v) {
-        this(v, (long) 0);
+        this(v, 0);
     }
 
-    // TODO: long overload
+    public Vector3l(Vector2l v, double z) {
+        this(v, GenericMath.floorl(z));
+    }
 
     public Vector3l(Vector2l v, long z) {
         this(v.getX(), v.getY(), z);
@@ -50,7 +52,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l(double x, double y, double z) {
-        this((long) x, (long) y, (long) z);
+        this(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l(long x, long y, long z) {
@@ -76,7 +78,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l add(double x, double y, double z) {
-        return add((long) x, (long) y, (long) z);
+        return add(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l add(long x, long y, long z) {
@@ -88,7 +90,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l sub(double x, double y, double z) {
-        return sub((long) x, (long) y, (long) z);
+        return sub(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l sub(long x, long y, long z) {
@@ -96,7 +98,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l mul(double a) {
-        return mul((long) a);
+        return mul(GenericMath.floorl(a));
     }
 
     @Override
@@ -109,7 +111,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l mul(double x, double y, double z) {
-        return mul((long) x, (long) y, (long) z);
+        return mul(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l mul(long x, long y, long z) {
@@ -117,7 +119,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l div(double a) {
-        return div((long) a);
+        return div(GenericMath.floorl(a));
     }
 
     @Override
@@ -130,7 +132,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l div(double x, double y, double z) {
-        return div((long) x, (long) y, (long) z);
+        return div(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l div(long x, long y, long z) {
@@ -142,11 +144,11 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public long dot(double x, double y, double z) {
-        return dot((long) x, (long) y, (long) z);
+        return dot(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public long dot(long x, long y, long z) {
-        return (long) (this.x * x + this.y * y + this.z * z);
+        return this.x * x + this.y * y + this.z * z;
     }
 
     public Vector3l cross(Vector3l v) {
@@ -154,7 +156,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l cross(double x, double y, double z) {
-        return cross((long) x, (long) y, (long) z);
+        return cross(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l cross(long x, long y, long z) {
@@ -162,7 +164,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l pow(double pow) {
-        return pow((long) pow);
+        return pow(GenericMath.floorl(pow));
     }
 
     @Override
@@ -185,7 +187,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l min(double x, double y, double z) {
-        return min((long) x, (long) y, (long) z);
+        return min(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l min(long x, long y, long z) {
@@ -197,7 +199,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector3l max(double x, double y, double z) {
-        return max((long) x, (long) y, (long) z);
+        return max(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public Vector3l max(long x, long y, long z) {
@@ -209,7 +211,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public long distanceSquared(double x, double y, double z) {
-        return distanceSquared((long) x, (long) y, (long) z);
+        return distanceSquared(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
     public long distanceSquared(long x, long y, long z) {
@@ -219,16 +221,16 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
         return dx * dx + dy * dy + dz * dz;
     }
 
-    public long distance(Vector3l v) {
+    public double distance(Vector3l v) {
         return distance(v.x, v.y, v.z);
     }
 
-    public long distance(double x, double y, double z) {
-        return distance((long) x, (long) y, (long) z);
+    public double distance(double x, double y, double z) {
+        return distance(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
     }
 
-    public long distance(long x, long y, long z) {
-        return (long) Math.sqrt(distanceSquared(x, y, z));
+    public double distance(long x, long y, long z) {
+        return (double) Math.sqrt(distanceSquared(x, y, z));
     }
 
     @Override
@@ -237,8 +239,8 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     @Override
-    public long length() {
-        return (long) Math.sqrt(lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -274,7 +276,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     }
 
     public Vector4l toVector4(double w) {
-        return toVector4((long) w);
+        return toVector4(GenericMath.floorl(w));
     }
 
     public Vector4l toVector4(long w) {

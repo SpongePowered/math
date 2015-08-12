@@ -377,7 +377,7 @@ public class VectorNd implements Vectord, Comparable<VectorNd>, Serializable, Cl
         final int size = size();
         final int[] intVec = new int[size];
         for (int comp = 0; comp < size; comp++) {
-            intVec[comp] = (int) vec[comp];
+            intVec[comp] = GenericMath.floor(vec[comp]);
         }
         return new VectorNi(intVec);
     }
@@ -387,7 +387,7 @@ public class VectorNd implements Vectord, Comparable<VectorNd>, Serializable, Cl
         final int size = size();
         final long[] longVec = new long[size];
         for (int comp = 0; comp < size; comp++) {
-            longVec[comp] = (long) vec[comp];
+            longVec[comp] = GenericMath.floorl(vec[comp]);
         }
         return new VectorNl(longVec);
     }

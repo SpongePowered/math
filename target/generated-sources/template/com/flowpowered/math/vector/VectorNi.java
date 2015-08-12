@@ -3,6 +3,8 @@ package com.flowpowered.math.vector;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import com.flowpowered.math.GenericMath;
+
 public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cloneable {
     public static VectorNi ZERO_2 = new ImmutableZeroVectorN(0, 0);
     public static VectorNi ZERO_3 = new ImmutableZeroVectorN(0, 0, 0);
@@ -50,7 +52,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
     }
 
     public void setZero() {
-        Arrays.fill(vec, (int) 0);
+        Arrays.fill(vec, 0);
     }
 
     public VectorNi resize(int size) {
@@ -70,7 +72,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         }
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int)(vec[comp] + v[comp]);
+            d.vec[comp] = vec[comp] + v[comp];
         }
         return d;
     }
@@ -86,13 +88,13 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         }
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int)(vec[comp] - v[comp]);
+            d.vec[comp] = vec[comp] - v[comp];
         }
         return d;
     }
 
     public VectorNi mul(double a) {
-        return mul((int) a);
+        return mul(GenericMath.floor(a));
     }
 
     @Override
@@ -100,7 +102,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         final int size = size();
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) (vec[comp] * a);
+            d.vec[comp] = vec[comp] * a;
         }
         return d;
     }
@@ -116,13 +118,13 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         }
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) (vec[comp] * v[comp]);
+            d.vec[comp] = vec[comp] * v[comp];
         }
         return d;
     }
 
     public VectorNi div(double a) {
-        return div((int) a);
+        return div(GenericMath.floor(a));
     }
 
     @Override
@@ -130,7 +132,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         final int size = size();
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) (vec[comp] / a);
+            d.vec[comp] = vec[comp] / a;
         }
         return d;
     }
@@ -146,7 +148,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         }
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) (vec[comp] / v[comp]);
+            d.vec[comp] = vec[comp] / v[comp];
         }
         return d;
     }
@@ -162,13 +164,13 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         }
         int d = 0;
         for (int comp = 0; comp < size; comp++) {
-            d += (int) (vec[comp] * v[comp]);
+            d += vec[comp] * v[comp];
         }
         return d;
     }
 
     public VectorNi pow(double pow) {
-        return pow((int) pow);
+        return pow(GenericMath.floor(pow));
     }
 
     @Override
@@ -176,7 +178,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         final int size = size();
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) Math.pow(vec[comp], power);
+            d.vec[comp] = GenericMath.floor(Math.pow(vec[comp], power));
         }
         return d;
     }
@@ -186,7 +188,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         final int size = size();
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) Math.abs(vec[comp]);
+            d.vec[comp] = Math.abs(vec[comp]);
         }
         return d;
     }
@@ -196,7 +198,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         final int size = size();
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) -vec[comp];
+            d.vec[comp] = -vec[comp];
         }
         return d;
     }
@@ -212,7 +214,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         }
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) Math.min(vec[comp], v[comp]);
+            d.vec[comp] = Math.min(vec[comp], v[comp]);
         }
         return d;
     }
@@ -228,7 +230,7 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         }
         final VectorNi d = new VectorNi(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (int) Math.max(vec[comp], v[comp]);
+            d.vec[comp] = Math.max(vec[comp], v[comp]);
         }
         return d;
     }
@@ -250,12 +252,12 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         return d;
     }
 
-    public int distance(VectorNi v) {
+    public float distance(VectorNi v) {
         return distance(v.vec);
     }
 
-    public int distance(int... v) {
-        return (int) Math.sqrt(distanceSquared(v));
+    public float distance(int... v) {
+        return (float) Math.sqrt(distanceSquared(v));
     }
 
     @Override
@@ -269,8 +271,8 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
     }
 
     @Override
-    public int length() {
-        return (int) Math.sqrt(lengthSquared());
+    public float length() {
+        return (float) Math.sqrt(lengthSquared());
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.flowpowered.math.vector;
 
 import java.io.Serializable;
-import java.lang.Override;
-import java.util.Random;
 
 import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.HashFunctions;
@@ -39,7 +37,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i(double x, double y) {
-        this((int) x, (int) y);
+        this(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public Vector2i(int x, int y) {
@@ -60,7 +58,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i add(double x, double y) {
-        return add((int) x, (int) y);
+        return add(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public Vector2i add(int x, int y) {
@@ -72,7 +70,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i sub(double x, double y) {
-        return sub((int) x, (int) y);
+        return sub(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public Vector2i sub(int x, int y) {
@@ -80,7 +78,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i mul(double a) {
-        return mul((int) a);
+        return mul(GenericMath.floor(a));
     }
 
     @Override
@@ -93,7 +91,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i mul(double x, double y) {
-        return mul((int) x, (int) y);
+        return mul(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public Vector2i mul(int x, int y) {
@@ -101,7 +99,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i div(double a) {
-        return div((int) a);
+        return div(GenericMath.floor(a));
     }
 
     @Override
@@ -114,7 +112,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i div(double x, double y) {
-        return div((int) x, (int) y);
+        return div(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public Vector2i div(int x, int y) {
@@ -126,15 +124,15 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public int dot(double x, double y) {
-        return dot((int) x, (int) y);
+        return dot(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public int dot(int x, int y) {
-        return (int) (this.x * x + this.y * y);
+        return this.x * x + this.y * y;
     }
 
     public Vector2i pow(double pow) {
-        return pow((int) pow);
+        return pow(GenericMath.floor(pow));
     }
 
     @Override
@@ -157,7 +155,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i min(double x, double y) {
-        return min((int) x, (int) y);
+        return min(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public Vector2i min(int x, int y) {
@@ -169,7 +167,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector2i max(double x, double y) {
-        return max((int) x, (int) y);
+        return max(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public Vector2i max(int x, int y) {
@@ -181,7 +179,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public int distanceSquared(double x, double y) {
-        return distanceSquared((int) x, (int) y);
+        return distanceSquared(GenericMath.floor(x), GenericMath.floor(y));
     }
 
     public int distanceSquared(int x, int y) {
@@ -190,16 +188,16 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
         return dx * dx + dy * dy;
     }
 
-    public int distance(Vector2i v) {
+    public float distance(Vector2i v) {
         return distance(v.x, v.y);
     }
 
-    public int distance(double x, double y) {
-        return distance((int) x, (int) y);
+    public float distance(double x, double y) {
+        return distance(GenericMath.floor(x), GenericMath.floor(y));
     }
 
-    public int distance(int x, int y) {
-        return (int) Math.sqrt(distanceSquared(x, y));
+    public float distance(int x, int y) {
+        return (float) Math.sqrt(distanceSquared(x, y));
     }
 
     @Override
@@ -208,8 +206,8 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     @Override
-    public int length() {
-        return (int) Math.sqrt(lengthSquared());
+    public float length() {
+        return (float) Math.sqrt(lengthSquared());
     }
 
     /**
@@ -237,7 +235,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector3i toVector3(double z) {
-        return toVector3((int) z);
+        return toVector3(GenericMath.floor(z));
     }
 
     public Vector3i toVector3(int z) {
@@ -249,7 +247,7 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     }
 
     public Vector4i toVector4(double z, double w) {
-        return toVector4((int) z, (int) w);
+        return toVector4(GenericMath.floor(z), GenericMath.floor(w));
     }
 
     public Vector4i toVector4(int z, int w) {

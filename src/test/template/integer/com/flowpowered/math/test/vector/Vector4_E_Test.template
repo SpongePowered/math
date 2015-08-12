@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtil#E#;
+import com.flowpowered.math.test.#EDecEquiTest#;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -83,7 +84,7 @@ public class Vector4#E#Test {
     @Test
     public void testDoubleComponentsAddition() {
         Vector4#E# vector = new Vector4#E#(0, 1, 1, 1).add(5.5, -2.5, 3.8, 5.5);
-        TestUtil#E#.assertEquals(vector, 5, -1, 4, 6);
+        TestUtil#E#.assertEquals(vector, 5, -2, 4, 6);
     }
 
     @Test
@@ -223,7 +224,7 @@ public class Vector4#E#Test {
     @Test
     public void testDoubleComponentsMinimum() {
         Vector4#E# vector = new Vector4#E#(2, 6, -1, 0).min(3, 4, 10, -1.1);
-        TestUtil#E#.assertEquals(vector, 2, 4, -1, -1);
+        TestUtil#E#.assertEquals(vector, 2, 4, -1, -2);
     }
 
     @Test
@@ -252,8 +253,8 @@ public class Vector4#E#Test {
 
     @Test
     public void testVector4DistanceSquared() {
-        #e# f = new Vector3#E#(2, 3, 4).distanceSquared(new Vector3#E#(5, 6, 7));
-        TestUtil#E#.assertEquals(f, 27);
+        #e# f = new Vector4#E#(2, 3, 4, 5).distanceSquared(new Vector4#E#(5, 6, 7, 8));
+        TestUtil#E#.assertEquals(f, 36);
     }
 
     @Test
@@ -270,26 +271,26 @@ public class Vector4#E#Test {
 
     @Test
     public void testVector4Distance() {
-        #e# f = new Vector4#E#(0, 2, 4, 8).distance(new Vector4#E#(0, 8, 16, 8));
-        TestUtil#E#.assertEquals(f, 13);
+        #EDecEqui# f = new Vector4#E#(0, 6, 13, 8).distance(new Vector4#E#(2, 8, 16, 16));
+        #EDecEquiTest#.assertEquals(f, 9);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        #e# f = new Vector4#E#(0, 2, 4, 8).distance(new Vector4#E#(0d, 8.3, 16.5, 8.1));
-        TestUtil#E#.assertEquals(f, 13);
+        #EDecEqui# f = new Vector4#E#(0, 6, 13, 8).distance(new Vector4#E#(2d, 8.3, 16.5, 16.1));
+        #EDecEquiTest#.assertEquals(f, 9);
     }
 
     @Test
     public void test#ES#ComponentsDistance() {
-        #e# f = new Vector4#E#(0, 2, 4, 8).distance(new Vector4#E#((#e#) 0, (#e#) 8, (#e#) 16, (#e#) 8));
-        TestUtil#E#.assertEquals(f, 13);
+        #EDecEqui# f = new Vector4#E#(0, 6, 13, 8).distance(new Vector4#E#((#e#) 2, (#e#) 8, (#e#) 16, (#e#) 16));
+        #EDecEquiTest#.assertEquals(f, 9);
     }
 
     @Test
     public void testLength() {
-        #e# f = new Vector4#E#(3, 4, 5, 6).length();
-        TestUtil#E#.assertEquals(f, 9);
+        #EDecEqui# f = new Vector4#E#(2, 2, 3, 8).length();
+        #EDecEquiTest#.assertEquals(f, 9);
     }
 
     @Test

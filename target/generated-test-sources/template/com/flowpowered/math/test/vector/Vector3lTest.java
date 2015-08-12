@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtill;
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2l;
 import com.flowpowered.math.vector.Vector3l;
@@ -78,7 +79,7 @@ public class Vector3lTest {
     @Test
     public void testDoubleComponentsAddition() {
         Vector3l vector = new Vector3l(0, 1, 5).add(5.5, -2.5, 3.8);
-        TestUtill.assertEquals(vector, (long) 5, (long) -1, (long) 8);
+        TestUtill.assertEquals(vector, (long) 5, (long) -2, (long) 8);
     }
 
     @Test
@@ -283,32 +284,32 @@ public class Vector3lTest {
 
     @Test
     public void testVector3Distance() {
-        long f = new Vector3l(0, 2, 4).distance(new Vector3l(0, 8, 16));
-        TestUtill.assertEquals(f, (long) 13);
+        double f = new Vector3l(0, 2, 12).distance(new Vector3l(0, 5, 16));
+        TestUtild.assertEquals(f, (long) 5);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        long f = new Vector3l(0, 2, 4).distance(0d, 8d, 16d);
-        TestUtill.assertEquals(f, (long) 13);
+        double f = new Vector3l(0, 2, 12).distance(0d, 5d, 16d);
+        TestUtild.assertEquals(f, (long) 5);
     }
 
     @Test
     public void testLongComponentsDistance() {
-        long f = new Vector3l(0, 2, 4).distance((long) 0, (long) 8, (long) 16);
-        TestUtill.assertEquals(f,  (long) 13);
+        double f = new Vector3l(0, 2, 12).distance((long) 0, (long) 5, (long) 16);
+        TestUtild.assertEquals(f, (long) 5);
     }
 
     @Test
     public void testLength() {
-        long f = new Vector3l(3, 4, 5).length();
-        TestUtill.assertEquals(f, (long) 7);
+        double f = new Vector3l(4, 4, 7).length();
+        TestUtild.assertEquals(f, (long) 9);
     }
 
     @Test
     public void testLengthSquared() {
-        long f = new Vector3l(3, 4, 5).lengthSquared();
-        TestUtill.assertEquals(f, (long) 50);
+        long f = new Vector3l(4, 4, 7).lengthSquared();
+        TestUtill.assertEquals(f, (long) 81);
     }
 
     @Test

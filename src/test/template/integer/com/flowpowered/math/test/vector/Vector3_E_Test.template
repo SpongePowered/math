@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtil#E#;
+import com.flowpowered.math.test.#EDecEquiTest#;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -78,7 +79,7 @@ public class Vector3#E#Test {
     @Test
     public void testDoubleComponentsAddition() {
         Vector3#E# vector = new Vector3#E#(0, 1, 5).add(5.5, -2.5, 3.8);
-        TestUtil#E#.assertEquals(vector, (#e#) 5, (#e#) -1, (#e#) 8);
+        TestUtil#E#.assertEquals(vector, (#e#) 5, (#e#) -2, (#e#) 8);
     }
 
     @Test
@@ -283,32 +284,32 @@ public class Vector3#E#Test {
 
     @Test
     public void testVector3Distance() {
-        #e# f = new Vector3#E#(0, 2, 4).distance(new Vector3#E#(0, 8, 16));
-        TestUtil#E#.assertEquals(f, (#e#) 13);
+        #EDecEqui# f = new Vector3#E#(0, 2, 12).distance(new Vector3#E#(0, 5, 16));
+        #EDecEquiTest#.assertEquals(f, (#e#) 5);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        #e# f = new Vector3#E#(0, 2, 4).distance(0d, 8d, 16d);
-        TestUtil#E#.assertEquals(f, (#e#) 13);
+        #EDecEqui# f = new Vector3#E#(0, 2, 12).distance(0d, 5d, 16d);
+        #EDecEquiTest#.assertEquals(f, (#e#) 5);
     }
 
     @Test
     public void test#ES#ComponentsDistance() {
-        #e# f = new Vector3#E#(0, 2, 4).distance((#e#) 0, (#e#) 8, (#e#) 16);
-        TestUtil#E#.assertEquals(f,  (#e#) 13);
+        #EDecEqui# f = new Vector3#E#(0, 2, 12).distance((#e#) 0, (#e#) 5, (#e#) 16);
+        #EDecEquiTest#.assertEquals(f, (#e#) 5);
     }
 
     @Test
     public void testLength() {
-        #e# f = new Vector3#E#(3, 4, 5).length();
-        TestUtil#E#.assertEquals(f, (#e#) 7);
+        #EDecEqui# f = new Vector3#E#(4, 4, 7).length();
+        #EDecEquiTest#.assertEquals(f, (#e#) 9);
     }
 
     @Test
     public void testLengthSquared() {
-        #e# f = new Vector3#E#(3, 4, 5).lengthSquared();
-        TestUtil#E#.assertEquals(f, (#e#) 50);
+        #e# f = new Vector3#E#(4, 4, 7).lengthSquared();
+        TestUtil#E#.assertEquals(f, (#e#) 81);
     }
 
     @Test

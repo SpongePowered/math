@@ -11,7 +11,7 @@ public interface Vectori {
 
     public Vectori negate();
 
-    public int length();
+    public float length();
 
     public int lengthSquared();
 

@@ -11,7 +11,7 @@ public interface Vectorl {
 
     public Vectorl negate();
 
-    public long length();
+    public double length();
 
     public long lengthSquared();
 

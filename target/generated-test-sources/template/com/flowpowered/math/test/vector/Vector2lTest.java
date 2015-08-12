@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtill;
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2l;
 import com.flowpowered.math.vector.Vector3l;
@@ -71,7 +72,7 @@ public class Vector2lTest {
     @Test
     public void testDoubleComponentsAddition() {
         Vector2l vector = new Vector2l(1, 3).add(5.5, -1.5);
-        TestUtill.assertEquals(vector, (long) 6, (long) 2);
+        TestUtill.assertEquals(vector, (long) 6, (long) 1);
     }
 
     @Test
@@ -258,26 +259,26 @@ public class Vector2lTest {
 
     @Test
     public void testVector2Distance() {
-        long f = new Vector2l(4, 6).distance(new Vector2l(7, 2));
-        TestUtill.assertEquals(f, (long) 5);
+        double f = new Vector2l(4, 6).distance(new Vector2l(7, 2));
+        TestUtild.assertEquals(f, (long) 5);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        long f = new Vector2l(4, 6).distance(7d, 2d);
-        TestUtill.assertEquals(f, (long) 5);
+        double f = new Vector2l(4, 6).distance(7d, 2d);
+        TestUtild.assertEquals(f, (long) 5);
     }
 
     @Test
     public void testLongComponentsDistance() {
-        long f = new Vector2l(4, 6).distance((long) 7, (long) 2);
-        TestUtill.assertEquals(f, (long) 5);
+        double f = new Vector2l(4, 6).distance((long) 7, (long) 2);
+        TestUtild.assertEquals(f, (long) 5);
     }
 
     @Test
     public void testLength() {
-        long f = new Vector2l(3, 4).length();
-        TestUtill.assertEquals(f, (long) 5);
+        double f = new Vector2l(3, 4).length();
+        TestUtild.assertEquals(f, (long) 5);
     }
 
     @Test

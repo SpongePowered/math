@@ -175,6 +175,8 @@
                                         <Overload1>float</Overload1>
                                         <Overload2>long</Overload2>
                                         <S>Int</S>
+                                        <FloorFunc>GenericMath.floor</FloorFunc>
+                                        <DecEqui>float</DecEqui>
                                     </placeholders>
                                 </type>
                                 <type>
@@ -188,6 +190,8 @@
                                         <Overload1>float</Overload1>
                                         <Overload2>int</Overload2>
                                         <S>Long</S>
+                                        <FloorFunc>GenericMath.floorl</FloorFunc>
+                                        <DecEqui>double</DecEqui>
                                     </placeholders>
                                 </type>
                             </types>
@@ -211,6 +215,8 @@
                                     <placeholders>
                                         <Overload>long</Overload>
                                         <S>Int</S>
+                                        <DecEqui>float</DecEqui>
+                                        <DecEquiTest>TestUtilf</DecEquiTest>
                                     </placeholders>
                                 </type>
                                 <type>
@@ -222,6 +228,8 @@
                                     <placeholders>
                                         <Overload>int</Overload>
                                         <S>Long</S>
+                                        <DecEqui>double</DecEqui>
+                                        <DecEquiTest>TestUtild</DecEquiTest>
                                     </placeholders>
                                 </type>
                             </types>
@@ -235,6 +243,36 @@
                         <id>generate</id>
                         <configuration>
                             <templateDir>src/main/template/float</templateDir>
+                            <types>
+                                <type>
+                                    <primitive>float</primitive>
+                                    <wrapper>Float</wrapper>
+                                    <abbreviation>f</abbreviation>
+                                    <max_value>Float.POSITIVE_INFINITY</max_value>
+                                    <min_value>Float.NEGATIVE_INFINITY</min_value>
+                                    <placeholders>
+                                        <Overload>double</Overload>
+                                        <Overload1>int</Overload1>
+                                        <Overload2>long</Overload2>
+                                        <S>Float</S>
+                                        <eps>GenericMath.FLT_EPSILON</eps>
+                                    </placeholders>
+                                </type>
+                                <type>
+                                    <primitive>double</primitive>
+                                    <wrapper>Double</wrapper>
+                                    <abbreviation>d</abbreviation>
+                                    <max_value>Double.POSITIVE_INFINITY</max_value>
+                                    <min_value>Double.NEGATIVE_INFINITY</min_value>
+                                    <placeholders>
+                                        <Overload>float</Overload>
+                                        <Overload1>int</Overload1>
+                                        <Overload2>long</Overload2>
+                                        <S>Double</S>
+                                        <eps>GenericMath.DBL_EPSILON</eps>
+                                    </placeholders>
+                                </type>
+                            </types>
                         </configuration>
                         <phase>generate-sources</phase>
                         <goals>
@@ -245,6 +283,38 @@
                         <id>test-generate</id>
                         <configuration>
                             <templateDir>src/test/template/float</templateDir>
+                            <types>
+                                <type>
+                                    <primitive>float</primitive>
+                                    <wrapper>Float</wrapper>
+                                    <abbreviation>f</abbreviation>
+                                    <max_value>Float.POSITIVE_INFINITY</max_value>
+                                    <min_value>Float.NEGATIVE_INFINITY</min_value>
+                                    <placeholders>
+                                        <Overload>double</Overload>
+                                        <Overload1>int</Overload1>
+                                        <Overload2>long</Overload2>
+                                        <S>Float</S>
+                                        <eps>GenericMath.FLT_EPSILON</eps>
+                                        <teps>0.00001f</teps>
+                                    </placeholders>
+                                </type>
+                                <type>
+                                    <primitive>double</primitive>
+                                    <wrapper>Double</wrapper>
+                                    <abbreviation>d</abbreviation>
+                                    <max_value>Double.POSITIVE_INFINITY</max_value>
+                                    <min_value>Double.NEGATIVE_INFINITY</min_value>
+                                    <placeholders>
+                                        <Overload>float</Overload>
+                                        <Overload1>int</Overload1>
+                                        <Overload2>long</Overload2>
+                                        <S>Double</S>
+                                        <eps>GenericMath.DBL_EPSILON</eps>
+                                        <teps>0.0000007</teps>
+                                    </placeholders>
+                                </type>
+                            </types>
                         </configuration>
                         <phase>generate-test-sources</phase>
                         <goals>
@@ -252,40 +322,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <types>
-                        <type>
-                            <primitive>float</primitive>
-                            <wrapper>Float</wrapper>
-                            <abbreviation>f</abbreviation>
-                            <max_value>Float.POSITIVE_INFINITY</max_value>
-                            <min_value>Float.NEGATIVE_INFINITY</min_value>
-                            <placeholders>
-                                <Overload>double</Overload>
-                                <Overload1>int</Overload1>
-                                <Overload2>long</Overload2>
-                                <S>Float</S>
-                                <eps>GenericMath.FLT_EPSILON</eps>
-                                <teps>0.00001f</teps>
-                            </placeholders>
-                        </type>
-                        <type>
-                            <primitive>double</primitive>
-                            <wrapper>Double</wrapper>
-                            <abbreviation>d</abbreviation>
-                            <max_value>Double.POSITIVE_INFINITY</max_value>
-                            <min_value>Double.NEGATIVE_INFINITY</min_value>
-                            <placeholders>
-                                <Overload>float</Overload>
-                                <Overload1>int</Overload1>
-                                <Overload2>long</Overload2>
-                                <S>Double</S>
-                                <eps>GenericMath.DBL_EPSILON</eps>
-                                <teps>0.0000007</teps>
-                            </placeholders>
-                        </type>
-                    </types>
-                </configuration>
             </plugin>
             <!-- Source compiler plugin -->
             <plugin>

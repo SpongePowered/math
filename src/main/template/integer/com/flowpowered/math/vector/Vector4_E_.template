@@ -25,20 +25,24 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E#(Vector2#E# v) {
-        this(v, (#e#) 0, (#e#) 0);
+        this(v, 0, 0);
     }
 
-    // TODO: add #EOverload# overloads
+    public Vector4#E#(Vector2#E# v, #EOverload# z, #EOverload# w) {
+        this(v, #EFloorFunc#(z), #EFloorFunc#(w));
+    }
 
     public Vector4#E#(Vector2#E# v, #e# z, #e# w) {
         this(v.getX(), v.getY(), z, w);
     }
 
     public Vector4#E#(Vector3#E# v) {
-        this(v, (#e#) 0);
+        this(v, 0);
     }
 
-    // TODO: add #EOverload# overloads
+    public Vector4#E#(Vector3#E# v, #EOverload# w) {
+        this(v, #EFloorFunc#(w));
+    }
 
     public Vector4#E#(Vector3#E# v, #e# w) {
         this(v.getX(), v.getY(), v.getZ(), w);
@@ -53,7 +57,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E#(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        this((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        this(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public Vector4#E#(#e# x, #e# y, #e# z, #e# w) {
@@ -84,7 +88,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# add(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return add((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return add(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public Vector4#E# add(#e# x, #e# y, #e# z, #e# w) {
@@ -96,7 +100,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# sub(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return sub((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return sub(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public Vector4#E# sub(#e# x, #e# y, #e# z, #e# w) {
@@ -104,7 +108,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# mul(#EOverload# a) {
-        return mul((#e#) a);
+        return mul(#EFloorFunc#(a));
     }
 
     @Override
@@ -117,7 +121,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# mul(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return mul((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return mul(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public Vector4#E# mul(#e# x, #e# y, #e# z, #e# w) {
@@ -125,7 +129,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# div(#EOverload# a) {
-        return div((#e#) a);
+        return div(#EFloorFunc#(a));
     }
 
     @Override
@@ -138,7 +142,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# div(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return div((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return div(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public Vector4#E# div(#e# x, #e# y, #e# z, #e# w) {
@@ -150,15 +154,15 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public #e# dot(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return dot((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return dot(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public #e# dot(#e# x, #e# y, #e# z, #e# w) {
-        return (#e#) (this.x * x + this.y * y + this.z * z + this.w * w);
+        return this.x * x + this.y * y + this.z * z + this.w * w;
     }
 
     public Vector4#E# pow(#EOverload# pow) {
-        return pow((#e#) pow);
+        return pow(#EFloorFunc#(pow));
     }
 
     @Override
@@ -181,7 +185,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# min(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return min((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return min(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public Vector4#E# min(#e# x, #e# y, #e# z, #e# w) {
@@ -193,7 +197,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public Vector4#E# max(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return max((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return max(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public Vector4#E# max(#e# x, #e# y, #e# z, #e# w) {
@@ -205,7 +209,7 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     public #e# distanceSquared(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return distanceSquared((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+        return distanceSquared(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
     public #e# distanceSquared(#e# x, #e# y, #e# z, #e# w) {
@@ -216,16 +220,16 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
         return dx * dx + dy * dy + dz * dz + dw * dw;
     }
 
-    public #e# distance(Vector4#E# v) {
+    public #EDecEqui# distance(Vector4#E# v) {
         return distance(v.x, v.y, v.z, v.w);
     }
 
-    public #e# distance(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
-        return distance((#e#) x, (#e#) y, (#e#) z, (#e#) w);
+    public #EDecEqui# distance(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
+        return distance(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
     }
 
-    public #e# distance(#e# x, #e# y, #e# z, #e# w) {
-        return (#e#) Math.sqrt(distanceSquared(x, y, z, w));
+    public #EDecEqui# distance(#e# x, #e# y, #e# z, #e# w) {
+        return (#EDecEqui#) Math.sqrt(distanceSquared(x, y, z, w));
     }
 
     @Override
@@ -234,8 +238,8 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     }
 
     @Override
-    public #e# length() {
-        return (#e#) Math.sqrt(lengthSquared());
+    public #EDecEqui# length() {
+        return (#EDecEqui#) Math.sqrt(lengthSquared());
     }
 
     /**

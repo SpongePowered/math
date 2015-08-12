@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtil#E#;
+import com.flowpowered.math.test.#EDecEquiTest#;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -71,7 +72,7 @@ public class Vector2#E#Test {
     @Test
     public void testDoubleComponentsAddition() {
         Vector2#E# vector = new Vector2#E#(1, 3).add(5.5, -1.5);
-        TestUtil#E#.assertEquals(vector, (#e#) 6, (#e#) 2);
+        TestUtil#E#.assertEquals(vector, (#e#) 6, (#e#) 1);
     }
 
     @Test
@@ -258,26 +259,26 @@ public class Vector2#E#Test {
 
     @Test
     public void testVector2Distance() {
-        #e# f = new Vector2#E#(4, 6).distance(new Vector2#E#(7, 2));
-        TestUtil#E#.assertEquals(f, (#e#) 5);
+        #EDecEqui# f = new Vector2#E#(4, 6).distance(new Vector2#E#(7, 2));
+        #EDecEquiTest#.assertEquals(f, (#e#) 5);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        #e# f = new Vector2#E#(4, 6).distance(7d, 2d);
-        TestUtil#E#.assertEquals(f, (#e#) 5);
+        #EDecEqui# f = new Vector2#E#(4, 6).distance(7d, 2d);
+        #EDecEquiTest#.assertEquals(f, (#e#) 5);
     }
 
     @Test
     public void test#ES#ComponentsDistance() {
-        #e# f = new Vector2#E#(4, 6).distance((#e#) 7, (#e#) 2);
-        TestUtil#E#.assertEquals(f, (#e#) 5);
+        #EDecEqui# f = new Vector2#E#(4, 6).distance((#e#) 7, (#e#) 2);
+        #EDecEquiTest#.assertEquals(f, (#e#) 5);
     }
 
     @Test
     public void testLength() {
-        #e# f = new Vector2#E#(3, 4).length();
-        TestUtil#E#.assertEquals(f, (#e#) 5);
+        #EDecEqui# f = new Vector2#E#(3, 4).length();
+        #EDecEquiTest#.assertEquals(f, (#e#) 5);
     }
 
     @Test

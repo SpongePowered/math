@@ -3,6 +3,8 @@ package com.flowpowered.math.vector;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import com.flowpowered.math.GenericMath;
+
 public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cloneable {
     public static VectorNl ZERO_2 = new ImmutableZeroVectorN(0, 0);
     public static VectorNl ZERO_3 = new ImmutableZeroVectorN(0, 0, 0);
@@ -50,7 +52,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
     }
 
     public void setZero() {
-        Arrays.fill(vec, (long) 0);
+        Arrays.fill(vec, 0);
     }
 
     public VectorNl resize(int size) {
@@ -70,7 +72,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         }
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long)(vec[comp] + v[comp]);
+            d.vec[comp] = vec[comp] + v[comp];
         }
         return d;
     }
@@ -86,13 +88,13 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         }
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long)(vec[comp] - v[comp]);
+            d.vec[comp] = vec[comp] - v[comp];
         }
         return d;
     }
 
     public VectorNl mul(double a) {
-        return mul((long) a);
+        return mul(GenericMath.floorl(a));
     }
 
     @Override
@@ -100,7 +102,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         final int size = size();
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) (vec[comp] * a);
+            d.vec[comp] = vec[comp] * a;
         }
         return d;
     }
@@ -116,13 +118,13 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         }
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) (vec[comp] * v[comp]);
+            d.vec[comp] = vec[comp] * v[comp];
         }
         return d;
     }
 
     public VectorNl div(double a) {
-        return div((long) a);
+        return div(GenericMath.floorl(a));
     }
 
     @Override
@@ -130,7 +132,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         final int size = size();
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) (vec[comp] / a);
+            d.vec[comp] = vec[comp] / a;
         }
         return d;
     }
@@ -146,7 +148,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         }
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) (vec[comp] / v[comp]);
+            d.vec[comp] = vec[comp] / v[comp];
         }
         return d;
     }
@@ -162,13 +164,13 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         }
         long d = 0;
         for (int comp = 0; comp < size; comp++) {
-            d += (long) (vec[comp] * v[comp]);
+            d += vec[comp] * v[comp];
         }
         return d;
     }
 
     public VectorNl pow(double pow) {
-        return pow((long) pow);
+        return pow(GenericMath.floorl(pow));
     }
 
     @Override
@@ -176,7 +178,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         final int size = size();
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) Math.pow(vec[comp], power);
+            d.vec[comp] = GenericMath.floorl(Math.pow(vec[comp], power));
         }
         return d;
     }
@@ -186,7 +188,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         final int size = size();
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) Math.abs(vec[comp]);
+            d.vec[comp] = Math.abs(vec[comp]);
         }
         return d;
     }
@@ -196,7 +198,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         final int size = size();
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) -vec[comp];
+            d.vec[comp] = -vec[comp];
         }
         return d;
     }
@@ -212,7 +214,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         }
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) Math.min(vec[comp], v[comp]);
+            d.vec[comp] = Math.min(vec[comp], v[comp]);
         }
         return d;
     }
@@ -228,7 +230,7 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         }
         final VectorNl d = new VectorNl(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (long) Math.max(vec[comp], v[comp]);
+            d.vec[comp] = Math.max(vec[comp], v[comp]);
         }
         return d;
     }
@@ -250,12 +252,12 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         return d;
     }
 
-    public long distance(VectorNl v) {
+    public double distance(VectorNl v) {
         return distance(v.vec);
     }
 
-    public long distance(long... v) {
-        return (long) Math.sqrt(distanceSquared(v));
+    public double distance(long... v) {
+        return (double) Math.sqrt(distanceSquared(v));
     }
 
     @Override
@@ -269,8 +271,8 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
     }
 
     @Override
-    public long length() {
-        return (long) Math.sqrt(lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(lengthSquared());
     }
 
     @Override

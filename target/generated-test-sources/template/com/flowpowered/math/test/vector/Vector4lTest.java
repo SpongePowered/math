@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtill;
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2l;
 import com.flowpowered.math.vector.Vector3l;
@@ -83,7 +84,7 @@ public class Vector4lTest {
     @Test
     public void testDoubleComponentsAddition() {
         Vector4l vector = new Vector4l(0, 1, 1, 1).add(5.5, -2.5, 3.8, 5.5);
-        TestUtill.assertEquals(vector, 5, -1, 4, 6);
+        TestUtill.assertEquals(vector, 5, -2, 4, 6);
     }
 
     @Test
@@ -223,7 +224,7 @@ public class Vector4lTest {
     @Test
     public void testDoubleComponentsMinimum() {
         Vector4l vector = new Vector4l(2, 6, -1, 0).min(3, 4, 10, -1.1);
-        TestUtill.assertEquals(vector, 2, 4, -1, -1);
+        TestUtill.assertEquals(vector, 2, 4, -1, -2);
     }
 
     @Test
@@ -252,8 +253,8 @@ public class Vector4lTest {
 
     @Test
     public void testVector4DistanceSquared() {
-        long f = new Vector3l(2, 3, 4).distanceSquared(new Vector3l(5, 6, 7));
-        TestUtill.assertEquals(f, 27);
+        long f = new Vector4l(2, 3, 4, 5).distanceSquared(new Vector4l(5, 6, 7, 8));
+        TestUtill.assertEquals(f, 36);
     }
 
     @Test
@@ -270,26 +271,26 @@ public class Vector4lTest {
 
     @Test
     public void testVector4Distance() {
-        long f = new Vector4l(0, 2, 4, 8).distance(new Vector4l(0, 8, 16, 8));
-        TestUtill.assertEquals(f, 13);
+        double f = new Vector4l(0, 6, 13, 8).distance(new Vector4l(2, 8, 16, 16));
+        TestUtild.assertEquals(f, 9);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        long f = new Vector4l(0, 2, 4, 8).distance(new Vector4l(0d, 8.3, 16.5, 8.1));
-        TestUtill.assertEquals(f, 13);
+        double f = new Vector4l(0, 6, 13, 8).distance(new Vector4l(2d, 8.3, 16.5, 16.1));
+        TestUtild.assertEquals(f, 9);
     }
 
     @Test
     public void testLongComponentsDistance() {
-        long f = new Vector4l(0, 2, 4, 8).distance(new Vector4l((long) 0, (long) 8, (long) 16, (long) 8));
-        TestUtill.assertEquals(f, 13);
+        double f = new Vector4l(0, 6, 13, 8).distance(new Vector4l((long) 2, (long) 8, (long) 16, (long) 16));
+        TestUtild.assertEquals(f, 9);
     }
 
     @Test
     public void testLength() {
-        long f = new Vector4l(3, 4, 5, 6).length();
-        TestUtill.assertEquals(f, 9);
+        double f = new Vector4l(2, 2, 3, 8).length();
+        TestUtild.assertEquals(f, 9);
     }
 
     @Test

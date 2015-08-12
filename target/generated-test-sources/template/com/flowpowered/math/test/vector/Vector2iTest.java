@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtili;
+import com.flowpowered.math.test.TestUtilf;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2i;
 import com.flowpowered.math.vector.Vector3i;
@@ -71,7 +72,7 @@ public class Vector2iTest {
     @Test
     public void testDoubleComponentsAddition() {
         Vector2i vector = new Vector2i(1, 3).add(5.5, -1.5);
-        TestUtili.assertEquals(vector, (int) 6, (int) 2);
+        TestUtili.assertEquals(vector, (int) 6, (int) 1);
     }
 
     @Test
@@ -258,26 +259,26 @@ public class Vector2iTest {
 
     @Test
     public void testVector2Distance() {
-        int f = new Vector2i(4, 6).distance(new Vector2i(7, 2));
-        TestUtili.assertEquals(f, (int) 5);
+        float f = new Vector2i(4, 6).distance(new Vector2i(7, 2));
+        TestUtilf.assertEquals(f, (int) 5);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        int f = new Vector2i(4, 6).distance(7d, 2d);
-        TestUtili.assertEquals(f, (int) 5);
+        float f = new Vector2i(4, 6).distance(7d, 2d);
+        TestUtilf.assertEquals(f, (int) 5);
     }
 
     @Test
     public void testIntComponentsDistance() {
-        int f = new Vector2i(4, 6).distance((int) 7, (int) 2);
-        TestUtili.assertEquals(f, (int) 5);
+        float f = new Vector2i(4, 6).distance((int) 7, (int) 2);
+        TestUtilf.assertEquals(f, (int) 5);
     }
 
     @Test
     public void testLength() {
-        int f = new Vector2i(3, 4).length();
-        TestUtili.assertEquals(f, (int) 5);
+        float f = new Vector2i(3, 4).length();
+        TestUtilf.assertEquals(f, (int) 5);
     }
 
     @Test

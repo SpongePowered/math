@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.test.TestUtill;
 import com.flowpowered.math.vector.Vector2l;
@@ -240,20 +241,20 @@ public class VectorNlTest {
 
     @Test
     public void testVectorNDistance() {
-        long f = new VectorNl(0, 2, 4, 8).distance(new VectorNl(0, 8, 16, 8));
-        TestUtill.assertEquals(f, 13);
+        double f = new VectorNl(0, 6, 13, 8).distance(new VectorNl(2, 8, 16, 16));
+        TestUtild.assertEquals(f, 9);
     }
 
     @Test
     public void testLongComponentsDistance() {
-        long f = new VectorNl(0, 2, 4, 8).distance((long) 0, (long) 8, (long) 16, (long) 8);
-        TestUtill.assertEquals(f, 13);
+        double f = new VectorNl(0, 6, 13, 8).distance((long) 2, (long) 8, (long) 16, (long) 16);
+        TestUtild.assertEquals(f, 9);
     }
 
     @Test
     public void testLength() {
-        long f = new VectorNl(3, 4, 5, 6).length();
-        TestUtill.assertEquals(f, 9);
+        double f = new VectorNl(2, 2, 3, 8).length();
+        TestUtild.assertEquals(f, 9);
     }
 
     @Test

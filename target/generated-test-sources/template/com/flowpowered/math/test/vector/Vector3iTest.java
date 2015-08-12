@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.test.TestUtili;
+import com.flowpowered.math.test.TestUtilf;
 import com.flowpowered.math.test.TestUtili;
 import com.flowpowered.math.vector.Vector2i;
 import com.flowpowered.math.vector.Vector3i;
@@ -78,7 +79,7 @@ public class Vector3iTest {
     @Test
     public void testDoubleComponentsAddition() {
         Vector3i vector = new Vector3i(0, 1, 5).add(5.5, -2.5, 3.8);
-        TestUtili.assertEquals(vector, (int) 5, (int) -1, (int) 8);
+        TestUtili.assertEquals(vector, (int) 5, (int) -2, (int) 8);
     }
 
     @Test
@@ -283,32 +284,32 @@ public class Vector3iTest {
 
     @Test
     public void testVector3Distance() {
-        int f = new Vector3i(0, 2, 4).distance(new Vector3i(0, 8, 16));
-        TestUtili.assertEquals(f, (int) 13);
+        float f = new Vector3i(0, 2, 12).distance(new Vector3i(0, 5, 16));
+        TestUtilf.assertEquals(f, (int) 5);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        int f = new Vector3i(0, 2, 4).distance(0d, 8d, 16d);
-        TestUtili.assertEquals(f, (int) 13);
+        float f = new Vector3i(0, 2, 12).distance(0d, 5d, 16d);
+        TestUtilf.assertEquals(f, (int) 5);
     }
 
     @Test
     public void testIntComponentsDistance() {
-        int f = new Vector3i(0, 2, 4).distance((int) 0, (int) 8, (int) 16);
-        TestUtili.assertEquals(f,  (int) 13);
+        float f = new Vector3i(0, 2, 12).distance((int) 0, (int) 5, (int) 16);
+        TestUtilf.assertEquals(f, (int) 5);
     }
 
     @Test
     public void testLength() {
-        int f = new Vector3i(3, 4, 5).length();
-        TestUtili.assertEquals(f, (int) 7);
+        float f = new Vector3i(4, 4, 7).length();
+        TestUtilf.assertEquals(f, (int) 9);
     }
 
     @Test
     public void testLengthSquared() {
-        int f = new Vector3i(3, 4, 5).lengthSquared();
-        TestUtili.assertEquals(f, (int) 50);
+        int f = new Vector3i(4, 4, 7).lengthSquared();
+        TestUtili.assertEquals(f, (int) 81);
     }
 
     @Test

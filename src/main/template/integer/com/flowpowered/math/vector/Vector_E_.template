@@ -11,7 +11,7 @@ public interface Vector#E# {
 
     public Vector#E# negate();
 
-    public #e# length();
+    public #EDecEqui# length();
 
     public #e# lengthSquared();
 

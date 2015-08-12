@@ -3,6 +3,8 @@ package com.flowpowered.math.vector;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import com.flowpowered.math.GenericMath;
+
 public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializable, Cloneable {
     public static VectorN#E# ZERO_2 = new ImmutableZeroVectorN(0, 0);
     public static VectorN#E# ZERO_3 = new ImmutableZeroVectorN(0, 0, 0);
@@ -50,7 +52,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
     }
 
     public void setZero() {
-        Arrays.fill(vec, (#e#) 0);
+        Arrays.fill(vec, 0);
     }
 
     public VectorN#E# resize(int size) {
@@ -70,7 +72,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         }
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#)(vec[comp] + v[comp]);
+            d.vec[comp] = vec[comp] + v[comp];
         }
         return d;
     }
@@ -86,13 +88,13 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         }
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#)(vec[comp] - v[comp]);
+            d.vec[comp] = vec[comp] - v[comp];
         }
         return d;
     }
 
     public VectorN#E# mul(#EOverload# a) {
-        return mul((#e#) a);
+        return mul(#EFloorFunc#(a));
     }
 
     @Override
@@ -100,7 +102,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         final int size = size();
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) (vec[comp] * a);
+            d.vec[comp] = vec[comp] * a;
         }
         return d;
     }
@@ -116,13 +118,13 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         }
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) (vec[comp] * v[comp]);
+            d.vec[comp] = vec[comp] * v[comp];
         }
         return d;
     }
 
     public VectorN#E# div(#EOverload# a) {
-        return div((#e#) a);
+        return div(#EFloorFunc#(a));
     }
 
     @Override
@@ -130,7 +132,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         final int size = size();
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) (vec[comp] / a);
+            d.vec[comp] = vec[comp] / a;
         }
         return d;
     }
@@ -146,7 +148,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         }
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) (vec[comp] / v[comp]);
+            d.vec[comp] = vec[comp] / v[comp];
         }
         return d;
     }
@@ -162,13 +164,13 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         }
         #e# d = 0;
         for (int comp = 0; comp < size; comp++) {
-            d += (#e#) (vec[comp] * v[comp]);
+            d += vec[comp] * v[comp];
         }
         return d;
     }
 
     public VectorN#E# pow(#EOverload# pow) {
-        return pow((#e#) pow);
+        return pow(#EFloorFunc#(pow));
     }
 
     @Override
@@ -176,7 +178,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         final int size = size();
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) Math.pow(vec[comp], power);
+            d.vec[comp] = #EFloorFunc#(Math.pow(vec[comp], power));
         }
         return d;
     }
@@ -186,7 +188,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         final int size = size();
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) Math.abs(vec[comp]);
+            d.vec[comp] = Math.abs(vec[comp]);
         }
         return d;
     }
@@ -196,7 +198,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         final int size = size();
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) -vec[comp];
+            d.vec[comp] = -vec[comp];
         }
         return d;
     }
@@ -212,7 +214,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         }
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) Math.min(vec[comp], v[comp]);
+            d.vec[comp] = Math.min(vec[comp], v[comp]);
         }
         return d;
     }
@@ -228,7 +230,7 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         }
         final VectorN#E# d = new VectorN#E#(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = (#e#) Math.max(vec[comp], v[comp]);
+            d.vec[comp] = Math.max(vec[comp], v[comp]);
         }
         return d;
     }
@@ -250,12 +252,12 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         return d;
     }
 
-    public #e# distance(VectorN#E# v) {
+    public #EDecEqui# distance(VectorN#E# v) {
         return distance(v.vec);
     }
 
-    public #e# distance(#e#... v) {
-        return (#e#) Math.sqrt(distanceSquared(v));
+    public #EDecEqui# distance(#e#... v) {
+        return (#EDecEqui#) Math.sqrt(distanceSquared(v));
     }
 
     @Override
@@ -269,8 +271,8 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
     }
 
     @Override
-    public #e# length() {
-        return (#e#) Math.sqrt(lengthSquared());
+    public #EDecEqui# length() {
+        return (#EDecEqui#) Math.sqrt(lengthSquared());
     }
 
     @Override

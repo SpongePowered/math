@@ -176,11 +176,11 @@ public class Quaternion#E#Test {
 
     @Test
     public void testAxesAnglesDegrees() {
-        Vector3#E# vector1 = new Quaternion#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3#E# vector1 = new Quaternion#E#((#e#) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtil#E#.assertEquals(vector1, 90, 0, 0);
-        Vector3#E# vector2 = new Quaternion#E#(0, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3#E# vector2 = new Quaternion#E#(0, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtil#E#.assertEquals(vector2, 0, 90, 0);
-        Vector3#E# vector3 = new Quaternion#E#(0, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3#E# vector3 = new Quaternion#E#(0, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO, (#e#) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtil#E#.assertEquals(vector3, 0, 0, 90);
     }
 

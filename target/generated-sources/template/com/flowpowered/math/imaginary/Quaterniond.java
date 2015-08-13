@@ -352,7 +352,7 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
      *
      * @return The angle in degrees for each axis, stored in a vector, in the corresponding component
      */
-    public Vector3d getAxesAngleDeg() {
+    public Vector3d getAxesAnglesDeg() {
         return getAxesAnglesRad().mul(TrigMath.RAD_TO_DEG);
     }
 
@@ -375,11 +375,6 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
             roll = 0;
             pitch = sign * Math.PI / 2;
             yaw = -sign * 2 * TrigMath.atan2(z, w);
-        }
-        if (yaw > 180) {
-            yaw -= 360;
-        } else if (yaw < -180) {
-            yaw += 360;
         }
         return new Vector3d(pitch, yaw, roll);
     }

@@ -176,11 +176,11 @@ public class QuaternionfTest {
 
     @Test
     public void testAxesAnglesDegrees() {
-        Vector3f vector1 = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3f vector1 = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtilf.assertEquals(vector1, 90, 0, 0);
-        Vector3f vector2 = new Quaternionf(0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3f vector2 = new Quaternionf(0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtilf.assertEquals(vector2, 0, 90, 0);
-        Vector3f vector3 = new Quaternionf(0, 0, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3f vector3 = new Quaternionf(0, 0, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtilf.assertEquals(vector3, 0, 0, 90);
     }
 

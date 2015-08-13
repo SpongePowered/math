@@ -397,6 +397,16 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
     }
 
     /**
+     * Returns the axis of rotation for this quaternion.
+     *
+     * @return The axis of rotation
+     */
+    public Vector3f getAxis() {
+        final float q = (float) Math.sqrt(1 - w * w);
+        return new Vector3f(x / q, y / q, z / q);
+    }
+
+    /**
      * Returns the angles in degrees around the x, y and z axes that correspond to the rotation represented by this quaternion.
      *
      * @return The angle in degrees for each axis, stored in a vector, in the corresponding component
@@ -487,6 +497,18 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
             throw new ArithmeticException("Cannot normalize the zero quaternion");
         }
         return new Quaternionf(x / length, y / length, z / length, w / length);
+    }
+
+    /**
+     * Converts this quaternion to a complex by extracting the rotation around
+     * the axis and returning it as a rotation in the plane perpendicular to the
+     * rotation axis.
+     *
+     * @return The rotation without the axis as a complex
+     */
+    public Complexf toComplex() {
+        final float w2 = w * w;
+        return new Complexf(2 * w2 - 1, 2 * w * (float) Math.sqrt(1 - w2));
     }
 
     @Override

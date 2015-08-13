@@ -397,6 +397,16 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
     }
 
     /**
+     * Returns the axis of rotation for this quaternion.
+     *
+     * @return The axis of rotation
+     */
+    public Vector3d getAxis() {
+        final double q = (double) Math.sqrt(1 - w * w);
+        return new Vector3d(x / q, y / q, z / q);
+    }
+
+    /**
      * Returns the angles in degrees around the x, y and z axes that correspond to the rotation represented by this quaternion.
      *
      * @return The angle in degrees for each axis, stored in a vector, in the corresponding component
@@ -487,6 +497,18 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
             throw new ArithmeticException("Cannot normalize the zero quaternion");
         }
         return new Quaterniond(x / length, y / length, z / length, w / length);
+    }
+
+    /**
+     * Converts this quaternion to a complex by extracting the rotation around
+     * the axis and returning it as a rotation in the plane perpendicular to the
+     * rotation axis.
+     *
+     * @return The rotation without the axis as a complex
+     */
+    public Complexd toComplex() {
+        final double w2 = w * w;
+        return new Complexd(2 * w2 - 1, 2 * w * (double) Math.sqrt(1 - w2));
     }
 
     @Override

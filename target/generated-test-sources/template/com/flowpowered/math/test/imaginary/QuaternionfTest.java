@@ -1,15 +1,16 @@
 package com.flowpowered.math.test.imaginary;
 
-import static com.flowpowered.math.test.TestUtilf.SQRT54;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.TrigMath;
+import com.flowpowered.math.imaginary.Complexf;
 import com.flowpowered.math.imaginary.Quaternionf;
 import com.flowpowered.math.matrix.Matrix3f;
 import com.flowpowered.math.test.TestUtilf;
 import com.flowpowered.math.vector.Vector3f;
+
+import static com.flowpowered.math.test.TestUtilf.SQRT54;
 
 public class QuaternionfTest {
     @Test
@@ -205,6 +206,19 @@ public class QuaternionfTest {
     }
 
     @Test
+    public void testAxis() {
+        Vector3f vector1 = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        TestUtilf.assertEquals(vector1, 1, 0, 0);
+        Vector3f vector2 = new Quaternionf(0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        TestUtilf.assertEquals(vector2, 0, 1, 0);
+        Vector3f vector3 = new Quaternionf(0, 0, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        TestUtilf.assertEquals(vector3, 0, 0, 1);
+        Vector3f vector4 = Quaternionf.fromAngleDegAxis(135, Vector3f.ONE).getAxis();
+        float a4 = (float) (1 / Math.sqrt(3));
+        TestUtilf.assertEquals(vector4, a4, a4, a4);
+    }
+
+    @Test
     public void testAxesAnglesDegrees() {
         Vector3f vector1 = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtilf.assertEquals(vector1, 90, 0, 0);
@@ -262,6 +276,13 @@ public class QuaternionfTest {
             Assert.fail();
         } catch (ArithmeticException ex) {
         }
+    }
+
+    @Test
+    public void testConvertToComplex() {
+        Quaternionf quaternion = Quaternionf.fromAngleDegAxis(135, Vector3f.ONE);
+        Complexf complex = quaternion.toComplex();
+        TestUtilf.assertEquals(complex.getAngleDeg(), 135);
     }
 
     @Test

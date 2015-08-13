@@ -1,15 +1,16 @@
 package com.flowpowered.math.test.imaginary;
 
-import static com.flowpowered.math.test.TestUtild.SQRT54;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.flowpowered.math.TrigMath;
+import com.flowpowered.math.imaginary.Complexd;
 import com.flowpowered.math.imaginary.Quaterniond;
 import com.flowpowered.math.matrix.Matrix3d;
 import com.flowpowered.math.test.TestUtild;
 import com.flowpowered.math.vector.Vector3d;
+
+import static com.flowpowered.math.test.TestUtild.SQRT54;
 
 public class QuaterniondTest {
     @Test
@@ -205,6 +206,19 @@ public class QuaterniondTest {
     }
 
     @Test
+    public void testAxis() {
+        Vector3d vector1 = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        TestUtild.assertEquals(vector1, 1, 0, 0);
+        Vector3d vector2 = new Quaterniond(0, (double) TrigMath.HALF_SQRT_OF_TWO, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        TestUtild.assertEquals(vector2, 0, 1, 0);
+        Vector3d vector3 = new Quaterniond(0, 0, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        TestUtild.assertEquals(vector3, 0, 0, 1);
+        Vector3d vector4 = Quaterniond.fromAngleDegAxis(135, Vector3d.ONE).getAxis();
+        double a4 = (double) (1 / Math.sqrt(3));
+        TestUtild.assertEquals(vector4, a4, a4, a4);
+    }
+
+    @Test
     public void testAxesAnglesDegrees() {
         Vector3d vector1 = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtild.assertEquals(vector1, 90, 0, 0);
@@ -262,6 +276,13 @@ public class QuaterniondTest {
             Assert.fail();
         } catch (ArithmeticException ex) {
         }
+    }
+
+    @Test
+    public void testConvertToComplex() {
+        Quaterniond quaternion = Quaterniond.fromAngleDegAxis(135, Vector3d.ONE);
+        Complexd complex = quaternion.toComplex();
+        TestUtild.assertEquals(complex.getAngleDeg(), 135);
     }
 
     @Test

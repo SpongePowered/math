@@ -176,11 +176,11 @@ public class QuaterniondTest {
 
     @Test
     public void testAxesAnglesDegrees() {
-        Vector3d vector1 = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3d vector1 = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtild.assertEquals(vector1, 90, 0, 0);
-        Vector3d vector2 = new Quaterniond(0, (double) TrigMath.HALF_SQRT_OF_TWO, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3d vector2 = new Quaterniond(0, (double) TrigMath.HALF_SQRT_OF_TWO, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtild.assertEquals(vector2, 0, 90, 0);
-        Vector3d vector3 = new Quaterniond(0, 0, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).getAxesAngleDeg();
+        Vector3d vector3 = new Quaterniond(0, 0, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
         TestUtild.assertEquals(vector3, 0, 0, 90);
     }
 

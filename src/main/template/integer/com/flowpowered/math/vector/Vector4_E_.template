@@ -161,6 +161,23 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
         return this.x * x + this.y * y + this.z * z + this.w * w;
     }
 
+    public Vector4#E# project(Vector4#E# v) {
+        return project(v.x, v.y, v.z, v.w);
+    }
+
+    public Vector4#E# project(#EOverload# x, #EOverload# y, #EOverload# z, #EOverload# w) {
+        return project(#EFloorFunc#(x), #EFloorFunc#(y), #EFloorFunc#(z), #EFloorFunc#(w));
+    }
+
+    public Vector4#E# project(#e# x, #e# y, #e# z, #e# w) {
+        final #e# lengthSquared = x * x + y * y + z * z + w * w;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final #EDecEqui# a = (#EDecEqui#) dot(x, y, z, w) / lengthSquared;
+        return new Vector4#E#(a * x, a * y, a * z, a * w);
+    }
+
     public Vector4#E# pow(#EOverload# pow) {
         return pow(#EFloorFunc#(pow));
     }

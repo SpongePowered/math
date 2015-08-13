@@ -177,6 +177,30 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         return d;
     }
 
+    public VectorN#E# project(VectorN#E# v) {
+        return project(v.vec);
+    }
+
+    public VectorN#E# project(#e#... v) {
+        final int size = size();
+        if (size != v.length) {
+            throw new IllegalArgumentException("Vector sizes must be the same");
+        }
+        #e# lengthSquared = 0;
+        for (int comp = 0; comp < size; comp++) {
+            lengthSquared += v[comp] * v[comp];
+        }
+        if (Math.abs(lengthSquared) < #Eeps#) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final #e# a = dot(v) / lengthSquared;
+        final VectorN#E# d = new VectorN#E#(size);
+        for (int comp = 0; comp < size; comp++) {
+            d.vec[comp] = a * v[comp];
+        }
+        return d;
+    }
+
     public VectorN#E# pow(#EOverload# pow) {
         return pow((#e#) pow);
     }

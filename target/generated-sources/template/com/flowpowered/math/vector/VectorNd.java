@@ -177,6 +177,30 @@ public class VectorNd implements Vectord, Comparable<VectorNd>, Serializable, Cl
         return d;
     }
 
+    public VectorNd project(VectorNd v) {
+        return project(v.vec);
+    }
+
+    public VectorNd project(double... v) {
+        final int size = size();
+        if (size != v.length) {
+            throw new IllegalArgumentException("Vector sizes must be the same");
+        }
+        double lengthSquared = 0;
+        for (int comp = 0; comp < size; comp++) {
+            lengthSquared += v[comp] * v[comp];
+        }
+        if (Math.abs(lengthSquared) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = dot(v) / lengthSquared;
+        final VectorNd d = new VectorNd(size);
+        for (int comp = 0; comp < size; comp++) {
+            d.vec[comp] = a * v[comp];
+        }
+        return d;
+    }
+
     public VectorNd pow(float pow) {
         return pow((double) pow);
     }

@@ -161,6 +161,23 @@ public class Vector4l implements Vectorl, Comparable<Vector4l>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z + this.w * w;
     }
 
+    public Vector4l project(Vector4l v) {
+        return project(v.x, v.y, v.z, v.w);
+    }
+
+    public Vector4l project(double x, double y, double z, double w) {
+        return project(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z), GenericMath.floorl(w));
+    }
+
+    public Vector4l project(long x, long y, long z, long w) {
+        final long lengthSquared = x * x + y * y + z * z + w * w;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = (double) dot(x, y, z, w) / lengthSquared;
+        return new Vector4l(a * x, a * y, a * z, a * w);
+    }
+
     public Vector4l pow(double pow) {
         return pow(GenericMath.floorl(pow));
     }

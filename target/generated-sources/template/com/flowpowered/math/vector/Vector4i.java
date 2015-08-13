@@ -161,6 +161,23 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z + this.w * w;
     }
 
+    public Vector4i project(Vector4i v) {
+        return project(v.x, v.y, v.z, v.w);
+    }
+
+    public Vector4i project(double x, double y, double z, double w) {
+        return project(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z), GenericMath.floor(w));
+    }
+
+    public Vector4i project(int x, int y, int z, int w) {
+        final int lengthSquared = x * x + y * y + z * z + w * w;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = (float) dot(x, y, z, w) / lengthSquared;
+        return new Vector4i(a * x, a * y, a * z, a * w);
+    }
+
     public Vector4i pow(double pow) {
         return pow(GenericMath.floor(pow));
     }

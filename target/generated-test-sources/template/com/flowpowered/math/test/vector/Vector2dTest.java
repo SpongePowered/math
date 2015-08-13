@@ -184,6 +184,24 @@ public class Vector2dTest {
     }
 
     @Test
+    public void testVector2Project() {
+        Vector2d vector = new Vector2d(2, 3).project(new Vector2d(1, 1));
+        TestUtild.assertEquals(vector, (double) 2.5, (double) 2.5);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector2d vector = new Vector2d(2, 3).project(1d, 1d);
+        TestUtild.assertEquals(vector, (double) 2.5, (double) 2.5);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector2d vector = new Vector2d(2, 3).project(1, 1);
+        TestUtild.assertEquals(vector, (double) 2.5, (double) 2.5);
+    }
+
+    @Test
     public void testRaiseToFloatPower() {
         Vector2d vector = new Vector2d(2, 6).pow(2);
         TestUtild.assertEquals(vector, 4, 36);

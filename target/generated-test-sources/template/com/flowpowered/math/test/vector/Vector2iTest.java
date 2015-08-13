@@ -178,6 +178,24 @@ public class Vector2iTest {
     }
 
     @Test
+    public void testVector2Project() {
+        Vector2i vector = new Vector2i(20, 30).project(new Vector2i(10, 10));
+        TestUtili.assertEquals(vector, 25, 25);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector2i vector = new Vector2i(20, 30).project(10d, 10d);
+        TestUtili.assertEquals(vector, 25, 25);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector2i vector = new Vector2i(20, 30).project(10, 10);
+        TestUtili.assertEquals(vector, 25, 25);
+    }
+
+    @Test
     public void testRaiseToIntPower() {
         Vector2i vector = new Vector2i(2, 6).pow((int) 2);
         TestUtili.assertEquals(vector, (int) 4, (int) 36);

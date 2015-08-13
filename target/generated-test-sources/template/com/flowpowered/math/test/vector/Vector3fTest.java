@@ -201,6 +201,24 @@ public class Vector3fTest {
     }
 
     @Test
+    public void testVector3Project() {
+        Vector3f vector = new Vector3f(2, 3, 4).project(new Vector3f(1, 1, 1));
+        TestUtilf.assertEquals(vector, 3, 3, 3);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector3f vector = new Vector3f(2, 3, 4).project(1d, 1d, 1d);
+        TestUtilf.assertEquals(vector, 3, 3, 3);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector3f vector = new Vector3f(2, 3, 4).project(1, 1, 1);
+        TestUtilf.assertEquals(vector, 3, 3, 3);
+    }
+
+    @Test
     public void testVector3Cross() {
         Vector3f f = new Vector3f(2, 3, 4).cross(new Vector3f(4, 5, 6.5));
         TestUtilf.assertEquals(f, (float) -0.5, 3, -2);

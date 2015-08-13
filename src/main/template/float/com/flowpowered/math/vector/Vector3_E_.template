@@ -163,6 +163,23 @@ public class Vector3#E# implements Vector#E#, Comparable<Vector3#E#>, Serializab
         return this.x * x + this.y * y + this.z * z;
     }
 
+    public Vector3#E# project(Vector3#E# v) {
+        return project(v.x, v.y, v.z);
+    }
+
+    public Vector3#E# project(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return project((#e#) x, (#e#) y, (#e#) z);
+    }
+
+    public Vector3#E# project(#e# x, #e# y, #e# z) {
+        final #e# lengthSquared = x * x + y * y + z * z;
+        if (Math.abs(lengthSquared) < #Eeps#) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final #e# a = dot(x, y, z) / lengthSquared;
+        return new Vector3#E#(a * x, a * y, a * z);
+    }
+
     public Vector3#E# cross(Vector3#E# v) {
         return cross(v.x, v.y, v.z);
     }

@@ -131,6 +131,23 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
         return this.x * x + this.y * y;
     }
 
+    public Vector2i project(Vector2i v) {
+        return project(v.x, v.y);
+    }
+
+    public Vector2i project(double x, double y) {
+        return project(GenericMath.floor(x), GenericMath.floor(y));
+    }
+
+    public Vector2i project(int x, int y) {
+        final int lengthSquared = x * x + y * y;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = (float) dot(x, y) / lengthSquared;
+        return new Vector2i(a * x, a * y);
+    }
+
     public Vector2i pow(double pow) {
         return pow(GenericMath.floor(pow));
     }

@@ -131,6 +131,23 @@ public class Vector2#E# implements Vector#E#, Comparable<Vector2#E#>, Serializab
         return this.x * x + this.y * y;
     }
 
+    public Vector2#E# project(Vector2#E# v) {
+        return project(v.x, v.y);
+    }
+
+    public Vector2#E# project(#EOverload# x, #EOverload# y) {
+        return project(#EFloorFunc#(x), #EFloorFunc#(y));
+    }
+
+    public Vector2#E# project(#e# x, #e# y) {
+        final #e# lengthSquared = x * x + y * y;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final #EDecEqui# a = (#EDecEqui#) dot(x, y) / lengthSquared;
+        return new Vector2#E#(a * x, a * y);
+    }
+
     public Vector2#E# pow(#EOverload# pow) {
         return pow(#EFloorFunc#(pow));
     }

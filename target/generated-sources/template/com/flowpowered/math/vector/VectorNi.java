@@ -169,6 +169,30 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         return d;
     }
 
+    public VectorNi project(VectorNi v) {
+        return project(v.vec);
+    }
+
+    public VectorNi project(int... v) {
+        final int size = size();
+        if (size != v.length) {
+            throw new IllegalArgumentException("Vector sizes must be the same");
+        }
+        int lengthSquared = 0;
+        for (int comp = 0; comp < size; comp++) {
+            lengthSquared += v[comp] * v[comp];
+        }
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = (float) dot(v) / lengthSquared;
+        final VectorNi d = new VectorNi(size);
+        for (int comp = 0; comp < size; comp++) {
+            d.vec[comp] = GenericMath.floor(a * v[comp]);
+        }
+        return d;
+    }
+
     public VectorNi pow(double pow) {
         return pow(GenericMath.floor(pow));
     }

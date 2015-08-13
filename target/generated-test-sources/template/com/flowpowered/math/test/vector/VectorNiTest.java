@@ -178,6 +178,18 @@ public class VectorNiTest {
     }
 
     @Test
+    public void testVectorNProject() {
+        VectorNi vector = new VectorNi(20, 30, 40, 50).project(new VectorNi(10, 10, 10, 10));
+        TestUtili.assertEquals(vector, 35, 35, 35, 35);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        VectorNi vector = new VectorNi(20, 30, 40, 50).project(10, 10, 10, 10);
+        TestUtili.assertEquals(vector, 35, 35, 35, 35);
+    }
+
+    @Test
     public void testRaiseToDoublePower() {
         VectorNi vector = new VectorNi(2, 6, 8, 5).pow(2d);
         TestUtili.assertEquals(vector, (int) 4, (int) 36, (int) 64, (int) 25);

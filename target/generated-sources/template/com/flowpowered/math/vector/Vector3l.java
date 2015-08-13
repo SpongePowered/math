@@ -151,6 +151,23 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z;
     }
 
+    public Vector3l project(Vector3l v) {
+        return project(v.x, v.y, v.z);
+    }
+
+    public Vector3l project(double x, double y, double z) {
+        return project(GenericMath.floorl(x), GenericMath.floorl(y), GenericMath.floorl(z));
+    }
+
+    public Vector3l project(long x, long y, long z) {
+        final long lengthSquared = x * x + y * y + z * z;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = (double) dot(x, y, z) / lengthSquared;
+        return new Vector3l(a * x, a * y, a * z);
+    }
+
     public Vector3l cross(Vector3l v) {
         return cross(v.x, v.y, v.z);
     }

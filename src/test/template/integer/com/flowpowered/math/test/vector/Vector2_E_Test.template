@@ -178,6 +178,24 @@ public class Vector2#E#Test {
     }
 
     @Test
+    public void testVector2Project() {
+        Vector2#E# vector = new Vector2#E#(20, 30).project(new Vector2#E#(10, 10));
+        TestUtil#E#.assertEquals(vector, 25, 25);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector2#E# vector = new Vector2#E#(20, 30).project(10d, 10d);
+        TestUtil#E#.assertEquals(vector, 25, 25);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector2#E# vector = new Vector2#E#(20, 30).project(10, 10);
+        TestUtil#E#.assertEquals(vector, 25, 25);
+    }
+
+    @Test
     public void testRaiseTo#ES#Power() {
         Vector2#E# vector = new Vector2#E#(2, 6).pow((#e#) 2);
         TestUtil#E#.assertEquals(vector, (#e#) 4, (#e#) 36);

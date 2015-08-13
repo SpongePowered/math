@@ -163,6 +163,23 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z;
     }
 
+    public Vector3d project(Vector3d v) {
+        return project(v.x, v.y, v.z);
+    }
+
+    public Vector3d project(float x, float y, float z) {
+        return project((double) x, (double) y, (double) z);
+    }
+
+    public Vector3d project(double x, double y, double z) {
+        final double lengthSquared = x * x + y * y + z * z;
+        if (Math.abs(lengthSquared) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = dot(x, y, z) / lengthSquared;
+        return new Vector3d(a * x, a * y, a * z);
+    }
+
     public Vector3d cross(Vector3d v) {
         return cross(v.x, v.y, v.z);
     }

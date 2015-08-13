@@ -178,6 +178,24 @@ public class Vector2lTest {
     }
 
     @Test
+    public void testVector2Project() {
+        Vector2l vector = new Vector2l(20, 30).project(new Vector2l(10, 10));
+        TestUtill.assertEquals(vector, 25, 25);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector2l vector = new Vector2l(20, 30).project(10d, 10d);
+        TestUtill.assertEquals(vector, 25, 25);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector2l vector = new Vector2l(20, 30).project(10, 10);
+        TestUtill.assertEquals(vector, 25, 25);
+    }
+
+    @Test
     public void testRaiseToLongPower() {
         Vector2l vector = new Vector2l(2, 6).pow((long) 2);
         TestUtill.assertEquals(vector, (long) 4, (long) 36);

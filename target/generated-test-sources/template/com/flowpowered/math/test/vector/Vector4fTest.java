@@ -212,6 +212,24 @@ public class Vector4fTest {
     }
 
     @Test
+    public void testVector4Project() {
+        Vector4f vector = new Vector4f(2, 3, 4, 5).project(new Vector4f(1, 1, 1, 1));
+        TestUtilf.assertEquals(vector, (float) 3.5, (float) 3.5, (float) 3.5, (float) 3.5);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector4f vector = new Vector4f(2, 3, 4, 5).project(1d, 1d, 1d, 1d);
+        TestUtilf.assertEquals(vector, (float) 3.5, (float) 3.5, (float) 3.5, (float) 3.5);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector4f vector = new Vector4f(2, 3, 4, 5).project(1, 1, 1, 1);
+        TestUtilf.assertEquals(vector, (float) 3.5, (float) 3.5, (float) 3.5, (float) 3.5);
+    }
+
+    @Test
     public void testRaiseToFloatPower() {
         Vector4f vector = new Vector4f(2, 6, 8, 5.5).pow(2);
         TestUtilf.assertEquals(vector, 4, 36, 64, 30.25f);

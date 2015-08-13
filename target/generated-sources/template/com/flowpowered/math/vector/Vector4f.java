@@ -177,6 +177,23 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z + this.w * w;
     }
 
+    public Vector4f project(Vector4f v) {
+        return project(v.x, v.y, v.z, v.w);
+    }
+
+    public Vector4f project(double x, double y, double z, double w) {
+        return project((float) x, (float) y, (float) z, (float) w);
+    }
+
+    public Vector4f project(float x, float y, float z, float w) {
+        final float lengthSquared = x * x + y * y + z * z + w * w;
+        if (Math.abs(lengthSquared) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = dot(x, y, z, w) / lengthSquared;
+        return new Vector4f(a * x, a * y, a * z, a * w);
+    }
+
     public Vector4f pow(double pow) {
         return pow((float) pow);
     }

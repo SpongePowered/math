@@ -177,6 +177,30 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
         return d;
     }
 
+    public VectorNf project(VectorNf v) {
+        return project(v.vec);
+    }
+
+    public VectorNf project(float... v) {
+        final int size = size();
+        if (size != v.length) {
+            throw new IllegalArgumentException("Vector sizes must be the same");
+        }
+        float lengthSquared = 0;
+        for (int comp = 0; comp < size; comp++) {
+            lengthSquared += v[comp] * v[comp];
+        }
+        if (Math.abs(lengthSquared) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = dot(v) / lengthSquared;
+        final VectorNf d = new VectorNf(size);
+        for (int comp = 0; comp < size; comp++) {
+            d.vec[comp] = a * v[comp];
+        }
+        return d;
+    }
+
     public VectorNf pow(double pow) {
         return pow((float) pow);
     }

@@ -163,6 +163,23 @@ public class Vector3f implements Vectorf, Comparable<Vector3f>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z;
     }
 
+    public Vector3f project(Vector3f v) {
+        return project(v.x, v.y, v.z);
+    }
+
+    public Vector3f project(double x, double y, double z) {
+        return project((float) x, (float) y, (float) z);
+    }
+
+    public Vector3f project(float x, float y, float z) {
+        final float lengthSquared = x * x + y * y + z * z;
+        if (Math.abs(lengthSquared) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = dot(x, y, z) / lengthSquared;
+        return new Vector3f(a * x, a * y, a * z);
+    }
+
     public Vector3f cross(Vector3f v) {
         return cross(v.x, v.y, v.z);
     }

@@ -201,6 +201,24 @@ public class Vector3#E#Test {
     }
 
     @Test
+    public void testVector3Project() {
+        Vector3#E# vector = new Vector3#E#(2, 3, 4).project(new Vector3#E#(1, 1, 1));
+        TestUtil#E#.assertEquals(vector, 3, 3, 3);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector3#E# vector = new Vector3#E#(2, 3, 4).project(1d, 1d, 1d);
+        TestUtil#E#.assertEquals(vector, 3, 3, 3);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector3#E# vector = new Vector3#E#(2, 3, 4).project(1, 1, 1);
+        TestUtil#E#.assertEquals(vector, 3, 3, 3);
+    }
+
+    @Test
     public void testVector3Cross() {
         Vector3#E# f = new Vector3#E#(2, 3, 4).cross(new Vector3#E#(4, 5, 6.5));
         TestUtil#E#.assertEquals(f, (#e#) -0.5, 3, -2);

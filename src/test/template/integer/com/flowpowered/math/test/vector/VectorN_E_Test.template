@@ -178,6 +178,18 @@ public class VectorN#E#Test {
     }
 
     @Test
+    public void testVectorNProject() {
+        VectorN#E# vector = new VectorN#E#(20, 30, 40, 50).project(new VectorN#E#(10, 10, 10, 10));
+        TestUtil#E#.assertEquals(vector, 35, 35, 35, 35);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        VectorN#E# vector = new VectorN#E#(20, 30, 40, 50).project(10, 10, 10, 10);
+        TestUtil#E#.assertEquals(vector, 35, 35, 35, 35);
+    }
+
+    @Test
     public void testRaiseToDoublePower() {
         VectorN#E# vector = new VectorN#E#(2, 6, 8, 5).pow(2d);
         TestUtil#E#.assertEquals(vector, (#e#) 4, (#e#) 36, (#e#) 64, (#e#) 25);

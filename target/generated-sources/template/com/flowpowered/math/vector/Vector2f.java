@@ -142,6 +142,23 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
         return this.x * x + this.y * y;
     }
 
+    public Vector2f project(Vector2f v) {
+        return project(v.x, v.y);
+    }
+
+    public Vector2f project(double x, double y) {
+        return project((float) x, (float) y);
+    }
+
+    public Vector2f project(float x, float y) {
+        final float lengthSquared = x * x + y * y;
+        if (Math.abs(lengthSquared) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = dot(x, y) / lengthSquared;
+        return new Vector2f(a * x, a * y);
+    }
+
     public Vector2f pow(double pow) {
         return pow((float) pow);
     }

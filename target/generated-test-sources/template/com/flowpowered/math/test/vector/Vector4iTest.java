@@ -178,6 +178,24 @@ public class Vector4iTest {
     }
 
     @Test
+    public void testVector4Project() {
+        Vector4i vector = new Vector4i(20, 30, 40, 50).project(new Vector4i(10, 10, 10, 10));
+        TestUtili.assertEquals(vector, 35, 35, 35, 35);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector4i vector = new Vector4i(20, 30, 40, 50).project(10d, 10d, 10d, 10d);
+        TestUtili.assertEquals(vector, 35, 35, 35, 35);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector4i vector = new Vector4i(20, 30, 40, 50).project(10, 10, 10, 10);
+        TestUtili.assertEquals(vector, 35, 35, 35, 35);
+    }
+
+    @Test
     public void testDoubleComponentsDotProduct() {
         int f = new Vector4i(2, 3, 4, 5).dot(6.1, 7.5, 8.3, 9.2);
         TestUtili.assertEquals(f, 110);

@@ -142,6 +142,23 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
         return this.x * x + this.y * y;
     }
 
+    public Vector2d project(Vector2d v) {
+        return project(v.x, v.y);
+    }
+
+    public Vector2d project(float x, float y) {
+        return project((double) x, (double) y);
+    }
+
+    public Vector2d project(double x, double y) {
+        final double lengthSquared = x * x + y * y;
+        if (Math.abs(lengthSquared) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = dot(x, y) / lengthSquared;
+        return new Vector2d(a * x, a * y);
+    }
+
     public Vector2d pow(float pow) {
         return pow((double) pow);
     }

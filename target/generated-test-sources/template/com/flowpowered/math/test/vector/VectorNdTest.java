@@ -180,6 +180,18 @@ public class VectorNdTest {
     }
 
     @Test
+    public void testVectorNProject() {
+        VectorNd vector = new VectorNd(2, 3, 4, 5).project(new VectorNd(1, 1, 1, 1));
+        TestUtild.assertEquals(vector, (double) 3.5, (double) 3.5, (double) 3.5, (double) 3.5);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        VectorNd vector = new VectorNd(2, 3, 4, 5).project(1, 1, 1, 1);
+        TestUtild.assertEquals(vector, (double) 3.5, (double) 3.5, (double) 3.5, (double) 3.5);
+    }
+
+    @Test
     public void testRaiseToDoublePower() {
         VectorNd vector = new VectorNd(2, 6, 8, (double) 5.5).pow(2d);
         TestUtild.assertEquals(vector, 4, 36, 64, (double) 30.25);

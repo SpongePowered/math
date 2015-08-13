@@ -185,6 +185,24 @@ public class Vector3iTest {
     }
 
     @Test
+    public void testVector3Project() {
+        Vector3i vector = new Vector3i(20, 30, 40).project(new Vector3i(10, 10, 10));
+        TestUtili.assertEquals(vector, 30, 30, 30);
+    }
+
+    @Test
+    public void testDoubleComponentsProject() {
+        Vector3i vector = new Vector3i(20, 30, 40).project(10d, 10d, 10d);
+        TestUtili.assertEquals(vector, 30, 30, 30);
+    }
+
+    @Test
+    public void testFloatComponentsProject() {
+        Vector3i vector = new Vector3i(20, 30, 40).project(10, 10, 10);
+        TestUtili.assertEquals(vector, 30, 30, 30);
+    }
+
+    @Test
     public void testVector3Cross() {
         Vector3i f = new Vector3i(2, 3, 4).cross(new Vector3i(4, 3, 6.5));
         TestUtili.assertEquals(f, (int) 6, (int) 4, (int) -6);

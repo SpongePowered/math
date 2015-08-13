@@ -177,6 +177,23 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z + this.w * w;
     }
 
+    public Vector4d project(Vector4d v) {
+        return project(v.x, v.y, v.z, v.w);
+    }
+
+    public Vector4d project(float x, float y, float z, float w) {
+        return project((double) x, (double) y, (double) z, (double) w);
+    }
+
+    public Vector4d project(double x, double y, double z, double w) {
+        final double lengthSquared = x * x + y * y + z * z + w * w;
+        if (Math.abs(lengthSquared) < GenericMath.DBL_EPSILON) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = dot(x, y, z, w) / lengthSquared;
+        return new Vector4d(a * x, a * y, a * z, a * w);
+    }
+
     public Vector4d pow(float pow) {
         return pow((double) pow);
     }

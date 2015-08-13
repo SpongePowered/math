@@ -169,6 +169,30 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
         return d;
     }
 
+    public VectorNl project(VectorNl v) {
+        return project(v.vec);
+    }
+
+    public VectorNl project(long... v) {
+        final int size = size();
+        if (size != v.length) {
+            throw new IllegalArgumentException("Vector sizes must be the same");
+        }
+        long lengthSquared = 0;
+        for (int comp = 0; comp < size; comp++) {
+            lengthSquared += v[comp] * v[comp];
+        }
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = (double) dot(v) / lengthSquared;
+        final VectorNl d = new VectorNl(size);
+        for (int comp = 0; comp < size; comp++) {
+            d.vec[comp] = GenericMath.floorl(a * v[comp]);
+        }
+        return d;
+    }
+
     public VectorNl pow(double pow) {
         return pow(GenericMath.floorl(pow));
     }

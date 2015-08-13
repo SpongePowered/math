@@ -151,6 +151,23 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
         return this.x * x + this.y * y + this.z * z;
     }
 
+    public Vector3i project(Vector3i v) {
+        return project(v.x, v.y, v.z);
+    }
+
+    public Vector3i project(double x, double y, double z) {
+        return project(GenericMath.floor(x), GenericMath.floor(y), GenericMath.floor(z));
+    }
+
+    public Vector3i project(int x, int y, int z) {
+        final int lengthSquared = x * x + y * y + z * z;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final float a = (float) dot(x, y, z) / lengthSquared;
+        return new Vector3i(a * x, a * y, a * z);
+    }
+
     public Vector3i cross(Vector3i v) {
         return cross(v.x, v.y, v.z);
     }

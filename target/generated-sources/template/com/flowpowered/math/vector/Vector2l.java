@@ -131,6 +131,23 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
         return this.x * x + this.y * y;
     }
 
+    public Vector2l project(Vector2l v) {
+        return project(v.x, v.y);
+    }
+
+    public Vector2l project(double x, double y) {
+        return project(GenericMath.floorl(x), GenericMath.floorl(y));
+    }
+
+    public Vector2l project(long x, long y) {
+        final long lengthSquared = x * x + y * y;
+        if (lengthSquared == 0) {
+            throw new ArithmeticException("Cannot project onto the zero vector");
+        }
+        final double a = (double) dot(x, y) / lengthSquared;
+        return new Vector2l(a * x, a * y);
+    }
+
     public Vector2l pow(double pow) {
         return pow(GenericMath.floorl(pow));
     }

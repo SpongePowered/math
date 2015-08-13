@@ -416,12 +416,53 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
         return new Complex#E#(x / length, y / length);
     }
 
+    /**
+     * Converts this complex to a quaternion by
+     * using (0, 0, 1) as a rotation axis.
+     *
+     * @return A quaternion of this rotation around the unit z
+     */
     public Quaternion#E# toQuaternion() {
         return toQuaternion(Vector3#E#.UNIT_Z);
     }
 
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided vector as a rotation axis.
+     *
+     * @param axis The rotation axis
+     * @return A quaternion of this rotation around the given axis
+     */
     public Quaternion#E# toQuaternion(Vector3#E# axis) {
-        return Quaternion#E#.fromAngleRadAxis(getAngleRad(), axis);
+        return toQuaternion(axis.getX(), axis.getY(), axis.getZ());
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided #EOverload# components vector
+     * as a rotation axis.
+     *
+     * @param x The x component of the axis vector
+     * @param y The y component of the axis vector
+     * @param z The z component of the axis vector
+     * @return A quaternion of this rotation around the given axis
+     */
+    public Quaternion#E# toQuaternion(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return toQuaternion((#e#) x, (#e#) y, (#e#) z);
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided #e# components vector
+     * as a rotation axis.
+     *
+     * @param x The x component of the axis vector
+     * @param y The y component of the axis vector
+     * @param z The z component of the axis vector
+     * @return A quaternion of this rotation around the given axis
+     */
+    public Quaternion#E# toQuaternion(#e# x, #e# y, #e# z) {
+        return Quaternion#E#.fromAngleRadAxis(getAngleRad(), x, y, z);
     }
 
     @Override

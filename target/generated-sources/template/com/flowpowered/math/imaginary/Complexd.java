@@ -416,12 +416,53 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
         return new Complexd(x / length, y / length);
     }
 
+    /**
+     * Converts this complex to a quaternion by
+     * using (0, 0, 1) as a rotation axis.
+     *
+     * @return A quaternion of this rotation around the unit z
+     */
     public Quaterniond toQuaternion() {
         return toQuaternion(Vector3d.UNIT_Z);
     }
 
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided vector as a rotation axis.
+     *
+     * @param axis The rotation axis
+     * @return A quaternion of this rotation around the given axis
+     */
     public Quaterniond toQuaternion(Vector3d axis) {
-        return Quaterniond.fromAngleRadAxis(getAngleRad(), axis);
+        return toQuaternion(axis.getX(), axis.getY(), axis.getZ());
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided float components vector
+     * as a rotation axis.
+     *
+     * @param x The x component of the axis vector
+     * @param y The y component of the axis vector
+     * @param z The z component of the axis vector
+     * @return A quaternion of this rotation around the given axis
+     */
+    public Quaterniond toQuaternion(float x, float y, float z) {
+        return toQuaternion((double) x, (double) y, (double) z);
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided double components vector
+     * as a rotation axis.
+     *
+     * @param x The x component of the axis vector
+     * @param y The y component of the axis vector
+     * @param z The z component of the axis vector
+     * @return A quaternion of this rotation around the given axis
+     */
+    public Quaterniond toQuaternion(double x, double y, double z) {
+        return Quaterniond.fromAngleRadAxis(getAngleRad(), x, y, z);
     }
 
     @Override

@@ -167,6 +167,24 @@ public class ComplexdTest {
     }
 
     @Test
+    public void testVectorRotate() {
+        Vector2d vector = new Complexd(0, 1).rotate(new Vector2d(-1, 1));
+        TestUtild.assertEquals(vector, -1, -1);
+    }
+
+    @Test
+    public void testDoubleComponentsRotate() {
+        Vector2d vector = new Complexd(0, 1).rotate(-1d, 1d);
+        TestUtild.assertEquals(vector, -1, -1);
+    }
+
+    @Test
+    public void testFloatComponentsRotate() {
+        Vector2d vector = new Complexd(0, 1).rotate(-1, 1);
+        TestUtild.assertEquals(vector, -1, -1);
+    }
+
+    @Test
     public void testDirection() {
         Vector2d vector = new Complexd(4, 3).getDirection();
         TestUtild.assertEquals(vector, (double) 0.8, (double) 0.6);

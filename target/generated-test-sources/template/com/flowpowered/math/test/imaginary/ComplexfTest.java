@@ -167,6 +167,24 @@ public class ComplexfTest {
     }
 
     @Test
+    public void testVectorRotate() {
+        Vector2f vector = new Complexf(0, 1).rotate(new Vector2f(-1, 1));
+        TestUtilf.assertEquals(vector, -1, -1);
+    }
+
+    @Test
+    public void testDoubleComponentsRotate() {
+        Vector2f vector = new Complexf(0, 1).rotate(-1d, 1d);
+        TestUtilf.assertEquals(vector, -1, -1);
+    }
+
+    @Test
+    public void testFloatComponentsRotate() {
+        Vector2f vector = new Complexf(0, 1).rotate(-1, 1);
+        TestUtilf.assertEquals(vector, -1, -1);
+    }
+
+    @Test
     public void testDirection() {
         Vector2f vector = new Complexf(4, 3).getDirection();
         TestUtilf.assertEquals(vector, (float) 0.8, (float) 0.6);

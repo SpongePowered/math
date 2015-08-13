@@ -169,6 +169,36 @@ public class QuaterniondTest {
     }
 
     @Test
+    public void testVectorRotate() {
+        Vector3d vector1 = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(new Vector3d(0, 0, 1d));
+        TestUtild.assertEquals(vector1, 0, -1, 0);
+        Vector3d vector2 = new Quaterniond(0, (double) TrigMath.HALF_SQRT_OF_TWO, 0, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(new Vector3d(0, 0, 1d));
+        TestUtild.assertEquals(vector2, 1, 0, 0);
+        Vector3d vector3 = new Quaterniond(0, 0, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(new Vector3d(1d, 1d, 0));
+        TestUtild.assertEquals(vector3, -1, 1, 0);
+    }
+
+    @Test
+    public void testDoubleComponentsRotate() {
+        Vector3d vector1 = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1d);
+        TestUtild.assertEquals(vector1, 0, -1, 0);
+        Vector3d vector2 = new Quaterniond(0, (double) TrigMath.HALF_SQRT_OF_TWO, 0, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1d);
+        TestUtild.assertEquals(vector2, 1, 0, 0);
+        Vector3d vector3 = new Quaterniond(0, 0, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(1d, 1d, 0);
+        TestUtild.assertEquals(vector3, -1, 1, 0);
+    }
+
+    @Test
+    public void testFloatComponentsRotate() {
+        Vector3d vector1 = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1);
+        TestUtild.assertEquals(vector1, 0, -1, 0);
+        Vector3d vector2 = new Quaterniond(0, (double) TrigMath.HALF_SQRT_OF_TWO, 0, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1);
+        TestUtild.assertEquals(vector2, 1, 0, 0);
+        Vector3d vector3 = new Quaterniond(0, 0, (double) TrigMath.HALF_SQRT_OF_TWO, (double) TrigMath.HALF_SQRT_OF_TWO).rotate(1, 1, 0);
+        TestUtild.assertEquals(vector3, -1, 1, 0);
+    }
+
+    @Test
     public void testDirection() {
         Vector3d vector = new Quaterniond((double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO).getDirection();
         TestUtild.assertEquals(vector, 0, -1, 0);

@@ -326,7 +326,7 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
     }
 
     /**
-     * Returns the dot product of this quaternion with the floats components of another one.
+     * Returns the dot product of this quaternion with the float components of another one.
      *
      * @param x The x (imaginary) component of the quaternion to calculate the dot product with
      * @param y The y (imaginary) component of the quaternion to calculate the dot product with
@@ -339,12 +339,61 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
     }
 
     /**
+     * Rotates a vector by this quaternion.
+     *
+     * @param v The vector to rotate
+     * @return The rotated vector
+     */
+    public Vector3f rotate(Vector3f v) {
+        return rotate(v.getX(), v.getY(), v.getZ());
+    }
+
+    /**
+     * Rotates the double components of a vector by this quaternion.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @param z The z component of the vector
+     * @return The rotated vector
+     */
+    public Vector3f rotate(double x, double y, double z) {
+        return rotate((float) x, (float) y, (float) z);
+    }
+
+    /**
+     * Rotates the float components of a vector by this quaternion.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @param z The z component of the vector
+     * @return The rotated vector
+     */
+    public Vector3f rotate(float x, float y, float z) {
+        final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot rotate by the zero quaternion");
+        }
+        final float nx = this.x / length;
+        final float ny = this.y / length;
+        final float nz = this.z / length;
+        final float nw = this.w / length;
+        final float px = nw * x + ny * z - nz * y;
+        final float py = nw * y + nz * x - nx * z;
+        final float pz = nw * z + nx * y - ny * x;
+        final float pw = -nx * x - ny * y - nz * z;
+        return new Vector3f(
+                pw * -nx + px * nw - py * nz + pz * ny,
+                pw * -ny + py * nw - pz * nx + px * nz,
+                pw * -nz + pz * nw - px * ny + py * nx);
+    }
+
+    /**
      * Returns a unit vector representing the direction of this quaternion, which is {@link Vector3f#FORWARD} rotated by this quaternion.
      *
      * @return The vector representing the direction this quaternion is pointing to
      */
     public Vector3f getDirection() {
-        return Matrix3f.createRotation(this).transform(Vector3f.FORWARD);
+        return rotate(Vector3f.FORWARD);
     }
 
     /**
@@ -450,7 +499,7 @@ public class Quaternionf implements Imaginaryf, Comparable<Quaternionf>, Seriali
         return new Quaterniond(x, y, z, w);
     }
 
-@Override
+   @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

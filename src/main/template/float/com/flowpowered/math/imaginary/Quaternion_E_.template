@@ -326,7 +326,7 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
     }
 
     /**
-     * Returns the dot product of this quaternion with the #e#s components of another one.
+     * Returns the dot product of this quaternion with the #e# components of another one.
      *
      * @param x The x (imaginary) component of the quaternion to calculate the dot product with
      * @param y The y (imaginary) component of the quaternion to calculate the dot product with
@@ -339,12 +339,61 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
     }
 
     /**
+     * Rotates a vector by this quaternion.
+     *
+     * @param v The vector to rotate
+     * @return The rotated vector
+     */
+    public Vector3#E# rotate(Vector3#E# v) {
+        return rotate(v.getX(), v.getY(), v.getZ());
+    }
+
+    /**
+     * Rotates the #EOverload# components of a vector by this quaternion.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @param z The z component of the vector
+     * @return The rotated vector
+     */
+    public Vector3#E# rotate(#EOverload# x, #EOverload# y, #EOverload# z) {
+        return rotate((#e#) x, (#e#) y, (#e#) z);
+    }
+
+    /**
+     * Rotates the #e# components of a vector by this quaternion.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @param z The z component of the vector
+     * @return The rotated vector
+     */
+    public Vector3#E# rotate(#e# x, #e# y, #e# z) {
+        final #e# length = length();
+        if (Math.abs(length) < #Eeps#) {
+            throw new ArithmeticException("Cannot rotate by the zero quaternion");
+        }
+        final #e# nx = this.x / length;
+        final #e# ny = this.y / length;
+        final #e# nz = this.z / length;
+        final #e# nw = this.w / length;
+        final #e# px = nw * x + ny * z - nz * y;
+        final #e# py = nw * y + nz * x - nx * z;
+        final #e# pz = nw * z + nx * y - ny * x;
+        final #e# pw = -nx * x - ny * y - nz * z;
+        return new Vector3#E#(
+                pw * -nx + px * nw - py * nz + pz * ny,
+                pw * -ny + py * nw - pz * nx + px * nz,
+                pw * -nz + pz * nw - px * ny + py * nx);
+    }
+
+    /**
      * Returns a unit vector representing the direction of this quaternion, which is {@link Vector3#E##FORWARD} rotated by this quaternion.
      *
      * @return The vector representing the direction this quaternion is pointing to
      */
     public Vector3#E# getDirection() {
-        return Matrix3#E#.createRotation(this).transform(Vector3#E#.FORWARD);
+        return rotate(Vector3#E#.FORWARD);
     }
 
     /**
@@ -450,7 +499,7 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
         return new Quaterniond(x, y, z, w);
     }
 
-@Override
+   @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

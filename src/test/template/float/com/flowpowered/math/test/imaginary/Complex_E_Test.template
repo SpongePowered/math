@@ -167,6 +167,24 @@ public class Complex#E#Test {
     }
 
     @Test
+    public void testVectorRotate() {
+        Vector2#E# vector = new Complex#E#(0, 1).rotate(new Vector2#E#(-1, 1));
+        TestUtil#E#.assertEquals(vector, -1, -1);
+    }
+
+    @Test
+    public void testDoubleComponentsRotate() {
+        Vector2#E# vector = new Complex#E#(0, 1).rotate(-1d, 1d);
+        TestUtil#E#.assertEquals(vector, -1, -1);
+    }
+
+    @Test
+    public void testFloatComponentsRotate() {
+        Vector2#E# vector = new Complex#E#(0, 1).rotate(-1, 1);
+        TestUtil#E#.assertEquals(vector, -1, -1);
+    }
+
+    @Test
     public void testDirection() {
         Vector2#E# vector = new Complex#E#(4, 3).getDirection();
         TestUtil#E#.assertEquals(vector, (#e#) 0.8, (#e#) 0.6);

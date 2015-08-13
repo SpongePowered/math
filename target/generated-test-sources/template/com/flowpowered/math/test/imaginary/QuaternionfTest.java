@@ -169,6 +169,36 @@ public class QuaternionfTest {
     }
 
     @Test
+    public void testVectorRotate() {
+        Vector3f vector1 = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(new Vector3f(0, 0, 1d));
+        TestUtilf.assertEquals(vector1, 0, -1, 0);
+        Vector3f vector2 = new Quaternionf(0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(new Vector3f(0, 0, 1d));
+        TestUtilf.assertEquals(vector2, 1, 0, 0);
+        Vector3f vector3 = new Quaternionf(0, 0, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(new Vector3f(1d, 1d, 0));
+        TestUtilf.assertEquals(vector3, -1, 1, 0);
+    }
+
+    @Test
+    public void testDoubleComponentsRotate() {
+        Vector3f vector1 = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1d);
+        TestUtilf.assertEquals(vector1, 0, -1, 0);
+        Vector3f vector2 = new Quaternionf(0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1d);
+        TestUtilf.assertEquals(vector2, 1, 0, 0);
+        Vector3f vector3 = new Quaternionf(0, 0, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(1d, 1d, 0);
+        TestUtilf.assertEquals(vector3, -1, 1, 0);
+    }
+
+    @Test
+    public void testFloatComponentsRotate() {
+        Vector3f vector1 = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1);
+        TestUtilf.assertEquals(vector1, 0, -1, 0);
+        Vector3f vector2 = new Quaternionf(0, (float) TrigMath.HALF_SQRT_OF_TWO, 0, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(0, 0, 1);
+        TestUtilf.assertEquals(vector2, 1, 0, 0);
+        Vector3f vector3 = new Quaternionf(0, 0, (float) TrigMath.HALF_SQRT_OF_TWO, (float) TrigMath.HALF_SQRT_OF_TWO).rotate(1, 1, 0);
+        TestUtilf.assertEquals(vector3, -1, 1, 0);
+    }
+
+    @Test
     public void testDirection() {
         Vector3f vector = new Quaternionf((float) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (float) TrigMath.HALF_SQRT_OF_TWO).getDirection();
         TestUtilf.assertEquals(vector, 0, -1, 0);

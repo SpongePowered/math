@@ -291,6 +291,44 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
     }
 
     /**
+     * Rotates a vector by this complex.
+     *
+     * @param v The vector to rotate
+     * @return The rotated vector
+     */
+    public Vector2f rotate(Vector2f v) {
+        return rotate(v.getX(), v.getY());
+    }
+
+    /**
+     * Rotates the double components of a vector by this complex.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @return The rotated vector
+     */
+    public Vector2f rotate(double x, double y) {
+        return rotate((float) x, (float) y);
+    }
+
+    /**
+     * Rotates the float components of a vector by this complex.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @return The rotated vector
+     */
+    public Vector2f rotate(float x, float y) {
+        final float length = length();
+        if (Math.abs(length) < GenericMath.FLT_EPSILON) {
+            throw new ArithmeticException("Cannot rotate by the zero complex");
+        }
+        final float nx = this.x / length;
+        final float ny = this.y / length;
+        return new Vector2f(x * nx - y * ny, y * nx + x * ny);
+    }
+
+    /**
      * Returns a unit vector pointing in the same direction as this complex on the complex plane.
      *
      * @return The vector representing the direction this complex is pointing to

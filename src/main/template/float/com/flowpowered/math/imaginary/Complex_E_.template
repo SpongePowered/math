@@ -291,6 +291,44 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
     }
 
     /**
+     * Rotates a vector by this complex.
+     *
+     * @param v The vector to rotate
+     * @return The rotated vector
+     */
+    public Vector2#E# rotate(Vector2#E# v) {
+        return rotate(v.getX(), v.getY());
+    }
+
+    /**
+     * Rotates the #EOverload# components of a vector by this complex.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @return The rotated vector
+     */
+    public Vector2#E# rotate(#EOverload# x, #EOverload# y) {
+        return rotate((#e#) x, (#e#) y);
+    }
+
+    /**
+     * Rotates the #e# components of a vector by this complex.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @return The rotated vector
+     */
+    public Vector2#E# rotate(#e# x, #e# y) {
+        final #e# length = length();
+        if (Math.abs(length) < #Eeps#) {
+            throw new ArithmeticException("Cannot rotate by the zero complex");
+        }
+        final #e# nx = this.x / length;
+        final #e# ny = this.y / length;
+        return new Vector2#E#(x * nx - y * ny, y * nx + x * ny);
+    }
+
+    /**
      * Returns a unit vector pointing in the same direction as this complex on the complex plane.
      *
      * @return The vector representing the direction this complex is pointing to

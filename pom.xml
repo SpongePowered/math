@@ -5,7 +5,7 @@
     <name>Flow Math</name>
     <groupId>com.flowpowered</groupId>
     <artifactId>flow-math</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <inceptionYear>2013</inceptionYear>
     <url>https://flowpowered.com/math</url>
@@ -156,7 +156,7 @@
             <plugin>
                 <groupId>com.github.wolf480pl.maven-plugins</groupId>
                 <artifactId>template-maven-plugin</artifactId>
-                <version>1.0.1</version>
+                <version>1.0.2-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <id>generatei</id>

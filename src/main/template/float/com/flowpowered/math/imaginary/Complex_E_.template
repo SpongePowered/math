@@ -519,6 +519,43 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
     }
 
     /**
+     * Creates a new complex from the #e# real component.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x} is 0.</p>
+     *
+     * @param x The x (real) component
+     * @return The complex created from the #e# real component
+     */
+    public static Complex#E# fromReal(#e# x) {
+         return x == 0 ? ZERO : new Complex#E#(x, 0);
+    }
+
+    /**
+     * Creates a new quaternion from the #e# imaginary components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code y} is 0.</p>
+     *
+     * @param y The y (imaginary) component
+     * @return The complex created from the #e# imaginary component
+     */
+    public static Complex#E# fromImaginary(#e# y) {
+         return y == 0 ? ZERO : new Complex#E#(0, y);
+    }
+
+    /**
+     * Creates a new complex from the #e# components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when both {@code x} and {@code z} are 0.</p>
+     *
+     * @param x The x (real) component
+     * @param y The y (imaginary) component
+     * @return The complex created from the #e# components
+     */
+    public static Complex#E# from(#e# x, #e# y) {
+         return x == 0 && y == 0 ? ZERO : new Complex#E#(x, y);
+    }
+
+    /**
      * Creates a new complex from the angle defined from the first to the second vector.
      *
      * @param from The first vector

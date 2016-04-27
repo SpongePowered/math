@@ -378,6 +378,14 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
         return "(" + x + ", " + y + ")";
     }
 
+    public static Vector2f from(float n) {
+         return n == 0 ? ZERO : new Vector2f(n, n);
+    }
+
+    public static Vector2f from(float x, float y) {
+         return x == 0 && y == 0 ? ZERO : new Vector2f(x, y);
+    }
+
     /**
      * Gets the direction vector of a random angle using the random specified.
      *

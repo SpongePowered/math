@@ -378,6 +378,14 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
         return "(" + x + ", " + y + ")";
     }
 
+    public static Vector2d from(double n) {
+         return n == 0 ? ZERO : new Vector2d(n, n);
+    }
+
+    public static Vector2d from(double x, double y) {
+         return x == 0 && y == 0 ? ZERO : new Vector2d(x, y);
+    }
+
     /**
      * Gets the direction vector of a random angle using the random specified.
      *

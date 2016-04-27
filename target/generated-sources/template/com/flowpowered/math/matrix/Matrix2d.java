@@ -350,6 +350,18 @@ public class Matrix2d implements Matrixd, Serializable, Cloneable {
         return new Matrix2d(this);
     }
 
+    public static Matrix2d from(double n) {
+         return n == 0 ? ZERO : new Matrix2d(n, n, n, n);
+    }
+
+    public static Matrix2d from(double m00, double m01, double m10, double m11) {
+         return m00 == 0 && m01 == 0 && m10 == 0 && m11 == 0 ? ZERO : new Matrix2d(m00, m01, m10, m11);
+    }
+
+    public static Matrix2d fromDiagonal(double m00, double m11) {
+         return m00 == 0 && m11 == 0 ? ZERO : new Matrix2d(m00, 0, 0, m11);
+    }
+
     public static Matrix2d createScaling(float scale) {
         return createScaling((double) scale);
     }

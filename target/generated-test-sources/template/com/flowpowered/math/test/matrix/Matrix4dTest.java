@@ -759,6 +759,36 @@ public class Matrix4dTest {
     }
 
     @Test
+    public void testMatrixFromN() {
+        Matrix4d matrix = Matrix4d.from(1);
+        TestUtild.assertEquals(matrix, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    }
+
+    @Test
+    public void testMatrixFromMany() {
+        Matrix4d matrix = Matrix4d.from(
+            1, 2, 3, 4,
+            5, 6, 7, 8,
+            9, 10, 11, 12,
+            13, 14, 15, 16);
+        TestUtild.assertEquals(matrix,
+            1, 2, 3, 4,
+            5, 6, 7, 8,
+            9, 10, 11, 12,
+            13, 14, 15, 16);
+    }
+
+    @Test
+    public void testMatrixFromDiagonal() {
+        Matrix4d matrix = Matrix4d.fromDiagonal(1, 2, 3, 4);
+        TestUtild.assertEquals(matrix,
+            1, 0, 0, 0,
+            0, 2, 0, 0,
+            0, 0, 3, 0,
+            0, 0, 0, 4);
+    }
+
+    @Test
     public void testCreateFromScalingDoubleFactor() {
         Matrix4d matrix = Matrix4d.createScaling(2d);
         TestUtild.assertEquals(matrix,

@@ -307,6 +307,24 @@ public class ComplexdTest {
     }
 
     @Test
+    public void testComplexFromReal() {
+        Complexd complex = Complexd.fromReal(1);
+        TestUtild.assertEquals(complex, 1, 0);
+    }
+
+    @Test
+    public void testComplexFromImaginary() {
+        Complexd complex = Complexd.fromImaginary(1);
+        TestUtild.assertEquals(complex, 0, 1);
+    }
+
+    @Test
+    public void testComplexFrom() {
+        Complexd complex = Complexd.from(1, 2);
+        TestUtild.assertEquals(complex, 1, 2);
+    }
+
+    @Test
     public void testCreateFromRotationBetweenTwoVector2() {
         Complexd complex = Complexd.fromRotationTo(new Vector2d(0, 1), new Vector2d(-1, 0));
         TestUtild.assertEquals(complex, 0, 1);

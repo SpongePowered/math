@@ -519,6 +519,43 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
     }
 
     /**
+     * Creates a new complex from the double real component.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x} is 0.</p>
+     *
+     * @param x The x (real) component
+     * @return The complex created from the double real component
+     */
+    public static Complexd fromReal(double x) {
+         return x == 0 ? ZERO : new Complexd(x, 0);
+    }
+
+    /**
+     * Creates a new quaternion from the double imaginary components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code y} is 0.</p>
+     *
+     * @param y The y (imaginary) component
+     * @return The complex created from the double imaginary component
+     */
+    public static Complexd fromImaginary(double y) {
+         return y == 0 ? ZERO : new Complexd(0, y);
+    }
+
+    /**
+     * Creates a new complex from the double components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when both {@code x} and {@code z} are 0.</p>
+     *
+     * @param x The x (real) component
+     * @param y The y (imaginary) component
+     * @return The complex created from the double components
+     */
+    public static Complexd from(double x, double y) {
+         return x == 0 && y == 0 ? ZERO : new Complexd(x, y);
+    }
+
+    /**
      * Creates a new complex from the angle defined from the first to the second vector.
      *
      * @param from The first vector

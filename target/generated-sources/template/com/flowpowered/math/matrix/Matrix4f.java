@@ -570,6 +570,31 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
         return new Matrix4f(this);
     }
 
+    public static Matrix4f from(float n) {
+         return n == 0 ? ZERO : new Matrix4f(n, n, n, n, n, n, n, n, n, n, n, n, n, n, n, n);
+    }
+
+    public static Matrix4f from(float m00, float m01, float m02, float m03,
+                                float m10, float m11, float m12, float m13,
+                                float m20, float m21, float m22, float m23,
+                                float m30, float m31, float m32, float m33) {
+         return m00 == 0 && m01 == 0 && m02 == 0 && m03 == 0
+             && m10 == 0 && m11 == 0 && m12 == 0 && m13 == 0
+             && m20 == 0 && m21 == 0 && m22 == 0 && m23 == 0
+             && m30 == 0 && m31 == 0 && m32 == 0 && m33 == 0
+         ? ZERO : new Matrix4f(m00, m01, m02, m03,
+                                 m10, m11, m12, m13,
+                                 m20, m21, m22, m23,
+                                 m30, m31, m32, m33);
+    }
+
+    public static Matrix4f fromDiagonal(float m00, float m11, float m22, float m33) {
+         return m00 == 0 && m11 == 0 && m22 == 0 && m33 == 0 ? ZERO : new Matrix4f(m00, 0, 0, 0,
+                                                                                     0, m11, 0, 0,
+                                                                                     0, 0, m22, 0,
+                                                                                     0, 0, 0, m33);
+    }
+
     public static Matrix4f createScaling(double scale) {
         return createScaling((float) scale);
     }

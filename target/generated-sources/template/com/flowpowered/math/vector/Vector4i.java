@@ -393,4 +393,12 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ", " + w + ")";
     }
+
+    public static Vector4i from(int n) {
+         return n == 0 ? ZERO : new Vector4i(n, n, n, n);
+    }
+
+    public static Vector4i from(int x, int y, int z, int w) {
+         return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4i(x, y, z, w);
+    }
 }

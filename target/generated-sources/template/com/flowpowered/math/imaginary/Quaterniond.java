@@ -573,6 +573,47 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
     }
 
     /**
+     * Creates a new quaternion from the double real component.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code w} is 0.</p>
+     *
+     * @param w The w (real) component
+     * @return The quaternion created from the double real component
+     */
+    public static Quaterniond fromReal(double w) {
+         return w == 0 ? ZERO : new Quaterniond(0, 0, 0, w);
+    }
+
+    /**
+     * Creates a new quaternion from the double imaginary components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x}, {@code y}, and {@code z} are 0.</p>
+     *
+     * @param x The x (imaginary) component
+     * @param y The y (imaginary) component
+     * @param z The z (imaginary) component
+     * @return The quaternion created from the double imaginary components
+     */
+    public static Quaterniond fromImaginary(double x, double y, double z) {
+         return x == 0 && y == 0 && z == 0 ? ZERO : new Quaterniond(x, y, z, 0);
+    }
+
+    /**
+     * Creates a new quaternion from the double components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x}, {@code y}, {@code z}, and {@code w} are 0.</p>
+     *
+     * @param x The x (imaginary) component
+     * @param y The y (imaginary) component
+     * @param z The z (imaginary) component
+     * @param w The w (real) component
+     * @return The quaternion created from the double components
+     */
+    public static Quaterniond from(double x, double y, double z, double w) {
+         return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Quaterniond(x, y, z, w);
+    }
+
+    /**
      * Creates a new quaternion from the float angles in degrees around the x, y and z axes.
      *
      * @param pitch The rotation around x

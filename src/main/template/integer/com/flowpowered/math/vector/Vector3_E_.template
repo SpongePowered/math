@@ -373,4 +373,12 @@ public class Vector3#E# implements Vector#E#, Comparable<Vector3#E#>, Serializab
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }
+
+    public static Vector3#E# from(#e# n) {
+         return n == 0 ? ZERO : new Vector3#E#(n, n, n);
+    }
+
+    public static Vector3#E# from(#e# x, #e# y, #e# z) {
+         return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3#E#(x, y, z);
+    }
 }

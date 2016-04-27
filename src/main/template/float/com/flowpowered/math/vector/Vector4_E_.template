@@ -432,4 +432,12 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ", " + w + ")";
     }
+
+    public static Vector4#E# from(#e# n) {
+         return n == 0 ? ZERO : new Vector4#E#(n, n, n, n);
+    }
+
+    public static Vector4#E# from(#e# x, #e# y, #e# z, #e# w) {
+         return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4#E#(x, y, z, w);
+    }
 }

@@ -441,4 +441,16 @@ public class Vector4dTest {
         Vector4d vector = new Vector4d(3, 2, 5, 6);
         Assert.assertEquals(vector, vector.clone());
     }
+
+    @Test
+    public void testVectorFromN() {
+        Vector4d vector = Vector4d.from(1);
+        TestUtild.assertEquals(vector, 1, 1, 1, 1);
+    }
+
+    @Test
+    public void testVectorFromXYZW() {
+        Vector4d vector = Vector4d.from(1, 2, 3, 4);
+        TestUtild.assertEquals(vector, 1, 2, 3, 4);
+    }
 }

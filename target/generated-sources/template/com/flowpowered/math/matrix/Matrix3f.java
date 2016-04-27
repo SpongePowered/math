@@ -448,6 +448,23 @@ public class Matrix3f implements Matrixf, Serializable, Cloneable {
         return new Matrix3f(this);
     }
 
+    public static Matrix3f from(float n) {
+         return n == 0 ? ZERO : new Matrix3f(n, n, n, n, n, n, n, n, n);
+    }
+
+    public static Matrix3f from(float m00, float m01, float m02,
+                                float m10, float m11, float m12,
+                                float m20, float m21, float m22) {
+         return m00 == 0 && m01 == 0 && m02 == 0
+             && m10 == 0 && m11 == 0 && m12 == 0
+             && m20 == 0 && m21 == 0 && m22 == 0
+         ? ZERO : new Matrix3f(m00, m01, m02, m10, m11, m12, m20, m21, m22);
+    }
+
+    public static Matrix3f fromDiagonal(float m00, float m11, float m22) {
+         return m00 == 0 && m11 == 0 && m22 == 0 ? ZERO : new Matrix3f(m00, 0, 0, 0, m11, 0, 0, 0, m22);
+    }
+
     public static Matrix3f createScaling(double scale) {
         return createScaling((float) scale);
     }

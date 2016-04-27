@@ -412,6 +412,14 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
         return "(" + x + ", " + y + ", " + z + ")";
     }
 
+    public static Vector3d from(double n) {
+         return n == 0 ? ZERO : new Vector3d(n, n, n);
+    }
+
+    public static Vector3d from(double x, double y, double z) {
+         return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3d(x, y, z);
+    }
+
     /**
      * Gets the direction vector of a random pitch and yaw using the random specified.
      *

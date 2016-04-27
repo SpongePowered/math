@@ -307,6 +307,24 @@ public class ComplexfTest {
     }
 
     @Test
+    public void testComplexFromReal() {
+        Complexf complex = Complexf.fromReal(1);
+        TestUtilf.assertEquals(complex, 1, 0);
+    }
+
+    @Test
+    public void testComplexFromImaginary() {
+        Complexf complex = Complexf.fromImaginary(1);
+        TestUtilf.assertEquals(complex, 0, 1);
+    }
+
+    @Test
+    public void testComplexFrom() {
+        Complexf complex = Complexf.from(1, 2);
+        TestUtilf.assertEquals(complex, 1, 2);
+    }
+
+    @Test
     public void testCreateFromRotationBetweenTwoVector2() {
         Complexf complex = Complexf.fromRotationTo(new Vector2f(0, 1), new Vector2f(-1, 0));
         TestUtilf.assertEquals(complex, 0, 1);

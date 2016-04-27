@@ -519,6 +519,43 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
     }
 
     /**
+     * Creates a new complex from the float real component.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x} is 0.</p>
+     *
+     * @param x The x (real) component
+     * @return The complex created from the float real component
+     */
+    public static Complexf fromReal(float x) {
+         return x == 0 ? ZERO : new Complexf(x, 0);
+    }
+
+    /**
+     * Creates a new quaternion from the float imaginary components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code y} is 0.</p>
+     *
+     * @param y The y (imaginary) component
+     * @return The complex created from the float imaginary component
+     */
+    public static Complexf fromImaginary(float y) {
+         return y == 0 ? ZERO : new Complexf(0, y);
+    }
+
+    /**
+     * Creates a new complex from the float components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when both {@code x} and {@code z} are 0.</p>
+     *
+     * @param x The x (real) component
+     * @param y The y (imaginary) component
+     * @return The complex created from the float components
+     */
+    public static Complexf from(float x, float y) {
+         return x == 0 && y == 0 ? ZERO : new Complexf(x, y);
+    }
+
+    /**
      * Creates a new complex from the angle defined from the first to the second vector.
      *
      * @param from The first vector

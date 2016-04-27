@@ -393,4 +393,12 @@ public class Vector4l implements Vectorl, Comparable<Vector4l>, Serializable, Cl
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ", " + w + ")";
     }
+
+    public static Vector4l from(long n) {
+         return n == 0 ? ZERO : new Vector4l(n, n, n, n);
+    }
+
+    public static Vector4l from(long x, long y, long z, long w) {
+         return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4l(x, y, z, w);
+    }
 }

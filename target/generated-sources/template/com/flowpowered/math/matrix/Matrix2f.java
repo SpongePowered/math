@@ -350,6 +350,18 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
         return new Matrix2f(this);
     }
 
+    public static Matrix2f from(float n) {
+         return n == 0 ? ZERO : new Matrix2f(n, n, n, n);
+    }
+
+    public static Matrix2f from(float m00, float m01, float m10, float m11) {
+         return m00 == 0 && m01 == 0 && m10 == 0 && m11 == 0 ? ZERO : new Matrix2f(m00, m01, m10, m11);
+    }
+
+    public static Matrix2f fromDiagonal(float m00, float m11) {
+         return m00 == 0 && m11 == 0 ? ZERO : new Matrix2f(m00, 0, 0, m11);
+    }
+
     public static Matrix2f createScaling(double scale) {
         return createScaling((float) scale);
     }

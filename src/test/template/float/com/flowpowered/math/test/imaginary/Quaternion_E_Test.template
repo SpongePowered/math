@@ -310,6 +310,24 @@ public class Quaternion#E#Test {
     }
 
     @Test
+    public void testQuaternionFromReal() {
+        Quaternion#E# quaternion = Quaternion#E#.fromReal(1);
+        TestUtil#E#.assertEquals(quaternion, 0, 0, 0, 1);
+    }
+
+    @Test
+    public void testQuaternionFromImaginary() {
+        Quaternion#E# quaternion = Quaternion#E#.fromImaginary(1, 2, 3);
+        TestUtil#E#.assertEquals(quaternion, 1, 2, 3, 0);
+    }
+
+    @Test
+    public void testQuaternionFrom() {
+        Quaternion#E# quaternion = Quaternion#E#.from(1, 2, 3, 4);
+        TestUtil#E#.assertEquals(quaternion, 1, 2, 3, 4);
+    }
+
+    @Test
     public void testCreateFromAxesDoubleAnglesDegrees() {
         Quaternion#E# quaternion1 = Quaternion#E#.fromAxesAnglesDeg(90d, 0, 0);
         TestUtil#E#.assertEquals(quaternion1, (#e#) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (#e#) TrigMath.HALF_SQRT_OF_TWO);

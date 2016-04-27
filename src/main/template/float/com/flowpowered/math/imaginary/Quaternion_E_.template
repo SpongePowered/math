@@ -573,6 +573,47 @@ public class Quaternion#E# implements Imaginary#E#, Comparable<Quaternion#E#>, S
     }
 
     /**
+     * Creates a new quaternion from the #e# real component.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code w} is 0.</p>
+     *
+     * @param w The w (real) component
+     * @return The quaternion created from the #e# real component
+     */
+    public static Quaternion#E# fromReal(#e# w) {
+         return w == 0 ? ZERO : new Quaternion#E#(0, 0, 0, w);
+    }
+
+    /**
+     * Creates a new quaternion from the #e# imaginary components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x}, {@code y}, and {@code z} are 0.</p>
+     *
+     * @param x The x (imaginary) component
+     * @param y The y (imaginary) component
+     * @param z The z (imaginary) component
+     * @return The quaternion created from the #e# imaginary components
+     */
+    public static Quaternion#E# fromImaginary(#e# x, #e# y, #e# z) {
+         return x == 0 && y == 0 && z == 0 ? ZERO : new Quaternion#E#(x, y, z, 0);
+    }
+
+    /**
+     * Creates a new quaternion from the #e# components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x}, {@code y}, {@code z}, and {@code w} are 0.</p>
+     *
+     * @param x The x (imaginary) component
+     * @param y The y (imaginary) component
+     * @param z The z (imaginary) component
+     * @param w The w (real) component
+     * @return The quaternion created from the #e# components
+     */
+    public static Quaternion#E# from(#e# x, #e# y, #e# z, #e# w) {
+         return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Quaternion#E#(x, y, z, w);
+    }
+
+    /**
      * Creates a new quaternion from the #EOverload# angles in degrees around the x, y and z axes.
      *
      * @param pitch The rotation around x

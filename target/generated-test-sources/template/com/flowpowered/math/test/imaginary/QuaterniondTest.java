@@ -310,6 +310,24 @@ public class QuaterniondTest {
     }
 
     @Test
+    public void testQuaternionFromReal() {
+        Quaterniond quaternion = Quaterniond.fromReal(1);
+        TestUtild.assertEquals(quaternion, 0, 0, 0, 1);
+    }
+
+    @Test
+    public void testQuaternionFromImaginary() {
+        Quaterniond quaternion = Quaterniond.fromImaginary(1, 2, 3);
+        TestUtild.assertEquals(quaternion, 1, 2, 3, 0);
+    }
+
+    @Test
+    public void testQuaternionFrom() {
+        Quaterniond quaternion = Quaterniond.from(1, 2, 3, 4);
+        TestUtild.assertEquals(quaternion, 1, 2, 3, 4);
+    }
+
+    @Test
     public void testCreateFromAxesDoubleAnglesDegrees() {
         Quaterniond quaternion1 = Quaterniond.fromAxesAnglesDeg(90d, 0, 0);
         TestUtild.assertEquals(quaternion1, (double) TrigMath.HALF_SQRT_OF_TWO, 0, 0, (double) TrigMath.HALF_SQRT_OF_TWO);

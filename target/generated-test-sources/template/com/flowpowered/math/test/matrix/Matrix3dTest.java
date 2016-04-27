@@ -345,6 +345,24 @@ public class Matrix3dTest {
     }
 
     @Test
+    public void testMatrixFromN() {
+        Matrix3d matrix = Matrix3d.from(1);
+        TestUtild.assertEquals(matrix, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    }
+
+    @Test
+    public void testMatrixFromMany() {
+        Matrix3d matrix = Matrix3d.from(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        TestUtild.assertEquals(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    }
+
+    @Test
+    public void testMatrixFromDiagonal() {
+        Matrix3d matrix = Matrix3d.fromDiagonal(1, 2, 3);
+        TestUtild.assertEquals(matrix, 1, 0, 0, 0, 2, 0, 0, 0, 3);
+    }
+
+    @Test
     public void testCreateFromScalingDoubleFactor() {
         Matrix3d matrix = Matrix3d.createScaling(2d);
         TestUtild.assertEquals(matrix, 2, 0, 0, 0, 2, 0, 0, 0, 2);

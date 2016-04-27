@@ -429,6 +429,18 @@ public class Vector2fTest {
     }
 
     @Test
+    public void testVectorFromN() {
+        Vector2f vector = Vector2f.from(1);
+        TestUtilf.assertEquals(vector, 1, 1);
+    }
+
+    @Test
+    public void testVectorFromXY() {
+        Vector2f vector = Vector2f.from(1, 2);
+        TestUtilf.assertEquals(vector, 1, 2);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random();
         for (int i = 0; i < 10; i++) {

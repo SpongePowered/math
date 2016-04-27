@@ -307,6 +307,24 @@ public class Matrix2fTest {
     }
 
     @Test
+    public void testMatrixFromN() {
+        Matrix2f matrix = Matrix2f.from(1);
+        TestUtilf.assertEquals(matrix, 1, 1, 1, 1);
+    }
+
+    @Test
+    public void testMatrixFromMany() {
+        Matrix2f matrix = Matrix2f.from(1, 2, 3, 4);
+        TestUtilf.assertEquals(matrix, 1, 2, 3, 4);
+    }
+
+    @Test
+    public void testMatrixFromDiagonal() {
+        Matrix2f matrix = Matrix2f.fromDiagonal(1, 2);
+        TestUtilf.assertEquals(matrix, 1, 0, 0, 2);
+    }
+
+    @Test
     public void testCreateFromScalingDoubleFactor() {
         Matrix2f matrix = Matrix2f.createScaling(2d);
         TestUtilf.assertEquals(matrix, 2, 0, 0, 2);

@@ -342,4 +342,12 @@ public class Vector2#E# implements Vector#E#, Comparable<Vector2#E#>, Serializab
     public String toString() {
         return "(" + x + ", " + y + ")";
     }
+
+    public static Vector2#E# from(#e# n) {
+         return n == 0 ? ZERO : new Vector2#E#(n, n);
+    }
+
+    public static Vector2#E# from(#e# x, #e# y) {
+         return x == 0 && y == 0 ? ZERO : new Vector2#E#(x, y);
+    }
 }

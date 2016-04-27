@@ -456,6 +456,18 @@ public class Vector3fTest {
     }
 
     @Test
+    public void testVectorFromN() {
+        Vector3f vector = Vector3f.from(1);
+        TestUtilf.assertEquals(vector, 1, 1, 1);
+    }
+
+    @Test
+    public void testVectorFromXYZ() {
+        Vector3f vector = Vector3f.from(1, 2, 3);
+        TestUtilf.assertEquals(vector, 1, 2, 3);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random(0xF5514E866AA4L);
         for (int i = 0; i < 10; i++) {

@@ -432,4 +432,12 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ", " + w + ")";
     }
+
+    public static Vector4d from(double n) {
+         return n == 0 ? ZERO : new Vector4d(n, n, n, n);
+    }
+
+    public static Vector4d from(double x, double y, double z, double w) {
+         return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4d(x, y, z, w);
+    }
 }

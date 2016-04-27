@@ -373,4 +373,12 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }
+
+    public static Vector3l from(long n) {
+         return n == 0 ? ZERO : new Vector3l(n, n, n);
+    }
+
+    public static Vector3l from(long x, long y, long z) {
+         return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3l(x, y, z);
+    }
 }

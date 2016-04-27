@@ -342,4 +342,12 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     public String toString() {
         return "(" + x + ", " + y + ")";
     }
+
+    public static Vector2l from(long n) {
+         return n == 0 ? ZERO : new Vector2l(n, n);
+    }
+
+    public static Vector2l from(long x, long y) {
+         return x == 0 && y == 0 ? ZERO : new Vector2l(x, y);
+    }
 }

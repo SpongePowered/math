@@ -429,6 +429,18 @@ public class Vector2dTest {
     }
 
     @Test
+    public void testVectorFromN() {
+        Vector2d vector = Vector2d.from(1);
+        TestUtild.assertEquals(vector, 1, 1);
+    }
+
+    @Test
+    public void testVectorFromXY() {
+        Vector2d vector = Vector2d.from(1, 2);
+        TestUtild.assertEquals(vector, 1, 2);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random();
         for (int i = 0; i < 10; i++) {

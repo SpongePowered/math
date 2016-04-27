@@ -448,6 +448,23 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
         return new Matrix3d(this);
     }
 
+    public static Matrix3d from(double n) {
+         return n == 0 ? ZERO : new Matrix3d(n, n, n, n, n, n, n, n, n);
+    }
+
+    public static Matrix3d from(double m00, double m01, double m02,
+                                double m10, double m11, double m12,
+                                double m20, double m21, double m22) {
+         return m00 == 0 && m01 == 0 && m02 == 0
+             && m10 == 0 && m11 == 0 && m12 == 0
+             && m20 == 0 && m21 == 0 && m22 == 0
+         ? ZERO : new Matrix3d(m00, m01, m02, m10, m11, m12, m20, m21, m22);
+    }
+
+    public static Matrix3d fromDiagonal(double m00, double m11, double m22) {
+         return m00 == 0 && m11 == 0 && m22 == 0 ? ZERO : new Matrix3d(m00, 0, 0, 0, m11, 0, 0, 0, m22);
+    }
+
     public static Matrix3d createScaling(float scale) {
         return createScaling((double) scale);
     }

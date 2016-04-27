@@ -412,6 +412,14 @@ public class Vector3f implements Vectorf, Comparable<Vector3f>, Serializable, Cl
         return "(" + x + ", " + y + ", " + z + ")";
     }
 
+    public static Vector3f from(float n) {
+         return n == 0 ? ZERO : new Vector3f(n, n, n);
+    }
+
+    public static Vector3f from(float x, float y, float z) {
+         return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3f(x, y, z);
+    }
+
     /**
      * Gets the direction vector of a random pitch and yaw using the random specified.
      *

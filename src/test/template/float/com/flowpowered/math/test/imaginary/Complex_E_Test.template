@@ -307,6 +307,24 @@ public class Complex#E#Test {
     }
 
     @Test
+    public void testComplexFromReal() {
+        Complex#E# complex = Complex#E#.fromReal(1);
+        TestUtil#E#.assertEquals(complex, 1, 0);
+    }
+
+    @Test
+    public void testComplexFromImaginary() {
+        Complex#E# complex = Complex#E#.fromImaginary(1);
+        TestUtil#E#.assertEquals(complex, 0, 1);
+    }
+
+    @Test
+    public void testComplexFrom() {
+        Complex#E# complex = Complex#E#.from(1, 2);
+        TestUtil#E#.assertEquals(complex, 1, 2);
+    }
+
+    @Test
     public void testCreateFromRotationBetweenTwoVector2() {
         Complex#E# complex = Complex#E#.fromRotationTo(new Vector2#E#(0, 1), new Vector2#E#(-1, 0));
         TestUtil#E#.assertEquals(complex, 0, 1);

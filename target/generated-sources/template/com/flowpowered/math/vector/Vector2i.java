@@ -342,4 +342,12 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     public String toString() {
         return "(" + x + ", " + y + ")";
     }
+
+    public static Vector2i from(int n) {
+         return n == 0 ? ZERO : new Vector2i(n, n);
+    }
+
+    public static Vector2i from(int x, int y) {
+         return x == 0 && y == 0 ? ZERO : new Vector2i(x, y);
+    }
 }

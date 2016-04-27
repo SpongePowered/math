@@ -373,4 +373,12 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }
+
+    public static Vector3i from(int n) {
+         return n == 0 ? ZERO : new Vector3i(n, n, n);
+    }
+
+    public static Vector3i from(int x, int y, int z) {
+         return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3i(x, y, z);
+    }
 }

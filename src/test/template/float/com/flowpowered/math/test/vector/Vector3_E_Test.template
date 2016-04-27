@@ -456,6 +456,18 @@ public class Vector3#E#Test {
     }
 
     @Test
+    public void testVectorFromN() {
+        Vector3#E# vector = Vector3#E#.from(1);
+        TestUtil#E#.assertEquals(vector, 1, 1, 1);
+    }
+
+    @Test
+    public void testVectorFromXYZ() {
+        Vector3#E# vector = Vector3#E#.from(1, 2, 3);
+        TestUtil#E#.assertEquals(vector, 1, 2, 3);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random(0xF5514E866AA4L);
         for (int i = 0; i < 10; i++) {

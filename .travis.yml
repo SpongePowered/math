@@ -31,7 +31,7 @@ after_success:
 deploy:
   provider: releases
   api-key: $GITHUB_TOKEN
-  file: "target/flow-math-`cat version.txt`.jar"
+  file: "target/flow-math-$TRAVIS_TAG.jar"
   skip_cleanup: true
   on:
     branch: master

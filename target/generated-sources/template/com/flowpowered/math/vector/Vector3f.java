@@ -420,6 +420,46 @@ public class Vector3f implements Vectorf, Comparable<Vector3f>, Serializable, Cl
          return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3f(x, y, z);
     }
 
+    public static Vector3f fromMin(Vector3f a, Vector3f b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3f fromMin(Vector3f... vecs) {
+         float x = Float.POSITIVE_INFINITY;
+         float y = Float.POSITIVE_INFINITY;
+         float z = Float.POSITIVE_INFINITY;
+
+         for (Vector3f vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
+    public static Vector3f fromMax(Vector3f a, Vector3f b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3f fromMax(Vector3f... vecs) {
+         float x = Float.NEGATIVE_INFINITY;
+         float y = Float.NEGATIVE_INFINITY;
+         float z = Float.NEGATIVE_INFINITY;
+
+         for (Vector3f vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
     /**
      * Gets the direction vector of a random pitch and yaw using the random specified.
      *

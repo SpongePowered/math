@@ -453,4 +453,38 @@ public class Vector4dTest {
         Vector4d vector = Vector4d.from(1, 2, 3, 4);
         TestUtild.assertEquals(vector, 1, 2, 3, 4);
     }
+
+    @Test
+    public void testVectorFromMinAB() {
+        Vector4d vector = Vector4d.fromMin(Vector4d.from(1, 0, 2, 5),
+                                           Vector4d.from(2, 1, 3, 4));
+        TestUtild.assertEquals(vector, 1, 0, 2, 4);
+    }
+
+    @Test
+    public void testVectorFromMinMany() {
+        Vector4d vector = Vector4d.fromMin(Vector4d.from(9, 0, 10, 19),
+                                           Vector4d.from(8, 1, 11, 18),
+                                           Vector4d.from(7, 2, 12, 17),
+                                           Vector4d.from(6, 3, 13, 16),
+                                           Vector4d.from(5, 4, 14, 15));
+        TestUtild.assertEquals(vector, 5, 0, 10, 15);
+    }
+
+    @Test
+    public void testVectorFromMaxAB() {
+        Vector4d vector = Vector4d.fromMax(Vector4d.from(1, 0, 2, 5),
+                                           Vector4d.from(2, 1, 3, 4));
+        TestUtild.assertEquals(vector, 2, 1, 3, 5);
+    }
+
+    @Test
+    public void testVectorFromMaxMany() {
+        Vector4d vector = Vector4d.fromMax(Vector4d.from(9, 0, 10, 19),
+                                           Vector4d.from(8, 1, 11, 18),
+                                           Vector4d.from(7, 2, 12, 17),
+                                           Vector4d.from(6, 3, 13, 16),
+                                           Vector4d.from(5, 4, 14, 15));
+        TestUtild.assertEquals(vector, 9, 4, 14, 19);
+    }
 }

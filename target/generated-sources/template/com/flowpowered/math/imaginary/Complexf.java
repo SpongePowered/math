@@ -531,7 +531,7 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
     }
 
     /**
-     * Creates a new quaternion from the float imaginary components.
+     * Creates a new complex from the float imaginary components.
      *
      * <p>The {@link #ZERO} constant is re-used when {@code y} is 0.</p>
      *

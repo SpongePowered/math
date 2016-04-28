@@ -386,6 +386,40 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
          return x == 0 && y == 0 ? ZERO : new Vector2f(x, y);
     }
 
+    public static Vector2f fromMin(Vector2f a, Vector2f b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()));
+    }
+
+    public static Vector2f fromMin(Vector2f... vecs) {
+         float x = Float.POSITIVE_INFINITY;
+         float y = Float.POSITIVE_INFINITY;
+
+         for (Vector2f vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
+    public static Vector2f fromMax(Vector2f a, Vector2f b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()));
+    }
+
+    public static Vector2f fromMax(Vector2f... vecs) {
+         float x = Float.NEGATIVE_INFINITY;
+         float y = Float.NEGATIVE_INFINITY;
+
+         for (Vector2f vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
     /**
      * Gets the direction vector of a random angle using the random specified.
      *

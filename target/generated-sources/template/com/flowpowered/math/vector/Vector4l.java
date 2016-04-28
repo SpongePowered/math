@@ -401,4 +401,50 @@ public class Vector4l implements Vectorl, Comparable<Vector4l>, Serializable, Cl
     public static Vector4l from(long x, long y, long z, long w) {
          return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4l(x, y, z, w);
     }
+
+    public static Vector4l fromMin(Vector4l a, Vector4l b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()),
+                     Math.min(a.getW(), b.getW()));
+    }
+
+    public static Vector4l fromMin(Vector4l... vecs) {
+         long x = Long.MAX_VALUE;
+         long y = Long.MAX_VALUE;
+         long z = Long.MAX_VALUE;
+         long w = Long.MAX_VALUE;
+
+         for (Vector4l vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+              w = Math.min(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
+
+    public static Vector4l fromMax(Vector4l a, Vector4l b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()),
+                     Math.max(a.getW(), b.getW()));
+    }
+
+    public static Vector4l fromMax(Vector4l... vecs) {
+         long x = Long.MIN_VALUE;
+         long y = Long.MIN_VALUE;
+         long z = Long.MIN_VALUE;
+         long w = Long.MIN_VALUE;
+
+         for (Vector4l vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+              w = Math.max(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
 }

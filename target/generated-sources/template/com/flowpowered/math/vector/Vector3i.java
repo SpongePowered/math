@@ -381,4 +381,44 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     public static Vector3i from(int x, int y, int z) {
          return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3i(x, y, z);
     }
+
+    public static Vector3i fromMin(Vector3i a, Vector3i b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3i fromMin(Vector3i... vecs) {
+         int x = Integer.MAX_VALUE;
+         int y = Integer.MAX_VALUE;
+         int z = Integer.MAX_VALUE;
+
+         for (Vector3i vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
+    public static Vector3i fromMax(Vector3i a, Vector3i b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3i fromMax(Vector3i... vecs) {
+         int x = Integer.MIN_VALUE;
+         int y = Integer.MIN_VALUE;
+         int z = Integer.MIN_VALUE;
+
+         for (Vector3i vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
 }

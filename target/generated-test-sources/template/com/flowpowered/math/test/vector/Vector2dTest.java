@@ -441,6 +441,40 @@ public class Vector2dTest {
     }
 
     @Test
+    public void testVectorFromMinAB() {
+        Vector2d vector = Vector2d.fromMin(Vector2d.from(1, 0),
+                                           Vector2d.from(2, 1));
+        TestUtild.assertEquals(vector, 1, 0);
+    }
+
+    @Test
+    public void testVectorFromMinMany() {
+        Vector2d vector = Vector2d.fromMin(Vector2d.from(9, 0),
+                                           Vector2d.from(8, 1),
+                                           Vector2d.from(7, 2),
+                                           Vector2d.from(6, 3),
+                                           Vector2d.from(5, 4));
+        TestUtild.assertEquals(vector, 5, 0);
+    }
+
+    @Test
+    public void testVectorFromMaxAB() {
+        Vector2d vector = Vector2d.fromMax(Vector2d.from(1, 0),
+                                           Vector2d.from(2, 1));
+        TestUtild.assertEquals(vector, 2, 1);
+    }
+
+    @Test
+    public void testVectorFromMaxMany() {
+        Vector2d vector = Vector2d.fromMax(Vector2d.from(9, 0),
+                                           Vector2d.from(8, 1),
+                                           Vector2d.from(7, 2),
+                                           Vector2d.from(6, 3),
+                                           Vector2d.from(5, 4));
+        TestUtild.assertEquals(vector, 9, 4);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random();
         for (int i = 0; i < 10; i++) {

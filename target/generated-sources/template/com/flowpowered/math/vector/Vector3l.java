@@ -381,4 +381,44 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     public static Vector3l from(long x, long y, long z) {
          return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3l(x, y, z);
     }
+
+    public static Vector3l fromMin(Vector3l a, Vector3l b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3l fromMin(Vector3l... vecs) {
+         long x = Long.MAX_VALUE;
+         long y = Long.MAX_VALUE;
+         long z = Long.MAX_VALUE;
+
+         for (Vector3l vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
+    public static Vector3l fromMax(Vector3l a, Vector3l b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3l fromMax(Vector3l... vecs) {
+         long x = Long.MIN_VALUE;
+         long y = Long.MIN_VALUE;
+         long z = Long.MIN_VALUE;
+
+         for (Vector3l vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
 }

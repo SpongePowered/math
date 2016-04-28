@@ -440,4 +440,50 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
     public static Vector4f from(float x, float y, float z, float w) {
          return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4f(x, y, z, w);
     }
+
+    public static Vector4f fromMin(Vector4f a, Vector4f b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()),
+                     Math.min(a.getW(), b.getW()));
+    }
+
+    public static Vector4f fromMin(Vector4f... vecs) {
+         float x = Float.POSITIVE_INFINITY;
+         float y = Float.POSITIVE_INFINITY;
+         float z = Float.POSITIVE_INFINITY;
+         float w = Float.POSITIVE_INFINITY;
+
+         for (Vector4f vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+              w = Math.min(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
+
+    public static Vector4f fromMax(Vector4f a, Vector4f b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()),
+                     Math.max(a.getW(), b.getW()));
+    }
+
+    public static Vector4f fromMax(Vector4f... vecs) {
+         float x = Float.NEGATIVE_INFINITY;
+         float y = Float.NEGATIVE_INFINITY;
+         float z = Float.NEGATIVE_INFINITY;
+         float w = Float.NEGATIVE_INFINITY;
+
+         for (Vector4f vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+              w = Math.max(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
 }

@@ -468,6 +468,40 @@ public class Vector3#E#Test {
     }
 
     @Test
+    public void testVectorFromMinAB() {
+        Vector3#E# vector = Vector3#E#.fromMin(Vector3#E#.from(1, 0, 2),
+                                           Vector3#E#.from(2, 1, 3));
+        TestUtil#E#.assertEquals(vector, 1, 0, 2);
+    }
+
+    @Test
+    public void testVectorFromMinMany() {
+        Vector3#E# vector = Vector3#E#.fromMin(Vector3#E#.from(9, 0, 10),
+                                           Vector3#E#.from(8, 1, 11),
+                                           Vector3#E#.from(7, 2, 12),
+                                           Vector3#E#.from(6, 3, 13),
+                                           Vector3#E#.from(5, 4, 14));
+        TestUtil#E#.assertEquals(vector, 5, 0, 10);
+    }
+
+    @Test
+    public void testVectorFromMaxAB() {
+        Vector3#E# vector = Vector3#E#.fromMax(Vector3#E#.from(1, 0, 2),
+                                           Vector3#E#.from(2, 1, 3));
+        TestUtil#E#.assertEquals(vector, 2, 1, 3);
+    }
+
+    @Test
+    public void testVectorFromMaxMany() {
+        Vector3#E# vector = Vector3#E#.fromMax(Vector3#E#.from(9, 0, 10),
+                                           Vector3#E#.from(8, 1, 11),
+                                           Vector3#E#.from(7, 2, 12),
+                                           Vector3#E#.from(6, 3, 13),
+                                           Vector3#E#.from(5, 4, 14));
+        TestUtil#E#.assertEquals(vector, 9, 4, 14);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random(0xF5514E866AA4L);
         for (int i = 0; i < 10; i++) {

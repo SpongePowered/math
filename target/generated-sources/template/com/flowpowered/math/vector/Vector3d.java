@@ -420,6 +420,46 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
          return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3d(x, y, z);
     }
 
+    public static Vector3d fromMin(Vector3d a, Vector3d b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3d fromMin(Vector3d... vecs) {
+         double x = Double.POSITIVE_INFINITY;
+         double y = Double.POSITIVE_INFINITY;
+         double z = Double.POSITIVE_INFINITY;
+
+         for (Vector3d vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
+    public static Vector3d fromMax(Vector3d a, Vector3d b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3d fromMax(Vector3d... vecs) {
+         double x = Double.NEGATIVE_INFINITY;
+         double y = Double.NEGATIVE_INFINITY;
+         double z = Double.NEGATIVE_INFINITY;
+
+         for (Vector3d vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
     /**
      * Gets the direction vector of a random pitch and yaw using the random specified.
      *

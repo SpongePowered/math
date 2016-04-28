@@ -420,6 +420,46 @@ public class Vector3#E# implements Vector#E#, Comparable<Vector3#E#>, Serializab
          return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3#E#(x, y, z);
     }
 
+    public static Vector3#E# fromMin(Vector3#E# a, Vector3#E# b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3#E# fromMin(Vector3#E#... vecs) {
+         #e# x = #ET#.POSITIVE_INFINITY;
+         #e# y = #ET#.POSITIVE_INFINITY;
+         #e# z = #ET#.POSITIVE_INFINITY;
+
+         for (Vector3#E# vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
+    public static Vector3#E# fromMax(Vector3#E# a, Vector3#E# b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3#E# fromMax(Vector3#E#... vecs) {
+         #e# x = #ET#.NEGATIVE_INFINITY;
+         #e# y = #ET#.NEGATIVE_INFINITY;
+         #e# z = #ET#.NEGATIVE_INFINITY;
+
+         for (Vector3#E# vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
     /**
      * Gets the direction vector of a random pitch and yaw using the random specified.
      *

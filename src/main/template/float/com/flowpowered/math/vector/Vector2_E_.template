@@ -386,6 +386,40 @@ public class Vector2#E# implements Vector#E#, Comparable<Vector2#E#>, Serializab
          return x == 0 && y == 0 ? ZERO : new Vector2#E#(x, y);
     }
 
+    public static Vector2#E# fromMin(Vector2#E# a, Vector2#E# b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()));
+    }
+
+    public static Vector2#E# fromMin(Vector2#E#... vecs) {
+         #e# x = #ET#.POSITIVE_INFINITY;
+         #e# y = #ET#.POSITIVE_INFINITY;
+
+         for (Vector2#E# vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
+    public static Vector2#E# fromMax(Vector2#E# a, Vector2#E# b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()));
+    }
+
+    public static Vector2#E# fromMax(Vector2#E#... vecs) {
+         #e# x = #ET#.NEGATIVE_INFINITY;
+         #e# y = #ET#.NEGATIVE_INFINITY;
+
+         for (Vector2#E# vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
     /**
      * Gets the direction vector of a random angle using the random specified.
      *

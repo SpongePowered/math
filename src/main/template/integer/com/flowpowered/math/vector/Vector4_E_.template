@@ -401,4 +401,50 @@ public class Vector4#E# implements Vector#E#, Comparable<Vector4#E#>, Serializab
     public static Vector4#E# from(#e# x, #e# y, #e# z, #e# w) {
          return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4#E#(x, y, z, w);
     }
+
+    public static Vector4#E# fromMin(Vector4#E# a, Vector4#E# b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()),
+                     Math.min(a.getW(), b.getW()));
+    }
+
+    public static Vector4#E# fromMin(Vector4#E#... vecs) {
+         #e# x = #ET#.MAX_VALUE;
+         #e# y = #ET#.MAX_VALUE;
+         #e# z = #ET#.MAX_VALUE;
+         #e# w = #ET#.MAX_VALUE;
+
+         for (Vector4#E# vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+              w = Math.min(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
+
+    public static Vector4#E# fromMax(Vector4#E# a, Vector4#E# b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()),
+                     Math.max(a.getW(), b.getW()));
+    }
+
+    public static Vector4#E# fromMax(Vector4#E#... vecs) {
+         #e# x = #ET#.MIN_VALUE;
+         #e# y = #ET#.MIN_VALUE;
+         #e# z = #ET#.MIN_VALUE;
+         #e# w = #ET#.MIN_VALUE;
+
+         for (Vector4#E# vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+              w = Math.max(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
 }

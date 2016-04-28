@@ -401,4 +401,50 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     public static Vector4i from(int x, int y, int z, int w) {
          return x == 0 && y == 0 && z == 0 && w == 0 ? ZERO : new Vector4i(x, y, z, w);
     }
+
+    public static Vector4i fromMin(Vector4i a, Vector4i b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()),
+                     Math.min(a.getW(), b.getW()));
+    }
+
+    public static Vector4i fromMin(Vector4i... vecs) {
+         int x = Integer.MAX_VALUE;
+         int y = Integer.MAX_VALUE;
+         int z = Integer.MAX_VALUE;
+         int w = Integer.MAX_VALUE;
+
+         for (Vector4i vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+              w = Math.min(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
+
+    public static Vector4i fromMax(Vector4i a, Vector4i b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()),
+                     Math.max(a.getW(), b.getW()));
+    }
+
+    public static Vector4i fromMax(Vector4i... vecs) {
+         int x = Integer.MIN_VALUE;
+         int y = Integer.MIN_VALUE;
+         int z = Integer.MIN_VALUE;
+         int w = Integer.MIN_VALUE;
+
+         for (Vector4i vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+              w = Math.max(w, vec.getW());
+         }
+
+         return from(x, y, z, w);
+    }
 }

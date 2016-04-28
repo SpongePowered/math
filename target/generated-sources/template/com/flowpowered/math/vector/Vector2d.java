@@ -386,6 +386,40 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
          return x == 0 && y == 0 ? ZERO : new Vector2d(x, y);
     }
 
+    public static Vector2d fromMin(Vector2d a, Vector2d b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()));
+    }
+
+    public static Vector2d fromMin(Vector2d... vecs) {
+         double x = Double.POSITIVE_INFINITY;
+         double y = Double.POSITIVE_INFINITY;
+
+         for (Vector2d vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
+    public static Vector2d fromMax(Vector2d a, Vector2d b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()));
+    }
+
+    public static Vector2d fromMax(Vector2d... vecs) {
+         double x = Double.NEGATIVE_INFINITY;
+         double y = Double.NEGATIVE_INFINITY;
+
+         for (Vector2d vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
     /**
      * Gets the direction vector of a random angle using the random specified.
      *

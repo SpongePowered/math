@@ -350,4 +350,38 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     public static Vector2i from(int x, int y) {
          return x == 0 && y == 0 ? ZERO : new Vector2i(x, y);
     }
+
+    public static Vector2i fromMin(Vector2i a, Vector2i b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()));
+    }
+
+    public static Vector2i fromMin(Vector2i... vecs) {
+         int x = Integer.MAX_VALUE;
+         int y = Integer.MAX_VALUE;
+
+         for (Vector2i vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
+    public static Vector2i fromMax(Vector2i a, Vector2i b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()));
+    }
+
+    public static Vector2i fromMax(Vector2i... vecs) {
+         int x = Integer.MIN_VALUE;
+         int y = Integer.MIN_VALUE;
+
+         for (Vector2i vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
 }

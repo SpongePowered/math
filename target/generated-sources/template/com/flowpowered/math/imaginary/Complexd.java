@@ -531,7 +531,7 @@ public class Complexd implements Imaginaryd, Comparable<Complexd>, Serializable,
     }
 
     /**
-     * Creates a new quaternion from the double imaginary components.
+     * Creates a new complex from the double imaginary components.
      *
      * <p>The {@link #ZERO} constant is re-used when {@code y} is 0.</p>
      *

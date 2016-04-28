@@ -441,6 +441,40 @@ public class Vector2#E#Test {
     }
 
     @Test
+    public void testVectorFromMinAB() {
+        Vector2#E# vector = Vector2#E#.fromMin(Vector2#E#.from(1, 0),
+                                           Vector2#E#.from(2, 1));
+        TestUtil#E#.assertEquals(vector, 1, 0);
+    }
+
+    @Test
+    public void testVectorFromMinMany() {
+        Vector2#E# vector = Vector2#E#.fromMin(Vector2#E#.from(9, 0),
+                                           Vector2#E#.from(8, 1),
+                                           Vector2#E#.from(7, 2),
+                                           Vector2#E#.from(6, 3),
+                                           Vector2#E#.from(5, 4));
+        TestUtil#E#.assertEquals(vector, 5, 0);
+    }
+
+    @Test
+    public void testVectorFromMaxAB() {
+        Vector2#E# vector = Vector2#E#.fromMax(Vector2#E#.from(1, 0),
+                                           Vector2#E#.from(2, 1));
+        TestUtil#E#.assertEquals(vector, 2, 1);
+    }
+
+    @Test
+    public void testVectorFromMaxMany() {
+        Vector2#E# vector = Vector2#E#.fromMax(Vector2#E#.from(9, 0),
+                                           Vector2#E#.from(8, 1),
+                                           Vector2#E#.from(7, 2),
+                                           Vector2#E#.from(6, 3),
+                                           Vector2#E#.from(5, 4));
+        TestUtil#E#.assertEquals(vector, 9, 4);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random();
         for (int i = 0; i < 10; i++) {

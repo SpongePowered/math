@@ -350,4 +350,38 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     public static Vector2l from(long x, long y) {
          return x == 0 && y == 0 ? ZERO : new Vector2l(x, y);
     }
+
+    public static Vector2l fromMin(Vector2l a, Vector2l b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()));
+    }
+
+    public static Vector2l fromMin(Vector2l... vecs) {
+         long x = Long.MAX_VALUE;
+         long y = Long.MAX_VALUE;
+
+         for (Vector2l vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
+
+    public static Vector2l fromMax(Vector2l a, Vector2l b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()));
+    }
+
+    public static Vector2l fromMax(Vector2l... vecs) {
+         long x = Long.MIN_VALUE;
+         long y = Long.MIN_VALUE;
+
+         for (Vector2l vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+         }
+
+         return from(x, y);
+    }
 }

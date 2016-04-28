@@ -381,4 +381,44 @@ public class Vector3#E# implements Vector#E#, Comparable<Vector3#E#>, Serializab
     public static Vector3#E# from(#e# x, #e# y, #e# z) {
          return x == 0 && y == 0 && z == 0 ? ZERO : new Vector3#E#(x, y, z);
     }
+
+    public static Vector3#E# fromMin(Vector3#E# a, Vector3#E# b) {
+         return from(Math.min(a.getX(), b.getX()),
+                     Math.min(a.getY(), b.getY()),
+                     Math.min(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3#E# fromMin(Vector3#E#... vecs) {
+         #e# x = #ET#.MAX_VALUE;
+         #e# y = #ET#.MAX_VALUE;
+         #e# z = #ET#.MAX_VALUE;
+
+         for (Vector3#E# vec : vecs) {
+              x = Math.min(x, vec.getX());
+              y = Math.min(y, vec.getY());
+              z = Math.min(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
+
+    public static Vector3#E# fromMax(Vector3#E# a, Vector3#E# b) {
+         return from(Math.max(a.getX(), b.getX()),
+                     Math.max(a.getY(), b.getY()),
+                     Math.max(a.getZ(), b.getZ()));
+    }
+
+    public static Vector3#E# fromMax(Vector3#E#... vecs) {
+         #e# x = #ET#.MIN_VALUE;
+         #e# y = #ET#.MIN_VALUE;
+         #e# z = #ET#.MIN_VALUE;
+
+         for (Vector3#E# vec : vecs) {
+              x = Math.max(x, vec.getX());
+              y = Math.max(y, vec.getY());
+              z = Math.max(z, vec.getZ());
+         }
+
+         return from(x, y, z);
+    }
 }

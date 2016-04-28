@@ -468,6 +468,40 @@ public class Vector3dTest {
     }
 
     @Test
+    public void testVectorFromMinAB() {
+        Vector3d vector = Vector3d.fromMin(Vector3d.from(1, 0, 2),
+                                           Vector3d.from(2, 1, 3));
+        TestUtild.assertEquals(vector, 1, 0, 2);
+    }
+
+    @Test
+    public void testVectorFromMinMany() {
+        Vector3d vector = Vector3d.fromMin(Vector3d.from(9, 0, 10),
+                                           Vector3d.from(8, 1, 11),
+                                           Vector3d.from(7, 2, 12),
+                                           Vector3d.from(6, 3, 13),
+                                           Vector3d.from(5, 4, 14));
+        TestUtild.assertEquals(vector, 5, 0, 10);
+    }
+
+    @Test
+    public void testVectorFromMaxAB() {
+        Vector3d vector = Vector3d.fromMax(Vector3d.from(1, 0, 2),
+                                           Vector3d.from(2, 1, 3));
+        TestUtild.assertEquals(vector, 2, 1, 3);
+    }
+
+    @Test
+    public void testVectorFromMaxMany() {
+        Vector3d vector = Vector3d.fromMax(Vector3d.from(9, 0, 10),
+                                           Vector3d.from(8, 1, 11),
+                                           Vector3d.from(7, 2, 12),
+                                           Vector3d.from(6, 3, 13),
+                                           Vector3d.from(5, 4, 14));
+        TestUtild.assertEquals(vector, 9, 4, 14);
+    }
+
+    @Test
     public void testCreateDirectionFromRandom() {
         Random random = new Random(0xF5514E866AA4L);
         for (int i = 0; i < 10; i++) {

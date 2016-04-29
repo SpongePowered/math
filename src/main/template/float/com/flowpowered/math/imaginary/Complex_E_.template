@@ -531,7 +531,7 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
     }
 
     /**
-     * Creates a new quaternion from the #e# imaginary components.
+     * Creates a new complex from the #e# imaginary components.
      *
      * <p>The {@link #ZERO} constant is re-used when {@code y} is 0.</p>
      *

@@ -6,7 +6,7 @@
     <name>Flow Math</name>
     <groupId>com.flowpowered</groupId>
     <artifactId>flow-math</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
     <inceptionYear>2013</inceptionYear>
     <url>https://flowpowered.com/math</url>

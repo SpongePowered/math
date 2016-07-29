@@ -29,6 +29,7 @@ import static org.junit.Assert.assertEquals;
 
 import static com.flowpowered.math.GenericMath.floor;
 import static com.flowpowered.math.GenericMath.mean;
+import static com.flowpowered.math.GenericMath.mod;
 import static com.flowpowered.math.GenericMath.roundUpPow2;
 
 public final class GenericMathTest {
@@ -62,5 +63,44 @@ public final class GenericMathTest {
         assertEquals(59, floor(59.987f));
         assertEquals(0, floor(0.9));
         assertEquals(0, floor(0.9f));
+    }
+
+    @Test
+    public void testModInt() {
+        assertEquals(0, mod(-32, 16));
+        assertEquals(15, mod(-17, 16));
+        assertEquals(0, mod(-16, 16));
+        assertEquals(2, mod(-14, 16));
+        assertEquals(0, mod(0, 16));
+        assertEquals(6, mod(6, 16));
+        assertEquals(0, mod(16, 16));
+        assertEquals(8, mod(24, 16));
+        assertEquals(0, mod(32, 16));
+    }
+
+    @Test
+    public void testModFloat() {
+        assertEquals(0f, mod(-32f, 16f), 0f);
+        assertEquals(15f, mod(-17f, 16f), 0f);
+        assertEquals(0f, mod(-16f, 16f), 0f);
+        assertEquals(2f, mod(-14f, 16f), 0f);
+        assertEquals(0f, mod(0f, 16f), 0f);
+        assertEquals(6f, mod(6f, 16f), 0f);
+        assertEquals(0f, mod(16f, 16f), 0f);
+        assertEquals(8f, mod(24f, 16f), 0f);
+        assertEquals(0f, mod(32f, 16f), 0f);
+    }
+
+    @Test
+    public void testModDouble() {
+        assertEquals(0d, mod(-32d, 16d), 0d);
+        assertEquals(15d, mod(-17d, 16d), 0d);
+        assertEquals(0d, mod(-16d, 16d), 0d);
+        assertEquals(2d, mod(-14d, 16d), 0d);
+        assertEquals(0d, mod(0d, 16d), 0d);
+        assertEquals(6d, mod(6d, 16d), 0d);
+        assertEquals(0d, mod(16d, 16d), 0d);
+        assertEquals(8d, mod(24d, 16d), 0d);
+        assertEquals(0d, mod(32d, 16d), 0d);
     }
 }

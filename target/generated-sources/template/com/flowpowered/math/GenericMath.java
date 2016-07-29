@@ -750,36 +750,39 @@ public class GenericMath {
     }
 
     /**
-     * Returns the modulo of x by div with corrections for negative numbers.
+     * Returns the modulo of 'a' by 'div' with corrections for negative numbers.
      *
-     * @param x The number as an int
+     * @param a The number as an int
      * @param div The div as an int
      * @return The corrected modulo
      */
-    public static int mod(int x, int div) {
-        return x < 0 ? (x % div) + div : x % div;
+    public static int mod(int a, int div) {
+        final int remainder = a % div;
+        return remainder < 0 ? remainder + div : remainder;
     }
 
     /**
-     * Returns the modulo of x by div with corrections for negative numbers.
+     * Returns the modulo of 'a' by 'div' with corrections for negative numbers.
      *
-     * @param x The number as an float
-     * @param div The div as an float
+     * @param a The dividend
+     * @param div The divider
      * @return The corrected modulo
      */
-    public static float mod(float x, float div) {
-        return x < 0 ? (x % div) + div : x % div;
+    public static float mod(float a, float div) {
+        final float remainder = a % div;
+        return remainder < 0 ? remainder + div : remainder;
     }
 
     /**
-     * Returns the modulo of x by div with corrections for negative numbers.
+     * Returns the modulo of 'a' by 'div' with corrections for negative numbers.
      *
-     * @param x The number as an double
-     * @param div The div as an double
+     * @param a The dividend
+     * @param div The divider
      * @return The corrected modulo
      */
-    public static double mod(double x, double div) {
-        return x < 0 ? (x % div) + div : x % div;
+    public static double mod(double a, double div) {
+        final double remainder = a % div;
+        return remainder < 0 ? remainder + div : remainder;
     }
 
     /**

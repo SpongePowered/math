@@ -632,37 +632,18 @@ public class GenericMath {
     }
 
     /**
-     * Returns the modulo of x by div with corrections for negative numbers.
+     * Returns the modulo of 'a' by 'div' with corrections for negative numbers.
      *
-     * @param x The number as an int
+     * @param a The number as an int
      * @param div The div as an int
      * @return The corrected modulo
      */
-    public static int mod(int x, int div) {
-        return x < 0 ? (x % div) + div : x % div;
+    public static int mod(int a, int div) {
+        final int remainder = a % div;
+        return remainder < 0 ? remainder + div : remainder;
     }
 
-    /**
-     * Returns the modulo of x by div with corrections for negative numbers.
-     *
-     * @param x The number as an float
-     * @param div The div as an float
-     * @return The corrected modulo
-     */
-    public static float mod(float x, float div) {
-        return x < 0 ? (x % div) + div : x % div;
-    }
-
-    /**
-     * Returns the modulo of x by div with corrections for negative numbers.
-     *
-     * @param x The number as an double
-     * @param div The div as an double
-     * @return The corrected modulo
-     */
-    public static double mod(double x, double div) {
-        return x < 0 ? (x % div) + div : x % div;
-    }
+#REPLICATED9#
 
     /**
      * Gets a thread local Random object that is seeded using SecureRandom. Only one Random is created per thread.
@@ -778,6 +759,20 @@ public class GenericMath {
         return a.mul(1 - percent).add(b.mul(percent));
     }
 =====END_REPLICATED_CONTENT #8=====
+
+====START_REPLICATED_CONTENT #9====
+    /**
+     * Returns the modulo of 'a' by 'div' with corrections for negative numbers.
+     *
+     * @param a The dividend
+     * @param div The divider
+     * @return The corrected modulo
+     */
+    public static #e# mod(#e# a, #e# div) {
+        final #e# remainder = a % div;
+        return remainder < 0 ? remainder + div : remainder;
+    }
+=====END_REPLICATED_CONTENT #9=====
 
 ====START_REPLICATED_CONTENT #4====
     /**

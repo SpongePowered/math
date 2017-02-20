@@ -1,5 +1,7 @@
 package com.flowpowered.math.vector;
 
+import java.util.stream.#ES#Stream;
+
 public interface Vector#E# {
     Vector#E# mul(#e# a);
 
@@ -28,4 +30,6 @@ public interface Vector#E# {
     Vectorf toFloat();
 
     Vectord toDouble();
+
+    #ES#Stream stream();
 }

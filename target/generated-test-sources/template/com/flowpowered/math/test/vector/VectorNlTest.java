@@ -356,4 +356,14 @@ public class VectorNlTest {
         VectorNl vector = new VectorNl(1, 2, 3);
         Assert.assertEquals(vector, vector.clone());
     }
+
+    @Test
+    public void testStream() {
+        VectorNl vector = new VectorNl(10, 20, 30, 40, 50, 60, 70);
+        long[] expected = new long[]{10, 20};
+        long[] actual = vector.stream()
+            .filter((n) -> n <= 20)
+            .toArray();
+        TestUtill.assertEquals(actual, expected);
+    }
 }

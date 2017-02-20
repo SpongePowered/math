@@ -1,5 +1,7 @@
 package com.flowpowered.math.vector;
 
+import java.util.stream.DoubleStream;
+
 public interface Vectorf {
     Vectorf mul(float a);
 
@@ -36,4 +38,6 @@ public interface Vectorf {
     Vectorf toFloat();
 
     Vectord toDouble();
+
+    DoubleStream stream();
 }

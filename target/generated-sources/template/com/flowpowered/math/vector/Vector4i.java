@@ -1,6 +1,7 @@
 package com.flowpowered.math.vector;
 
 import java.io.Serializable;
+import java.util.stream.IntStream;
 
 import com.flowpowered.math.GenericMath;
 
@@ -339,6 +340,11 @@ public class Vector4i implements Vectori, Comparable<Vector4i>, Serializable, Cl
     @Override
     public Vector4d toDouble() {
         return new Vector4d(x, y, z, w);
+    }
+
+    @Override
+    public IntStream stream() {
+        return IntStream.of(x, y, z, w);
     }
 
 

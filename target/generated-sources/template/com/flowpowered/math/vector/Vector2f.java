@@ -1,8 +1,8 @@
 package com.flowpowered.math.vector;
 
 import java.io.Serializable;
-import java.lang.Override;
 import java.util.Random;
+import java.util.stream.DoubleStream;
 
 import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.TrigMath;
@@ -332,6 +332,11 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
     @Override
     public Vector2d toDouble() {
         return new Vector2d(x, y);
+    }
+
+    @Override
+    public DoubleStream stream() {
+        return DoubleStream.of(x, y);
     }
 
     @Override

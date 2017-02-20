@@ -2,6 +2,7 @@ package com.flowpowered.math.vector;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.stream.#ES#Stream;
 
 import com.flowpowered.math.GenericMath;
 
@@ -382,6 +383,11 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
             doubleVec[comp] = (double) vec[comp];
         }
         return new VectorNd(doubleVec);
+    }
+
+    @Override
+    public #ES#Stream stream() {
+        return #ES#Stream.of(vec);
     }
 
     @Override

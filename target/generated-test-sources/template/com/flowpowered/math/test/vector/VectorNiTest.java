@@ -356,4 +356,14 @@ public class VectorNiTest {
         VectorNi vector = new VectorNi(1, 2, 3);
         Assert.assertEquals(vector, vector.clone());
     }
+
+    @Test
+    public void testStream() {
+        VectorNi vector = new VectorNi(10, 20, 30, 40, 50, 60, 70);
+        int[] expected = new int[]{10, 20};
+        int[] actual = vector.stream()
+            .filter((n) -> n <= 20)
+            .toArray();
+        TestUtili.assertEquals(actual, expected);
+    }
 }

@@ -2,6 +2,7 @@ package com.flowpowered.math.vector;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.stream.LongStream;
 
 import com.flowpowered.math.GenericMath;
 
@@ -382,6 +383,11 @@ public class VectorNl implements Vectorl, Comparable<VectorNl>, Serializable, Cl
             doubleVec[comp] = (double) vec[comp];
         }
         return new VectorNd(doubleVec);
+    }
+
+    @Override
+    public LongStream stream() {
+        return LongStream.of(vec);
     }
 
     @Override

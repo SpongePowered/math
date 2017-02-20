@@ -2,6 +2,7 @@ package com.flowpowered.math.vector;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.stream.DoubleStream;
 
 import com.flowpowered.math.GenericMath;
 
@@ -434,6 +435,16 @@ public class VectorNd implements Vectord, Comparable<VectorNd>, Serializable, Cl
             doubleVec[comp] = (double) vec[comp];
         }
         return new VectorNd(doubleVec);
+    }
+
+    @Override
+    public DoubleStream stream() {
+        final int size = size();
+        final double[] vec = new double[size];
+        for (int comp = 0; comp < size; comp++) {
+            vec[comp] = (double) this.vec[comp];
+        }
+        return DoubleStream.of(vec);
     }
 
     @Override

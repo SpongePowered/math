@@ -1,8 +1,8 @@
 package com.flowpowered.math.vector;
 
 import java.io.Serializable;
-import java.lang.Override;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import com.flowpowered.math.GenericMath;
 
@@ -326,6 +326,11 @@ public class Vector3i implements Vectori, Comparable<Vector3i>, Serializable, Cl
     @Override
     public Vector3d toDouble() {
         return new Vector3d(x, y, z);
+    }
+
+    @Override
+    public IntStream stream() {
+        return IntStream.of(x, y, z);
     }
 
     @Override

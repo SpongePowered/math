@@ -1,5 +1,7 @@
 package com.flowpowered.math.vector;
 
+import java.util.stream.LongStream;
+
 public interface Vectorl {
     Vectorl mul(long a);
 
@@ -28,4 +30,6 @@ public interface Vectorl {
     Vectorf toFloat();
 
     Vectord toDouble();
+
+    LongStream stream();
 }

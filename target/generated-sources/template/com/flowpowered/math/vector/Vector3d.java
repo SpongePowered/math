@@ -2,6 +2,7 @@ package com.flowpowered.math.vector;
 
 import java.io.Serializable;
 import java.util.Random;
+import java.util.stream.DoubleStream;
 
 import com.flowpowered.math.GenericMath;
 import com.flowpowered.math.TrigMath;
@@ -362,6 +363,11 @@ public class Vector3d implements Vectord, Comparable<Vector3d>, Serializable, Cl
     @Override
     public Vector3d toDouble() {
         return new Vector3d(x, y, z);
+    }
+
+    @Override
+    public DoubleStream stream() {
+        return DoubleStream.of(x, y, z);
     }
 
     @Override

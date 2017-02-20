@@ -356,4 +356,14 @@ public class VectorN#E#Test {
         VectorN#E# vector = new VectorN#E#(1, 2, 3);
         Assert.assertEquals(vector, vector.clone());
     }
+
+    @Test
+    public void testStream() {
+        VectorN#E# vector = new VectorN#E#(10, 20, 30, 40, 50, 60, 70);
+        #e#[] expected = new #e#[]{10, 20};
+        #e#[] actual = vector.stream()
+            .filter((n) -> n <= 20)
+            .toArray();
+        TestUtil#E#.assertEquals(actual, expected);
+    }
 }

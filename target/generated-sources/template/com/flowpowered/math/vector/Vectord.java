@@ -1,39 +1,43 @@
 package com.flowpowered.math.vector;
 
+import java.util.stream.DoubleStream;
+
 public interface Vectord {
-    public Vectord mul(double a);
+    Vectord mul(double a);
 
-    public Vectord div(double a);
+    Vectord div(double a);
 
-    public Vectord pow(double pow);
+    Vectord pow(double pow);
 
-    public Vectord ceil();
+    Vectord ceil();
 
-    public Vectord floor();
+    Vectord floor();
 
-    public Vectord round();
+    Vectord round();
 
-    public Vectord abs();
+    Vectord abs();
 
-    public Vectord negate();
+    Vectord negate();
 
-    public double length();
+    double length();
 
-    public double lengthSquared();
+    double lengthSquared();
 
-    public Vectord normalize();
+    Vectord normalize();
 
-    public int getMinAxis();
+    int getMinAxis();
 
-    public int getMaxAxis();
+    int getMaxAxis();
 
-    public double[] toArray();
+    double[] toArray();
 
-    public Vectori toInt();
+    Vectori toInt();
 
-    public Vectorl toLong();
+    Vectorl toLong();
 
-    public Vectorf toFloat();
+    Vectorf toFloat();
 
-    public Vectord toDouble();
+    Vectord toDouble();
+
+    DoubleStream stream();
 }

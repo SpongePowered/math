@@ -2,6 +2,7 @@ package com.flowpowered.math.vector;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.stream.DoubleStream;
 
 import com.flowpowered.math.GenericMath;
 
@@ -437,6 +438,16 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
     }
 
     @Override
+    public DoubleStream stream() {
+        final int size = size();
+        final double[] vec = new double[size];
+        for (int comp = 0; comp < size; comp++) {
+            vec[comp] = (double) this.vec[comp];
+        }
+        return DoubleStream.of(vec);
+    }
+
+    @Override
     public int compareTo(VectorNf v) {
         return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
@@ -474,6 +485,11 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
 
         @Override
         public void set(int comp, float val) {
+            throw new UnsupportedOperationException("You may not alter this vector");
+        }
+
+        @Override
+        public void setZero() {
             throw new UnsupportedOperationException("You may not alter this vector");
         }
     }

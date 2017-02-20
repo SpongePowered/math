@@ -2,6 +2,7 @@ package com.flowpowered.math.vector;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import com.flowpowered.math.GenericMath;
 
@@ -385,6 +386,11 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
     }
 
     @Override
+    public IntStream stream() {
+        return IntStream.of(vec);
+    }
+
+    @Override
     public int compareTo(VectorNi v) {
         return (int) (lengthSquared() - v.lengthSquared());
     }
@@ -422,6 +428,11 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
 
         @Override
         public void set(int comp, int val) {
+            throw new UnsupportedOperationException("You may not alter this vector");
+        }
+
+        @Override
+        public void setZero() {
             throw new UnsupportedOperationException("You may not alter this vector");
         }
     }

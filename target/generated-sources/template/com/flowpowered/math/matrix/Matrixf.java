@@ -3,39 +3,39 @@ package com.flowpowered.math.matrix;
 import com.flowpowered.math.vector.Vectorf;
 
 public interface Matrixf {
-    public float get(int row, int col);
+    float get(int row, int col);
 
-    public Vectorf getRow(int row);
+    Vectorf getRow(int row);
 
-    public Vectorf getColumn(int col);
+    Vectorf getColumn(int col);
 
-    public Matrixf mul(float a);
+    Matrixf mul(float a);
 
-    public Matrixf div(float a);
+    Matrixf div(float a);
 
-    public Matrixf pow(float pow);
+    Matrixf pow(float pow);
 
-    public Matrixf ceil();
+    Matrixf ceil();
 
-    public Matrixf floor();
+    Matrixf floor();
 
-    public Matrixf round();
+    Matrixf round();
 
-    public Matrixf abs();
+    Matrixf abs();
 
-    public Matrixf negate();
+    Matrixf negate();
 
-    public Matrixf transpose();
+    Matrixf transpose();
 
-    public float trace();
+    float trace();
 
-    public float determinant();
+    float determinant();
 
-    public Matrixf invert();
+    Matrixf invert();
 
-    public float[] toArray(boolean columnMajor);
+    float[] toArray(boolean columnMajor);
 
-    public Matrixf toFloat();
+    Matrixf toFloat();
 
-    public Matrixd toDouble();
+    Matrixd toDouble();
 }

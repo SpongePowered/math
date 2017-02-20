@@ -3,7 +3,6 @@ package com.flowpowered.math.matrix;
 import java.io.Serializable;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.imaginary.Complexf;
 import com.flowpowered.math.imaginary.Quaternionf;
@@ -544,22 +543,22 @@ public class Matrix4f implements Matrixf, Serializable, Cloneable {
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (m00 != +0.0f ? HashFunctions.hash(m00) : 0);
-            result = 31 * result + (m01 != +0.0f ? HashFunctions.hash(m01) : 0);
-            result = 31 * result + (m02 != +0.0f ? HashFunctions.hash(m02) : 0);
-            result = 31 * result + (m03 != +0.0f ? HashFunctions.hash(m03) : 0);
-            result = 31 * result + (m10 != +0.0f ? HashFunctions.hash(m10) : 0);
-            result = 31 * result + (m11 != +0.0f ? HashFunctions.hash(m11) : 0);
-            result = 31 * result + (m12 != +0.0f ? HashFunctions.hash(m12) : 0);
-            result = 31 * result + (m13 != +0.0f ? HashFunctions.hash(m13) : 0);
-            result = 31 * result + (m20 != +0.0f ? HashFunctions.hash(m20) : 0);
-            result = 31 * result + (m21 != +0.0f ? HashFunctions.hash(m21) : 0);
-            result = 31 * result + (m22 != +0.0f ? HashFunctions.hash(m22) : 0);
-            result = 31 * result + (m23 != +0.0f ? HashFunctions.hash(m23) : 0);
-            result = 31 * result + (m30 != +0.0f ? HashFunctions.hash(m30) : 0);
-            result = 31 * result + (m31 != +0.0f ? HashFunctions.hash(m31) : 0);
-            result = 31 * result + (m32 != +0.0f ? HashFunctions.hash(m32) : 0);
-            hashCode = 31 * result + (m33 != +0.0f ? HashFunctions.hash(m33) : 0);
+            int result = (m00 != +0.0f ? Float.hashCode(m00) : 0);
+            result = 31 * result + (m01 != +0.0f ? Float.hashCode(m01) : 0);
+            result = 31 * result + (m02 != +0.0f ? Float.hashCode(m02) : 0);
+            result = 31 * result + (m03 != +0.0f ? Float.hashCode(m03) : 0);
+            result = 31 * result + (m10 != +0.0f ? Float.hashCode(m10) : 0);
+            result = 31 * result + (m11 != +0.0f ? Float.hashCode(m11) : 0);
+            result = 31 * result + (m12 != +0.0f ? Float.hashCode(m12) : 0);
+            result = 31 * result + (m13 != +0.0f ? Float.hashCode(m13) : 0);
+            result = 31 * result + (m20 != +0.0f ? Float.hashCode(m20) : 0);
+            result = 31 * result + (m21 != +0.0f ? Float.hashCode(m21) : 0);
+            result = 31 * result + (m22 != +0.0f ? Float.hashCode(m22) : 0);
+            result = 31 * result + (m23 != +0.0f ? Float.hashCode(m23) : 0);
+            result = 31 * result + (m30 != +0.0f ? Float.hashCode(m30) : 0);
+            result = 31 * result + (m31 != +0.0f ? Float.hashCode(m31) : 0);
+            result = 31 * result + (m32 != +0.0f ? Float.hashCode(m32) : 0);
+            hashCode = 31 * result + (m33 != +0.0f ? Float.hashCode(m33) : 0);
             hashed = true;
         }
         return hashCode;

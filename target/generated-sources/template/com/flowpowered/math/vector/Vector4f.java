@@ -1,9 +1,9 @@
 package com.flowpowered.math.vector;
 
 import java.io.Serializable;
+import java.util.stream.DoubleStream;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 
 public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
@@ -383,6 +383,11 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
     }
 
     @Override
+    public DoubleStream stream() {
+        return DoubleStream.of(x, y, z, w);
+    }
+
+    @Override
     public int compareTo(Vector4f v) {
         return (int) Math.signum(lengthSquared() - v.lengthSquared());
     }
@@ -414,10 +419,10 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            result = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
-            result = 31 * result + (z != +0.0f ? HashFunctions.hash(z) : 0);
-            hashCode = 31 * result + (w != +0.0f ? HashFunctions.hash(w) : 0);
+            int result = (x != +0.0f ? Float.hashCode(x) : 0);
+            result = 31 * result + (y != +0.0f ? Float.hashCode(y) : 0);
+            result = 31 * result + (z != +0.0f ? Float.hashCode(z) : 0);
+            hashCode = 31 * result + (w != +0.0f ? Float.hashCode(w) : 0);
             hashed = true;
         }
         return hashCode;

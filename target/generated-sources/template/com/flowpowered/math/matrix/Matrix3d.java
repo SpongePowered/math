@@ -3,7 +3,6 @@ package com.flowpowered.math.matrix;
 import java.io.Serializable;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 import com.flowpowered.math.imaginary.Complexd;
 import com.flowpowered.math.imaginary.Quaterniond;
 import com.flowpowered.math.vector.Vector2d;
@@ -429,15 +428,15 @@ public class Matrix3d implements Matrixd, Serializable, Cloneable {
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (m00 != +0.0f ? HashFunctions.hash(m00) : 0);
-            result = 31 * result + (m01 != +0.0f ? HashFunctions.hash(m01) : 0);
-            result = 31 * result + (m02 != +0.0f ? HashFunctions.hash(m02) : 0);
-            result = 31 * result + (m10 != +0.0f ? HashFunctions.hash(m10) : 0);
-            result = 31 * result + (m11 != +0.0f ? HashFunctions.hash(m11) : 0);
-            result = 31 * result + (m12 != +0.0f ? HashFunctions.hash(m12) : 0);
-            result = 31 * result + (m20 != +0.0f ? HashFunctions.hash(m20) : 0);
-            result = 31 * result + (m21 != +0.0f ? HashFunctions.hash(m21) : 0);
-            hashCode = 31 * result + (m22 != +0.0f ? HashFunctions.hash(m22) : 0);
+            int result = (m00 != +0.0f ? Double.hashCode(m00) : 0);
+            result = 31 * result + (m01 != +0.0f ? Double.hashCode(m01) : 0);
+            result = 31 * result + (m02 != +0.0f ? Double.hashCode(m02) : 0);
+            result = 31 * result + (m10 != +0.0f ? Double.hashCode(m10) : 0);
+            result = 31 * result + (m11 != +0.0f ? Double.hashCode(m11) : 0);
+            result = 31 * result + (m12 != +0.0f ? Double.hashCode(m12) : 0);
+            result = 31 * result + (m20 != +0.0f ? Double.hashCode(m20) : 0);
+            result = 31 * result + (m21 != +0.0f ? Double.hashCode(m21) : 0);
+            hashCode = 31 * result + (m22 != +0.0f ? Double.hashCode(m22) : 0);
             hashed = true;
         }
         return hashCode;

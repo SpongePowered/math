@@ -390,4 +390,14 @@ public class Vector2lTest {
         Vector2l vector = new Vector2l(3, 2);
         Assert.assertEquals(vector, vector.clone());
     }
+
+    @Test
+    public void testStream() {
+        Vector2l vector = new Vector2l(10, 20);
+        long[] expected = new long[]{20};
+        long[] actual = vector.stream()
+            .filter((n) -> n > 10)
+            .toArray();
+        TestUtill.assertEquals(actual, expected);
+    }
 }

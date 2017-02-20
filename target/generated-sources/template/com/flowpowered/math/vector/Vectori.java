@@ -1,31 +1,35 @@
 package com.flowpowered.math.vector;
 
+import java.util.stream.IntStream;
+
 public interface Vectori {
-    public Vectori mul(int a);
+    Vectori mul(int a);
 
-    public Vectori div(int a);
+    Vectori div(int a);
 
-    public Vectori pow(int pow);
+    Vectori pow(int pow);
 
-    public Vectori abs();
+    Vectori abs();
 
-    public Vectori negate();
+    Vectori negate();
 
-    public float length();
+    float length();
 
-    public int lengthSquared();
+    int lengthSquared();
 
-    public int getMinAxis();
+    int getMinAxis();
 
-    public int getMaxAxis();
+    int getMaxAxis();
 
-    public int[] toArray();
+    int[] toArray();
 
-    public Vectori toInt();
+    Vectori toInt();
 
-    public Vectorl toLong();
+    Vectorl toLong();
 
-    public Vectorf toFloat();
+    Vectorf toFloat();
 
-    public Vectord toDouble();
+    Vectord toDouble();
+
+    IntStream stream();
 }

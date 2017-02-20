@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.lang.Override;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.vector.Vector2#E#;
 import com.flowpowered.math.vector.Vector3#E#;
@@ -496,8 +495,8 @@ public class Complex#E# implements Imaginary#E#, Comparable<Complex#E#>, Seriali
     @Override
     public int hashCode() {
         if (!hashed) {
-            final int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
+            final int result = (x != +0.0f ? #ET#.hashCode(x) : 0);
+            hashCode = 31 * result + (y != +0.0f ? #ET#.hashCode(y) : 0);
             hashed = true;
         }
         return hashCode;

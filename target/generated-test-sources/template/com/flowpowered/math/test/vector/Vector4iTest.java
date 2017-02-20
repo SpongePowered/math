@@ -386,4 +386,14 @@ public class Vector4iTest {
         Vector4i vector = new Vector4i(3, 2, 5, 6);
         Assert.assertEquals(vector, vector.clone());
     }
+
+    @Test
+    public void testStream() {
+        Vector4i vector = new Vector4i(10, 20, 30, 40);
+        int[] expected = new int[]{20, 30, 40};
+        int[] actual = vector.stream()
+            .filter((n) -> n > 10)
+            .toArray();
+        TestUtili.assertEquals(actual, expected);
+    }
 }

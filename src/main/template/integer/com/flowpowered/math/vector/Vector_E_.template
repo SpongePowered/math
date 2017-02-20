@@ -1,31 +1,35 @@
 package com.flowpowered.math.vector;
 
+import java.util.stream.#ES#Stream;
+
 public interface Vector#E# {
-    public Vector#E# mul(#e# a);
+    Vector#E# mul(#e# a);
 
-    public Vector#E# div(#e# a);
+    Vector#E# div(#e# a);
 
-    public Vector#E# pow(#e# pow);
+    Vector#E# pow(#e# pow);
 
-    public Vector#E# abs();
+    Vector#E# abs();
 
-    public Vector#E# negate();
+    Vector#E# negate();
 
-    public #EDecEqui# length();
+    #EDecEqui# length();
 
-    public #e# lengthSquared();
+    #e# lengthSquared();
 
-    public int getMinAxis();
+    int getMinAxis();
 
-    public int getMaxAxis();
+    int getMaxAxis();
 
-    public #e#[] toArray();
+    #e#[] toArray();
 
-    public Vectori toInt();
+    Vectori toInt();
 
-    public Vectorl toLong();
+    Vectorl toLong();
 
-    public Vectorf toFloat();
+    Vectorf toFloat();
 
-    public Vectord toDouble();
+    Vectord toDouble();
+
+    #ES#Stream stream();
 }

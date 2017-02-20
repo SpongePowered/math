@@ -1,31 +1,31 @@
 package com.flowpowered.math.vector;
 
 public interface Vectorl {
-    public Vectorl mul(long a);
+    Vectorl mul(long a);
 
-    public Vectorl div(long a);
+    Vectorl div(long a);
 
-    public Vectorl pow(long pow);
+    Vectorl pow(long pow);
 
-    public Vectorl abs();
+    Vectorl abs();
 
-    public Vectorl negate();
+    Vectorl negate();
 
-    public double length();
+    double length();
 
-    public long lengthSquared();
+    long lengthSquared();
 
-    public int getMinAxis();
+    int getMinAxis();
 
-    public int getMaxAxis();
+    int getMaxAxis();
 
-    public long[] toArray();
+    long[] toArray();
 
-    public Vectori toInt();
+    Vectori toInt();
 
-    public Vectorl toLong();
+    Vectorl toLong();
 
-    public Vectorf toFloat();
+    Vectorf toFloat();
 
-    public Vectord toDouble();
+    Vectord toDouble();
 }

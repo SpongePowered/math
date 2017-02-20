@@ -3,7 +3,6 @@ package com.flowpowered.math.vector;
 import java.io.Serializable;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 
 public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
@@ -326,8 +325,8 @@ public class Vector2i implements Vectori, Comparable<Vector2i>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            final int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
+            final int result = (x != +0.0f ? Integer.hashCode(x) : 0);
+            hashCode = 31 * result + (y != +0.0f ? Integer.hashCode(y) : 0);
             hashed = true;
         }
         return hashCode;

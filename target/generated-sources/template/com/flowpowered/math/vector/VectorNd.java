@@ -476,5 +476,10 @@ public class VectorNd implements Vectord, Comparable<VectorNd>, Serializable, Cl
         public void set(int comp, double val) {
             throw new UnsupportedOperationException("You may not alter this vector");
         }
+
+        @Override
+        public void setZero() {
+            throw new UnsupportedOperationException("You may not alter this vector");
+        }
     }
 }

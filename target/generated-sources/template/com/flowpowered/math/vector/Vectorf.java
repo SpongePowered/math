@@ -1,39 +1,39 @@
 package com.flowpowered.math.vector;
 
 public interface Vectorf {
-    public Vectorf mul(float a);
+    Vectorf mul(float a);
 
-    public Vectorf div(float a);
+    Vectorf div(float a);
 
-    public Vectorf pow(float pow);
+    Vectorf pow(float pow);
 
-    public Vectorf ceil();
+    Vectorf ceil();
 
-    public Vectorf floor();
+    Vectorf floor();
 
-    public Vectorf round();
+    Vectorf round();
 
-    public Vectorf abs();
+    Vectorf abs();
 
-    public Vectorf negate();
+    Vectorf negate();
 
-    public float length();
+    float length();
 
-    public float lengthSquared();
+    float lengthSquared();
 
-    public Vectorf normalize();
+    Vectorf normalize();
 
-    public int getMinAxis();
+    int getMinAxis();
 
-    public int getMaxAxis();
+    int getMaxAxis();
 
-    public float[] toArray();
+    float[] toArray();
 
-    public Vectori toInt();
+    Vectori toInt();
 
-    public Vectorl toLong();
+    Vectorl toLong();
 
-    public Vectorf toFloat();
+    Vectorf toFloat();
 
-    public Vectord toDouble();
+    Vectord toDouble();
 }

@@ -5,7 +5,6 @@ import java.lang.Override;
 import java.util.Random;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 import com.flowpowered.math.TrigMath;
 
 public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cloneable {
@@ -361,8 +360,8 @@ public class Vector2d implements Vectord, Comparable<Vector2d>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            final int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
+            final int result = (x != +0.0f ? Double.hashCode(x) : 0);
+            hashCode = 31 * result + (y != +0.0f ? Double.hashCode(y) : 0);
             hashed = true;
         }
         return hashCode;

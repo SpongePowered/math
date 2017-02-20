@@ -5,7 +5,6 @@ import java.lang.Override;
 import java.util.Random;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 
 public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cloneable {
     private static final long serialVersionUID = 1;
@@ -358,7 +357,7 @@ public class Vector3l implements Vectorl, Comparable<Vector3l>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            hashCode = ((HashFunctions.hash(x) * 211 + HashFunctions.hash(y)) * 97 + HashFunctions.hash(z));
+            hashCode = ((Long.hashCode(x) * 211 + Long.hashCode(y)) * 97 + Long.hashCode(z));
             hashed = true;
         }
         return hashCode;

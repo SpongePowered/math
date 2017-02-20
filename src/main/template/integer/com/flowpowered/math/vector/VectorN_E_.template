@@ -424,5 +424,10 @@ public class VectorN#E# implements Vector#E#, Comparable<VectorN#E#>, Serializab
         public void set(int comp, #e# val) {
             throw new UnsupportedOperationException("You may not alter this vector");
         }
+
+        @Override
+        public void setZero() {
+            throw new UnsupportedOperationException("You may not alter this vector");
+        }
     }
 }

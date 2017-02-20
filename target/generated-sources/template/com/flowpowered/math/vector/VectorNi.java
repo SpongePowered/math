@@ -424,5 +424,10 @@ public class VectorNi implements Vectori, Comparable<VectorNi>, Serializable, Cl
         public void set(int comp, int val) {
             throw new UnsupportedOperationException("You may not alter this vector");
         }
+
+        @Override
+        public void setZero() {
+            throw new UnsupportedOperationException("You may not alter this vector");
+        }
     }
 }

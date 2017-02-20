@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.lang.Override;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.vector.Vector2f;
 import com.flowpowered.math.vector.Vector3f;
@@ -496,8 +495,8 @@ public class Complexf implements Imaginaryf, Comparable<Complexf>, Serializable,
     @Override
     public int hashCode() {
         if (!hashed) {
-            final int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
+            final int result = (x != +0.0f ? Float.hashCode(x) : 0);
+            hashCode = 31 * result + (y != +0.0f ? Float.hashCode(y) : 0);
             hashed = true;
         }
         return hashCode;

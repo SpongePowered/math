@@ -476,5 +476,10 @@ public class VectorNf implements Vectorf, Comparable<VectorNf>, Serializable, Cl
         public void set(int comp, float val) {
             throw new UnsupportedOperationException("You may not alter this vector");
         }
+
+        @Override
+        public void setZero() {
+            throw new UnsupportedOperationException("You may not alter this vector");
+        }
     }
 }

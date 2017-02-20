@@ -3,7 +3,6 @@ package com.flowpowered.math.imaginary;
 import java.io.Serializable;
 
 import com.flowpowered.math.GenericMath;
-import com.flowpowered.math.HashFunctions;
 import com.flowpowered.math.TrigMath;
 import com.flowpowered.math.matrix.Matrix3d;
 import com.flowpowered.math.vector.Vector3d;
@@ -548,10 +547,10 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            result = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
-            result = 31 * result + (z != +0.0f ? HashFunctions.hash(z) : 0);
-            hashCode = 31 * result + (w != +0.0f ? HashFunctions.hash(w) : 0);
+            int result = (x != +0.0f ? Double.hashCode(x) : 0);
+            result = 31 * result + (y != +0.0f ? Double.hashCode(y) : 0);
+            result = 31 * result + (z != +0.0f ? Double.hashCode(z) : 0);
+            hashCode = 31 * result + (w != +0.0f ? Double.hashCode(w) : 0);
             hashed = true;
         }
         return hashCode;

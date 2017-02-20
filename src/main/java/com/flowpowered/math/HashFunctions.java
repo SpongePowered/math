@@ -44,7 +44,9 @@ public final class HashFunctions {
      * Returns a hashcode for the specified value.
      *
      * @return a hash code value for the specified value.
+     * @deprecated use {@link Double#hashCode(double)}
      */
+    @Deprecated
     public static int hash(double value) {
         assert !Double.isNaN(value) : "Values of NaN are not supported.";
 
@@ -58,7 +60,9 @@ public final class HashFunctions {
      * Returns a hashcode for the specified value.
      *
      * @return a hash code value for the specified value.
+     * @deprecated use {@link Float#hashCode(float)}
      */
+    @Deprecated
     public static int hash(float value) {
         assert !Float.isNaN(value) : "Values of NaN are not supported.";
 
@@ -70,7 +74,9 @@ public final class HashFunctions {
      * Returns a hashcode for the specified value.
      *
      * @return a hash code value for the specified value.
+     * @deprecated use {@link Integer#hashCode(int)}
      */
+    @Deprecated
     public static int hash(int value) {
         return value;
     }
@@ -79,7 +85,9 @@ public final class HashFunctions {
      * Returns a hashcode for the specified value.
      *
      * @return a hash code value for the specified value.
+     * @deprecated use {@link Long#hashCode(long)}
      */
+    @Deprecated
     public static int hash(long value) {
         return ((int) (value ^ (value >>> 32)));
     }

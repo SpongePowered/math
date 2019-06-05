@@ -336,10 +336,10 @@ public class Matrix2f implements Matrixf, Serializable, Cloneable {
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (m00 != +0.0f ? HashFunctions.hash(m00) : 0);
-            result = 31 * result + (m01 != +0.0f ? HashFunctions.hash(m01) : 0);
-            result = 31 * result + (m10 != +0.0f ? HashFunctions.hash(m10) : 0);
-            hashCode = 31 * result + (m11 != +0.0f ? HashFunctions.hash(m11) : 0);
+            int result = (m00 != +0.0f ? Float.hashCode(m00) : 0);
+            result = 31 * result + (m01 != +0.0f ? Float.hashCode(m01) : 0);
+            result = 31 * result + (m10 != +0.0f ? Float.hashCode(m10) : 0);
+            hashCode = 31 * result + (m11 != +0.0f ? Float.hashCode(m11) : 0);
             hashed = true;
         }
         return hashCode;

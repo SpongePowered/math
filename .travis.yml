@@ -1,57 +1,20 @@
-# Use new Travis-CI infrastructure
+dist: 'trusty'
 sudo: false
 
-# Source language and JDK version to use
-language: java
-jdk: oraclejdk8
+language: 'java'
+jdk:
+- 'oraclejdk8'
 
-# Use cached Maven dependencies
 cache:
   directories:
-    - $HOME/.m2
+  - '$HOME/.m2'
 
-# Pre-install Maven dependencies
-install: mvn dependency:go-offline
+install: true
+script: './.travis.sh'
 
-# Compile and test source
-script: mvn clean -DbuildNumber=$TRAVIS_BUILD_NUMBER -DciSystem=travis -Dcommit=${TRAVIS_COMMIT:0:7}
-
-# Fetch resources, run deployment goal/task, and generate Javadocs and reports
 after_success:
-  # Get files for use with build, namely the custom Maven settings.xml and scripts
-  - "git clone https://github.com/flow/travis-ci-resources.git $HOME/build/flow/travis"
-  # DEVELOP: Check if commit is not a pull request, if repo is official, if branch is not master; then deploy artifacts
-  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/math ]] && [[ $TRAVIS_BRANCH == develop ]] && mvn javadoc:jar source:jar deploy --settings $HOME/build/flow/travis/settings.xml"
-  # RELEASE: Check if commit is not a pull request, if repo is official, if branch is master; then run deployment script
-  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == flow/math ]] && [[ $TRAVIS_BRANCH == master ]] && $HOME/build/flow/travis/deploy.sh && $HOME/build/flow/travis/gh-pages.sh"
-  # Generate Javadocs and report for Coveralls.io
-  - "mvn javadoc:javadoc cobertura:cobertura coveralls:report -DserviceJobId=$TRAVIS_JOB_ID"
+- 'mvn javadoc:javadoc cobertura:cobertura coveralls:report -DserviceJobId=$TRAVIS_JOB_ID'
 
-# RELEASE: Deploy JARs to GitHub Releases
-deploy:
-  provider: releases
-  api-key: $GITHUB_TOKEN
-  file_glob: true
-  file: target/flow-math-*.jar
-  skip_cleanup: true
-  on:
-    branch: master
-
-# Notification services
-notifications:
-  # Disable build status email notifications, until the issue with forks is fixed
-  email: false
-  webhooks:
-    # Send build information and status to Notifico
-    - http://n.tkte.ch/h/2049/2uvlIumWlN12D5GMEdCWxXB-
-
-# Environmental system variables
 env:
   global:
-    # Make the log output cleaner
-    - TERM=dumb
-    # Super secure, encrypted variables! Ssssh!
-    - secure: "g3Km91/08YzY82031mrprUmaFp0duZMor0pFS/1KSCjepJEkFvOBWxw+DpK+EQHVCr209rvK7WiIXgK5DqVkRJgz7glmqU3HRO7C2KWjnKS5QoiDcn6Y9IDGxayWtl6S2195+uTCAZ+NwdAPeVtPWZSp2Tc5Yj713WI1jTIZvw8="
-    - secure: "QmRylJUGdvp52YsCC6GySIx+H7Uljava71fBDxLDnJswdNOW0anwb0rpicyb06py54wIRjzjAFp9NPj7kfNHM312B4hRet9bzFoeUZgsdecMa+A3cA/9viigx9195i5OcbeBITFXgSuijGaMVPTywFZCeb+wzHZH6dBDvmL5ORk="
-    - secure: "fa+q6OoniN6Zt7kwghxAFnB0vYEop3hBwcUVjWnfinBmttysGRMM3SyJHFdHm7bBPSNXS/4EowViHDDErnxNRFz8y30pBUXzzs4yqTz3it+3Imv32GjS8mcupqXhOtMzNUuPQ8M0C5dUPwa3ZPRx2FywiZ9lryRLNW190hrJsTc="
-    - secure: "R3lWZwc9qmaW2WO6H+vNVAddSX/WYiyyNMpCJCpqJih/8Zkt/ahSQru3G7Naa0VTVtLLIXoNjZdYi1vOtK4Wf7thzLf1bQHQfnXdOwLRYIUqi6J4/VnKqny8jbMmPva/c0TZhOrY11+GiuPuQ8MgdQy3pZoZXlfAHTUgLIV9Axk="
+  - 'TERM=dumb'

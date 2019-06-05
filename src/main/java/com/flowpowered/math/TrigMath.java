@@ -1,7 +1,9 @@
 /*
- * This file is part of Flow Math, licensed under the MIT License (MIT).
+ * This file is part of Math, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2013 Flow Powered <https://flowpowered.com/>
+ * Copyright (c) Flow Powered <https://github.com/flow>
+ * Copyright (c) SpongePowered <https://github.com/SpongePowered>
+ * Copyright (c) contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +72,9 @@ public class TrigMath {
     }
 
     /**
-     * Sine calculation using a table. <p/> <b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place
+     * Sine calculation using a table.
+     *
+     * <p><b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place.</p>
      *
      * @param angle the angle in radians
      * @return the sine of the angle
@@ -80,7 +84,9 @@ public class TrigMath {
     }
 
     /**
-     * Cosine calculation using a table. <p/> <b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place
+     * Cosine calculation using a table.
+     *
+     * <p><b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place.</p>
      *
      * @param angle the angle in radians
      * @return the cosine of the angle
@@ -90,7 +96,9 @@ public class TrigMath {
     }
 
     /**
-     * Tangent calculations using a table.<br> <i>sin(angle) / cos(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place
+     * Tangent calculations using a table.<br> <i>sin(angle) / cos(angle)</i>
+     *
+     * <p><b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place.</p>
      *
      * @param angle in radians
      * @return the tangent of the angle
@@ -101,7 +109,9 @@ public class TrigMath {
     }
 
     /**
-     * Cosecant calculations using a table.<br> <i>1 / sin(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place
+     * Cosecant calculations using a table.<br> <i>1 / sin(angle)</i>
+     *
+     * <p><b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place.</p>
      *
      * @param angle the angle in radians
      * @return the cosecant of the angle
@@ -111,7 +121,9 @@ public class TrigMath {
     }
 
     /**
-     * Secant calculations using a table:<br> <i>1 / cos(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place
+     * Secant calculations using a table:<br> <i>1 / cos(angle)</i>
+     *
+     * <p><b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place.</p>
      *
      * @param angle the angle in radians
      * @return the secant of the angle
@@ -121,7 +133,9 @@ public class TrigMath {
     }
 
     /**
-     * Cotangent calculations using a table.<br> <i>cos(angle) / sin(angle)</i><br><br> <p/> <b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place
+     * Cotangent calculations using a table.<br> <i>cos(angle) / sin(angle)</i>
+     *
+     * <p><b>No interpolation is performed:</b> Accuracy is up to the 6th decimal place.</p>
      *
      * @param angle in radians
      * @return the cotangent of the angle

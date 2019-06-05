@@ -361,8 +361,8 @@ public class Vector2f implements Vectorf, Comparable<Vector2f>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            final int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
+            final int result = (x != +0.0f ? Float.hashCode(x) : 0);
+            hashCode = 31 * result + (y != +0.0f ? Float.hashCode(y) : 0);
             hashed = true;
         }
         return hashCode;

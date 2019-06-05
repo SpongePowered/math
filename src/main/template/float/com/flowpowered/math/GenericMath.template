@@ -59,7 +59,7 @@ public class GenericMath {
      * Wraps the angle between -180 and 180 degrees
      *
      * @param angle to wrap
-     * @return -180 < angle <= 180
+     * @return -180 &lt; angle &lt;= 180
      */
     public static float wrapAngleDeg(float angle) {
         angle %= 360f;
@@ -76,7 +76,7 @@ public class GenericMath {
      * Wraps the radian between -PI and PI
      *
      * @param angle to wrap
-     * @return -PI < radian <= PI
+     * @return -PI &lt; radian &lt;= PI
      */
     public static double wrapAngleRad(double angle) {
         angle %= TrigMath.TWO_PI;
@@ -93,7 +93,7 @@ public class GenericMath {
      * Wraps the pitch angle between -90 and 90 degrees
      *
      * @param angle to wrap
-     * @return -90 < angle < 90
+     * @return -90 &lt; angle &lt; 90
      */
     public static float wrapAnglePitchDeg(float angle) {
         angle = wrapAngleDeg(angle);
@@ -110,7 +110,7 @@ public class GenericMath {
      * Wraps a byte between 0 and 256
      *
      * @param value to wrap
-     * @return 0 < byte < 256
+     * @return 0 &lt; byte &lt; 256
      */
     public static byte wrapByte(int value) {
         value %= 256;
@@ -657,6 +657,7 @@ public class GenericMath {
     /**
      * Determines if the given number is a power of two. A number is a power of 2 if it is 1 or greater, and it contains no similar bits of the given number - 1.
      *
+     * @param num the number to check
      * @return true if num is a power of two
      */
     public static boolean isPowerOfTwo(int num) {

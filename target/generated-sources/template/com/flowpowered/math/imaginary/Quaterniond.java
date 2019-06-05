@@ -440,7 +440,7 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
 
     /**
      * Conjugates the quaternion. <br> Conjugation of a quaternion <code>a</code> is an operation returning quaternion <code>a'</code> such that <code>a' * a = a * a' = |a|<sup>2</sup></code> where
-     * <code>|a|<sup>2<sup/></code> is squared length of <code>a</code>.
+     * <code>|a|<sup>2</sup></code> is squared length of <code>a</code>.
      *
      * @return the conjugated quaternion
      */
@@ -548,10 +548,10 @@ public class Quaterniond implements Imaginaryd, Comparable<Quaterniond>, Seriali
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            result = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
-            result = 31 * result + (z != +0.0f ? HashFunctions.hash(z) : 0);
-            hashCode = 31 * result + (w != +0.0f ? HashFunctions.hash(w) : 0);
+            int result = (x != +0.0f ? Double.hashCode(x) : 0);
+            result = 31 * result + (y != +0.0f ? Double.hashCode(y) : 0);
+            result = 31 * result + (z != +0.0f ? Double.hashCode(z) : 0);
+            hashCode = 31 * result + (w != +0.0f ? Double.hashCode(w) : 0);
             hashed = true;
         }
         return hashCode;

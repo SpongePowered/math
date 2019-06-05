@@ -2,24 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Project information -->
-    <name>Flow Math</name>
-    <groupId>com.flowpowered</groupId>
-    <artifactId>flow-math</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <groupId>org.spongepowered</groupId>
+    <artifactId>math</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <name>Math</name>
     <inceptionYear>2013</inceptionYear>
-    <url>https://flowpowered.com/math</url>
+    <url>https://github.com/SpongePowered/math</url>
     <description>Immutable math library for Java with a focus on games and computer graphics.</description>
 
-    <!-- Parent information -->
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
+    <packaging>jar</packaging>
 
-    <!-- Build properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <buildNumber>0</buildNumber>
@@ -28,22 +20,19 @@
         <additionalparam>-Xdoclint:none</additionalparam>
     </properties>
 
-    <!-- License information -->
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://tldrlegal.com/l/mit</url>
+            <url>https://opensource.org/licenses/MIT</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
-    <!-- Organization information -->
     <organization>
-        <name>Flow Powered</name>
-        <url>https://flowpowered.com</url>
+        <name>SpongePowered</name>
+        <url>https://github.com/SpongePowered</url>
     </organization>
 
-    <!-- Project developers -->
     <developers>
         <developer>
             <id>DDoS</id>
@@ -67,28 +56,23 @@
         </developer>
     </developers>
 
-    <!-- Source code access -->
     <scm>
-        <connection>scm:git:git://github.com/flow/math.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:flow/math.git</developerConnection>
-        <url>https://github.com/flow/math</url>
+        <connection>scm:git:git://github.com/SpongePowered/math.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:SpongePowered/math.git</developerConnection>
+        <url>https://github.com/SpongePowered/math</url>
     </scm>
 
-    <!-- Continuous integration -->
     <ciManagement>
         <system>travis</system>
-        <url>https://travis-ci.org/flow/math</url>
+        <url>https://travis-ci.org/SpongePowered/math</url>
     </ciManagement>
 
-    <!-- Issue management -->
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/flow/math/issues</url>
+        <url>https://github.com/SpongePowered/math/issues</url>
     </issueManagement>
 
-    <!-- Project dependencies -->
     <dependencies>
-        <!-- Testing only -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -97,13 +81,10 @@
         </dependency>
     </dependencies>
 
-    <!-- Build configuration -->
     <build>
-        <defaultGoal>clean install</defaultGoal>
+        <defaultGoal>clean package</defaultGoal>
 
-        <!-- Resources to include -->
         <resources>
-            <!-- Static resources -->
             <resource>
                 <filtering>false</filtering>
                 <directory>.</directory>
@@ -114,9 +95,7 @@
             </resource>
         </resources>
 
-        <!-- Build plugins -->
         <plugins>
-            <!-- License header plugin -->
             <plugin>
                 <groupId>com.mycila.maven-license-plugin</groupId>
                 <artifactId>maven-license-plugin</artifactId>
@@ -126,9 +105,6 @@
                         <configuration>
                             <properties>
                                 <project>${project.name}</project>
-                                <year>${project.inceptionYear}</year>
-                                <name>${project.organization.name}</name>
-                                <url>${project.organization.url}</url>
                             </properties>
                             <quiet>true</quiet>
                             <encoding>UTF-8</encoding>
@@ -153,7 +129,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Template parsing plugin -->
             <plugin>
                 <groupId>com.github.wolf480pl.maven-plugins</groupId>
                 <artifactId>template-maven-plugin</artifactId>
@@ -251,6 +226,7 @@
                                     <max_value>Float.POSITIVE_INFINITY</max_value>
                                     <min_value>Float.NEGATIVE_INFINITY</min_value>
                                     <placeholders>
+                                        <wrapper>Float</wrapper>
                                         <Overload>double</Overload>
                                         <Overload1>int</Overload1>
                                         <Overload2>long</Overload2>
@@ -265,6 +241,7 @@
                                     <max_value>Double.POSITIVE_INFINITY</max_value>
                                     <min_value>Double.NEGATIVE_INFINITY</min_value>
                                     <placeholders>
+                                        <wrapper>Float</wrapper>
                                         <Overload>float</Overload>
                                         <Overload1>int</Overload1>
                                         <Overload2>long</Overload2>
@@ -323,14 +300,13 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Source compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <O>-Xlint:all</O>
                         <O>-Xlint:-path</O>
@@ -339,11 +315,10 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
-            <!-- JAR creation plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
+                <version>3.1.2</version>
                 <configuration>
                     <archive>
                         <manifestEntries>
@@ -354,21 +329,19 @@
                     </archive>
                 </configuration>
             </plugin>
-            <!-- Javadoc creation plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
+                <version>3.1.0</version>
                 <configuration>
                     <author>false</author>
                     <version>false</version>
                 </configuration>
             </plugin>
-            <!-- Coveralls reporting plugin  -->
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>4.3.0</version>
                 <configuration>
                     <sourceDirectories>
                         <sourceDirectory>src/main/java</sourceDirectory>
@@ -376,7 +349,6 @@
                     </sourceDirectories>
                 </configuration>
             </plugin>
-            <!-- Cobertura test coverage plugin -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
@@ -388,4 +360,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>spongepowered</id>
+
+            <distributionManagement>
+                <repository>
+                    <id>spongepowered</id>
+                    <url>${spongeRepo}</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 </project>

@@ -326,8 +326,8 @@ public class Vector2l implements Vectorl, Comparable<Vector2l>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            final int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
+            final int result = (x != +0.0f ? Long.hashCode(x) : 0);
+            hashCode = 31 * result + (y != +0.0f ? Long.hashCode(y) : 0);
             hashed = true;
         }
         return hashCode;

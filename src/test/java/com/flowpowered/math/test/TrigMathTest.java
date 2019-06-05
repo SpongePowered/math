@@ -1,7 +1,9 @@
 /*
- * This file is part of Flow Math, licensed under the MIT License (MIT).
+ * This file is part of Math, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2013 Flow Powered <https://flowpowered.com/>
+ * Copyright (c) Flow Powered <https://github.com/flow>
+ * Copyright (c) SpongePowered <https://github.com/SpongePowered>
+ * Copyright (c) contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal

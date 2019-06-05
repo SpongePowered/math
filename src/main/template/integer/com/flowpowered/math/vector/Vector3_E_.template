@@ -358,7 +358,7 @@ public class Vector3#E# implements Vector#E#, Comparable<Vector3#E#>, Serializab
     @Override
     public int hashCode() {
         if (!hashed) {
-            hashCode = ((HashFunctions.hash(x) * 211 + HashFunctions.hash(y)) * 97 + HashFunctions.hash(z));
+            hashCode = ((#ET#.hashCode(x) * 211 + #ET#.hashCode(y)) * 97 + #ET#.hashCode(z));
             hashed = true;
         }
         return hashCode;

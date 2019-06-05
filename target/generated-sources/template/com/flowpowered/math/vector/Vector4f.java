@@ -414,10 +414,10 @@ public class Vector4f implements Vectorf, Comparable<Vector4f>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            result = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
-            result = 31 * result + (z != +0.0f ? HashFunctions.hash(z) : 0);
-            hashCode = 31 * result + (w != +0.0f ? HashFunctions.hash(w) : 0);
+            int result = (x != +0.0f ? Float.hashCode(x) : 0);
+            result = 31 * result + (y != +0.0f ? Float.hashCode(y) : 0);
+            result = 31 * result + (z != +0.0f ? Float.hashCode(z) : 0);
+            hashCode = 31 * result + (w != +0.0f ? Float.hashCode(w) : 0);
             hashed = true;
         }
         return hashCode;

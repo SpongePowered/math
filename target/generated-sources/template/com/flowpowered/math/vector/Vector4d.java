@@ -414,10 +414,10 @@ public class Vector4d implements Vectord, Comparable<Vector4d>, Serializable, Cl
     @Override
     public int hashCode() {
         if (!hashed) {
-            int result = (x != +0.0f ? HashFunctions.hash(x) : 0);
-            result = 31 * result + (y != +0.0f ? HashFunctions.hash(y) : 0);
-            result = 31 * result + (z != +0.0f ? HashFunctions.hash(z) : 0);
-            hashCode = 31 * result + (w != +0.0f ? HashFunctions.hash(w) : 0);
+            int result = (x != +0.0f ? Double.hashCode(x) : 0);
+            result = 31 * result + (y != +0.0f ? Double.hashCode(y) : 0);
+            result = 31 * result + (z != +0.0f ? Double.hashCode(z) : 0);
+            hashCode = 31 * result + (w != +0.0f ? Double.hashCode(w) : 0);
             hashed = true;
         }
         return hashCode;

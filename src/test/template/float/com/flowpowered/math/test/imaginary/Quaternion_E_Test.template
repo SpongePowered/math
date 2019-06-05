@@ -1,16 +1,16 @@
-package com.flowpowered.math.test.imaginary;
+package org.spongepowered.math.test.imaginary;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.TrigMath;
-import com.flowpowered.math.imaginary.Complex#E#;
-import com.flowpowered.math.imaginary.Quaternion#E#;
-import com.flowpowered.math.matrix.Matrix3#E#;
-import com.flowpowered.math.test.TestUtil#E#;
-import com.flowpowered.math.vector.Vector3#E#;
+import org.spongepowered.math.TrigMath;
+import org.spongepowered.math.imaginary.Complex#E#;
+import org.spongepowered.math.imaginary.Quaternion#E#;
+import org.spongepowered.math.matrix.Matrix3#E#;
+import org.spongepowered.math.test.TestUtil#E#;
+import org.spongepowered.math.vector.Vector3#E#;
 
-import static com.flowpowered.math.test.TestUtil#E#.SQRT54;
+import static org.spongepowered.math.test.TestUtil#E#.SQRT54;
 
 public class Quaternion#E#Test {
     @Test

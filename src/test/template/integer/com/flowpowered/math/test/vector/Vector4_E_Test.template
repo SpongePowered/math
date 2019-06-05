@@ -1,15 +1,15 @@
-package com.flowpowered.math.test.vector;
+package org.spongepowered.math.test.vector;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.test.TestUtil#E#;
-import com.flowpowered.math.test.#EDecEquiTest#;
-import com.flowpowered.math.test.TestUtili;
-import com.flowpowered.math.vector.Vector2#E#;
-import com.flowpowered.math.vector.Vector3#E#;
-import com.flowpowered.math.vector.Vector4#E#;
-import com.flowpowered.math.vector.VectorN#E#;
+import org.spongepowered.math.test.TestUtil#E#;
+import org.spongepowered.math.test.#EDecEquiTest#;
+import org.spongepowered.math.test.TestUtili;
+import org.spongepowered.math.vector.Vector2#E#;
+import org.spongepowered.math.vector.Vector3#E#;
+import org.spongepowered.math.vector.Vector4#E#;
+import org.spongepowered.math.vector.VectorN#E#;
 
 public class Vector4#E#Test {
     @Test

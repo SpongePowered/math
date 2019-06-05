@@ -1,22 +1,22 @@
-package com.flowpowered.math.test.matrix;
+package org.spongepowered.math.test.matrix;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.imaginary.Complex#E#;
-import com.flowpowered.math.imaginary.Quaternion#E#;
-import com.flowpowered.math.matrix.Matrix2#E#;
-import com.flowpowered.math.matrix.Matrix3#E#;
-import com.flowpowered.math.matrix.Matrix4#E#;
-import com.flowpowered.math.matrix.MatrixNf;
-import com.flowpowered.math.matrix.MatrixNd;
-import com.flowpowered.math.test.TestUtilf;
-import com.flowpowered.math.test.TestUtild;
-import com.flowpowered.math.vector.VectorN#E#;
+import org.spongepowered.math.imaginary.Complex#E#;
+import org.spongepowered.math.imaginary.Quaternion#E#;
+import org.spongepowered.math.matrix.Matrix2#E#;
+import org.spongepowered.math.matrix.Matrix3#E#;
+import org.spongepowered.math.matrix.Matrix4#E#;
+import org.spongepowered.math.matrix.MatrixNf;
+import org.spongepowered.math.matrix.MatrixNd;
+import org.spongepowered.math.test.TestUtilf;
+import org.spongepowered.math.test.TestUtild;
+import org.spongepowered.math.vector.VectorN#E#;
 
 import static org.junit.Assert.assertEquals;
 
-import static com.flowpowered.math.test.TestUtil#E#.SQRT13;
+import static org.spongepowered.math.test.TestUtil#E#.SQRT13;
 
 public class MatrixN#E#Test {
     @Test

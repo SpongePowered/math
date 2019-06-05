@@ -1,11 +1,11 @@
-package com.flowpowered.math.test;
+package org.spongepowered.math.test;
 
 import org.junit.Assert;
 
-import com.flowpowered.math.vector.Vector2#E#;
-import com.flowpowered.math.vector.Vector3#E#;
-import com.flowpowered.math.vector.Vector4#E#;
-import com.flowpowered.math.vector.VectorN#E#;
+import org.spongepowered.math.vector.Vector2#E#;
+import org.spongepowered.math.vector.Vector3#E#;
+import org.spongepowered.math.vector.Vector4#E#;
+import org.spongepowered.math.vector.VectorN#E#;
 
 public class TestUtil#E# {
     public static void assertEquals(#e# value, #e# expected) {

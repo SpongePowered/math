@@ -1,19 +1,19 @@
-package com.flowpowered.math.test.matrix;
+package org.spongepowered.math.test.matrix;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.flowpowered.math.imaginary.Complex#E#;
-import com.flowpowered.math.imaginary.Quaternion#E#;
-import com.flowpowered.math.matrix.Matrix2#E#;
-import com.flowpowered.math.matrix.Matrix3#E#;
-import com.flowpowered.math.matrix.Matrix4#E#;
-import com.flowpowered.math.matrix.MatrixN#E#;
-import com.flowpowered.math.test.TestUtil#E#;
-import com.flowpowered.math.vector.Vector3#E#;
-import com.flowpowered.math.vector.Vector4#E#;
+import org.spongepowered.math.imaginary.Complex#E#;
+import org.spongepowered.math.imaginary.Quaternion#E#;
+import org.spongepowered.math.matrix.Matrix2#E#;
+import org.spongepowered.math.matrix.Matrix3#E#;
+import org.spongepowered.math.matrix.Matrix4#E#;
+import org.spongepowered.math.matrix.MatrixN#E#;
+import org.spongepowered.math.test.TestUtil#E#;
+import org.spongepowered.math.vector.Vector3#E#;
+import org.spongepowered.math.vector.Vector4#E#;
 
-import static com.flowpowered.math.test.TestUtil#E#.SQRT13;
+import static org.spongepowered.math.test.TestUtil#E#.SQRT13;
 
 public class Matrix4#E#Test {
     @Test

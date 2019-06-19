@@ -1,8 +1,6 @@
 package org.spongepowered.math;
 
 import java.awt.Color;
-import java.security.SecureRandom;
-import java.util.Random;
 
 import org.spongepowered.math.imaginary.*;
 import org.spongepowered.math.vector.*;
@@ -19,16 +17,6 @@ public class GenericMath {
      * A "close to zero" float epsilon value for use
      */
     public static final float FLT_EPSILON = Float.intBitsToFloat(0x34000000);
-    private static final ThreadLocal<Random> THREAD_LOCAL_RANDOM = new ThreadLocal<Random>() {
-        private final Random random = new SecureRandom();
-
-        @Override
-        protected Random initialValue() {
-            synchronized (random) {
-                return new Random(random.nextLong());
-            }
-        }
-    };
 
     private GenericMath() {
     }
@@ -644,15 +632,6 @@ public class GenericMath {
     }
 
 #REPLICATED9#
-
-    /**
-     * Gets a thread local Random object that is seeded using SecureRandom. Only one Random is created per thread.
-     *
-     * @return The random for the thread
-     */
-    public static Random getRandom() {
-        return THREAD_LOCAL_RANDOM.get();
-    }
 
     /**
      * Determines if the given number is a power of two. A number is a power of 2 if it is 1 or greater, and it contains no similar bits of the given number - 1.

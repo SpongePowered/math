@@ -1,0 +1,27 @@
+variants:
+  float:
+    e: float # primitive
+    ET: Float # wrapper
+    E: f # abbreviation
+    max_value: Float.POSITIVE_INFINITY
+    min_value: FLOAT.NEGATIVE_INFINITY
+    # wrapper: Float (duplicated?)
+    EOverload: double
+    Overload1: int
+    Overload2: long
+    ES: Float
+    Eeps: GenericMath.FLT_EPSILON
+    Eteps: 0.00001f
+  double:
+    e: double # primitive
+    ET: Double # wrapper
+    E: d # abbreviation
+    max_value: Double.POSITIVE_INFINITY
+    min_value: Double.NEGATIVE_INFINITY
+    # wrapper: Float (wrong?)
+    EOverload: float
+    Overload1: int
+    Overload2: long
+    ES: Double
+    Eeps: GenericMath.DBL_EPSILON
+    Eteps: 0.0000008

@@ -1,0 +1,27 @@
+variants:
+  int:
+    e: int # primitive
+    ET: Integer # wrapper
+    E: i # abbreviation
+    max_value: Integer.MAX_VALUE
+    min_value: Integer.MIN_VALUE
+    EOverload: double
+    Overload1: float
+    Overload2: long
+    ES: Int
+    EFloorFunc: GenericMath.floor
+    EDecEqui: float
+    EDecEquiTest: TestUtilf
+  long:
+    e: long # primitive
+    ET: Long # wrapper
+    E: l # abbreviation
+    max_value: Long.MAX_VALUE
+    min_value: Long.MIN_VALUE
+    EOverload: double
+    Overload1: float
+    Overload2: int
+    ES: Long
+    EFloorFunc: GenericMath.floorl
+    EDecEqui: double
+    EDecEquiTest: TestUtild

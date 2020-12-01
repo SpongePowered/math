@@ -1,0 +1,619 @@
+package org.spongepowered.math.imaginary;
+
+import java.io.Serializable;
+import java.lang.Override;
+
+import org.spongepowered.math.GenericMath;
+import org.spongepowered.math.HashFunctions;
+import org.spongepowered.math.TrigMath;
+import org.spongepowered.math.vector.Vector2{{ E }};
+import org.spongepowered.math.vector.Vector3{{ E }};
+
+/**
+ * Represent a complex number of the form {@code x + yi}. The x and y components are stored as {@code {{ e }}}s. This class is immutable.
+ */
+public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E }}>, Serializable, Cloneable {
+    private static final long serialVersionUID = 1;
+    /**
+     * An immutable identity (0, 0) complex.
+     */
+    public static final Complex{{ E }} ZERO = new Complex{{ E }}(0, 0);
+    /**
+     * An immutable identity (1, 0) complex.
+     */
+    public static final Complex{{ E }} IDENTITY = new Complex{{ E }}(1, 0);
+    private final {{ e }} x;
+    private final {{ e }} y;
+    private transient volatile boolean hashed = false;
+    private transient volatile int hashCode = 0;
+
+    /**
+     * Constructs a new complex. The components are set to the identity (1, 0).
+     */
+    public Complex{{ E }}() {
+        this(1, 0);
+    }
+
+    /**
+     * Constructs a new complex from the {{ EOverload }} components.
+     *
+     * @param x The x (real) component
+     * @param y The y (imaginary) component
+     */
+    public Complex{{ E }}({{ EOverload }} x, {{ EOverload }} y) {
+        this(({{ e }}) x, ({{ e }}) y);
+    }
+
+    /**
+     * Constructs a new complex from the {{ e }} components.
+     *
+     * @param x The x (real) component
+     * @param y The y (imaginary) component
+     */
+    public Complex{{ E }}({{ e }} x, {{ e }} y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     * Copy constructor.
+     *
+     * @param c The complex to copy
+     */
+    public Complex{{ E }}(Complex{{ E }} c) {
+        this.x = c.x;
+        this.y = c.y;
+    }
+
+    /**
+     * Gets the x (real) component of this complex.
+     *
+     * @return The x (real) component
+     */
+    public {{ e }} getX() {
+        return x;
+    }
+
+    /**
+     * Gets the y (imaginary) component of this complex.
+     *
+     * @return The y (imaginary) component
+     */
+    public {{ e }} getY() {
+        return y;
+    }
+
+    /**
+     * Adds another complex to this one.
+     *
+     * @param c The complex to add
+     * @return A new complex, which is the sum of both
+     */
+    public Complex{{ E }} add(Complex{{ E }} c) {
+        return add(c.x, c.y);
+    }
+
+    /**
+     * Adds the {{ EOverload }} components of another complex to this one.
+     *
+     * @param x The x (real) component of the complex to add
+     * @param y The y (imaginary) component of the complex to add
+     * @return A new complex, which is the sum of both
+     */
+    public Complex{{ E }} add({{ EOverload }} x, {{ EOverload }} y) {
+        return add(({{ e }}) x, ({{ e }}) y);
+    }
+
+    /**
+     * Adds the {{ e }} components of another complex to this one.
+     *
+     * @param x The x (real) component of the complex to add
+     * @param y The y (imaginary) component of the complex to add
+     * @return A new complex, which is the sum of both
+     */
+    public Complex{{ E }} add({{ e }} x, {{ e }} y) {
+        return new Complex{{ E }}(this.x + x, this.y + y);
+    }
+
+    /**
+     * Subtracts another complex from this one.
+     *
+     * @param c The complex to subtract
+     * @return A new complex, which is the difference of both
+     */
+    public Complex{{ E }} sub(Complex{{ E }} c) {
+        return sub(c.x, c.y);
+    }
+
+    /**
+     * Subtracts the {{ EOverload }} components of another complex from this one.
+     *
+     * @param x The x (real) component of the complex to subtract
+     * @param y The y (imaginary) component of the complex to subtract
+     * @return A new complex, which is the difference of both
+     */
+    public Complex{{ E }} sub({{ EOverload }} x, {{ EOverload }} y) {
+        return sub(({{ e }}) x, ({{ e }}) y);
+    }
+
+    /**
+     * Subtracts the {{ e }} components of another complex from this one.
+     *
+     * @param x The x (real) component of the complex to subtract
+     * @param y The y (imaginary) component of the complex to subtract
+     * @return A new complex, which is the difference of both
+     */
+    public Complex{{ E }} sub({{ e }} x, {{ e }} y) {
+        return new Complex{{ E }}(this.x - x, this.y - y);
+    }
+
+    /**
+     * Multiplies the components of this complex by a {{ EOverload }} scalar.
+     *
+     * @param a The multiplication scalar
+     * @return A new complex, which has each component multiplied by the scalar
+     */
+    public Complex{{ E }} mul({{ EOverload }} a) {
+        return mul(({{ e }}) a);
+    }
+
+    /**
+     * Multiplies the components of this complex by a {{ e }} scalar.
+     *
+     * @param a The multiplication scalar
+     * @return A new complex, which has each component multiplied by the scalar
+     */
+    @Override
+    public Complex{{ E }} mul({{ e }} a) {
+        return new Complex{{ E }}(x * a, y * a);
+    }
+
+    /**
+     * Multiplies another complex with this one.
+     *
+     * @param c The complex to multiply with
+     * @return A new complex, which is the product of both
+     */
+    public Complex{{ E }} mul(Complex{{ E }} c) {
+        return mul(c.x, c.y);
+    }
+
+    /**
+     * Multiplies the {{ EOverload }} components of another complex with this one.
+     *
+     * @param x The x (real) component of the complex to multiply with
+     * @param y The y (imaginary) component of the complex to multiply with
+     * @return A new complex, which is the product of both
+     */
+    public Complex{{ E }} mul({{ EOverload }} x, {{ EOverload }} y) {
+        return mul(({{ e }}) x, ({{ e }}) y);
+    }
+
+    /**
+     * Multiplies the {{ e }} components of another complex with this one.
+     *
+     * @param x The x (real) component of the complex to multiply with
+     * @param y The y (imaginary) component of the complex to multiply with
+     * @return A new complex, which is the product of both
+     */
+    public Complex{{ E }} mul({{ e }} x, {{ e }} y) {
+        return new Complex{{ E }}(
+                this.x * x - this.y * y,
+                this.x * y + this.y * x);
+    }
+
+    /**
+     * Divides the components of this complex by a {{ EOverload }} scalar.
+     *
+     * @param a The division scalar
+     * @return A new complex, which has each component divided by the scalar
+     */
+    public Complex{{ E }} div({{ EOverload }} a) {
+        return div(({{ e }}) a);
+    }
+
+    /**
+     * Divides the components of this complex by a {{ e }} scalar.
+     *
+     * @param a The division scalar
+     * @return A new complex, which has each component divided by the scalar
+     */
+    @Override
+    public Complex{{ E }} div({{ e }} a) {
+        return new Complex{{ E }}(x / a, y / a);
+    }
+
+    /**
+     * Divides this complex by another one.
+     *
+     * @param c The complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complex{{ E }} div(Complex{{ E }} c) {
+        return div(c.x, c.y);
+    }
+
+    /**
+     * Divides this complex by the {{ EOverload }} components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complex{{ E }} div({{ EOverload }} x, {{ EOverload }} y) {
+        return div(({{ e }}) x, ({{ e }}) y);
+    }
+
+    /**
+     * Divides this complex by the {{ e }} components of another one.
+     *
+     * @param x The x (real) component of the complex to divide with
+     * @param y The y (imaginary) component of the complex to divide with
+     * @return The quotient of the two complexes
+     */
+    public Complex{{ E }} div({{ e }} x, {{ e }} y) {
+        final {{ e }} d = x * x + y * y;
+        return new Complex{{ E }}(
+                (this.x * x + this.y * y) / d,
+                (this.y * x - this.x * y) / d);
+    }
+
+    /**
+     * Returns the dot product of this complex with another one.
+     *
+     * @param c The complex to calculate the dot product with
+     * @return The dot product of the two complexes
+     */
+    public {{ e }} dot(Complex{{ E }} c) {
+        return dot(c.x, c.y);
+    }
+
+    /**
+     * Returns the dot product of this complex with the {{ EOverload }} components of another one.
+     *
+     * @param x The x (real) component of the complex to calculate the dot product with
+     * @param y The y (imaginary) component of the complex to calculate the dot product with
+     * @return The dot product of the two complexes
+     */
+    public {{ e }} dot({{ EOverload }} x, {{ EOverload }} y) {
+        return dot(({{ e }}) x, ({{ e }}) y);
+    }
+
+    /**
+     * Returns the dot product of this complex with the {{ e }} components of another one.
+     *
+     * @param x The x (real) component of the complex to calculate the dot product with
+     * @param y The y (imaginary) component of the complex to calculate the dot product with
+     * @return The dot product of the two complexes
+     */
+    public {{ e }} dot({{ e }} x, {{ e }} y) {
+        return this.x * x + this.y * y;
+    }
+
+    /**
+     * Rotates a vector by this complex.
+     *
+     * @param v The vector to rotate
+     * @return The rotated vector
+     */
+    public Vector2{{ E }} rotate(Vector2{{ E }} v) {
+        return rotate(v.getX(), v.getY());
+    }
+
+    /**
+     * Rotates the {{ EOverload }} components of a vector by this complex.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @return The rotated vector
+     */
+    public Vector2{{ E }} rotate({{ EOverload }} x, {{ EOverload }} y) {
+        return rotate(({{ e }}) x, ({{ e }}) y);
+    }
+
+    /**
+     * Rotates the {{ e }} components of a vector by this complex.
+     *
+     * @param x The x component of the vector
+     * @param y The y component of the vector
+     * @return The rotated vector
+     */
+    public Vector2{{ E }} rotate({{ e }} x, {{ e }} y) {
+        final {{ e }} length = length();
+        if (Math.abs(length) < {{ Eeps }}) {
+            throw new ArithmeticException("Cannot rotate by the zero complex");
+        }
+        final {{ e }} nx = this.x / length;
+        final {{ e }} ny = this.y / length;
+        return new Vector2{{ E }}(x * nx - y * ny, y * nx + x * ny);
+    }
+
+    /**
+     * Returns a unit vector pointing in the same direction as this complex on the complex plane.
+     *
+     * @return The vector representing the direction this complex is pointing to
+     */
+    public Vector2{{ E }} getDirection() {
+        return new Vector2{{ E }}(x, y).normalize();
+    }
+
+    /**
+     * Returns the angle in radians formed by the direction vector of this complex on the complex plane.
+     *
+     * @return The angle in radians of the direction vector of this complex
+     */
+    public {{ e }} getAngleRad() {
+        return ({{ e }}) TrigMath.atan2(y, x);
+    }
+
+    /**
+     * Returns the angle in degrees formed by the direction vector of this complex on the complex plane.
+     *
+     * @return The angle in degrees of the direction vector of this complex
+     */
+    public {{ e }} getAngleDeg() {
+        return ({{ e }}) Math.toDegrees(getAngleRad());
+    }
+
+    /**
+     * Returns the conjugate of this complex. <br> Conjugation of a complex <code>a</code> is an operation returning complex <code>a'</code> such that <code>a' * a = a * a' = |a|<sup>2</sup></code> where
+     * <code>|a|<sup>2</sup></code> is squared length of <code>a</code>.
+     *
+     * @return A new complex, which is the conjugate of this one
+     */
+    @Override
+    public Complex{{ E }} conjugate() {
+        return new Complex{{ E }}(x, -y);
+    }
+
+    /**
+     * Returns the inverse of this complex. <br> Inversion of a complex <code>a</code> returns complex <code>a<sup>-1</sup> = a' / |a|<sup>2</sup></code> where <code>a'</code> is {@link #conjugate()
+     * conjugation} of <code>a</code>, and <code>|a|<sup>2</sup></code> is squared length of <code>a</code>. <br> For any complexes <code>a, b, c</code>, such that <code>a * b = c</code> equations
+     * <code>a<sup>-1</sup> * c = b</code> and <code>c * b<sup>-1</sup> = a</code> are true.
+     *
+     * @return A new complex, which is the inverse of this one
+     */
+    @Override
+    public Complex{{ E }} invert() {
+        final {{ e }} lengthSquared = lengthSquared();
+        if (Math.abs(lengthSquared) < {{ Eeps }}) {
+            throw new ArithmeticException("Cannot invert a complex of length zero");
+        }
+        return conjugate().div(lengthSquared);
+    }
+
+    /**
+     * Returns the square of the length of this complex.
+     *
+     * @return The square of the length
+     */
+    @Override
+    public {{ e }} lengthSquared() {
+        return x * x + y * y;
+    }
+
+    /**
+     * Returns the length of this complex.
+     *
+     * @return The length
+     */
+    @Override
+    public {{ e }} length() {
+        return ({{ e }}) Math.sqrt(lengthSquared());
+    }
+
+    /**
+     * Normalizes this complex.
+     *
+     * @return A new complex of unit length
+     */
+    @Override
+    public Complex{{ E }} normalize() {
+        final {{ e }} length = length();
+        if (Math.abs(length) < {{ Eeps }}) {
+            throw new ArithmeticException("Cannot normalize the zero complex");
+        }
+        return new Complex{{ E }}(x / length, y / length);
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using (0, 0, 1) as a rotation axis.
+     *
+     * @return A quaternion of this rotation around the unit z
+     */
+    public Quaternion{{ E }} toQuaternion() {
+        return toQuaternion(Vector3{{ E }}.UNIT_Z);
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided vector as a rotation axis.
+     *
+     * @param axis The rotation axis
+     * @return A quaternion of this rotation around the given axis
+     */
+    public Quaternion{{ E }} toQuaternion(Vector3{{ E }} axis) {
+        return toQuaternion(axis.getX(), axis.getY(), axis.getZ());
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided {{ EOverload }} components vector
+     * as a rotation axis.
+     *
+     * @param x The x component of the axis vector
+     * @param y The y component of the axis vector
+     * @param z The z component of the axis vector
+     * @return A quaternion of this rotation around the given axis
+     */
+    public Quaternion{{ E }} toQuaternion({{ EOverload }} x, {{ EOverload }} y, {{ EOverload }} z) {
+        return toQuaternion(({{ e }}) x, ({{ e }}) y, ({{ e }}) z);
+    }
+
+    /**
+     * Converts this complex to a quaternion by
+     * using the provided {{ e }} components vector
+     * as a rotation axis.
+     *
+     * @param x The x component of the axis vector
+     * @param y The y component of the axis vector
+     * @param z The z component of the axis vector
+     * @return A quaternion of this rotation around the given axis
+     */
+    public Quaternion{{ E }} toQuaternion({{ e }} x, {{ e }} y, {{ e }} z) {
+        return Quaternion{{ E }}.fromAngleRadAxis(getAngleRad(), x, y, z);
+    }
+
+    @Override
+    public Complexf toFloat() {
+        return new Complexf(x, y);
+    }
+
+    @Override
+    public Complexd toDouble() {
+        return new Complexd(x, y);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Complex{{ E }})) {
+            return false;
+        }
+        final Complex{{ E }} complex = (Complex{{ E }}) o;
+        if ({{ ET }}.compare(complex.x, x) != 0) {
+            return false;
+        }
+        if ({{ ET }}.compare(complex.y, y) != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        if (!hashed) {
+            final int result = (x != +0.0f ? {{ ET }}.hashCode(x) : 0);
+            hashCode = 31 * result + (y != +0.0f ? {{ ET }}.hashCode(y) : 0);
+            hashed = true;
+        }
+        return hashCode;
+    }
+
+    @Override
+    public int compareTo(Complex{{ E }} c) {
+        return (int) Math.signum(lengthSquared() - c.lengthSquared());
+    }
+
+    @Override
+    public Complex{{ E }} clone() {
+        return new Complex{{ E }}(this);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
+    /**
+     * Creates a new complex from the {{ e }} real component.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code x} is 0.</p>
+     *
+     * @param x The x (real) component
+     * @return The complex created from the {{ e }} real component
+     */
+    public static Complex{{ E }} fromReal({{ e }} x) {
+         return x == 0 ? ZERO : new Complex{{ E }}(x, 0);
+    }
+
+    /**
+     * Creates a new complex from the {{ e }} imaginary components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when {@code y} is 0.</p>
+     *
+     * @param y The y (imaginary) component
+     * @return The complex created from the {{ e }} imaginary component
+     */
+    public static Complex{{ E }} fromImaginary({{ e }} y) {
+         return y == 0 ? ZERO : new Complex{{ E }}(0, y);
+    }
+
+    /**
+     * Creates a new complex from the {{ e }} components.
+     *
+     * <p>The {@link #ZERO} constant is re-used when both {@code x} and {@code z} are 0.</p>
+     *
+     * @param x The x (real) component
+     * @param y The y (imaginary) component
+     * @return The complex created from the {{ e }} components
+     */
+    public static Complex{{ E }} from({{ e }} x, {{ e }} y) {
+         return x == 0 && y == 0 ? ZERO : new Complex{{ E }}(x, y);
+    }
+
+    /**
+     * Creates a new complex from the angle defined from the first to the second vector.
+     *
+     * @param from The first vector
+     * @param to The second vector
+     * @return The complex defined by the angle between the vectors
+     */
+    public static Complex{{ E }} fromRotationTo(Vector2{{ E }} from, Vector2{{ E }} to) {
+        return fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
+    }
+
+    /**
+     * Creates a new complex from the angle defined from the first to the second vector.
+     *
+     * @param from The first vector
+     * @param to The second vector
+     * @return The complex defined by the angle between the vectors
+     */
+    public static Complex{{ E }} fromRotationTo(Vector3{{ E }} from, Vector3{{ E }} to) {
+        return fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
+    }
+
+    /**
+     * Creates a new complex from the {{ EOverload }} angle in degrees.
+     *
+     * @param angle The angle in degrees
+     * @return The complex defined by the angle
+     */
+    public static Complex{{ E }} fromAngleDeg({{ EOverload }} angle) {
+        return fromAngleRad(Math.toRadians(angle));
+    }
+
+    /**
+     * Creates a new complex from the {{ EOverload }} angle in radians.
+     *
+     * @param angle The angle in radians
+     * @return The complex defined by the angle
+     */
+    public static Complex{{ E }} fromAngleRad({{ EOverload }} angle) {
+        return fromAngleRad(({{ e }}) angle);
+    }
+
+    /**
+     * Creates a new complex from the {{ e }} angle in radians.
+     *
+     * @param angle The angle in radians
+     * @return The complex defined by the angle
+     */
+    public static Complex{{ E }} fromAngleDeg({{ e }} angle) {
+        return fromAngleRad(({{ e }}) Math.toRadians(angle));
+    }
+
+    /**
+     * Creates a new complex from the {{ e }} angle in radians.
+     *
+     * @param angle The angle in radians
+     * @return The complex defined by the angle
+     */
+    public static Complex{{ E }} fromAngleRad({{ e }} angle) {
+        return new Complex{{ E }}(TrigMath.cos(angle), TrigMath.sin(angle));
+    }
+}

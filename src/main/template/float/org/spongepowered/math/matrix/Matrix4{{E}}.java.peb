@@ -150,6 +150,7 @@ public class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
             case 3:
                 return m03;
             }
+            break;
         case 1:
             switch (col) {
             case 0:
@@ -161,6 +162,7 @@ public class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
             case 3:
                 return m13;
             }
+            break;
         case 2:
             switch (col) {
             case 0:
@@ -172,6 +174,7 @@ public class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
             case 3:
                 return m23;
             }
+            break;
         case 3:
             switch (col) {
             case 0:
@@ -183,6 +186,7 @@ public class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
             case 3:
                 return m33;
             }
+            break;
         }
         throw new IllegalArgumentException(
                 (row < 0 || row > 2 ? "row must be greater than zero and smaller than 3. " : "") +

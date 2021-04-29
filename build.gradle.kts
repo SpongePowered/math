@@ -2,6 +2,7 @@ plugins {
     jacoco
     id("org.spongepowered.gradle.sponge.dev") version "1.1.0-SNAPSHOT"
     id("math-templates")
+    id("net.kyori.indra.publishing.sonatype")  version "2.0.0"
 }
 
 // -- General setup -- //

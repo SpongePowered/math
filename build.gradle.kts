@@ -1,3 +1,5 @@
+import org.spongepowered.gradle.math.templates.GenerateTemplates
+
 plugins {
     jacoco
     id("org.spongepowered.gradle.sponge.dev") version "1.1.0-SNAPSHOT"
@@ -69,12 +71,11 @@ tasks {
         options.compilerArgs.add("-Xlint:-cast") // skip cast warnings, the generated source is most likely just overly safe.
 
     }
-}
 
-val buildDir = project.buildDir
-license {
-    // Don't check licenses on generated sources
-    exclude { it.file.startsWith(buildDir) }
+    // Put a license header on generated source
+    withType(GenerateTemplates::class) {
+        finalizedBy(licenseFormat)
+    }
 }
 
 // Metadata

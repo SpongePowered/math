@@ -33,10 +33,13 @@ import org.gradle.api.plugins.Convention;
 import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.plugins.JavaBasePlugin;
 import org.gradle.api.plugins.PluginContainer;
+import org.gradle.api.plugins.PluginManager;
 import org.gradle.api.provider.Provider;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradle.api.tasks.TaskContainer;
 import org.gradle.api.tasks.TaskProvider;
+import org.gradle.plugins.ide.eclipse.EclipsePlugin;
+import org.gradle.plugins.ide.eclipse.model.EclipseModel;
 
 /**
  * Simple template generator.
@@ -56,6 +59,8 @@ public class TemplateGeneratorPlugin implements ProjectPlugin {
         final @NonNull TaskContainer tasks
     ) {
         plugins.withType(JavaBasePlugin.class, $ -> {
+            this.registerGenerateAllTask(plugins, extensions, tasks);
+
             final SourceSetContainer sourceSets = extensions.getByType(SourceSetContainer.class);
             sourceSets.all(set -> {
                 final SourceSetTemplateExtension extension = set.getExtensions().create(SourceSetTemplateExtension.class, "templates", SourceSetTemplateExtensionImpl.class, project.getObjects());
@@ -76,6 +81,16 @@ public class TemplateGeneratorPlugin implements ProjectPlugin {
                     set.getJava().srcDir(generateTask.map(DefaultTask::getOutputs));
                 });
             });
+        });
+    }
+
+    private void registerGenerateAllTask(final PluginContainer plugins, final ExtensionContainer extensions, final TaskContainer tasks) {
+        final TaskProvider<?> generateTemplates = tasks.register("generateTemplates", task -> {
+            task.dependsOn(tasks.withType(GenerateTemplates.class));
+        });
+
+        plugins.withType(EclipsePlugin.class, eclipse -> {
+            extensions.getByType(EclipseModel.class).autoBuildTasks(generateTemplates);
         });
     }
 }

@@ -37,6 +37,12 @@ sourceSets {
                 dataFiles.from(floatData)
             }
         }
+
+        // Add a module-info
+        multirelease {
+            alternateVersions(9)
+            moduleName("org.spongepowered.math")
+        }
     }
     test {
         templates.templateSets {
@@ -91,9 +97,10 @@ spongeConvention {
     }
 
     sharedManifest {
-        attributes("Specification-Title" to project.name,
-        "Specification-Vendor" to "SpongePowered - https://spongepowered.org",
-        "Automatic-Module-Name" to "${project.group}.math")
+        attributes(
+            "Specification-Title" to project.name,
+            "Specification-Vendor" to "SpongePowered - https://spongepowered.org"
+        )
     }
 }
 

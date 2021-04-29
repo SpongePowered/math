@@ -1,6 +1,6 @@
 # Math
 
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/SpongePowered/math/build/master) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE.txt) [![Maven Central](https://img.shields.io/maven-central/v/org.spongepowered/math?label=stable)](https://search.maven.org/search?q=g:org.spongepowered%20AND%20a:math) ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/org.spongepowered/math?label=dev&server=https%3A%2F%2Foss.sonatype.org)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/SpongePowered/math/Build,%20Test,%20and%20Deploy/master) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE.txt) [![Maven Central](https://img.shields.io/maven-central/v/org.spongepowered/math?label=stable)](https://search.maven.org/search?q=g:org.spongepowered%20AND%20a:math) ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/org.spongepowered/math?label=dev&server=https%3A%2F%2Foss.sonatype.org)
 
 Immutable math library for Java that offers easy conversion between math types, fast trigonometric functions, vectors, matrices, complex numbers, quaternions, and operation chaining, with a focus on games and computer graphics.
 

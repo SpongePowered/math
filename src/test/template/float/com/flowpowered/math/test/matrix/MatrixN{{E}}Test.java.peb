@@ -21,25 +21,25 @@ import static org.spongepowered.math.test.TestUtil{{ E }}.SQRT13;
 public class MatrixN{{ E }}Test {
     @Test
     public void testSizeConstructor() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(4);
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(4);
         assertEquals(matrix.size(), 4);
     }
 
     @Test
     public void testCopyMatrix2Constructor() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(new Matrix2{{ E }}(1, 2, 3, 4));
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(new Matrix2{{ E }}(1, 2, 3, 4));
         TestUtil{{ E }}.assertEquals(matrix, 1, 2, 3, 4);
     }
 
     @Test
     public void testCopyMatrix3Constructor() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9));
         TestUtil{{ E }}.assertEquals(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     }
 
     @Test
     public void testCopyMatrix4Constructor() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(new Matrix4{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -53,7 +53,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testCopyMatrixNConstructor() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -67,7 +67,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testFloatComponentsConstructor() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -81,13 +81,13 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testSize() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(5);
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(5);
         assertEquals(matrix.size(), 5);
     }
 
     @Test
     public void testGetter() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -112,7 +112,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testRowGetter() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -125,7 +125,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testColumnGetter() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -138,7 +138,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testSetterFloatValue() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(4);
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(4);
         matrix.set(0, 0, 1);
         matrix.set(0, 1, 2);
         matrix.set(0, 2, 3);
@@ -164,7 +164,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testSetterDoubleValue() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(4);
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(4);
         matrix.set(0, 0, 1d);
         matrix.set(0, 1, 2d);
         matrix.set(0, 2, 3d);
@@ -190,7 +190,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testSetIdentity() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -205,7 +205,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testSetZero() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
                 9, 10, 11, 12,
@@ -220,11 +220,11 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testResize() {
-        MatrixN{{ E }} matrix1 = new MatrixN{{ E }}(4);
-        MatrixN{{ E }} resize1 = matrix1.resize(2);
+        final MatrixN{{ E }} matrix1 = new MatrixN{{ E }}(4);
+        final MatrixN{{ E }} resize1 = matrix1.resize(2);
         TestUtil{{ E }}.assertEquals(resize1.size(), 2);
-        MatrixN{{ E }} matrix2 = new MatrixN{{ E }}(4);
-        MatrixN{{ E }} resize2 = matrix2.resize(8);
+        final MatrixN{{ E }} matrix2 = new MatrixN{{ E }}(4);
+        final MatrixN{{ E }} resize2 = matrix2.resize(8);
         TestUtil{{ E }}.assertEquals(resize2.size(), 8);
         TestUtil{{ E }}.assertEquals(resize2.get(7, 7), 0);
     }
@@ -236,7 +236,7 @@ public class MatrixN{{ E }}Test {
                 5, 6, 7, 8,
                 9, 10, 11, 12,
                 13, 14, 15, 16);
-        MatrixN{{ E }} m = new MatrixN{{ E }}(
+        final MatrixN{{ E }} m = new MatrixN{{ E }}(
                 1, 1, 1, 1,
                 1, 1, 1, 1,
                 1, 1, 1, 1,
@@ -256,7 +256,7 @@ public class MatrixN{{ E }}Test {
                 5, 6, 7, 8,
                 9, 10, 11, 12,
                 13, 14, 15, 16);
-        MatrixN{{ E }} m = new MatrixN{{ E }}(
+        final MatrixN{{ E }} m = new MatrixN{{ E }}(
                 1, 1, 1, 1,
                 1, 1, 1, 1,
                 1, 1, 1, 1,
@@ -306,7 +306,7 @@ public class MatrixN{{ E }}Test {
                 0, 1, 0, 4,
                 0, 0, 1, 0,
                 0, 0, 0, 1);
-        MatrixN{{ E }} m = new MatrixN{{ E }}(
+        final MatrixN{{ E }} m = new MatrixN{{ E }}(
                 -1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
@@ -356,7 +356,7 @@ public class MatrixN{{ E }}Test {
                 0, 1, 0, 4,
                 0, 0, 1, 0,
                 0, 0, 0, 1);
-        MatrixN{{ E }} m = new MatrixN{{ E }}(
+        final MatrixN{{ E }} m = new MatrixN{{ E }}(
                 -1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
@@ -491,23 +491,23 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testTransformVectorN() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
                 0, 0, 0, 1);
-        VectorN{{ E }} vector = matrix.scale(2, 3, 4, 1).translate(4, 5, 3).transform(new VectorN{{ E }}(3, 2, 8, 1));
+        final VectorN{{ E }} vector = matrix.scale(2, 3, 4, 1).translate(4, 5, 3).transform(new VectorN{{ E }}(3, 2, 8, 1));
         TestUtil{{ E }}.assertEquals(vector, 10, 11, 35, 1);
     }
 
     @Test
     public void testTransformFloatComponents() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
                 0, 0, 0, 1);
-        VectorN{{ E }} vector = matrix.scale(2, 3, 4, 1).translate(4, 5, 3).transform(3, 2, 8, 1);
+        final VectorN{{ E }} vector = matrix.scale(2, 3, 4, 1).translate(4, 5, 3).transform(3, 2, 8, 1);
         TestUtil{{ E }}.assertEquals(vector, 10, 11, 35, 1);
     }
 
@@ -614,26 +614,26 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testTrace() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        {{ e }} value = matrix.trace();
+        final {{ e }} value = matrix.trace();
         TestUtil{{ E }}.assertEquals(value, 10);
     }
 
     @Test
     public void testDeterminant() {
-        MatrixN{{ E }} matrix1 = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix1 = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        {{ e }} value1 = matrix1.determinant();
+        final {{ e }} value1 = matrix1.determinant();
         TestUtil{{ E }}.assertEquals(value1, 24);
-        MatrixN{{ E }} matrix2 = new MatrixN{{ E }}(0, 1, 2, 3, 4, 5, 6, 7, 8);
-        {{ e }} value2 = matrix2.determinant();
+        final MatrixN{{ E }} matrix2 = new MatrixN{{ E }}(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        final {{ e }} value2 = matrix2.determinant();
         TestUtil{{ E }}.assertEquals(value2, 0);
     }
 
@@ -663,12 +663,12 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testConvertToMatrix2() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        Matrix2{{ E }} matrix2 = matrix.toMatrix2();
+        final Matrix2{{ E }} matrix2 = matrix.toMatrix2();
         TestUtil{{ E }}.assertEquals(matrix2,
                 1, 0,
                 0, 2);
@@ -676,12 +676,12 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testConvertToMatrix3() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        Matrix3{{ E }} matrix3 = matrix.toMatrix3();
+        final Matrix3{{ E }} matrix3 = matrix.toMatrix3();
         TestUtil{{ E }}.assertEquals(matrix3,
                 1, 0, 0,
                 0, 2, 0,
@@ -690,12 +690,12 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testConvertToMatrix4() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        Matrix4{{ E }} matrix4 = matrix.toMatrix4();
+        final Matrix4{{ E }} matrix4 = matrix.toMatrix4();
         TestUtil{{ E }}.assertEquals(matrix4,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -705,12 +705,12 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testConvertToMatrixf() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        MatrixNf matrixN = matrix.toFloat();
+        final MatrixNf matrixN = matrix.toFloat();
         TestUtilf.assertEquals(matrixN,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -720,12 +720,12 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testConvertToMatrixd() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        MatrixNd matrixN = matrix.toDouble();
+        final MatrixNd matrixN = matrix.toDouble();
         TestUtild.assertEquals(matrixN,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -735,12 +735,12 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testConvertToArrayRowMajorDefault() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        {{ e }}[] array = matrix.toArray();
+        final {{ e }}[] array = matrix.toArray();
         TestUtil{{ E }}.assertEquals(array,
                 1, 2, 3, 4,
                 0, 2, 0, 0,
@@ -750,23 +750,23 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testConvertToArray() {
-        MatrixN{{ E }} matrix1 = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix1 = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        {{ e }}[] array1 = matrix1.toArray(false);
+        final {{ e }}[] array1 = matrix1.toArray(false);
         TestUtil{{ E }}.assertEquals(array1,
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        MatrixN{{ E }} matrix2 = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix2 = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        {{ e }}[] array2 = matrix2.toArray(true);
+        final {{ e }}[] array2 = matrix2.toArray(true);
         TestUtil{{ E }}.assertEquals(array2,
                 1, 0, 0, 0,
                 2, 2, 0, 0,
@@ -776,33 +776,33 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testEquals() {
-        MatrixN{{ E }} matrix01 = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix01 = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        MatrixN{{ E }} matrix02 = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix02 = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        Assert.assertTrue(matrix01.equals(matrix02));
-        MatrixN{{ E }} matrix11 = new MatrixN{{ E }}(
+        assertEquals(matrix01, matrix02);
+        final MatrixN{{ E }} matrix11 = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        MatrixN{{ E }} matrix12 = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix12 = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 4, 0,
                 0, 7, 3, 0,
                 0, 0, 0, 4);
-        Assert.assertFalse(matrix11.equals(matrix12));
+        Assert.assertNotEquals(matrix11, matrix12);
     }
 
     @Test
     public void testCloning() {
-        MatrixN{{ E }} matrix = new MatrixN{{ E }}(
+        final MatrixN{{ E }} matrix = new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
@@ -812,7 +812,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testCreateFromScalingVectorN() {
-        MatrixN{{ E }} matrix = MatrixN{{ E }}.createScaling(new VectorN{{ E }}(1, 2, 3, 4));
+        final MatrixN{{ E }} matrix = MatrixN{{ E }}.createScaling(new VectorN{{ E }}(1, 2, 3, 4));
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -822,7 +822,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testCreateFromScalingFloatComponents() {
-        MatrixN{{ E }} matrix = MatrixN{{ E }}.createScaling(1, 2, 3, 4);
+        final MatrixN{{ E }} matrix = MatrixN{{ E }}.createScaling(1, 2, 3, 4);
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -832,7 +832,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testCreateTranslationVectorN() {
-        MatrixN{{ E }} matrix = MatrixN{{ E }}.createTranslation(new VectorN{{ E }}(1, 2, 3));
+        final MatrixN{{ E }} matrix = MatrixN{{ E }}.createTranslation(new VectorN{{ E }}(1, 2, 3));
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 1,
                 0, 1, 0, 2,
@@ -842,7 +842,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testCreateTranslationFloatComponents() {
-        MatrixN{{ E }} matrix = MatrixN{{ E }}.createTranslation(1, 2, 3);
+        final MatrixN{{ E }} matrix = MatrixN{{ E }}.createTranslation(1, 2, 3);
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 1,
                 0, 1, 0, 2,
@@ -852,7 +852,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testCreateRotationFromComplex() {
-        MatrixN{{ E }} matrix = MatrixN{{ E }}.createRotation(4, new Complex{{ E }}(2, 3));
+        final MatrixN{{ E }} matrix = MatrixN{{ E }}.createRotation(4, new Complex{{ E }}(2, 3));
         TestUtil{{ E }}.assertEquals(matrix,
                 ({{ e }}) (2/SQRT13), ({{ e }}) (-3/SQRT13), 0, 0,
                 ({{ e }}) (3/SQRT13), ({{ e }}) (2/SQRT13), 0, 0,
@@ -862,7 +862,7 @@ public class MatrixN{{ E }}Test {
 
     @Test
     public void testCreateRotationFromQuaternion() {
-        MatrixN{{ E }} matrix = MatrixN{{ E }}.createRotation(4, new Quaternion{{ E }}(4, 3, 2, 0));
+        final MatrixN{{ E }} matrix = MatrixN{{ E }}.createRotation(4, new Quaternion{{ E }}(4, 3, 2, 0));
         TestUtil{{ E }}.assertEquals(matrix,
                 ({{ e }}) (3/29d), ({{ e }}) (24/29d), ({{ e }}) (16/29d), 0,
                 ({{ e }}) (24/29d), ({{ e }}) (-11/29d), ({{ e }}) (12/29d), 0,

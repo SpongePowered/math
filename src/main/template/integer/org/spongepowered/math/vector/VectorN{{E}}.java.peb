@@ -6,130 +6,131 @@ import java.util.Arrays;
 import org.spongepowered.math.GenericMath;
 
 public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>, Serializable, Cloneable {
+
     public static VectorN{{ E }} ZERO_2 = new ImmutableZeroVectorN(0, 0);
     public static VectorN{{ E }} ZERO_3 = new ImmutableZeroVectorN(0, 0, 0);
     public static VectorN{{ E }} ZERO_4 = new ImmutableZeroVectorN(0, 0, 0, 0);
     private static final long serialVersionUID = 1;
     private final {{ e }}[] vec;
 
-    public VectorN{{ E }}(int size) {
+    public VectorN{{ E }}(final int size) {
         if (size < 2) {
             throw new IllegalArgumentException("Minimum vector size is 2");
         }
         vec = new {{ e }}[size];
     }
 
-    public VectorN{{ E }}(Vector2{{ E }} v) {
+    public VectorN{{ E }}(final Vector2{{ E }} v) {
         this(v.getX(), v.getY());
     }
 
-    public VectorN{{ E }}(Vector3{{ E }} v) {
+    public VectorN{{ E }}(final Vector3{{ E }} v) {
         this(v.getX(), v.getY(), v.getZ());
     }
 
-    public VectorN{{ E }}(Vector4{{ E }} v) {
+    public VectorN{{ E }}(final Vector4{{ E }} v) {
         this(v.getX(), v.getY(), v.getZ(), v.getW());
     }
 
-    public VectorN{{ E }}(VectorN{{ E }} v) {
+    public VectorN{{ E }}(final VectorN{{ E }} v) {
         this(v.vec);
     }
 
-    public VectorN{{ E }}({{ e }}... v) {
-        vec = v.clone();
+    public VectorN{{ E }}(final {{ e }}... v) {
+        this.vec = v.clone();
     }
 
     public int size() {
-        return vec.length;
+        return this.vec.length;
     }
 
-    public {{ e }} get(int comp) {
-        return vec[comp];
+    public {{ e }} get(final int comp) {
+        return this.vec[comp];
     }
 
-    public void set(int comp, {{ e }} val) {
-        vec[comp] = val;
+    public void set(final int comp, final {{ e }} val) {
+        this.vec[comp] = val;
     }
 
     public void setZero() {
         Arrays.fill(vec, 0);
     }
 
-    public VectorN{{ E }} resize(int size) {
+    public VectorN{{ E }} resize(final int size) {
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
-        System.arraycopy(vec, 0, d.vec, 0, Math.min(size, size()));
+        System.arraycopy(vec, 0, d.vec, 0, Math.min(size, this.size()));
         return d;
     }
 
-    public VectorN{{ E }} add(VectorN{{ E }} v) {
-        return add(v.vec);
+    public VectorN{{ E }} add(final VectorN{{ E }} v) {
+        return this.add(v.vec);
     }
 
-    public VectorN{{ E }} add({{ e }}... v) {
-        final int size = size();
+    public VectorN{{ E }} add(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = vec[comp] + v[comp];
+            d.vec[comp] = this.vec[comp] + v[comp];
         }
         return d;
     }
 
-    public VectorN{{ E }} sub(VectorN{{ E }} v) {
-        return sub(v.vec);
+    public VectorN{{ E }} sub(final VectorN{{ E }} v) {
+        return this.sub(v.vec);
     }
 
-    public VectorN{{ E }} sub({{ e }}... v) {
-        final int size = size();
+    public VectorN{{ E }} sub(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = vec[comp] - v[comp];
+            d.vec[comp] = this.vec[comp] - v[comp];
         }
         return d;
     }
 
-    public VectorN{{ E }} mul({{ EOverload }} a) {
-        return mul({{ EFloorFunc }}(a));
+    public VectorN{{ E }} mul(final {{ EOverload }} a) {
+        return this.mul({{ EFloorFunc }}(a));
     }
 
     @Override
     public VectorN{{ E }} mul({{ e }} a) {
-        final int size = size();
+        final int size = this.size();
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = vec[comp] * a;
+            d.vec[comp] = this.vec[comp] * a;
         }
         return d;
     }
 
-    public VectorN{{ E }} mul(VectorN{{ E }} v) {
-        return mul(v.vec);
+    public VectorN{{ E }} mul(final VectorN{{ E }} v) {
+        return this.mul(v.vec);
     }
 
-    public VectorN{{ E }} mul({{ e }}... v) {
-        final int size = size();
+    public VectorN{{ E }} mul(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = vec[comp] * v[comp];
+            d.vec[comp] = this.vec[comp] * v[comp];
         }
         return d;
     }
 
-    public VectorN{{ E }} div({{ EOverload }} a) {
-        return div({{ EFloorFunc }}(a));
+    public VectorN{{ E }} div(final {{ EOverload }} a) {
+        return this.div({{ EFloorFunc }}(a));
     }
 
     @Override
     public VectorN{{ E }} div({{ e }} a) {
-        final int size = size();
+        final int size = this.size();
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
             d.vec[comp] = vec[comp] / a;
@@ -137,44 +138,44 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
         return d;
     }
 
-    public VectorN{{ E }} div(VectorN{{ E }} v) {
-        return div(v.vec);
+    public VectorN{{ E }} div(final VectorN{{ E }} v) {
+        return this.div(v.vec);
     }
 
-    public VectorN{{ E }} div({{ e }}... v) {
-        final int size = size();
+    public VectorN{{ E }} div(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = vec[comp] / v[comp];
+            d.vec[comp] = this.vec[comp] / v[comp];
         }
         return d;
     }
 
-    public {{ e }} dot(VectorN{{ E }} v) {
-        return dot(v.vec);
+    public {{ e }} dot(final VectorN{{ E }} v) {
+        return this.dot(v.vec);
     }
 
-    public {{ e }} dot({{ e }}... v) {
-        final int size = size();
+    public {{ e }} dot(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         {{ e }} d = 0;
         for (int comp = 0; comp < size; comp++) {
-            d += vec[comp] * v[comp];
+            d += this.vec[comp] * v[comp];
         }
         return d;
     }
 
-    public VectorN{{ E }} project(VectorN{{ E }} v) {
-        return project(v.vec);
+    public VectorN{{ E }} project(final VectorN{{ E }} v) {
+        return this.project(v.vec);
     }
 
-    public VectorN{{ E }} project({{ e }}... v) {
-        final int size = size();
+    public VectorN{{ E }} project(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
@@ -185,7 +186,7 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
         if (lengthSquared == 0) {
             throw new ArithmeticException("Cannot project onto the zero vector");
         }
-        final {{ EDecEqui }} a = ({{ EDecEqui }}) dot(v) / lengthSquared;
+        final {{ EDecEqui }} a = ({{ EDecEqui }}) this.dot(v) / lengthSquared;
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
             d.vec[comp] = {{ EFloorFunc }}(a * v[comp]);
@@ -193,120 +194,120 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
         return d;
     }
 
-    public VectorN{{ E }} pow({{ EOverload }} pow) {
-        return pow({{ EFloorFunc }}(pow));
+    public VectorN{{ E }} pow(final {{ EOverload }} pow) {
+        return this.pow({{ EFloorFunc }}(pow));
     }
 
     @Override
-    public VectorN{{ E }} pow({{ e }} power) {
-        final int size = size();
+    public VectorN{{ E }} pow(final {{ e }} power) {
+        final int size = this.size();
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = {{ EFloorFunc }}(Math.pow(vec[comp], power));
+            d.vec[comp] = {{ EFloorFunc }}(Math.pow(this.vec[comp], power));
         }
         return d;
     }
 
     @Override
     public VectorN{{ E }} abs() {
-        final int size = size();
+        final int size = this.size();
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = Math.abs(vec[comp]);
+            d.vec[comp] = Math.abs(this.vec[comp]);
         }
         return d;
     }
 
     @Override
     public VectorN{{ E }} negate() {
-        final int size = size();
+        final int size = this.size();
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = -vec[comp];
+            d.vec[comp] = -this.vec[comp];
         }
         return d;
     }
 
-    public VectorN{{ E }} min(VectorN{{ E }} v) {
-        return min(v.vec);
+    public VectorN{{ E }} min(final VectorN{{ E }} v) {
+        return this.min(v.vec);
     }
 
-    public VectorN{{ E }} min({{ e }}... v) {
-        final int size = size();
+    public VectorN{{ E }} min(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = Math.min(vec[comp], v[comp]);
+            d.vec[comp] = Math.min(this.vec[comp], v[comp]);
         }
         return d;
     }
 
-    public VectorN{{ E }} max(VectorN{{ E }} v) {
-        return max(v.vec);
+    public VectorN{{ E }} max(final VectorN{{ E }} v) {
+        return this.max(v.vec);
     }
 
-    public VectorN{{ E }} max({{ e }}... v) {
-        final int size = size();
+    public VectorN{{ E }} max(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int comp = 0; comp < size; comp++) {
-            d.vec[comp] = Math.max(vec[comp], v[comp]);
+            d.vec[comp] = Math.max(this.vec[comp], v[comp]);
         }
         return d;
     }
 
-    public {{ e }} distanceSquared(VectorN{{ E }} v) {
+    public {{ e }} distanceSquared(final VectorN{{ E }} v) {
         return distanceSquared(v.vec);
     }
 
-    public {{ e }} distanceSquared({{ e }}... v) {
-        final int size = size();
+    public {{ e }} distanceSquared(final {{ e }}... v) {
+        final int size = this.size();
         if (size != v.length) {
             throw new IllegalArgumentException("Vector sizes must be the same");
         }
         {{ e }} d = 0;
         for (int comp = 0; comp < size; comp++) {
-            final {{ e }} delta = vec[comp] - v[comp];
+            final {{ e }} delta = this.vec[comp] - v[comp];
             d += delta * delta;
         }
         return d;
     }
 
-    public {{ EDecEqui }} distance(VectorN{{ E }} v) {
-        return distance(v.vec);
+    public {{ EDecEqui }} distance(final VectorN{{ E }} v) {
+        return this.distance(v.vec);
     }
 
-    public {{ EDecEqui }} distance({{ e }}... v) {
-        return ({{ EDecEqui }}) Math.sqrt(distanceSquared(v));
+    public {{ EDecEqui }} distance(final {{ e }}... v) {
+        return ({{ EDecEqui }}) Math.sqrt(this.distanceSquared(v));
     }
 
     @Override
     public {{ e }} lengthSquared() {
-        final int size = size();
+        final int size = this.size();
         {{ e }} l = 0;
         for (int comp = 0; comp < size; comp++) {
-            l += vec[comp] * vec[comp];
+            l += this.vec[comp] * this.vec[comp];
         }
         return l;
     }
 
     @Override
     public {{ EDecEqui }} length() {
-        return ({{ EDecEqui }}) Math.sqrt(lengthSquared());
+        return ({{ EDecEqui }}) Math.sqrt(this.lengthSquared());
     }
 
     @Override
     public int getMinAxis() {
         int axis = 0;
-        {{ e }} value = vec[axis];
-        final int size = size();
+        {{ e }} value = this.vec[axis];
+        final int size = this.size();
         for (int comp = 1; comp < size; comp++) {
-            if (vec[comp] < value) {
-                value = vec[comp];
+            if (this.vec[comp] < value) {
+                value = this.vec[comp];
                 axis = comp;
             }
         }
@@ -317,10 +318,10 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
     public int getMaxAxis() {
         int axis = 0;
         {{ e }} value = vec[axis];
-        final int size = size();
+        final int size = this.size();
         for (int comp = 1; comp < size; comp++) {
-            if (vec[comp] > value) {
-                value = vec[comp];
+            if (this.vec[comp] > value) {
+                value = this.vec[comp];
                 axis = comp;
             }
         }
@@ -341,68 +342,68 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
 
     @Override
     public {{ e }}[] toArray() {
-        return vec.clone();
+        return this.vec.clone();
     }
 
     @Override
     public VectorNi toInt() {
-        final int size = size();
+        final int size = this.size();
         final int[] intVec = new int[size];
         for (int comp = 0; comp < size; comp++) {
-            intVec[comp] = (int) vec[comp];
+            intVec[comp] = (int) this.vec[comp];
         }
         return new VectorNi(intVec);
     }
 
     @Override
     public VectorNl toLong() {
-        final int size = size();
+        final int size = this.size();
         final long[] longVec = new long[size];
         for (int comp = 0; comp < size; comp++) {
-            longVec[comp] = (long) vec[comp];
+            longVec[comp] = (long) this.vec[comp];
         }
         return new VectorNl(longVec);
     }
 
     @Override
     public VectorNf toFloat() {
-        final int size = size();
+        final int size = this.size();
         final float[] floatVec = new float[size];
         for (int comp = 0; comp < size; comp++) {
-            floatVec[comp] = (float) vec[comp];
+            floatVec[comp] = (float) this.vec[comp];
         }
         return new VectorNf(floatVec);
     }
 
     @Override
     public VectorNd toDouble() {
-        final int size = size();
+        final int size = this.size();
         final double[] doubleVec = new double[size];
         for (int comp = 0; comp < size; comp++) {
-            doubleVec[comp] = (double) vec[comp];
+            doubleVec[comp] = (double) this.vec[comp];
         }
         return new VectorNd(doubleVec);
     }
 
     @Override
-    public int compareTo(VectorN{{ E }} v) {
-        return (int) (lengthSquared() - v.lengthSquared());
+    public int compareTo(final VectorN{{ E }} v) {
+        return (int) (this.lengthSquared() - v.lengthSquared());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
+    public boolean equals(final Object other) {
+        if (other == this) {
             return true;
         }
-        if (!(obj instanceof VectorN{{ E }})) {
+        if (!(other instanceof VectorN{{ E }})) {
             return false;
         }
-        return Arrays.equals(vec, ((VectorN{{ E }}) obj).vec);
+        return Arrays.equals(this.vec, ((VectorN{{ E }}) other).vec);
     }
 
     @Override
     public int hashCode() {
-        return 67 * 5 + Arrays.hashCode(vec);
+        return 67 * 5 + Arrays.hashCode(this.vec);
     }
 
     @Override
@@ -412,17 +413,20 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
 
     @Override
     public String toString() {
-        return Arrays.toString(vec).replace('[', '(').replace(']', ')');
+        return Arrays.toString(this.vec).replace('[', '(').replace(']', ')');
     }
 
     private static class ImmutableZeroVectorN extends VectorN{{ E }} {
-        public ImmutableZeroVectorN({{ e }}... v) {
+
+        public ImmutableZeroVectorN(final {{ e }}... v) {
             super(v);
         }
 
         @Override
-        public void set(int comp, {{ e }} val) {
+        public void set(final int comp, final {{ e }} val) {
             throw new UnsupportedOperationException("You may not alter this vector");
         }
+
     }
+
 }

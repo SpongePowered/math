@@ -8,7 +8,8 @@ import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.HashFunctions;
 import org.spongepowered.math.TrigMath;
 
-public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>, Serializable, Cloneable {
+public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>, Serializable, Cloneable {
+
     private static final long serialVersionUID = 1;
     public static final Vector2{{ E }} ZERO = new Vector2{{ E }}(0, 0);
     public static final Vector2{{ E }} UNIT_X = new Vector2{{ E }}(1, 0);
@@ -23,243 +24,243 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
         this(0, 0);
     }
 
-    public Vector2{{ E }}(Vector2{{ E }} v) {
+    public Vector2{{ E }}(final Vector2{{ E }} v) {
         this(v.x, v.y);
     }
 
-    public Vector2{{ E }}(Vector3{{ E }} v) {
+    public Vector2{{ E }}(final Vector3{{ E }} v) {
         this(v.getX(), v.getY());
     }
 
-    public Vector2{{ E }}(Vector4{{ E }} v) {
+    public Vector2{{ E }}(final Vector4{{ E }} v) {
         this(v.getX(), v.getY());
     }
 
-    public Vector2{{ E }}(VectorN{{ E }} v) {
+    public Vector2{{ E }}(final VectorN{{ E }} v) {
         this(v.get(0), v.get(1));
     }
 
-    public Vector2{{ E }}({{ EOverload }} x, {{ EOverload }} y) {
+    public Vector2{{ E }}(final {{ EOverload }} x, final {{ EOverload }} y) {
         this(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }}({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }}(final {{ e }} x, final {{ e }} y) {
         this.x = x;
         this.y = y;
     }
 
     public {{ e }} getX() {
-        return x;
+        return this.x;
     }
 
     public {{ e }} getY() {
-        return y;
+        return this.y;
     }
 
     public int getFloorX() {
-        return GenericMath.floor(x);
+        return GenericMath.floor(this.x);
     }
 
     public int getFloorY() {
-        return GenericMath.floor(y);
+        return GenericMath.floor(this.y);
     }
 
-    public Vector2{{ E }} add(Vector2{{ E }} v) {
-        return add(v.x, v.y);
+    public Vector2{{ E }} add(final Vector2{{ E }} v) {
+        return this.add(v.x, v.y);
     }
 
-    public Vector2{{ E }} add({{ EOverload }} x, {{ EOverload }} y) {
-        return add(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} add(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.add(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }} add({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }} add(final {{ e }} x, final {{ e }} y) {
         return new Vector2{{ E }}(this.x + x, this.y + y);
     }
 
-    public Vector2{{ E }} sub(Vector2{{ E }} v) {
-        return sub(v.x, v.y);
+    public Vector2{{ E }} sub(final Vector2{{ E }} v) {
+        return this.sub(v.x, v.y);
     }
 
-    public Vector2{{ E }} sub({{ EOverload }} x, {{ EOverload }} y) {
-        return sub(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} sub(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.sub(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }} sub({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }} sub(final {{ e }} x, final {{ e }} y) {
         return new Vector2{{ E }}(this.x - x, this.y - y);
     }
 
-    public Vector2{{ E }} mul({{ EOverload }} a) {
-        return mul(({{ e }}) a);
+    public Vector2{{ E }} mul(final {{ EOverload }} a) {
+        return this.mul(({{ e }}) a);
     }
 
     @Override
-    public Vector2{{ E }} mul({{ e }} a) {
-        return mul(a, a);
+    public Vector2{{ E }} mul(final {{ e }} a) {
+        return this.mul(a, a);
     }
 
-    public Vector2{{ E }} mul(Vector2{{ E }} v) {
-        return mul(v.x, v.y);
+    public Vector2{{ E }} mul(final Vector2{{ E }} v) {
+        return this.mul(v.x, v.y);
     }
 
-    public Vector2{{ E }} mul({{ EOverload }} x, {{ EOverload }} y) {
-        return mul(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} mul(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.mul(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }} mul({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }} mul(final {{ e }} x, final {{ e }} y) {
         return new Vector2{{ E }}(this.x * x, this.y * y);
     }
 
-    public Vector2{{ E }} div({{ EOverload }} a) {
-        return div(({{ e }}) a);
+    public Vector2{{ E }} div(final {{ EOverload }} a) {
+        return this.div(({{ e }}) a);
     }
 
     @Override
-    public Vector2{{ E }} div({{ e }} a) {
-        return div(a, a);
+    public Vector2{{ E }} div(final {{ e }} a) {
+        return this.div(a, a);
     }
 
-    public Vector2{{ E }} div(Vector2{{ E }} v) {
-        return div(v.x, v.y);
+    public Vector2{{ E }} div(final Vector2{{ E }} v) {
+        return this.div(v.x, v.y);
     }
 
-    public Vector2{{ E }} div({{ EOverload }} x, {{ EOverload }} y) {
-        return div(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} div(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.div(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }} div({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }} div(final {{ e }} x, final {{ e }} y) {
         return new Vector2{{ E }}(this.x / x, this.y / y);
     }
 
-    public {{ e }} dot(Vector2{{ E }} v) {
-        return dot(v.x, v.y);
+    public {{ e }} dot(final Vector2{{ E }} v) {
+        return this.dot(v.x, v.y);
     }
 
-    public {{ e }} dot({{ EOverload }} x, {{ EOverload }} y) {
-        return dot(({{ e }}) x, ({{ e }}) y);
+    public {{ e }} dot(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.dot(({{ e }}) x, ({{ e }}) y);
     }
 
-    public {{ e }} dot({{ e }} x, {{ e }} y) {
+    public {{ e }} dot(final {{ e }} x, final {{ e }} y) {
         return this.x * x + this.y * y;
     }
 
-    public Vector2{{ E }} project(Vector2{{ E }} v) {
-        return project(v.x, v.y);
+    public Vector2{{ E }} project(final Vector2{{ E }} v) {
+        return this.project(v.x, v.y);
     }
 
-    public Vector2{{ E }} project({{ EOverload }} x, {{ EOverload }} y) {
-        return project(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} project(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.project(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }} project({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }} project(final {{ e }} x, final {{ e }} y) {
         final {{ e }} lengthSquared = x * x + y * y;
         if (Math.abs(lengthSquared) < {{ Eeps }}) {
             throw new ArithmeticException("Cannot project onto the zero vector");
         }
-        final {{ e }} a = dot(x, y) / lengthSquared;
+        final {{ e }} a = this.dot(x, y) / lengthSquared;
         return new Vector2{{ E }}(a * x, a * y);
     }
 
-    public Vector2{{ E }} pow({{ EOverload }} pow) {
-        return pow(({{ e }}) pow);
+    public Vector2{{ E }} pow(final {{ EOverload }} pow) {
+        return this.pow(({{ e }}) pow);
     }
 
     @Override
-    public Vector2{{ E }} pow({{ e }} power) {
-        return new Vector2{{ E }}(Math.pow(x, power), Math.pow(y, power));
+    public Vector2{{ E }} pow(final {{ e }} power) {
+        return new Vector2{{ E }}(Math.pow(this.x, power), Math.pow(this.y, power));
     }
 
     @Override
     public Vector2{{ E }} ceil() {
-        return new Vector2{{ E }}(Math.ceil(x), Math.ceil(y));
+        return new Vector2{{ E }}(Math.ceil(this.x), Math.ceil(this.y));
     }
 
     @Override
     public Vector2{{ E }} floor() {
-        return new Vector2{{ E }}(GenericMath.floor(x), GenericMath.floor(y));
+        return new Vector2{{ E }}(GenericMath.floor(this.x), GenericMath.floor(this.y));
     }
 
     @Override
     public Vector2{{ E }} round() {
-        return new Vector2{{ E }}(Math.round(x), Math.round(y));
+        return new Vector2{{ E }}(Math.round(this.x), Math.round(this.y));
     }
 
     @Override
     public Vector2{{ E }} abs() {
-        return new Vector2{{ E }}(Math.abs(x), Math.abs(y));
+        return new Vector2{{ E }}(Math.abs(this.x), Math.abs(this.y));
     }
 
     @Override
     public Vector2{{ E }} negate() {
-        return new Vector2{{ E }}(-x, -y);
+        return new Vector2{{ E }}(-this.x, -this.y);
     }
 
-    public Vector2{{ E }} min(Vector2{{ E }} v) {
-        return min(v.x, v.y);
+    public Vector2{{ E }} min(final Vector2{{ E }} v) {
+        return this.min(v.x, v.y);
     }
 
-    public Vector2{{ E }} min({{ EOverload }} x, {{ EOverload }} y) {
-        return min(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} min(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.min(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }} min({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }} min(final {{ e }} x, final {{ e }} y) {
         return new Vector2{{ E }}(Math.min(this.x, x), Math.min(this.y, y));
     }
 
-    public Vector2{{ E }} max(Vector2{{ E }} v) {
-        return max(v.x, v.y);
+    public Vector2{{ E }} max(final Vector2{{ E }} v) {
+        return this.max(v.x, v.y);
     }
 
-    public Vector2{{ E }} max({{ EOverload }} x, {{ EOverload }} y) {
-        return max(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} max(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.max(({{ e }}) x, ({{ e }}) y);
     }
 
-    public Vector2{{ E }} max({{ e }} x, {{ e }} y) {
+    public Vector2{{ E }} max(final {{ e }} x, final {{ e }} y) {
         return new Vector2{{ E }}(Math.max(this.x, x), Math.max(this.y, y));
     }
 
-    public {{ e }} distanceSquared(Vector2{{ E }} v) {
-        return distanceSquared(v.x, v.y);
+    public {{ e }} distanceSquared(final Vector2{{ E }} v) {
+        return this.distanceSquared(v.x, v.y);
     }
 
-    public {{ e }} distanceSquared({{ EOverload }} x, {{ EOverload }} y) {
-        return distanceSquared(({{ e }}) x, ({{ e }}) y);
+    public {{ e }} distanceSquared(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.distanceSquared(({{ e }}) x, ({{ e }}) y);
     }
 
-    public {{ e }} distanceSquared({{ e }} x, {{ e }} y) {
+    public {{ e }} distanceSquared(final {{ e }} x, final {{ e }} y) {
         final {{ e }} dx = this.x - x;
         final {{ e }} dy = this.y - y;
         return dx * dx + dy * dy;
     }
 
-    public {{ e }} distance(Vector2{{ E }} v) {
-        return distance(v.x, v.y);
+    public {{ e }} distance(final Vector2{{ E }} v) {
+        return this.distance(v.x, v.y);
     }
 
-    public {{ e }} distance({{ EOverload }} x, {{ EOverload }} y) {
-        return distance(({{ e }}) x, ({{ e }}) y);
+    public {{ e }} distance(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.distance(({{ e }}) x, ({{ e }}) y);
     }
 
-    public {{ e }} distance({{ e }} x, {{ e }} y) {
-        return ({{ e }}) Math.sqrt(distanceSquared(x, y));
+    public {{ e }} distance(final {{ e }} x, final {{ e }} y) {
+        return ({{ e }}) Math.sqrt(this.distanceSquared(x, y));
     }
 
     @Override
     public {{ e }} lengthSquared() {
-        return x * x + y * y;
+        return this.x * this.x + this.y * this.y;
     }
 
     @Override
     public {{ e }} length() {
-        return ({{ e }}) Math.sqrt(lengthSquared());
+        return ({{ e }}) Math.sqrt(this.lengthSquared());
     }
 
     @Override
     public Vector2{{ E }} normalize() {
-        final {{ e }} length = length();
+        final {{ e }} length = this.length();
         if (Math.abs(length) < {{ Eeps }}) {
             throw new ArithmeticException("Cannot normalize the zero vector");
         }
-        return new Vector2{{ E }}(x / length, y / length);
+        return new Vector2{{ E }}(this.x / length, this.y / length);
     }
 
     /**
@@ -269,7 +270,7 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
      */
     @Override
     public int getMinAxis() {
-        return x < y ? 0 : 1;
+        return this.x < this.y ? 0 : 1;
     }
 
     /**
@@ -279,30 +280,30 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
      */
     @Override
     public int getMaxAxis() {
-        return x > y ? 0 : 1;
+        return this.x > this.y ? 0 : 1;
     }
 
     public Vector3{{ E }} toVector3() {
-        return toVector3(0);
+        return this.toVector3(0);
     }
 
-    public Vector3{{ E }} toVector3({{ EOverload }} z) {
-        return toVector3(({{ e }}) z);
+    public Vector3{{ E }} toVector3(final {{ EOverload }} z) {
+        return this.toVector3(({{ e }}) z);
     }
 
-    public Vector3{{ E }} toVector3({{ e }} z) {
+    public Vector3{{ E }} toVector3(final {{ e }} z) {
         return new Vector3{{ E }}(this, z);
     }
 
     public Vector4{{ E }} toVector4() {
-        return toVector4(0, 0);
+        return this.toVector4(0, 0);
     }
 
-    public Vector4{{ E }} toVector4({{ EOverload }} z, {{ EOverload }} w) {
-        return toVector4(({{ e }}) z, ({{ e }}) w);
+    public Vector4{{ E }} toVector4(final {{ EOverload }} z, final {{ EOverload }} w) {
+        return this.toVector4(({{ e }}) z, ({{ e }}) w);
     }
 
-    public Vector4{{ E }} toVector4({{ e }} z, {{ e }} w) {
+    public Vector4{{ E }} toVector4(final {{ e }} z, final {{ e }} w) {
         return new Vector4{{ E }}(this, z, w);
     }
 
@@ -312,47 +313,47 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
 
     @Override
     public {{ e }}[] toArray() {
-        return new {{ e }}[]{x, y};
+        return new {{ e }}[]{this.x, this.y};
     }
 
     @Override
     public Vector2i toInt() {
-        return new Vector2i(x, y);
+        return new Vector2i(this.x, this.y);
     }
 
     @Override
     public Vector2l toLong() {
-        return new Vector2l(x, y);
+        return new Vector2l(this.x, this.y);
     }
 
     @Override
     public Vector2f toFloat() {
-        return new Vector2f(x, y);
+        return new Vector2f(this.x, this.y);
     }
 
     @Override
     public Vector2d toDouble() {
-        return new Vector2d(x, y);
+        return new Vector2d(this.x, this.y);
     }
 
     @Override
-    public int compareTo(Vector2{{ E }} v) {
-        return (int) Math.signum(lengthSquared() - v.lengthSquared());
+    public int compareTo(final Vector2{{ E }} v) {
+        return (int) Math.signum(this.lengthSquared() - v.lengthSquared());
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(final Object other) {
+        if (this == other) {
             return true;
         }
-        if (!(o instanceof Vector2{{ E }})) {
+        if (!(other instanceof Vector2{{ E }})) {
             return false;
         }
-        final Vector2{{ E }} vector2 = (Vector2{{ E }}) o;
-        if ({{ ET }}.compare(vector2.x, x) != 0) {
+        final Vector2{{ E }} that = (Vector2{{ E }}) other;
+        if ({{ ET }}.compare(that.x, this.x) != 0) {
             return false;
         }
-        if ({{ ET }}.compare(vector2.y, y) != 0) {
+        if ({{ ET }}.compare(that.y, this.y) != 0) {
             return false;
         }
         return true;
@@ -360,12 +361,12 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
 
     @Override
     public int hashCode() {
-        if (!hashed) {
-            final int result = (x != +0.0f ? {{ ET }}.hashCode(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? {{ ET }}.hashCode(y) : 0);
-            hashed = true;
+        if (!this.hashed) {
+            final int result = (this.x != +0.0f ? {{ ET }}.hashCode(this.x) : 0);
+            this.hashCode = 31 * result + (this.y != +0.0f ? {{ ET }}.hashCode(this.y) : 0);
+            this.hashed = true;
         }
-        return hashCode;
+        return this.hashCode;
     }
 
     @Override
@@ -375,15 +376,15 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
 
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return "(" + this.x + ", " + this.y + ")";
     }
 
-    public static Vector2{{ E }} from({{ e }} n) {
-         return n == 0 ? ZERO : new Vector2{{ E }}(n, n);
+    public static Vector2{{ E }} from(final {{ e }} n) {
+         return n == 0 ? Vector2{{ E }}.ZERO : new Vector2{{ E }}(n, n);
     }
 
-    public static Vector2{{ E }} from({{ e }} x, {{ e }} y) {
-         return x == 0 && y == 0 ? ZERO : new Vector2{{ E }}(x, y);
+    public static Vector2{{ E }} from(final {{ e }} x, final {{ e }} y) {
+         return x == 0 && y == 0 ? Vector2{{ E }}.ZERO : new Vector2{{ E }}(x, y);
     }
 
     /**
@@ -392,8 +393,8 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
      * @param random to use
      * @return the random direction vector
      */
-    public static Vector2{{ E }} createRandomDirection(Random random) {
-        return createDirectionRad(random.next{{ ES }}() * ({{ e }}) TrigMath.TWO_PI);
+    public static Vector2{{ E }} createRandomDirection(final Random random) {
+        return Vector2{{ E }}.createDirectionRad(random.next{{ ES }}() * ({{ e }}) TrigMath.TWO_PI);
     }
 
     /**
@@ -402,8 +403,8 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
      * @param angle in degrees
      * @return the direction vector
      */
-    public static Vector2{{ E }} createDirectionDeg({{ EOverload }} angle) {
-        return createDirectionDeg(({{ e }}) angle);
+    public static Vector2{{ E }} createDirectionDeg(final {{ EOverload }} angle) {
+        return Vector2{{ E }}.createDirectionDeg(({{ e }}) angle);
     }
 
     /**
@@ -412,8 +413,8 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
      * @param angle in degrees
      * @return the direction vector
      */
-    public static Vector2{{ E }} createDirectionDeg({{ e }} angle) {
-        return createDirectionRad(({{ e }}) Math.toRadians(angle));
+    public static Vector2{{ E }} createDirectionDeg(final {{ e }} angle) {
+        return Vector2{{ E }}.createDirectionRad(({{ e }}) Math.toRadians(angle));
     }
 
     /**
@@ -422,8 +423,8 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
      * @param angle in radians
      * @return the direction vector
      */
-    public static Vector2{{ E }} createDirectionRad({{ EOverload }} angle) {
-        return createDirectionRad(({{ e }}) angle);
+    public static Vector2{{ E }} createDirectionRad(final {{ EOverload }} angle) {
+        return Vector2{{ E }}.createDirectionRad(({{ e }}) angle);
     }
 
     /**
@@ -432,7 +433,7 @@ public class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>
      * @param angle in radians
      * @return the direction vector
      */
-    public static Vector2{{ E }} createDirectionRad({{ e }} angle) {
+    public static Vector2{{ E }} createDirectionRad(final {{ e }} angle) {
         return new Vector2{{ E }}(TrigMath.cos(angle), TrigMath.sin(angle));
     }
 }

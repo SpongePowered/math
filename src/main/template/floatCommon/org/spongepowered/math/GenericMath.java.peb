@@ -8,7 +8,8 @@ import org.spongepowered.math.vector.*;
 /**
  * Class containing generic mathematical functions.
  */
-public class GenericMath {
+public final class GenericMath {
+
     /**
      * A "close to zero" double epsilon value for use
      */
@@ -28,8 +29,8 @@ public class GenericMath {
      * @param angle2 The second angle
      * @return the positive angle difference
      */
-    public static float getDegreeDifference(float angle1, float angle2) {
-        return Math.abs(wrapAngleDeg(angle1 - angle2));
+    public static float getDegreeDifference(final float angle1, final float angle2) {
+        return Math.abs(GenericMath.wrapAngleDeg(angle1 - angle2));
     }
 
     /**
@@ -39,8 +40,8 @@ public class GenericMath {
      * @param radian2 The second angle
      * @return the positive radian difference
      */
-    public static double getRadianDifference(double radian1, double radian2) {
-        return Math.abs(wrapAngleRad(radian1 - radian2));
+    public static double getRadianDifference(final double radian1, final double radian2) {
+        return Math.abs(GenericMath.wrapAngleRad(radian1 - radian2));
     }
 
     /**
@@ -84,7 +85,7 @@ public class GenericMath {
      * @return -90 &lt; angle &lt; 90
      */
     public static float wrapAnglePitchDeg(float angle) {
-        angle = wrapAngleDeg(angle);
+        angle = GenericMath.wrapAngleDeg(angle);
         if (angle < -90) {
             return -90;
         }
@@ -115,7 +116,7 @@ public class GenericMath {
      * @param decimals to round to
      * @return the rounded number
      */
-    public static double round(double input, int decimals) {
+    public static double round(final double input, final int decimals) {
         final double p = Math.pow(10, decimals);
         return Math.round(input * p) / p;
     }
@@ -128,7 +129,7 @@ public class GenericMath {
      * @param percent The percent
      * @return the interpolated value
      */
-    public static double lerp(double a, double b, double percent) {
+    public static double lerp(final double a, final double b, final double percent) {
         return (1 - percent) * a + percent * b;
     }
 
@@ -140,7 +141,7 @@ public class GenericMath {
      * @param percent The percent
      * @return the interpolated value
      */
-    public static float lerp(float a, float b, float percent) {
+    public static float lerp(final float a, final float b, final float percent) {
         return (1 - percent) * a + percent * b;
     }
 
@@ -152,7 +153,7 @@ public class GenericMath {
      * @param percent The percent
      * @return the interpolated value
      */
-    public static int lerp(int a, int b, int percent) {
+    public static int lerp(final int a, final int b, final int percent) {
         return (1 - percent) * a + percent * b;
     }
 
@@ -165,8 +166,8 @@ public class GenericMath {
     * @param percent The percent
     * @return the interpolated vector
     */
-    public static Vector3{{ type.value.E }} lerp(Vector3{{ type.value.E }} a, Vector3{{ type.value.E }} b, {{ type.value.e }} percent) {
-    return a.mul(1 - percent).add(b.mul(percent));
+    public static Vector3{{ type.value.E }} lerp(final Vector3{{ type.value.E }} a, final Vector3{{ type.value.E }} b, final {{ type.value.e }} percent) {
+        return a.mul(1 - percent).add(b.mul(percent));
     }
 
 {% endfor %}
@@ -179,7 +180,7 @@ public class GenericMath {
     * @param percent The percent
     * @return the interpolated vector
     */
-    public static Vector2{{ type.value.E }} lerp(Vector2{{ type.value.E }} a, Vector2{{ type.value.E }} b, {{ type.value.e }} percent) {
+    public static Vector2{{ type.value.E }} lerp(final Vector2{{ type.value.E }} a, final Vector2{{ type.value.E }} b, final {{ type.value.e }} percent) {
         return a.mul(1 - percent).add(b.mul(percent));
     }
 
@@ -194,7 +195,7 @@ public class GenericMath {
      * @param q1 the second known value (x2)
      * @return the interpolated value
      */
-    public static double lerp(double x, double x1, double x2, double q0, double q1) {
+    public static double lerp(final double x, final double x1, final double x2, final double q0, final double q1) {
         return ((x2 - x) / (x2 - x1)) * q0 + ((x - x1) / (x2 - x1)) * q1;
     }
 
@@ -206,11 +207,11 @@ public class GenericMath {
      * @param percent The percent
      * @return Color
      */
-    public static Color lerp(Color a, Color b, float percent) {
-        int red = (int) lerp(a.getRed(), b.getRed(), percent);
-        int blue = (int) lerp(a.getBlue(), b.getBlue(), percent);
-        int green = (int) lerp(a.getGreen(), b.getGreen(), percent);
-        int alpha = (int) lerp(a.getAlpha(), b.getAlpha(), percent);
+    public static Color lerp(final Color a, final Color b, final float percent) {
+        final int red = (int) GenericMath.lerp(a.getRed(), b.getRed(), percent);
+        final int blue = (int) GenericMath.lerp(a.getBlue(), b.getBlue(), percent);
+        final int green = (int) GenericMath.lerp(a.getGreen(), b.getGreen(), percent);
+        final int alpha = (int) GenericMath.lerp(a.getAlpha(), b.getAlpha(), percent);
         return new Color(red, green, blue, alpha);
     }
 
@@ -223,7 +224,7 @@ public class GenericMath {
     * @param percent The percent for the interpolation, between 0 and 1 inclusively
     * @return The interpolated quaternion
     */
-    public static Quaternion{{ type.value.E }} slerp(Quaternion{{ type.value.E }} a, Quaternion{{ type.value.E }} b, {{ type.value.e }} percent) {
+    public static Quaternion{{ type.value.E }} slerp(final Quaternion{{ type.value.E }} a, final Quaternion{{ type.value.E }} b, final {{ type.value.e }} percent) {
         final {{ type.value.e }} inverted;
         {{ type.value.e }} cosineTheta = a.dot(b);
         if (cosineTheta < 0) {
@@ -252,7 +253,7 @@ public class GenericMath {
     * @param percent The percent for the interpolation, between 0 and 1 inclusively
     * @return The interpolated quaternion
     */
-    public static Quaternion{{ type.value.E }} lerp(Quaternion{{ type.value.E }} a, Quaternion{{ type.value.E }} b, {{ type.value.e }} percent) {
+    public static Quaternion{{ type.value.E }} lerp(final Quaternion{{ type.value.E }} a, final Quaternion{{ type.value.E }} b, final {{ type.value.e }} percent) {
         return a.mul(1 - percent).add(b.mul(percent));
     }
 
@@ -272,11 +273,11 @@ public class GenericMath {
      * @param y2 the Y coord of q01 and q11
      * @return the interpolated value
      */
-    public static double biLerp(double x, double y, double q00, double q01,
-                                double q10, double q11, double x1, double x2, double y1, double y2) {
-        double q0 = lerp(x, x1, x2, q00, q10);
-        double q1 = lerp(x, x1, x2, q01, q11);
-        return lerp(y, y1, y2, q0, q1);
+    public static double biLerp(final double x, final double y, final double q00, final double q01,
+                                final double q10, final double q11, final double x1, final double x2, final double y1, final double y2) {
+        final double q0 = GenericMath.lerp(x, x1, x2, q00, q10);
+        final double q1 = GenericMath.lerp(x, x1, x2, q01, q11);
+        return GenericMath.lerp(y, y1, y2, q0, q1);
     }
 
     /**
@@ -301,16 +302,16 @@ public class GenericMath {
      * @param z2 the Z coord of q010, q011, q110 and q111
      * @return the interpolated value
      */
-    public static double triLerp(double x, double y, double z, double q000, double q001,
-                                 double q010, double q011, double q100, double q101, double q110, double q111,
-                                 double x1, double x2, double y1, double y2, double z1, double z2) {
-        double q00 = lerp(x, x1, x2, q000, q100);
-        double q01 = lerp(x, x1, x2, q010, q110);
-        double q10 = lerp(x, x1, x2, q001, q101);
-        double q11 = lerp(x, x1, x2, q011, q111);
-        double q0 = lerp(y, y1, y2, q00, q10);
-        double q1 = lerp(y, y1, y2, q01, q11);
-        return lerp(z, z1, z2, q0, q1);
+    public static double triLerp(final double x, final double y, final double z, final double q000, final double q001,
+                                 final double q010, final double q011, final double q100, final double q101, final double q110, final double q111,
+                                 final double x1, final double x2, final double y1, final double y2, final double z1, final double z2) {
+        final double q00 = GenericMath.lerp(x, x1, x2, q000, q100);
+        final double q01 = GenericMath.lerp(x, x1, x2, q010, q110);
+        final double q10 = GenericMath.lerp(x, x1, x2, q001, q101);
+        final double q11 = GenericMath.lerp(x, x1, x2, q011, q111);
+        final double q0 = GenericMath.lerp(y, y1, y2, q00, q10);
+        final double q1 = GenericMath.lerp(y, y1, y2, q01, q11);
+        return GenericMath.lerp(z, z1, z2, q0, q1);
     }
 
     /**
@@ -320,8 +321,8 @@ public class GenericMath {
      * @param b The second color
      * @return The blended color
      */
-    public static Color blend(Color a, Color b) {
-        return lerp(a, b, a.getAlpha() / 255f);
+    public static Color blend(final Color a, final Color b) {
+        return GenericMath.lerp(a, b, a.getAlpha() / 255f);
     }
 
     /**
@@ -332,7 +333,7 @@ public class GenericMath {
      * @param high The high bound of the clamp
      * @return the clamped value
      */
-    public static double clamp(double value, double low, double high) {
+    public static double clamp(final double value, final double low, final double high) {
         if (value < low) {
             return low;
         }
@@ -350,7 +351,7 @@ public class GenericMath {
      * @param high The high bound of the clamp
      * @return the clamped value
      */
-    public static int clamp(int value, int low, int high) {
+    public static int clamp(final int value, final int low, final int high) {
         if (value < low) {
             return low;
         }
@@ -378,8 +379,8 @@ public class GenericMath {
      * @param a The value
      * @return The estimate of the square root
      */
-    public static double sqrt(double a) {
-        return a * inverseSqrt(a);
+    public static double sqrt(final double a) {
+        return a * GenericMath.inverseSqrt(a);
     }
 
     /**
@@ -388,8 +389,8 @@ public class GenericMath {
      * @param a The value to floor
      * @return The closest integer
      */
-    public static int floor(double a) {
-        int y = (int) a;
+    public static int floor(final double a) {
+        final int y = (int) a;
         if (a < y) {
             return y - 1;
         }
@@ -402,8 +403,8 @@ public class GenericMath {
      * @param a The value to floor
      * @return The closest integer
      */
-    public static int floor(float a) {
-        int y = (int) a;
+    public static int floor(final float a) {
+        final int y = (int) a;
         if (a < y) {
             return y - 1;
         }
@@ -416,8 +417,8 @@ public class GenericMath {
      * @param a The value to floor
      * @return The closest long
      */
-    public static long floorl(double a) {
-        long y = (long) a;
+    public static long floorl(final double a) {
+        final long y = (long) a;
         if (a < y) {
             return y - 1;
         }
@@ -430,8 +431,8 @@ public class GenericMath {
      * @param a The value to floor
      * @return The closest long
      */
-    public static long floorl(float a) {
-        long y = (long) a;
+    public static long floorl(final float a) {
+        final long y = (long) a;
         if (a < y) {
             return y - 1;
         }
@@ -445,7 +446,7 @@ public class GenericMath {
      * @param value2 The second value
      * @return the maximum of value1 and value2
      */
-    public static byte max(byte value1, byte value2) {
+    public static byte max(final byte value1, final byte value2) {
         return value1 > value2 ? value1 : value2;
     }
 
@@ -502,7 +503,7 @@ public class GenericMath {
      * @param o The object to attempt to cast
      * @return The object as a float
      */
-    public static Float castFloat(Object o) {
+    public static Float castFloat(final Object o) {
         if (o == null) {
             return null;
         }
@@ -511,7 +512,7 @@ public class GenericMath {
         }
         try {
             return Float.valueOf(o.toString());
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException ex) {
             return null;
         }
     }
@@ -522,7 +523,7 @@ public class GenericMath {
      * @param o The object to attempt to cast
      * @return The object as a byte
      */
-    public static Byte castByte(Object o) {
+    public static Byte castByte(final Object o) {
         if (o == null) {
             return null;
         }
@@ -531,7 +532,7 @@ public class GenericMath {
         }
         try {
             return Byte.valueOf(o.toString());
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException ex) {
             return null;
         }
     }
@@ -542,7 +543,7 @@ public class GenericMath {
      * @param o The object to attempt to cast
      * @return The object as a short
      */
-    public static Short castShort(Object o) {
+    public static Short castShort(final Object o) {
         if (o == null) {
             return null;
         }
@@ -551,7 +552,7 @@ public class GenericMath {
         }
         try {
             return Short.valueOf(o.toString());
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException ex) {
             return null;
         }
     }
@@ -562,7 +563,7 @@ public class GenericMath {
      * @param o The object to attempt to cast
      * @return The object as an int
      */
-    public static Integer castInt(Object o) {
+    public static Integer castInt(final Object o) {
         if (o == null) {
             return null;
         }
@@ -571,7 +572,7 @@ public class GenericMath {
         }
         try {
             return Integer.valueOf(o.toString());
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException ex) {
             return null;
         }
     }
@@ -582,7 +583,7 @@ public class GenericMath {
      * @param o The object to attempt to cast
      * @return The object as a double
      */
-    public static Double castDouble(Object o) {
+    public static Double castDouble(final Object o) {
         if (o == null) {
             return null;
         }
@@ -591,7 +592,7 @@ public class GenericMath {
         }
         try {
             return Double.valueOf(o.toString());
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException ex) {
             return null;
         }
     }
@@ -602,7 +603,7 @@ public class GenericMath {
      * @param o The object to attempt to cast
      * @return The object as a long
      */
-    public static Long castLong(Object o) {
+    public static Long castLong(final Object o) {
         if (o == null) {
             return null;
         }
@@ -611,7 +612,7 @@ public class GenericMath {
         }
         try {
             return Long.valueOf(o.toString());
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException ex) {
             return null;
         }
     }
@@ -622,7 +623,7 @@ public class GenericMath {
      * @param o The object to attempt to cast
      * @return The object as a boolean
      */
-    public static Boolean castBoolean(Object o) {
+    public static Boolean castBoolean(final Object o) {
         if (o == null) {
             return null;
         }
@@ -631,7 +632,7 @@ public class GenericMath {
         } else if (o instanceof String) {
             try {
                 return Boolean.parseBoolean((String) o);
-            } catch (IllegalArgumentException e) {
+            } catch (final IllegalArgumentException ex) {
                 return null;
             }
         }
@@ -645,9 +646,9 @@ public class GenericMath {
      * @param values to calculate the mean of
      * @return the mean of the values
      */
-    public static int mean(int... values) {
+    public static int mean(final int... values) {
         int sum = 0;
-        for (int v : values) {
+        for (final int v : values) {
             sum += v;
         }
         return sum / values.length;
@@ -659,9 +660,9 @@ public class GenericMath {
      * @param values to calculate the mean of
      * @return the mean of the values
      */
-    public static double mean(double... values) {
+    public static double mean(final double... values) {
         double sum = 0;
-        for (double v : values) {
+        for (final double v : values) {
             sum += v;
         }
         return sum / values.length;
@@ -674,7 +675,7 @@ public class GenericMath {
      * @param minDigits The minimum of digits in the hexadecimal form
      * @return The integer in hexadecimal form
      */
-    public static String decToHex(int dec, int minDigits) {
+    public static String decToHex(final int dec, final int minDigits) {
         String ret = Integer.toHexString(dec);
         while (ret.length() < minDigits) {
             ret = '0' + ret;
@@ -689,7 +690,7 @@ public class GenericMath {
      * @param div The div as an int
      * @return The corrected modulo
      */
-    public static int mod(int a, int div) {
+    public static int mod(final int a, final int div) {
         final int remainder = a % div;
         return remainder < 0 ? remainder + div : remainder;
     }
@@ -702,7 +703,7 @@ public class GenericMath {
      * @param div The divider
      * @return The corrected modulo
      */
-    public static {{ type.value.e }} mod({{ type.value.e }} a, {{ type.value.e }} div) {
+    public static {{ type.value.e }} mod(final {{ type.value.e }} a, final {{ type.value.e }} div) {
         final {{ type.value.e }} remainder = a % div;
         return remainder < 0 ? remainder + div : remainder;
     }
@@ -714,7 +715,7 @@ public class GenericMath {
      * @param num the number to check
      * @return true if num is a power of two
      */
-    public static boolean isPowerOfTwo(int num) {
+    public static boolean isPowerOfTwo(final int num) {
         return num > 0 && ((num & (num - 1)) == 0);
     }
 
@@ -724,17 +725,18 @@ public class GenericMath {
      * @param a the multiplicand
      * @return the left shift required to multiply by the multiplicand
      */
-    public static int multiplyToShift(int a) {
+    public static int multiplyToShift(final int a) {
         if (a < 1) {
             throw new IllegalArgumentException("Multiplicand must be at least 1");
         }
-        int shift = 31 - Integer.numberOfLeadingZeros(a);
+        final int shift = 31 - Integer.numberOfLeadingZeros(a);
         if ((1 << shift) != a) {
             throw new IllegalArgumentException("Multiplicand must be a power of 2");
         }
         return shift;
     }
 
+{% for N in ["2", "3", "4"] %}
 {% for type in variants %}
     /**
      * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
@@ -742,14 +744,15 @@ public class GenericMath {
      * @param v The vector to attempt to normalize
      * @return The normalized vector, or the zero vector if it couldn't be normalized.
      */
-    public static Vector2{{ type.value.E }} normalizeSafe(Vector2{{ type.value.E }} v) {
+    public static Vector{{ N }}{{ type.value.E }} normalizeSafe(final Vector{{ N }}{{ type.value.E }} v) {
         try {
             return v.normalize();
-        } catch (ArithmeticException ex) {
-            return Vector2{{ type.value.E }}.ZERO;
+        } catch (final ArithmeticException ex) {
+            return Vector{{ N }}{{ type.value.E }}.ZERO;
         }
     }
 
+{% endfor %}
 {% endfor %}
 {% for type in variants %}
     /**
@@ -758,42 +761,10 @@ public class GenericMath {
      * @param v The vector to attempt to normalize
      * @return The normalized vector, or the zero vector if it couldn't be normalized.
      */
-    public static Vector3{{ type.value.E }} normalizeSafe(Vector3{{ type.value.E }} v) {
+    public static VectorN{{ type.value.E }} normalizeSafe(final VectorN{{ type.value.E }} v) {
         try {
             return v.normalize();
-        } catch (ArithmeticException ex) {
-            return Vector3{{ type.value.E }}.ZERO;
-        }
-    }
-
-{% endfor %}
-{% for type in variants %}
-    /**
-     * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
-     *
-     * @param v The vector to attempt to normalize
-     * @return The normalized vector, or the zero vector if it couldn't be normalized.
-     */
-    public static Vector4{{ type.value.E }} normalizeSafe(Vector4{{ type.value.E }} v) {
-        try {
-            return v.normalize();
-        } catch (ArithmeticException ex) {
-            return Vector4{{ type.value.E }}.ZERO;
-        }
-    }
-
-{% endfor %}
-{% for type in variants %}
-    /**
-    * Attempts to normalize a vector. If this fails, the method catches the exception and return a zero vector of the same dimension instead.
-    *
-    * @param v The vector to attempt to normalize
-    * @return The normalized vector, or the zero vector if it couldn't be normalized.
-    */
-    public static VectorN{{ type.value.E }} normalizeSafe(VectorN{{ type.value.E }} v) {
-        try {
-            return v.normalize();
-        } catch (ArithmeticException ex) {
+        } catch (final ArithmeticException ex) {
             return new VectorN{{ type.value.E }}(v.size());
         }
     }

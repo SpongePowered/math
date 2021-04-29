@@ -14,61 +14,61 @@ import org.spongepowered.math.vector.VectorN{{ E }};
 public class Vector4{{ E }}Test {
     @Test
     public void testEmptyConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}();
+        final Vector4{{ E }} vector = new Vector4{{ E }}();
         TestUtil{{ E }}.assertEquals(vector, 0, 0, 0, 0);
     }
 
     @Test
     public void testCopyVector2DefaultZWConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(new Vector2{{ E }}(0, 1));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(new Vector2{{ E }}(0, 1));
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 0, 0);
     }
 
     @Test
     public void testCopyVector2{{ ES }}ZWConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(new Vector2{{ E }}(0, 1), ({{ e }}) 1, ({{ e }}) 2);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(new Vector2{{ E }}(0, 1), ({{ e }}) 1, ({{ e }}) 2);
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 1, 2);
     }
 
     @Test
     public void testCopyVector3DefaultWConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(new Vector3{{ E }}(0, 1, 1));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(new Vector3{{ E }}(0, 1, 1));
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 1, 0);
     }
 
     @Test
     public void testCopyVector3{{ ES }}WConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(new Vector3{{ E }}(0, 1, 1), ({{ e }}) 2);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(new Vector3{{ E }}(0, 1, 1), ({{ e }}) 2);
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 1, 2);
     }
 
     @Test
     public void testCopyVector4Constructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(new Vector4{{ E }}(0, 1, 1, 2));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(new Vector4{{ E }}(0, 1, 1, 2));
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 1, 2);
     }
 
     @Test
     public void testCopyVectorNConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(new VectorN{{ E }}(0, 1, 1, 2, 5));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(new VectorN{{ E }}(0, 1, 1, 2, 5));
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 1, 2);
     }
 
     @Test
     public void testDoubleComponentsConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(0.5, 1.7, 3.8, 5.5);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(0.5, 1.7, 3.8, 5.5);
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 3, 5);
     }
 
     @Test
     public void test{{ ES }}ComponentsConstructor() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(({{ e }}) 0, ({{ e }}) 1, ({{ e }}) 3, ({{ e }}) 5);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(({{ e }}) 0, ({{ e }}) 1, ({{ e }}) 3, ({{ e }}) 5);
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 3, 5);
     }
 
     @Test
     public void testGetters() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 3, 5);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 3, 5);
         TestUtil{{ E }}.assertEquals(vector.getX(), 0);
         TestUtil{{ E }}.assertEquals(vector.getY(), 1);
         TestUtil{{ E }}.assertEquals(vector.getZ(), 3);
@@ -77,301 +77,301 @@ public class Vector4{{ E }}Test {
 
     @Test
     public void testVector4Addition() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 1, 1).add(new Vector4{{ E }}(5, -2, 3, 5));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 1, 1).add(new Vector4{{ E }}(5, -2, 3, 5));
         TestUtil{{ E }}.assertEquals(vector, 5, -1, 4, 6);
     }
 
     @Test
     public void testDoubleComponentsAddition() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 1, 1).add(5.5, -2.5, 3.8, 5.5);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 1, 1).add(5.5, -2.5, 3.8, 5.5);
         TestUtil{{ E }}.assertEquals(vector, 5, -2, 4, 6);
     }
 
     @Test
     public void test{{ ES }}ComponentsAddition() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 1, 1).add(({{ e }}) 5, ({{ e }}) -2, ({{ e }}) 3, ({{ e }}) 5);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(0, 1, 1, 1).add(({{ e }}) 5, ({{ e }}) -2, ({{ e }}) 3, ({{ e }}) 5);
         TestUtil{{ E }}.assertEquals(vector, 5, -1, 4, 6);
     }
 
     @Test
     public void testVector4Subtraction() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(10, 5, 1, 1).sub(new Vector4{{ E }}(9, 4, 2, 1));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(10, 5, 1, 1).sub(new Vector4{{ E }}(9, 4, 2, 1));
         TestUtil{{ E }}.assertEquals(vector, 1, 1, -1, 0);
     }
 
     @Test
     public void testDoubleComponentsSubtraction() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(10, 5, 1, 1).sub(9, 4.5, 2, 1);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(10, 5, 1, 1).sub(9, 4.5, 2, 1);
         TestUtil{{ E }}.assertEquals(vector, 1, 1, -1, 0);
     }
 
     @Test
     public void test{{ ES }}ComponentsSubtraction() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(10, 5, 1, 1).sub(({{ e }}) 9, ({{ e }}) 4, ({{ e }}) 2, ({{ e }}) 1);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(10, 5, 1, 1).sub(({{ e }}) 9, ({{ e }}) 4, ({{ e }}) 2, ({{ e }}) 1);
         TestUtil{{ E }}.assertEquals(vector, 1, 1, -1, 0);
     }
 
     @Test
     public void testDoubleFactorMultiplication() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(2.5);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(2.5);
         TestUtil{{ E }}.assertEquals(vector, 4, 6, 8, 10);
     }
 
     @Test
     public void test{{ ES }}FactorMultiplication() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(({{ e }}) 2);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(({{ e }}) 2);
         TestUtil{{ E }}.assertEquals(vector, 4, 6, 8, 10);
     }
 
     @Test
     public void testVector4Multiplication() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(new Vector4{{ E }}(1, 2, 3, 4));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(new Vector4{{ E }}(1, 2, 3, 4));
         TestUtil{{ E }}.assertEquals(vector, 2, 6, 12, 20);
     }
 
     @Test
     public void testDoubleComponentsMultiplication() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(1.1, 2.5, 3.2, 4.3);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(1.1, 2.5, 3.2, 4.3);
         TestUtil{{ E }}.assertEquals(vector, 2, 6, 12, 20);
     }
 
     @Test
     public void test{{ ES }}ComponentsMultiplication() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(({{ e }}) 1, ({{ e }}) 2, ({{ e }}) 3, ({{ e }}) 4);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 4, 5).mul(({{ e }}) 1, ({{ e }}) 2, ({{ e }}) 3, ({{ e }}) 4);
         TestUtil{{ E }}.assertEquals(vector, 2, 6, 12, 20);
     }
 
     @Test
     public void testDoubleFactorDivision() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 5, 7).div(2.1);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 5, 7).div(2.1);
         TestUtil{{ E }}.assertEquals(vector, 1, 1, 2, 3);
     }
 
     @Test
     public void test{{ ES }}FactorDivision() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 5, 7).div(({{ e }}) 2);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 3, 5, 7).div(({{ e }}) 2);
         TestUtil{{ E }}.assertEquals(vector, 1, 1, 2, 3);
     }
 
     @Test
     public void testVector4Division() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 16, 28).div(new Vector4{{ E }}(2, 4, 8, 9));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 16, 28).div(new Vector4{{ E }}(2, 4, 8, 9));
         TestUtil{{ E }}.assertEquals(vector, 1, 1, 2, 3);
     }
 
     @Test
     public void testDoubleComponentsDivision() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 16, 28).div(2.5, 4.1, 8.3, 9.2);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 16, 28).div(2.5, 4.1, 8.3, 9.2);
         TestUtil{{ E }}.assertEquals(vector, 1, 1, 2, 3);
     }
 
     @Test
     public void test{{ ES }}ComponentsDivision() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 16, 28).div(({{ e }}) 2, ({{ e }}) 4, ({{ e }}) 8, ({{ e }}) 9);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 16, 28).div(({{ e }}) 2, ({{ e }}) 4, ({{ e }}) 8, ({{ e }}) 9);
         TestUtil{{ E }}.assertEquals(vector, 1, 1, 2, 3);
     }
 
     @Test
     public void testVector4DotProduct() {
-        {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).dot(new Vector4{{ E }}(6, 7, 8, 9));
+        final {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).dot(new Vector4{{ E }}(6, 7, 8, 9));
         TestUtil{{ E }}.assertEquals(f, 110);
     }
 
     @Test
     public void testVector4Project() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(20, 30, 40, 50).project(new Vector4{{ E }}(10, 10, 10, 10));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(20, 30, 40, 50).project(new Vector4{{ E }}(10, 10, 10, 10));
         TestUtil{{ E }}.assertEquals(vector, 35, 35, 35, 35);
     }
 
     @Test
     public void testDoubleComponentsProject() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(20, 30, 40, 50).project(10d, 10d, 10d, 10d);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(20, 30, 40, 50).project(10d, 10d, 10d, 10d);
         TestUtil{{ E }}.assertEquals(vector, 35, 35, 35, 35);
     }
 
     @Test
     public void testFloatComponentsProject() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(20, 30, 40, 50).project(10, 10, 10, 10);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(20, 30, 40, 50).project(10, 10, 10, 10);
         TestUtil{{ E }}.assertEquals(vector, 35, 35, 35, 35);
     }
 
     @Test
     public void testDoubleComponentsDotProduct() {
-        {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).dot(6.1, 7.5, 8.3, 9.2);
+        final {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).dot(6.1, 7.5, 8.3, 9.2);
         TestUtil{{ E }}.assertEquals(f, 110);
     }
 
     @Test
     public void test{{ ES }}ComponentsDotProduct() {
-        {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).dot(6, 7, 8, 9);
+        final {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).dot(6, 7, 8, 9);
         TestUtil{{ E }}.assertEquals(f, 110);
     }
 
     @Test
     public void testRaiseTo{{ ES }}Power() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 8, 5).pow(({{ e }}) 2);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 8, 5).pow(({{ e }}) 2);
         TestUtil{{ E }}.assertEquals(vector, 4, 36, 64, 25);
     }
 
     @Test
     public void testRaiseToDoublePower() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 8, 5).pow(2d);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, 8, 5).pow(2d);
         TestUtil{{ E }}.assertEquals(vector, 4, 36, 64, 25);
     }
 
     @Test
     public void testAbsolute() {
-        Vector4{{ E }} vector1 = new Vector4{{ E }}(-2, -6, -55, 0).abs();
+        final Vector4{{ E }} vector1 = new Vector4{{ E }}(-2, -6, -55, 0).abs();
         TestUtil{{ E }}.assertEquals(vector1, 2, 6, 55, 0);
-        Vector4{{ E }} vector2 = new Vector4{{ E }}(2, 6, 55, 0).abs();
+        final Vector4{{ E }} vector2 = new Vector4{{ E }}(2, 6, 55, 0).abs();
         TestUtil{{ E }}.assertEquals(vector2, 2, 6, 55, 0);
     }
 
     @Test
     public void testNegate() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, -6, 15, 20).negate();
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, -6, 15, 20).negate();
         TestUtil{{ E }}.assertEquals(vector, -2, 6, -15, -20);
     }
 
     @Test
     public void testVector4Minimum() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).min(new Vector4{{ E }}(3, 4, 10, -1));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).min(new Vector4{{ E }}(3, 4, 10, -1));
         TestUtil{{ E }}.assertEquals(vector, 2, 4, -1, -1);
     }
 
     @Test
     public void testDoubleComponentsMinimum() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).min(3, 4, 10, -1.1);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).min(3, 4, 10, -1.1);
         TestUtil{{ E }}.assertEquals(vector, 2, 4, -1, -2);
     }
 
     @Test
     public void test{{ ES }}ComponentsMinimum() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).min(({{ e }}) 3, ({{ e }}) 4, ({{ e }}) 10, ({{ e }}) -1);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).min(({{ e }}) 3, ({{ e }}) 4, ({{ e }}) 10, ({{ e }}) -1);
         TestUtil{{ E }}.assertEquals(vector, 2, 4, -1, -1);
     }
 
     @Test
     public void testVector4Maximum() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).max(new Vector4{{ E }}(3, 4, 10, -1));
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).max(new Vector4{{ E }}(3, 4, 10, -1));
         TestUtil{{ E }}.assertEquals(vector, 3, 6, 10, 0);
     }
 
     @Test
     public void testDoubleComponentsMaximum() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).max(3, 4, 10, -1.1);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).max(3, 4, 10, -1.1);
         TestUtil{{ E }}.assertEquals(vector, 3, 6, 10, 0);
     }
 
     @Test
     public void test{{ ES }}ComponentsMaximum() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).max(({{ e }}) 3, ({{ e }}) 4, ({{ e }}) 10, ({{ e }}) -1);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(2, 6, -1, 0).max(({{ e }}) 3, ({{ e }}) 4, ({{ e }}) 10, ({{ e }}) -1);
         TestUtil{{ E }}.assertEquals(vector, 3, 6, 10, 0);
     }
 
     @Test
     public void testVector4DistanceSquared() {
-        {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).distanceSquared(new Vector4{{ E }}(5, 6, 7, 8));
+        final {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).distanceSquared(new Vector4{{ E }}(5, 6, 7, 8));
         TestUtil{{ E }}.assertEquals(f, 36);
     }
 
     @Test
     public void testDoubleComponentsDistanceSquared() {
-        {{ e }} f = new Vector4{{ E }}(2, 3, 4, 1).distanceSquared(5.1, 6.5, 7.3, 1.2);
+        final {{ e }} f = new Vector4{{ E }}(2, 3, 4, 1).distanceSquared(5.1, 6.5, 7.3, 1.2);
         TestUtil{{ E }}.assertEquals(f, 27);
     }
 
     @Test
     public void test{{ ES }}ComponentsDistanceSquared() {
-        {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).distanceSquared(({{ e }}) 5, ({{ e }}) 6, ({{ e }}) 7, ({{ e }}) 5);
+        final {{ e }} f = new Vector4{{ E }}(2, 3, 4, 5).distanceSquared(({{ e }}) 5, ({{ e }}) 6, ({{ e }}) 7, ({{ e }}) 5);
         TestUtil{{ E }}.assertEquals(f, 27);
     }
 
     @Test
     public void testVector4Distance() {
-        {{ EDecEqui }} f = new Vector4{{ E }}(0, 6, 13, 8).distance(new Vector4{{ E }}(2, 8, 16, 16));
+        final {{ EDecEqui }} f = new Vector4{{ E }}(0, 6, 13, 8).distance(new Vector4{{ E }}(2, 8, 16, 16));
         {{ EDecEquiTest }}.assertEquals(f, 9);
     }
 
     @Test
     public void testDoubleComponentsDistance() {
-        {{ EDecEqui }} f = new Vector4{{ E }}(0, 6, 13, 8).distance(new Vector4{{ E }}(2d, 8.3, 16.5, 16.1));
+        final {{ EDecEqui }} f = new Vector4{{ E }}(0, 6, 13, 8).distance(new Vector4{{ E }}(2d, 8.3, 16.5, 16.1));
         {{ EDecEquiTest }}.assertEquals(f, 9);
     }
 
     @Test
     public void test{{ ES }}ComponentsDistance() {
-        {{ EDecEqui }} f = new Vector4{{ E }}(0, 6, 13, 8).distance(new Vector4{{ E }}(({{ e }}) 2, ({{ e }}) 8, ({{ e }}) 16, ({{ e }}) 16));
+        final {{ EDecEqui }} f = new Vector4{{ E }}(0, 6, 13, 8).distance(new Vector4{{ E }}(({{ e }}) 2, ({{ e }}) 8, ({{ e }}) 16, ({{ e }}) 16));
         {{ EDecEquiTest }}.assertEquals(f, 9);
     }
 
     @Test
     public void testLength() {
-        {{ EDecEqui }} f = new Vector4{{ E }}(2, 2, 3, 8).length();
+        final {{ EDecEqui }} f = new Vector4{{ E }}(2, 2, 3, 8).length();
         {{ EDecEquiTest }}.assertEquals(f, 9);
     }
 
     @Test
     public void testLengthSquared() {
-        {{ e }} f = new Vector4{{ E }}(3, 4, 5, 6).lengthSquared();
+        final {{ e }} f = new Vector4{{ E }}(3, 4, 5, 6).lengthSquared();
         TestUtil{{ E }}.assertEquals(f, 86);
     }
 
     @Test
     public void testGetMinAxis() {
-        Vector4{{ E }} vector1 = new Vector4{{ E }}(1, 2, 3, 4);
+        final Vector4{{ E }} vector1 = new Vector4{{ E }}(1, 2, 3, 4);
         TestUtili.assertEquals(vector1.getMinAxis(), 0);
-        Vector4{{ E }} vector2 = new Vector4{{ E }}(2, 1, 3, 4);
+        final Vector4{{ E }} vector2 = new Vector4{{ E }}(2, 1, 3, 4);
         TestUtili.assertEquals(vector2.getMinAxis(), 1);
-        Vector4{{ E }} vector3 = new Vector4{{ E }}(3, 2, 1, 4);
+        final Vector4{{ E }} vector3 = new Vector4{{ E }}(3, 2, 1, 4);
         TestUtili.assertEquals(vector3.getMinAxis(), 2);
-        Vector4{{ E }} vector4 = new Vector4{{ E }}(4, 2, 3, 1);
+        final Vector4{{ E }} vector4 = new Vector4{{ E }}(4, 2, 3, 1);
         TestUtili.assertEquals(vector4.getMinAxis(), 3);
     }
 
     @Test
     public void testGetMaxAxis() {
-        Vector4{{ E }} vector1 = new Vector4{{ E }}(4, 2, 3, 1);
+        final Vector4{{ E }} vector1 = new Vector4{{ E }}(4, 2, 3, 1);
         TestUtili.assertEquals(vector1.getMaxAxis(), 0);
-        Vector4{{ E }} vector2 = new Vector4{{ E }}(1, 4, 3, 2);
+        final Vector4{{ E }} vector2 = new Vector4{{ E }}(1, 4, 3, 2);
         TestUtili.assertEquals(vector2.getMaxAxis(), 1);
-        Vector4{{ E }} vector3 = new Vector4{{ E }}(1, 2, 4, 3);
+        final Vector4{{ E }} vector3 = new Vector4{{ E }}(1, 2, 4, 3);
         TestUtili.assertEquals(vector3.getMaxAxis(), 2);
-        Vector4{{ E }} vector4 = new Vector4{{ E }}(1, 2, 3, 4);
+        final Vector4{{ E }} vector4 = new Vector4{{ E }}(1, 2, 3, 4);
         TestUtili.assertEquals(vector4.getMaxAxis(), 3);
     }
 
     @Test
     public void testConvertToVector2() {
-        Vector2{{ E }} vector = new Vector4{{ E }}(1, 2, 3, 4).toVector2();
+        final Vector2{{ E }} vector = new Vector4{{ E }}(1, 2, 3, 4).toVector2();
         TestUtil{{ E }}.assertEquals(vector, 1, 2);
     }
 
     @Test
     public void testConvertToVector3() {
-        Vector3{{ E }} vector = new Vector4{{ E }}(1, 2, 3, 4).toVector3();
+        final Vector3{{ E }} vector = new Vector4{{ E }}(1, 2, 3, 4).toVector3();
         TestUtil{{ E }}.assertEquals(vector, 1, 2, 3);
     }
 
     @Test
     public void testConvertToVectorN() {
-        VectorN{{ E }} vector = new Vector4{{ E }}(1, 2, 3, 4).toVectorN();
+        final VectorN{{ E }} vector = new Vector4{{ E }}(1, 2, 3, 4).toVectorN();
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) 1, ({{ e }}) 2, ({{ e }}) 3, ({{ e }}) 4);
     }
 
     @Test
     public void testConvertToArray() {
-        {{ e }}[] array = new Vector4{{ E }}(1, 2, 3, 4).toArray();
+        final {{ e }}[] array = new Vector4{{ E }}(1, 2, 3, 4).toArray();
         TestUtil{{ E }}.assertEquals(array, ({{ e }}) 1, ({{ e }}) 2, ({{ e }}) 3, ({{ e }}) 4);
     }
 
     @Test
     public void testComparison() {
-        int c1 = new Vector4{{ E }}(10, 20, 30, 40).compareTo(new Vector4{{ E }}(20, 20, 30, 40));
+        final int c1 = new Vector4{{ E }}(10, 20, 30, 40).compareTo(new Vector4{{ E }}(20, 20, 30, 40));
         Assert.assertTrue(c1 < 0);
-        int c2 = new Vector4{{ E }}(10, 20, 30, 40).compareTo(new Vector4{{ E }}(10, 20, 30, 40));
+        final int c2 = new Vector4{{ E }}(10, 20, 30, 40).compareTo(new Vector4{{ E }}(10, 20, 30, 40));
         Assert.assertTrue(c2 == 0);
-        int c3 = new Vector4{{ E }}(10, 20, 30, 40).compareTo(new Vector4{{ E }}(10, 10, 30, 40));
+        final int c3 = new Vector4{{ E }}(10, 20, 30, 40).compareTo(new Vector4{{ E }}(10, 10, 30, 40));
         Assert.assertTrue(c3 > 0);
     }
 
@@ -383,7 +383,7 @@ public class Vector4{{ E }}Test {
 
     @Test
     public void testCloning() {
-        Vector4{{ E }} vector = new Vector4{{ E }}(3, 2, 5, 6);
+        final Vector4{{ E }} vector = new Vector4{{ E }}(3, 2, 5, 6);
         Assert.assertEquals(vector, vector.clone());
     }
 }

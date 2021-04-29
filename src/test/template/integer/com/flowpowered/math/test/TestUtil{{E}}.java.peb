@@ -8,48 +8,48 @@ import org.spongepowered.math.vector.Vector4{{ E }};
 import org.spongepowered.math.vector.VectorN{{ E }};
 
 public class TestUtil{{ E }} {
-    public static void assertEquals({{ e }} value, {{ e }} expected) {
+    public static void assertEquals(final {{ e }} value, final {{ e }} expected) {
         Assert.assertEquals(expected, value);
     }
 
-    public static void assertEquals({{ e }} value, {{ EOverload }} expected) {
+    public static void assertEquals(final {{ e }} value, final {{ EOverload }} expected) {
         assertEquals(value, ({{ e }}) expected);
     }
-    public static void assertEquals(Vector2{{ E }} v, {{ e }} x, {{ e }} y) {
+    public static void assertEquals(final Vector2{{ E }} v, final {{ e }} x, final {{ e }} y) {
         assertEquals(v.getX(), x);
         assertEquals(v.getY(), y);
     }
 
-    public static void assertEquals(Vector2{{ E }} v, {{ EOverload }} x, {{ EOverload }} y) {
+    public static void assertEquals(final Vector2{{ E }} v, final {{ EOverload }} x, final {{ EOverload }} y) {
         assertEquals(v, ({{ e }}) x, ({{ e }}) y);
     }
 
-    public static void assertEquals(Vector3{{ E }} v, {{ e }} x, {{ e }} y, {{ e }} z) {
+    public static void assertEquals(final Vector3{{ E }} v, final {{ e }} x, final {{ e }} y, final {{ e }} z) {
         assertEquals(v.getX(), x);
         assertEquals(v.getY(), y);
         assertEquals(v.getZ(), z);
     }
 
-    public static void assertEquals(Vector3{{ E }} v, {{ EOverload }} x, {{ EOverload }} y, {{ EOverload }} z) {
+    public static void assertEquals(final Vector3{{ E }} v, final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z) {
             assertEquals(v, ({{ e }}) x, ({{ e }}) y, ({{ e }}) z);
         }
 
-    public static void assertEquals(Vector4{{ E }} v, {{ e }} x, {{ e }} y, {{ e }} z, {{ e }} w) {
+    public static void assertEquals(final Vector4{{ E }} v, final {{ e }} x, final {{ e }} y, final {{ e }} z, final {{ e }} w) {
         assertEquals(v.getX(), x);
         assertEquals(v.getY(), y);
         assertEquals(v.getZ(), z);
         assertEquals(v.getW(), w);
     }
 
-    public static void assertEquals(Vector4{{ E }} v, {{ EOverload }} x, {{ EOverload }} y, {{ EOverload }} z, {{ EOverload }} w) {
+    public static void assertEquals(final Vector4{{ E }} v, final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z, final {{ EOverload }} w) {
         assertEquals(v, ({{ e }}) x, ({{ e }}) y, ({{ e }}) z, ({{ e }}) w);
     }
 
-    public static void assertEquals(VectorN{{ E }} v, {{ e }}... f) {
+    public static void assertEquals(final VectorN{{ E }} v, final {{ e }}... f) {
         Assert.assertArrayEquals(f, v.toArray());
     }
 
-    public static void assertEquals({{ e }}[] a, {{ e }}... f) {
+    public static void assertEquals(final {{ e }}[] a, final {{ e }}... f) {
         Assert.assertArrayEquals(f, a);
     }
 }

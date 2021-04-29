@@ -1,39 +1,41 @@
 package org.spongepowered.math.vector;
 
 public interface Vector{{ E }} {
-    public Vector{{ E }} mul({{ e }} a);
 
-    public Vector{{ E }} div({{ e }} a);
+    Vector{{ E }} mul({{ e }} a);
 
-    public Vector{{ E }} pow({{ e }} pow);
+    Vector{{ E }} div({{ e }} a);
 
-    public Vector{{ E }} ceil();
+    Vector{{ E }} pow({{ e }} pow);
 
-    public Vector{{ E }} floor();
+    Vector{{ E }} ceil();
 
-    public Vector{{ E }} round();
+    Vector{{ E }} floor();
 
-    public Vector{{ E }} abs();
+    Vector{{ E }} round();
 
-    public Vector{{ E }} negate();
+    Vector{{ E }} abs();
 
-    public {{ e }} length();
+    Vector{{ E }} negate();
 
-    public {{ e }} lengthSquared();
+    {{ e }} length();
 
-    public Vector{{ E }} normalize();
+    {{ e }} lengthSquared();
 
-    public int getMinAxis();
+    Vector{{ E }} normalize();
 
-    public int getMaxAxis();
+    int getMinAxis();
 
-    public {{ e }}[] toArray();
+    int getMaxAxis();
 
-    public Vectori toInt();
+    {{ e }}[] toArray();
 
-    public Vectorl toLong();
+    Vectori toInt();
 
-    public Vectorf toFloat();
+    Vectorl toLong();
 
-    public Vectord toDouble();
+    Vectorf toFloat();
+
+    Vectord toDouble();
+
 }

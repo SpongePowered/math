@@ -12,7 +12,8 @@ import org.spongepowered.math.vector.Vector3{{ E }};
 /**
  * Represent a complex number of the form {@code x + yi}. The x and y components are stored as {@code {{ e }}}s. This class is immutable.
  */
-public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E }}>, Serializable, Cloneable {
+public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E }}>, Serializable, Cloneable {
+
     private static final long serialVersionUID = 1;
     /**
      * An immutable identity (0, 0) complex.
@@ -40,7 +41,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param x The x (real) component
      * @param y The y (imaginary) component
      */
-    public Complex{{ E }}({{ EOverload }} x, {{ EOverload }} y) {
+    public Complex{{ E }}(final {{ EOverload }} x, final {{ EOverload }} y) {
         this(({{ e }}) x, ({{ e }}) y);
     }
 
@@ -50,7 +51,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param x The x (real) component
      * @param y The y (imaginary) component
      */
-    public Complex{{ E }}({{ e }} x, {{ e }} y) {
+    public Complex{{ E }}(final {{ e }} x, final {{ e }} y) {
         this.x = x;
         this.y = y;
     }
@@ -60,7 +61,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      *
      * @param c The complex to copy
      */
-    public Complex{{ E }}(Complex{{ E }} c) {
+    public Complex{{ E }}(final Complex{{ E }} c) {
         this.x = c.x;
         this.y = c.y;
     }
@@ -71,7 +72,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return The x (real) component
      */
     public {{ e }} getX() {
-        return x;
+        return this.x;
     }
 
     /**
@@ -80,7 +81,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return The y (imaginary) component
      */
     public {{ e }} getY() {
-        return y;
+        return this.y;
     }
 
     /**
@@ -89,8 +90,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param c The complex to add
      * @return A new complex, which is the sum of both
      */
-    public Complex{{ E }} add(Complex{{ E }} c) {
-        return add(c.x, c.y);
+    public Complex{{ E }} add(final Complex{{ E }} c) {
+        return this.add(c.x, c.y);
     }
 
     /**
@@ -100,8 +101,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to add
      * @return A new complex, which is the sum of both
      */
-    public Complex{{ E }} add({{ EOverload }} x, {{ EOverload }} y) {
-        return add(({{ e }}) x, ({{ e }}) y);
+    public Complex{{ E }} add(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.add(({{ e }}) x, ({{ e }}) y);
     }
 
     /**
@@ -111,7 +112,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to add
      * @return A new complex, which is the sum of both
      */
-    public Complex{{ E }} add({{ e }} x, {{ e }} y) {
+    public Complex{{ E }} add(final {{ e }} x, final {{ e }} y) {
         return new Complex{{ E }}(this.x + x, this.y + y);
     }
 
@@ -121,8 +122,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param c The complex to subtract
      * @return A new complex, which is the difference of both
      */
-    public Complex{{ E }} sub(Complex{{ E }} c) {
-        return sub(c.x, c.y);
+    public Complex{{ E }} sub(final Complex{{ E }} c) {
+        return this.sub(c.x, c.y);
     }
 
     /**
@@ -132,8 +133,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to subtract
      * @return A new complex, which is the difference of both
      */
-    public Complex{{ E }} sub({{ EOverload }} x, {{ EOverload }} y) {
-        return sub(({{ e }}) x, ({{ e }}) y);
+    public Complex{{ E }} sub(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.sub(({{ e }}) x, ({{ e }}) y);
     }
 
     /**
@@ -143,7 +144,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to subtract
      * @return A new complex, which is the difference of both
      */
-    public Complex{{ E }} sub({{ e }} x, {{ e }} y) {
+    public Complex{{ E }} sub(final {{ e }} x, final {{ e }} y) {
         return new Complex{{ E }}(this.x - x, this.y - y);
     }
 
@@ -153,8 +154,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param a The multiplication scalar
      * @return A new complex, which has each component multiplied by the scalar
      */
-    public Complex{{ E }} mul({{ EOverload }} a) {
-        return mul(({{ e }}) a);
+    public Complex{{ E }} mul(final {{ EOverload }} a) {
+        return this.mul(({{ e }}) a);
     }
 
     /**
@@ -164,8 +165,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return A new complex, which has each component multiplied by the scalar
      */
     @Override
-    public Complex{{ E }} mul({{ e }} a) {
-        return new Complex{{ E }}(x * a, y * a);
+    public Complex{{ E }} mul(final {{ e }} a) {
+        return new Complex{{ E }}(this.x * a, this.y * a);
     }
 
     /**
@@ -174,8 +175,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param c The complex to multiply with
      * @return A new complex, which is the product of both
      */
-    public Complex{{ E }} mul(Complex{{ E }} c) {
-        return mul(c.x, c.y);
+    public Complex{{ E }} mul(final Complex{{ E }} c) {
+        return this.mul(c.x, c.y);
     }
 
     /**
@@ -185,8 +186,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to multiply with
      * @return A new complex, which is the product of both
      */
-    public Complex{{ E }} mul({{ EOverload }} x, {{ EOverload }} y) {
-        return mul(({{ e }}) x, ({{ e }}) y);
+    public Complex{{ E }} mul(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.mul(({{ e }}) x, ({{ e }}) y);
     }
 
     /**
@@ -196,7 +197,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to multiply with
      * @return A new complex, which is the product of both
      */
-    public Complex{{ E }} mul({{ e }} x, {{ e }} y) {
+    public Complex{{ E }} mul(final {{ e }} x, final {{ e }} y) {
         return new Complex{{ E }}(
                 this.x * x - this.y * y,
                 this.x * y + this.y * x);
@@ -208,8 +209,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param a The division scalar
      * @return A new complex, which has each component divided by the scalar
      */
-    public Complex{{ E }} div({{ EOverload }} a) {
-        return div(({{ e }}) a);
+    public Complex{{ E }} div(final {{ EOverload }} a) {
+        return this.div(({{ e }}) a);
     }
 
     /**
@@ -219,8 +220,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return A new complex, which has each component divided by the scalar
      */
     @Override
-    public Complex{{ E }} div({{ e }} a) {
-        return new Complex{{ E }}(x / a, y / a);
+    public Complex{{ E }} div(final {{ e }} a) {
+        return new Complex{{ E }}(this.x / a, this.y / a);
     }
 
     /**
@@ -229,8 +230,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param c The complex to divide with
      * @return The quotient of the two complexes
      */
-    public Complex{{ E }} div(Complex{{ E }} c) {
-        return div(c.x, c.y);
+    public Complex{{ E }} div(final Complex{{ E }} c) {
+        return this.div(c.x, c.y);
     }
 
     /**
@@ -240,8 +241,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to divide with
      * @return The quotient of the two complexes
      */
-    public Complex{{ E }} div({{ EOverload }} x, {{ EOverload }} y) {
-        return div(({{ e }}) x, ({{ e }}) y);
+    public Complex{{ E }} div(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.div(({{ e }}) x, ({{ e }}) y);
     }
 
     /**
@@ -251,7 +252,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to divide with
      * @return The quotient of the two complexes
      */
-    public Complex{{ E }} div({{ e }} x, {{ e }} y) {
+    public Complex{{ E }} div(final {{ e }} x, final {{ e }} y) {
         final {{ e }} d = x * x + y * y;
         return new Complex{{ E }}(
                 (this.x * x + this.y * y) / d,
@@ -264,8 +265,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param c The complex to calculate the dot product with
      * @return The dot product of the two complexes
      */
-    public {{ e }} dot(Complex{{ E }} c) {
-        return dot(c.x, c.y);
+    public {{ e }} dot(final Complex{{ E }} c) {
+        return this.dot(c.x, c.y);
     }
 
     /**
@@ -275,8 +276,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to calculate the dot product with
      * @return The dot product of the two complexes
      */
-    public {{ e }} dot({{ EOverload }} x, {{ EOverload }} y) {
-        return dot(({{ e }}) x, ({{ e }}) y);
+    public {{ e }} dot(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.dot(({{ e }}) x, ({{ e }}) y);
     }
 
     /**
@@ -286,7 +287,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component of the complex to calculate the dot product with
      * @return The dot product of the two complexes
      */
-    public {{ e }} dot({{ e }} x, {{ e }} y) {
+    public {{ e }} dot(final {{ e }} x, final {{ e }} y) {
         return this.x * x + this.y * y;
     }
 
@@ -296,8 +297,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param v The vector to rotate
      * @return The rotated vector
      */
-    public Vector2{{ E }} rotate(Vector2{{ E }} v) {
-        return rotate(v.getX(), v.getY());
+    public Vector2{{ E }} rotate(final Vector2{{ E }} v) {
+        return this.rotate(v.getX(), v.getY());
     }
 
     /**
@@ -307,8 +308,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y component of the vector
      * @return The rotated vector
      */
-    public Vector2{{ E }} rotate({{ EOverload }} x, {{ EOverload }} y) {
-        return rotate(({{ e }}) x, ({{ e }}) y);
+    public Vector2{{ E }} rotate(final {{ EOverload }} x, final {{ EOverload }} y) {
+        return this.rotate(({{ e }}) x, ({{ e }}) y);
     }
 
     /**
@@ -318,8 +319,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y component of the vector
      * @return The rotated vector
      */
-    public Vector2{{ E }} rotate({{ e }} x, {{ e }} y) {
-        final {{ e }} length = length();
+    public Vector2{{ E }} rotate(final {{ e }} x, final {{ e }} y) {
+        final {{ e }} length = this.length();
         if (Math.abs(length) < {{ Eeps }}) {
             throw new ArithmeticException("Cannot rotate by the zero complex");
         }
@@ -334,7 +335,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return The vector representing the direction this complex is pointing to
      */
     public Vector2{{ E }} getDirection() {
-        return new Vector2{{ E }}(x, y).normalize();
+        return new Vector2{{ E }}(this.x, this.y).normalize();
     }
 
     /**
@@ -343,7 +344,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return The angle in radians of the direction vector of this complex
      */
     public {{ e }} getAngleRad() {
-        return ({{ e }}) TrigMath.atan2(y, x);
+        return ({{ e }}) TrigMath.atan2(this.y, this.x);
     }
 
     /**
@@ -352,7 +353,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return The angle in degrees of the direction vector of this complex
      */
     public {{ e }} getAngleDeg() {
-        return ({{ e }}) Math.toDegrees(getAngleRad());
+        return ({{ e }}) Math.toDegrees(this.getAngleRad());
     }
 
     /**
@@ -363,7 +364,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      */
     @Override
     public Complex{{ E }} conjugate() {
-        return new Complex{{ E }}(x, -y);
+        return new Complex{{ E }}(this.x, -this.y);
     }
 
     /**
@@ -375,11 +376,11 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      */
     @Override
     public Complex{{ E }} invert() {
-        final {{ e }} lengthSquared = lengthSquared();
+        final {{ e }} lengthSquared = this.lengthSquared();
         if (Math.abs(lengthSquared) < {{ Eeps }}) {
             throw new ArithmeticException("Cannot invert a complex of length zero");
         }
-        return conjugate().div(lengthSquared);
+        return this.conjugate().div(lengthSquared);
     }
 
     /**
@@ -389,7 +390,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      */
     @Override
     public {{ e }} lengthSquared() {
-        return x * x + y * y;
+        return this.x * this.x + this.y * this.y;
     }
 
     /**
@@ -399,7 +400,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      */
     @Override
     public {{ e }} length() {
-        return ({{ e }}) Math.sqrt(lengthSquared());
+        return ({{ e }}) Math.sqrt(this.lengthSquared());
     }
 
     /**
@@ -409,11 +410,11 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      */
     @Override
     public Complex{{ E }} normalize() {
-        final {{ e }} length = length();
+        final {{ e }} length = this.length();
         if (Math.abs(length) < {{ Eeps }}) {
             throw new ArithmeticException("Cannot normalize the zero complex");
         }
-        return new Complex{{ E }}(x / length, y / length);
+        return new Complex{{ E }}(this.x / length, this.y / length);
     }
 
     /**
@@ -423,7 +424,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @return A quaternion of this rotation around the unit z
      */
     public Quaternion{{ E }} toQuaternion() {
-        return toQuaternion(Vector3{{ E }}.UNIT_Z);
+        return this.toQuaternion(Vector3{{ E }}.UNIT_Z);
     }
 
     /**
@@ -433,8 +434,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param axis The rotation axis
      * @return A quaternion of this rotation around the given axis
      */
-    public Quaternion{{ E }} toQuaternion(Vector3{{ E }} axis) {
-        return toQuaternion(axis.getX(), axis.getY(), axis.getZ());
+    public Quaternion{{ E }} toQuaternion(final Vector3{{ E }} axis) {
+        return this.toQuaternion(axis.getX(), axis.getY(), axis.getZ());
     }
 
     /**
@@ -447,8 +448,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param z The z component of the axis vector
      * @return A quaternion of this rotation around the given axis
      */
-    public Quaternion{{ E }} toQuaternion({{ EOverload }} x, {{ EOverload }} y, {{ EOverload }} z) {
-        return toQuaternion(({{ e }}) x, ({{ e }}) y, ({{ e }}) z);
+    public Quaternion{{ E }} toQuaternion(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z) {
+        return this.toQuaternion(({{ e }}) x, ({{ e }}) y, ({{ e }}) z);
     }
 
     /**
@@ -461,33 +462,33 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param z The z component of the axis vector
      * @return A quaternion of this rotation around the given axis
      */
-    public Quaternion{{ E }} toQuaternion({{ e }} x, {{ e }} y, {{ e }} z) {
-        return Quaternion{{ E }}.fromAngleRadAxis(getAngleRad(), x, y, z);
+    public Quaternion{{ E }} toQuaternion(final {{ e }} x, final {{ e }} y, final {{ e }} z) {
+        return Quaternion{{ E }}.fromAngleRadAxis(this.getAngleRad(), x, y, z);
     }
 
     @Override
     public Complexf toFloat() {
-        return new Complexf(x, y);
+        return new Complexf(this.x, this.y);
     }
 
     @Override
     public Complexd toDouble() {
-        return new Complexd(x, y);
+        return new Complexd(this.x, this.y);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(final Object other) {
+        if (this == other) {
             return true;
         }
-        if (!(o instanceof Complex{{ E }})) {
+        if (!(other instanceof Complex{{ E }})) {
             return false;
         }
-        final Complex{{ E }} complex = (Complex{{ E }}) o;
-        if ({{ ET }}.compare(complex.x, x) != 0) {
+        final Complex{{ E }} that = (Complex{{ E }}) other;
+        if ({{ ET }}.compare(that.x, this.x) != 0) {
             return false;
         }
-        if ({{ ET }}.compare(complex.y, y) != 0) {
+        if ({{ ET }}.compare(that.y, this.y) != 0) {
             return false;
         }
         return true;
@@ -495,17 +496,17 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
 
     @Override
     public int hashCode() {
-        if (!hashed) {
-            final int result = (x != +0.0f ? {{ ET }}.hashCode(x) : 0);
-            hashCode = 31 * result + (y != +0.0f ? {{ ET }}.hashCode(y) : 0);
-            hashed = true;
+        if (!this.hashed) {
+            final int result = (this.x != +0.0f ? {{ ET }}.hashCode(this.x) : 0);
+            this.hashCode = 31 * result + (this.y != +0.0f ? {{ ET }}.hashCode(this.y) : 0);
+            this.hashed = true;
         }
-        return hashCode;
+        return this.hashCode;
     }
 
     @Override
-    public int compareTo(Complex{{ E }} c) {
-        return (int) Math.signum(lengthSquared() - c.lengthSquared());
+    public int compareTo(final Complex{{ E }} that) {
+        return (int) Math.signum(this.lengthSquared() - that.lengthSquared());
     }
 
     @Override
@@ -515,7 +516,7 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
 
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return "(" + this.x + ", " + this.y + ")";
     }
 
     /**
@@ -526,8 +527,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param x The x (real) component
      * @return The complex created from the {{ e }} real component
      */
-    public static Complex{{ E }} fromReal({{ e }} x) {
-         return x == 0 ? ZERO : new Complex{{ E }}(x, 0);
+    public static Complex{{ E }} fromReal(final {{ e }} x) {
+         return x == 0 ? Complex{{ E }}.ZERO : new Complex{{ E }}(x, 0);
     }
 
     /**
@@ -538,8 +539,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component
      * @return The complex created from the {{ e }} imaginary component
      */
-    public static Complex{{ E }} fromImaginary({{ e }} y) {
-         return y == 0 ? ZERO : new Complex{{ E }}(0, y);
+    public static Complex{{ E }} fromImaginary(final {{ e }} y) {
+         return y == 0 ? Complex{{ E }}.ZERO : new Complex{{ E }}(0, y);
     }
 
     /**
@@ -551,8 +552,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param y The y (imaginary) component
      * @return The complex created from the {{ e }} components
      */
-    public static Complex{{ E }} from({{ e }} x, {{ e }} y) {
-         return x == 0 && y == 0 ? ZERO : new Complex{{ E }}(x, y);
+    public static Complex{{ E }} from(final {{ e }} x, final {{ e }} y) {
+         return x == 0 && y == 0 ? Complex{{ E }}.ZERO : new Complex{{ E }}(x, y);
     }
 
     /**
@@ -562,8 +563,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param to The second vector
      * @return The complex defined by the angle between the vectors
      */
-    public static Complex{{ E }} fromRotationTo(Vector2{{ E }} from, Vector2{{ E }} to) {
-        return fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
+    public static Complex{{ E }} fromRotationTo(final Vector2{{ E }} from, final Vector2{{ E }} to) {
+        return Complex{{ E }}.fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
     }
 
     /**
@@ -573,8 +574,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param to The second vector
      * @return The complex defined by the angle between the vectors
      */
-    public static Complex{{ E }} fromRotationTo(Vector3{{ E }} from, Vector3{{ E }} to) {
-        return fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
+    public static Complex{{ E }} fromRotationTo(final Vector3{{ E }} from, final Vector3{{ E }} to) {
+        return Complex{{ E }}.fromAngleRad(TrigMath.acos(from.dot(to) / (from.length() * to.length())));
     }
 
     /**
@@ -583,8 +584,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param angle The angle in degrees
      * @return The complex defined by the angle
      */
-    public static Complex{{ E }} fromAngleDeg({{ EOverload }} angle) {
-        return fromAngleRad(Math.toRadians(angle));
+    public static Complex{{ E }} fromAngleDeg(final {{ EOverload }} angle) {
+        return Complex{{ E }}.fromAngleRad(Math.toRadians(angle));
     }
 
     /**
@@ -593,8 +594,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param angle The angle in radians
      * @return The complex defined by the angle
      */
-    public static Complex{{ E }} fromAngleRad({{ EOverload }} angle) {
-        return fromAngleRad(({{ e }}) angle);
+    public static Complex{{ E }} fromAngleRad(final {{ EOverload }} angle) {
+        return Complex{{ E }}.fromAngleRad(({{ e }}) angle);
     }
 
     /**
@@ -603,8 +604,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param angle The angle in radians
      * @return The complex defined by the angle
      */
-    public static Complex{{ E }} fromAngleDeg({{ e }} angle) {
-        return fromAngleRad(({{ e }}) Math.toRadians(angle));
+    public static Complex{{ E }} fromAngleDeg(final {{ e }} angle) {
+        return Complex{{ E }}.fromAngleRad(({{ e }}) Math.toRadians(angle));
     }
 
     /**
@@ -613,7 +614,8 @@ public class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E 
      * @param angle The angle in radians
      * @return The complex defined by the angle
      */
-    public static Complex{{ E }} fromAngleRad({{ e }} angle) {
+    public static Complex{{ E }} fromAngleRad(final {{ e }} angle) {
         return new Complex{{ E }}(TrigMath.cos(angle), TrigMath.sin(angle));
     }
+
 }

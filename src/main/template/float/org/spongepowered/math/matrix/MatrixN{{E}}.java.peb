@@ -11,37 +11,38 @@ import org.spongepowered.math.vector.Vector3{{ E }};
 import org.spongepowered.math.vector.VectorN{{ E }};
 
 public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
+
     private static final long serialVersionUID = 1;
     public static final MatrixN{{ E }} IDENTITY_2 = new ImmutableIdentityMatrixN(2);
     public static final MatrixN{{ E }} IDENTITY_3 = new ImmutableIdentityMatrixN(3);
     public static final MatrixN{{ E }} IDENTITY_4 = new ImmutableIdentityMatrixN(4);
     private final {{ e }}[][] mat;
 
-    public MatrixN{{ E }}(int size) {
+    public MatrixN{{ E }}(final int size) {
         if (size < 2) {
             throw new IllegalArgumentException("Minimum matrix size is 2");
         }
-        mat = new {{ e }}[size][size];
-        setIdentity();
+        this.mat = new {{ e }}[size][size];
+        this.setIdentity();
     }
 
-    public MatrixN{{ E }}(Matrix2{{ E }} m) {
-        mat = new {{ e }}[][]{
-                {m.get(0, 0), m.get(0, 1)},
-                {m.get(1, 0), m.get(1, 1)}
+    public MatrixN{{ E }}(final Matrix2{{ E }} m) {
+        this.mat = new {{ e }}[][]{
+            {m.get(0, 0), m.get(0, 1)},
+            {m.get(1, 0), m.get(1, 1)}
         };
     }
 
-    public MatrixN{{ E }}(Matrix3{{ E }} m) {
-        mat = new {{ e }}[][]{
-                {m.get(0, 0), m.get(0, 1), m.get(0, 2)},
-                {m.get(1, 0), m.get(1, 1), m.get(1, 2)},
-                {m.get(2, 0), m.get(2, 1), m.get(2, 2)}
+    public MatrixN{{ E }}(final Matrix3{{ E }} m) {
+        this.mat = new {{ e }}[][]{
+            {m.get(0, 0), m.get(0, 1), m.get(0, 2)},
+            {m.get(1, 0), m.get(1, 1), m.get(1, 2)},
+            {m.get(2, 0), m.get(2, 1), m.get(2, 2)}
         };
     }
 
-    public MatrixN{{ E }}(Matrix4{{ E }} m) {
-        mat = new {{ e }}[][]{
+    public MatrixN{{ E }}(final Matrix4{{ E }} m) {
+        this.mat = new {{ e }}[][]{
                 {m.get(0, 0), m.get(0, 1), m.get(0, 2), m.get(0, 3)},
                 {m.get(1, 0), m.get(1, 1), m.get(1, 2), m.get(1, 3)},
                 {m.get(2, 0), m.get(2, 1), m.get(2, 2), m.get(2, 3)},
@@ -49,19 +50,19 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         };
     }
 
-    public MatrixN{{ E }}({{ e }}... m) {
+    public MatrixN{{ E }}(final {{ e }}... m) {
         if (m.length < 4) {
             throw new IllegalArgumentException("Minimum matrix size is 2");
         }
         final int size = (int) Math.ceil(Math.sqrt(m.length));
-        mat = new {{ e }}[size][size];
+        this.mat = new {{ e }}[size][size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 final int index = col + row * size;
                 if (index < m.length) {
-                    mat[row][col] = m[index];
+                    this.mat[row][col] = m[index];
                 } else {
-                    mat[row][col] = 0;
+                    this.mat[row][col] = 0;
                 }
             }
         }
@@ -76,53 +77,53 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
     }
 
     @Override
-    public {{ e }} get(int row, int col) {
+    public {{ e }} get(final int row, final int col) {
         return mat[row][col];
     }
 
     @Override
-    public VectorN{{ E }} getRow(int row) {
-        final int size = size();
+    public VectorN{{ E }} getRow(final int row) {
+        final int size = this.size();
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int col = 0; col < size; col++) {
-            d.set(col, get(row, col));
+            d.set(col, this.get(row, col));
         }
         return d;
     }
 
     @Override
-    public VectorN{{ E }} getColumn(int col) {
-        final int size = size();
+    public VectorN{{ E }} getColumn(final int col) {
+        final int size = this.size();
         final VectorN{{ E }} d = new VectorN{{ E }}(size);
         for (int row = 0; row < size; row++) {
-            d.set(row, get(row, col));
+            d.set(row, this.get(row, col));
         }
         return d;
     }
 
-    public void set(int row, int col, {{ EOverload }} val) {
-        set(row, col, ({{ e }}) val);
+    public void set(final int row, final int col, final {{ EOverload }} val) {
+        this.set(row, col, ({{ e }}) val);
     }
 
-    public void set(int row, int col, {{ e }} val) {
-        mat[row][col] = val;
+    public void set(final int row, final int col, final {{ e }} val) {
+        this.mat[row][col] = val;
     }
 
     public final void setIdentity() {
-        final int size = size();
+        final int size = this.size();
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 if (row == col) {
-                    mat[row][col] = 1;
+                    this.mat[row][col] = 1;
                 } else {
-                    mat[row][col] = 0;
+                    this.mat[row][col] = 0;
                 }
             }
         }
     }
 
     public void setZero() {
-        final int size = size();
+        final int size = this.size();
         for (int row = 0; row < size; row++) {
             Arrays.fill(mat[row], 0);
         }
@@ -130,62 +131,62 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     public MatrixN{{ E }} resize(int size) {
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
-        for (int rowCol = size(); rowCol < size; rowCol++) {
+        for (int rowCol = this.size(); rowCol < size; rowCol++) {
             d.set(rowCol, rowCol, 0);
         }
-        size = Math.min(size, size());
+        size = Math.min(size, this.size());
         for (int row = 0; row < size; row++) {
-            System.arraycopy(mat[row], 0, d.mat[row], 0, size);
+            System.arraycopy(this.mat[row], 0, d.mat[row], 0, size);
         }
         return d;
     }
 
-    public MatrixN{{ E }} add(MatrixN{{ E }} m) {
-        final int size = size();
+    public MatrixN{{ E }} add(final MatrixN{{ E }} m) {
+        final int size = this.size();
         if (size != m.size()) {
             throw new IllegalArgumentException("Matrix sizes must be the same");
         }
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = mat[row][col] + m.mat[row][col];
+                d.mat[row][col] = this.mat[row][col] + m.mat[row][col];
             }
         }
         return d;
     }
 
-    public MatrixN{{ E }} sub(MatrixN{{ E }} m) {
-        final int size = size();
+    public MatrixN{{ E }} sub(final MatrixN{{ E }} m) {
+        final int size = this.size();
         if (size != m.size()) {
             throw new IllegalArgumentException("Matrix sizes must be the same");
         }
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = mat[row][col] - m.mat[row][col];
+                d.mat[row][col] = this.mat[row][col] - m.mat[row][col];
             }
         }
         return d;
     }
 
-    public MatrixN{{ E }} mul({{ EOverload }} a) {
-        return mul(({{ e }}) a);
+    public MatrixN{{ E }} mul(final {{ EOverload }} a) {
+        return this.mul(({{ e }}) a);
     }
 
     @Override
-    public MatrixN{{ E }} mul({{ e }} a) {
-        final int size = size();
+    public MatrixN{{ E }} mul(final {{ e }} a) {
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = mat[row][col] * a;
+                d.mat[row][col] = this.mat[row][col] * a;
             }
         }
         return d;
     }
 
-    public MatrixN{{ E }} mul(MatrixN{{ E }} m) {
-        final int size = size();
+    public MatrixN{{ E }} mul(final MatrixN{{ E }} m) {
+        final int size = this.size();
         if (size != m.size()) {
             throw new IllegalArgumentException("Matrix sizes must be the same");
         }
@@ -194,7 +195,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
             for (int col = 0; col < size; col++) {
                 {{ e }} dot = 0;
                 for (int i = 0; i < size; i++) {
-                    dot += mat[row][i] * m.mat[i][col];
+                    dot += this.mat[row][i] * m.mat[i][col];
                 }
                 d.mat[row][col] = dot;
             }
@@ -202,72 +203,72 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         return d;
     }
 
-    public MatrixN{{ E }} div({{ EOverload }} a) {
-        return div(({{ e }}) a);
+    public MatrixN{{ E }} div(final {{ EOverload }} a) {
+        return this.div(({{ e }}) a);
     }
 
     @Override
-    public MatrixN{{ E }} div({{ e }} a) {
-        final int size = size();
+    public MatrixN{{ E }} div(final {{ e }} a) {
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = mat[row][col] / a;
+                d.mat[row][col] = this.mat[row][col] / a;
             }
         }
         return d;
     }
 
-    public MatrixN{{ E }} div(MatrixN{{ E }} m) {
-        return mul(m.invert());
+    public MatrixN{{ E }} div(final MatrixN{{ E }} m) {
+        return this.mul(m.invert());
     }
 
-    public MatrixN{{ E }} pow({{ EOverload }} pow) {
-        return pow(({{ e }}) pow);
+    public MatrixN{{ E }} pow(final {{ EOverload }} pow) {
+        return this.pow(({{ e }}) pow);
     }
 
     @Override
-    public MatrixN{{ E }} pow({{ e }} pow) {
-        final int size = size();
+    public MatrixN{{ E }} pow(final {{ e }} pow) {
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = ({{ e }}) Math.pow(mat[row][col], pow);
+                d.mat[row][col] = ({{ e }}) Math.pow(this.mat[row][col], pow);
             }
         }
         return d;
     }
 
-    public MatrixN{{ E }} translate(VectorN{{ E }} v) {
-        return translate(v.toArray());
+    public MatrixN{{ E }} translate(final VectorN{{ E }} v) {
+        return this.translate(v.toArray());
     }
 
-    public MatrixN{{ E }} translate({{ e }}... v) {
-        return createTranslation(v).mul(this);
+    public MatrixN{{ E }} translate(final {{ e }}... v) {
+        return MatrixN{{ E }}.createTranslation(v).mul(this);
     }
 
-    public MatrixN{{ E }} scale(VectorN{{ E }} v) {
-        return scale(v.toArray());
+    public MatrixN{{ E }} scale(final VectorN{{ E }} v) {
+        return this.scale(v.toArray());
     }
 
-    public MatrixN{{ E }} scale({{ e }}... v) {
-        return createScaling(v).mul(this);
+    public MatrixN{{ E }} scale(final {{ e }}... v) {
+        return MatrixN{{ E }}.createScaling(v).mul(this);
     }
 
-    public MatrixN{{ E }} rotate(Complex{{ E }} rot) {
-        return createRotation(size(), rot).mul(this);
+    public MatrixN{{ E }} rotate(final Complex{{ E }} rot) {
+        return MatrixN{{ E }}.createRotation(this.size(), rot).mul(this);
     }
 
-    public MatrixN{{ E }} rotate(Quaternion{{ E }} rot) {
-        return createRotation(size(), rot).mul(this);
+    public MatrixN{{ E }} rotate(final Quaternion{{ E }} rot) {
+        return MatrixN{{ E }}.createRotation(this.size(), rot).mul(this);
     }
 
-    public VectorN{{ E }} transform(VectorN{{ E }} v) {
-        return transform(v.toArray());
+    public VectorN{{ E }} transform(final VectorN{{ E }} v) {
+        return this.transform(v.toArray());
     }
 
-    public VectorN{{ E }} transform({{ e }}... vec) {
-        final int size = size();
+    public VectorN{{ E }} transform(final {{ e }}... vec) {
+        final int size = this.size();
         if (size != vec.length) {
             throw new IllegalArgumentException("Matrix and vector sizes must be the same");
         }
@@ -275,7 +276,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         for (int row = 0; row < size; row++) {
             {{ e }} dot = 0;
             for (int col = 0; col < size; col++) {
-                dot += mat[row][col] * vec[col];
+                dot += this.mat[row][col] * vec[col];
             }
             d.set(row, dot);
         }
@@ -284,11 +285,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixN{{ E }} floor() {
-        final int size = size();
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = GenericMath.floor(mat[row][col]);
+                d.mat[row][col] = GenericMath.floor(this.mat[row][col]);
             }
         }
         return d;
@@ -296,11 +297,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixN{{ E }} ceil() {
-        final int size = size();
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = ({{ e }}) Math.ceil(mat[row][col]);
+                d.mat[row][col] = ({{ e }}) Math.ceil(this.mat[row][col]);
             }
         }
         return d;
@@ -308,11 +309,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixN{{ E }} round() {
-        final int size = size();
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = Math.round(mat[row][col]);
+                d.mat[row][col] = Math.round(this.mat[row][col]);
             }
         }
         return d;
@@ -320,11 +321,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixN{{ E }} abs() {
-        final int size = size();
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = Math.abs(mat[row][col]);
+                d.mat[row][col] = Math.abs(this.mat[row][col]);
             }
         }
         return d;
@@ -332,11 +333,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixN{{ E }} negate() {
-        final int size = size();
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = -mat[row][col];
+                d.mat[row][col] = -this.mat[row][col];
             }
         }
         return d;
@@ -344,11 +345,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixN{{ E }} transpose() {
-        final int size = size();
+        final int size = this.size();
         final MatrixN{{ E }} d = new MatrixN{{ E }}(size);
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                d.mat[row][col] = mat[col][row];
+                d.mat[row][col] = this.mat[col][row];
             }
         }
         return d;
@@ -356,18 +357,18 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public {{ e }} trace() {
-        final int size = size();
+        final int size = this.size();
         {{ e }} trace = 0;
         for (int rowCol = 0; rowCol < size; rowCol++) {
-            trace += mat[rowCol][rowCol];
+            trace += this.mat[rowCol][rowCol];
         }
         return trace;
     }
 
     @Override
     public {{ e }} determinant() {
-        final int size = size();
-        final {{ e }}[][] m = deepClone(mat);
+        final int size = this.size();
+        final {{ e }}[][] m = MatrixN{{ E }}.deepClone(mat);
         {{ e }} det;
         for (int i = 0; i < size - 1; i++) {
             for (int col = i + 1; col < size; col++) {
@@ -389,7 +390,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         if (Math.abs(determinant()) < {{ Eeps }}) {
             throw new ArithmeticException("Cannot inverse a matrix with a zero determinant");
         }
-        final int size = size();
+        final int size = this.size();
         final AugmentedMatrixN augMat = new AugmentedMatrixN(this);
         final int augmentedSize = augMat.getAugmentedSize();
         for (int i = 0; i < size; i++) {
@@ -429,7 +430,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixNf toFloat() {
-        final int size = size();
+        final int size = this.size();
         final float[] m = new float[size * size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
@@ -441,7 +442,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public MatrixNd toDouble() {
-        final int size = size();
+        final int size = this.size();
         final double[] m = new double[size * size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
@@ -453,12 +454,12 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public {{ e }}[] toArray(boolean columnMajor) {
-        final int size = size();
+        final int size = this.size();
         final {{ e }}[] array = new {{ e }}[size * size];
         if (columnMajor) {
             for (int col = 0; col < size; col++) {
                 for (int row = 0; row < size; row++) {
-                    array[row + col * size] = mat[row][col];
+                    array[row + col * size] = this.mat[row][col];
                 }
             }
         } else {
@@ -471,11 +472,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     @Override
     public String toString() {
-        final int size = size();
+        final int size = this.size();
         final StringBuilder builder = new StringBuilder();
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                builder.append(mat[row][col]);
+                builder.append(this.mat[row][col]);
                 if (col < size - 1) {
                     builder.append(' ');
                 }
@@ -488,14 +489,14 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
+    public boolean equals(final Object other) {
+        if (other == this) {
             return true;
         }
-        if (!(obj instanceof MatrixN{{ E }})) {
+        if (!(other instanceof MatrixN{{ E }})) {
             return false;
         }
-        return Arrays.deepEquals(mat, ((MatrixN{{ E }}) obj).mat);
+        return Arrays.deepEquals(mat, ((MatrixN{{ E }}) other).mat);
     }
 
     @Override
@@ -509,10 +510,10 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
     }
 
     public static MatrixN{{ E }} createScaling(VectorN{{ E }} v) {
-        return createScaling(v.toArray());
+        return MatrixN{{ E }}.createScaling(v.toArray());
     }
 
-    public static MatrixN{{ E }} createScaling({{ e }}... vec) {
+    public static MatrixN{{ E }} createScaling(final {{ e }}... vec) {
         final int size = vec.length;
         final MatrixN{{ E }} m = new MatrixN{{ E }}(size);
         for (int rowCol = 0; rowCol < size; rowCol++) {
@@ -521,11 +522,11 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         return m;
     }
 
-    public static MatrixN{{ E }} createTranslation(VectorN{{ E }} v) {
-        return createTranslation(v.toArray());
+    public static MatrixN{{ E }} createTranslation(final VectorN{{ E }} v) {
+        return MatrixN{{ E }}.createTranslation(v.toArray());
     }
 
-    public static MatrixN{{ E }} createTranslation({{ e }}... vec) {
+    public static MatrixN{{ E }} createTranslation(final {{ e }}... vec) {
         final int size = vec.length;
         final MatrixN{{ E }} m = new MatrixN{{ E }}(size + 1);
         for (int row = 0; row < size; row++) {
@@ -534,7 +535,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         return m;
     }
 
-    public static MatrixN{{ E }} createRotation(int size, Complex{{ E }} rot) {
+    public static MatrixN{{ E }} createRotation(final int size, Complex{{ E }} rot) {
         if (size < 2) {
             throw new IllegalArgumentException("Minimum matrix size is 2");
         }
@@ -547,7 +548,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         return m;
     }
 
-    public static MatrixN{{ E }} createRotation(int size, Quaternion{{ E }} rot) {
+    public static MatrixN{{ E }} createRotation(final int size, Quaternion{{ E }} rot) {
         if (size < 3) {
             throw new IllegalArgumentException("Minimum matrix size is 3");
         }
@@ -574,7 +575,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
      * @param up The "up" vector
      * @return A rotational transform that corresponds to a camera looking at the given point
      */
-    public static MatrixN{{ E }} createLookAt(int size, Vector3{{ E }} eye, Vector3{{ E }} at, Vector3{{ E }} up) {
+    public static MatrixN{{ E }} createLookAt(final int size, final Vector3{{ E }} eye, final Vector3{{ E }} at, Vector3{{ E }} up) {
         if (size < 4) {
             throw new IllegalArgumentException("Minimum matrix size is 4");
         }
@@ -605,8 +606,14 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
      * @param far the far plane, zFar cannot equal zNear
      * @return A perspective projection matrix built from the given values
      */
-    public static MatrixN{{ E }} createPerspective(int size, {{ EOverload }} fov, {{ EOverload }} aspect, {{ EOverload }} near, {{ EOverload }} far) {
-        return createPerspective(size, ({{ e }}) fov, ({{ e }}) aspect, ({{ e }}) near, ({{ e }}) far);
+    public static MatrixN{{ E }} createPerspective(
+        final int size,
+        final {{ EOverload }} fov,
+        final {{ EOverload }} aspect,
+        final {{ EOverload }} near,
+        final {{ EOverload }} far
+    ) {
+        return MatrixN{{ E }}.createPerspective(size, ({{ e }}) fov, ({{ e }}) aspect, ({{ e }}) near, ({{ e }}) far);
     }
 
     /**
@@ -619,7 +626,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
      * @param far the far plane, zFar cannot equal zNear
      * @return A perspective projection matrix built from the given values
      */
-    public static MatrixN{{ E }} createPerspective(int size, {{ e }} fov, {{ e }} aspect, {{ e }} near, {{ e }} far) {
+    public static MatrixN{{ E }} createPerspective(final int size, final {{ e }} fov, final {{ e }} aspect, final {{ e }} near, final {{ e }} far) {
         if (size < 4) {
             throw new IllegalArgumentException("Minimum matrix size is 4");
         }
@@ -646,9 +653,25 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
      * @param far the far plane of the viewing frustum
      * @return A viewing frustum built from the provided values
      */
-    public static MatrixN{{ E }} createOrthographic(int size, {{ EOverload }} right, {{ EOverload }} left, {{ EOverload }} top, {{ EOverload }} bottom,
-                                             {{ EOverload }} near, {{ EOverload }} far) {
-        return createOrthographic(size, ({{ e }}) right, ({{ e }}) left, ({{ e }}) top, ({{ e }}) bottom, ({{ e }}) near, ({{ e }}) far);
+    public static MatrixN{{ E }} createOrthographic(
+        final int size,
+        final {{ EOverload }} right,
+        final {{ EOverload }} left,
+        final {{ EOverload }} top,
+        final {{ EOverload }} bottom,
+        final {{ EOverload }} near,
+        final {{ EOverload }} far
+    ) {
+        return MatrixN{{ E }}.createOrthographic(
+            size,
+            ({{ e }}) right,
+            ({{ e }}) left,
+            ({{ e }}) top,
+            ({{ e }}) bottom,
+            ({{ e }}) near,
+            ({{ e }})
+            far
+        );
     }
 
     /**
@@ -663,8 +686,15 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
      * @param far the far plane of the viewing frustum
      * @return A viewing frustum built from the provided values
      */
-    public static MatrixN{{ E }} createOrthographic(int size, {{ e }} right, {{ e }} left, {{ e }} top, {{ e }} bottom,
-                                             {{ e }} near, {{ e }} far) {
+    public static MatrixN{{ E }} createOrthographic(
+        final int size,
+        final {{ e }} right,
+        final {{ e }} left,
+        final {{ e }} top,
+        final {{ e }} bottom,
+        final {{ e }} near,
+        final {{ e }} far
+    ) {
         if (size < 4) {
             throw new IllegalArgumentException("Minimum matrix size is 4");
         }
@@ -678,7 +708,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         return orthographic;
     }
 
-    private static {{ e }}[][] deepClone({{ e }}[][] array) {
+    private static {{ e }}[][] deepClone(final {{ e }}[][] array) {
         final int size = array.length;
         final {{ e }}[][] clone = array.clone();
         for (int i = 0; i < size; i++) {
@@ -688,12 +718,12 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
     }
 
     private static class ImmutableIdentityMatrixN extends MatrixN{{ E }} {
-        public ImmutableIdentityMatrixN(int size) {
+        public ImmutableIdentityMatrixN(final int size) {
             super(size);
         }
 
         @Override
-        public void set(int row, int col, {{ e }} val) {
+        public void set(final int row, final int col, final {{ e }} val) {
             throw new UnsupportedOperationException("You may not alter this matrix");
         }
 
@@ -704,38 +734,41 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
     }
 
     private static class AugmentedMatrixN {
+
         private final MatrixN{{ E }} mat;
         private final MatrixN{{ E }} aug;
         private final int size;
 
-        private AugmentedMatrixN(MatrixN{{ E }} mat) {
+        private AugmentedMatrixN(final MatrixN{{ E }} mat) {
             this.mat = mat.clone();
             this.size = mat.size();
-            aug = new MatrixN{{ E }}(size);
+            this.aug = new MatrixN{{ E }}(this.size);
         }
 
         private MatrixN{{ E }} getAugmentation() {
-            return aug;
+            return this.aug;
         }
 
         private int getAugmentedSize() {
-            return size * 2;
+            return this.size * 2;
         }
 
-        private {{ e }} get(int row, int col) {
-            if (col < size) {
-                return mat.get(row, col);
+        private {{ e }} get(final int row, final int col) {
+            if (col < this.size) {
+                return this.mat.get(row, col);
             } else {
-                return aug.get(row, col - size);
+                return this.aug.get(row, col - this.size);
             }
         }
 
-        private void set(int row, int col, {{ e }} val) {
-            if (col < size) {
-                mat.set(row, col, val);
+        private void set(final int row, final int col, {{ e }} val) {
+            if (col < this.size) {
+                this.mat.set(row, col, val);
             } else {
-                aug.set(row, col - size, val);
+                this.aug.set(row, col - this.size, val);
             }
         }
+
     }
+
 }

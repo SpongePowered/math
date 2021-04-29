@@ -15,6 +15,7 @@ import org.spongepowered.math.vector.Vector4{{ E }};
 import org.spongepowered.math.vector.VectorN{{ E }};
 
 public class TestUtil{{ E }} {
+
     // Constants to reduce the amount of time redundant (5+) quantities are computed:
     public static final {{ e }} SQRT2 = ({{ e }}) Math.sqrt(2);
     public static final {{ e }} SQRT5 = ({{ e }}) Math.sqrt(5);
@@ -23,53 +24,53 @@ public class TestUtil{{ E }} {
 
     private static final {{ e }} EPSILON = {{ Eteps }};
 
-    public static void assertEquals({{ e }} value, {{ e }} expected) {
+    public static void assertEquals(final {{ e }} value, final {{ e }} expected) {
         Assert.assertEquals(expected, value, EPSILON);
     }
 
-    public static void assertEquals(Vector2{{ E }} v, {{ e }} x, {{ e }} y) {
+    public static void assertEquals(final Vector2{{ E }} v, final {{ e }} x, final {{ e }} y) {
         assertEquals(v.getX(), x);
         assertEquals(v.getY(), y);
     }
 
-    public static void assertEquals(Vector3{{ E }} v, {{ e }} x, {{ e }} y, {{ e }} z) {
+    public static void assertEquals(final Vector3{{ E }} v, final {{ e }} x, final {{ e }} y, final {{ e }} z) {
         assertEquals(v.getX(), x);
         assertEquals(v.getY(), y);
         assertEquals(v.getZ(), z);
     }
 
-    public static void assertEquals(Vector4{{ E }} v, {{ e }} x, {{ e }} y, {{ e }} z, {{ e }} w) {
+    public static void assertEquals(final Vector4{{ E }} v, final {{ e }} x, final {{ e }} y, final {{ e }} z, final {{ e }} w) {
         assertEquals(v.getX(), x);
         assertEquals(v.getY(), y);
         assertEquals(v.getZ(), z);
         assertEquals(v.getW(), w);
     }
 
-    public static void assertEquals(VectorN{{ E }} v, {{ e }}... f) {
+    public static void assertEquals(final VectorN{{ E }} v, final {{ e }}... f) {
         Assert.assertArrayEquals(f, v.toArray(), EPSILON);
     }
 
-    public static void assertEquals(Complex{{ E }} c, {{ e }} x, {{ e }} y) {
+    public static void assertEquals(final Complex{{ E }} c, final {{ e }} x, final {{ e }} y) {
         assertEquals(c.getX(), x);
         assertEquals(c.getY(), y);
     }
 
-    public static void assertEquals(Quaternion{{ E }} q, {{ e }} x, {{ e }} y, {{ e }} z, {{ e }} w) {
+    public static void assertEquals(final Quaternion{{ E }} q, final {{ e }} x, final {{ e }} y, final {{ e }} z, final {{ e }} w) {
         assertEquals(q.getX(), x);
         assertEquals(q.getY(), y);
         assertEquals(q.getZ(), z);
         assertEquals(q.getW(), w);
     }
 
-    public static void assertEquals(Matrix2{{ E }} m, {{ e }} m00, {{ e }} m01, {{ e }} m10, {{ e }} m11) {
+    public static void assertEquals(final Matrix2{{ E }} m, final {{ e }} m00, final {{ e }} m01, final {{ e }} m10, final {{ e }} m11) {
         assertEquals(m.get(0, 0), m00);
         assertEquals(m.get(0, 1), m01);
         assertEquals(m.get(1, 0), m10);
         assertEquals(m.get(1, 1), m11);
     }
 
-    public static void assertEquals(Matrix3{{ E }} m, {{ e }} m00, {{ e }} m01, {{ e }} m02, {{ e }} m10, {{ e }} m11,
-            {{ e }} m12, {{ e }} m20, {{ e }} m21, {{ e }} m22) {
+    public static void assertEquals(final Matrix3{{ E }} m, final {{ e }} m00, final {{ e }} m01, final {{ e }} m02, final {{ e }} m10, final {{ e }} m11,
+            final {{ e }} m12, final {{ e }} m20, final {{ e }} m21, final {{ e }} m22) {
         assertEquals(m.get(0, 0), m00);
         assertEquals(m.get(0, 1), m01);
         assertEquals(m.get(0, 2), m02);
@@ -81,9 +82,9 @@ public class TestUtil{{ E }} {
         assertEquals(m.get(2, 2), m22);
     }
 
-    public static void assertEquals(Matrix4{{ E }} m, {{ e }} m00, {{ e }} m01, {{ e }} m02, {{ e }} m03, {{ e }} m10,
-            {{ e }} m11, {{ e }} m12, {{ e }} m13, {{ e }} m20, {{ e }} m21, {{ e }} m22,
-            {{ e }} m23, {{ e }} m30, {{ e }} m31, {{ e }} m32, {{ e }} m33) {
+    public static void assertEquals(final Matrix4{{ E }} m, final {{ e }} m00, final {{ e }} m01, final {{ e }} m02, final {{ e }} m03, {{ e }} m10,
+            final {{ e }} m11, final {{ e }} m12, final {{ e }} m13, final {{ e }} m20, final {{ e }} m21, final {{ e }} m22,
+            final {{ e }} m23, final {{ e }} m30, final {{ e }} m31, final {{ e }} m32, final {{ e }} m33) {
         assertEquals(m.get(0, 0), m00);
         assertEquals(m.get(0, 1), m01);
         assertEquals(m.get(0, 2), m02);
@@ -102,11 +103,12 @@ public class TestUtil{{ E }} {
         assertEquals(m.get(3, 3), m33);
     }
 
-    public static void assertEquals(MatrixN{{ E }} m, {{ e }}... f) {
+    public static void assertEquals(final MatrixN{{ E }} m, final {{ e }}... f) {
         Assert.assertArrayEquals(f, m.toArray(), EPSILON);
     }
 
-    public static void assertEquals({{ e }}[] a, {{ e }}... f) {
+    public static void assertEquals(final {{ e }}[] a, final {{ e }}... f) {
         Assert.assertArrayEquals(f, a, EPSILON);
     }
+
 }

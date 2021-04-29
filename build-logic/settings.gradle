@@ -1,1 +1,10 @@
+pluginManagement {
+    repositories {
+        maven {
+            url "https://repo.spongepowered.org/repository/maven-public"
+            name "sponge"
+        }
+    }
+}
+
 rootProject.name = "build-logic"

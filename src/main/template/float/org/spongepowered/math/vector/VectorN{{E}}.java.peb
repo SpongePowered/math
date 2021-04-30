@@ -468,6 +468,9 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
     }
 
     private static class ImmutableZeroVectorN extends VectorN{{ E }} {
+
+        private static final long serialVersionUID = 1L;
+
         public ImmutableZeroVectorN(final {{ e }}... v) {
             super(v);
         }

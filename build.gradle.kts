@@ -5,6 +5,7 @@ plugins {
     id("org.spongepowered.gradle.sponge.dev") version "1.1.0-SNAPSHOT"
     id("math-templates")
     id("net.kyori.indra.publishing.sonatype")  version "2.0.1"
+    id("net.ltgt.errorprone") version "2.0.1"
 }
 
 // -- General setup -- //
@@ -59,7 +60,13 @@ sourceSets {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.7.1"))
+    val errorproneVersion: String by project
+    val junitVersion: String by project
+
+    compileOnlyApi("com.google.errorprone:error_prone_annotations:$errorproneVersion")
+    errorprone("com.google.errorprone:error_prone_core:$errorproneVersion")
+
+    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }

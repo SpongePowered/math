@@ -331,7 +331,7 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
 
     @Override
     public int compareTo(final Vector3{{ E }} v) {
-        return (int) (this.lengthSquared() - v.lengthSquared());
+        return {{ ET }}.compare(this.lengthSquared(), v.lengthSquared());
     }
 
     @Override

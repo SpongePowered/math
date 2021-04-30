@@ -718,6 +718,9 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
     }
 
     private static class ImmutableIdentityMatrixN extends MatrixN{{ E }} {
+
+        private static final long serialVersionUID = 1L;
+
         public ImmutableIdentityMatrixN(final int size) {
             super(size);
         }
@@ -731,6 +734,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
         public void setZero() {
             throw new UnsupportedOperationException("You may not alter this matrix");
         }
+
     }
 
     private static class AugmentedMatrixN {

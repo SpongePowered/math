@@ -25,19 +25,13 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      * An immutable identity (1, 0) complex.
      */
     public static final Complex{{ E }} IDENTITY = new Complex{{ E }}(1, 0);
+
     private final {{ e }} x;
     private final {{ e }} y;
     @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
     @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
-
-    /**
-     * Constructs a new complex. The components are set to the identity (1, 0).
-     */
-    public Complex{{ E }}() {
-        this(1, 0);
-    }
 
     /**
      * Constructs a new complex from the {{ EOverload }} components.

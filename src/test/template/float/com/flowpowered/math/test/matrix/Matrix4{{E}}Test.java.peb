@@ -16,8 +16,8 @@ import static org.spongepowered.math.test.TestUtil{{ E }}.SQRT13;
 
 public class Matrix4{{ E }}Test {
     @Test
-    void testDefaultConstructor() {
-        final Matrix4{{ E }} matrix = new Matrix4{{ E }}();
+    void testIdentity() {
+        final Matrix4{{ E }} matrix = Matrix4{{ E }}.IDENTITY;
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 0,
                 0, 1, 0, 0,

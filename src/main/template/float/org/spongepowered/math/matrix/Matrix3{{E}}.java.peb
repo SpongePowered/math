@@ -18,7 +18,11 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable {
         0, 0, 0,
         0, 0, 0
     );
-    public static final Matrix3{{ E }} IDENTITY = new Matrix3{{ E }}();
+    public static final Matrix3{{ E }} IDENTITY = new Matrix3{{ E }}(
+        1, 0, 0,
+        0, 1, 0,
+        0, 0, 1
+    );
     private final {{ e }} m00, m01, m02;
     private final {{ e }} m10, m11, m12;
     private final {{ e }} m20, m21, m22;
@@ -26,14 +30,6 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable {
     private transient volatile boolean hashed = false;
     @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
-
-    public Matrix3{{ E }}() {
-        this(
-            1, 0, 0,
-            0, 1, 0,
-            0, 0, 1
-        );
-    }
 
     public Matrix3{{ E }}(final Matrix2{{ E }} m) {
         this(

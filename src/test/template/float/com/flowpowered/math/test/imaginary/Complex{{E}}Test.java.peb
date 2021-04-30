@@ -13,8 +13,8 @@ import org.spongepowered.math.vector.Vector3{{ E }};
 public class Complex{{ E }}Test {
 
     @Test
-    void testDefaultConstructor() {
-        final Complex{{ E }} complex = new Complex{{ E }}();
+    void testIdentity() {
+        final Complex{{ E }} complex = Complex{{ E }}.IDENTITY;
         TestUtil{{ E }}.assertEquals(complex, 1, 0);
     }
 

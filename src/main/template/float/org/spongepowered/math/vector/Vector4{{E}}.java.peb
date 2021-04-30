@@ -25,10 +25,6 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
     @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
-    public Vector4{{ E }}() {
-        this(0, 0, 0, 0);
-    }
-
     public Vector4{{ E }}(final Vector2{{ E }} v) {
         this(v, 0, 0);
     }

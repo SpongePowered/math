@@ -14,8 +14,8 @@ import static org.spongepowered.math.test.TestUtil{{ E }}.SQRT54;
 
 public class Quaternion{{ E }}Test {
     @Test
-    void testDefaultConstructor() {
-        final Quaternion{{ E }} quaternion = new Quaternion{{ E }}();
+    void testIdentity() {
+        final Quaternion{{ E }} quaternion = Quaternion{{ E }}.IDENTITY;
         TestUtil{{ E }}.assertEquals(quaternion, 0, 0, 0, 1);
     }
 

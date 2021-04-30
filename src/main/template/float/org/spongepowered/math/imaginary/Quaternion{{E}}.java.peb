@@ -36,13 +36,6 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
     private transient volatile int hashCode = 0;
 
     /**
-     * Constructs a new quaternion. The components are set to the identity (0, 0, 0, 1).
-     */
-    public Quaternion{{ E }}() {
-        this(0, 0, 0, 1);
-    }
-
-    /**
      * Constructs a new quaternion from the {{ EOverload }} components.
      *
      * @param x The x (imaginary) component

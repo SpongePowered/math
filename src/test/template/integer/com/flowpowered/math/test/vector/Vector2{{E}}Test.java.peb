@@ -15,8 +15,8 @@ import org.spongepowered.math.vector.VectorN{{ E }};
 public class Vector2{{ E }}Test {
 
     @Test
-    void testEmptyConstructor() {
-        final Vector2{{ E }} vector = new Vector2{{ E }}();
+    void testZero() {
+        final Vector2{{ E }} vector = Vector2{{ E }}.ZERO;
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) 0, ({{ e }}) 0);
     }
 

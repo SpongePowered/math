@@ -17,21 +17,19 @@ public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable {
 
     private static final long serialVersionUID = 1;
     public static final Matrix2{{ E }} ZERO = new Matrix2{{ E }}(
-            0, 0,
-            0, 0);
-    public static final Matrix2{{ E }} IDENTITY = new Matrix2{{ E }}();
+        0, 0,
+        0, 0
+    );
+    public static final Matrix2{{ E }} IDENTITY = new Matrix2{{ E }}(
+        1, 0,
+        0, 1
+    );
     private final {{ e }} m00, m01;
     private final {{ e }} m10, m11;
     @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
     @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
-
-    public Matrix2{{ E }}() {
-        this(
-                1, 0,
-                0, 1);
-    }
 
     public Matrix2{{ E }}(final Matrix3{{ E }} m) {
         this(

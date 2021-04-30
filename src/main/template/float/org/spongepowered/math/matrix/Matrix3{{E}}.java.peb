@@ -2,12 +2,14 @@ package org.spongepowered.math.matrix;
 
 import java.io.Serializable;
 
+import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.imaginary.Complex{{ E }};
 import org.spongepowered.math.imaginary.Quaternion{{ E }};
 import org.spongepowered.math.vector.Vector2{{ E }};
 import org.spongepowered.math.vector.Vector3{{ E }};
 
+@Immutable
 public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1;
@@ -20,7 +22,9 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     private final {{ e }} m00, m01, m02;
     private final {{ e }} m10, m11, m12;
     private final {{ e }} m20, m21, m22;
+    @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
+    @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
     public Matrix3{{ E }}() {

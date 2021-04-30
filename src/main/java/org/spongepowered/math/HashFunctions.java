@@ -42,6 +42,7 @@ package org.spongepowered.math;
  * @version 1.0, 09/24/99
  */
 public final class HashFunctions {
+
     /**
      * In profiling, it has been found to be faster to have our own local implementation of "ceil" rather than to call to {@link Math#ceil(double)}.
      *
@@ -55,4 +56,8 @@ public final class HashFunctions {
         }
         return possible_result;
     }
+
+    private HashFunctions() {
+    }
+
 }

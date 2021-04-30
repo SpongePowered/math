@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.lang.Override;
 import java.util.Random;
 
+import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;
 
+@Immutable
 public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{ E }}>, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1;
@@ -20,7 +22,9 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
     private final {{ e }} x;
     private final {{ e }} y;
     private final {{ e }} z;
+    @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
+    @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
     public Vector3{{ E }}() {

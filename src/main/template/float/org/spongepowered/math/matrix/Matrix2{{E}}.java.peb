@@ -3,6 +3,7 @@ package org.spongepowered.math.matrix;
 import java.io.Serializable;
 import java.lang.Override;
 
+import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.HashFunctions;
 import org.spongepowered.math.imaginary.Complex{{ E }};
@@ -11,6 +12,7 @@ import org.spongepowered.math.vector.Vector2{{ E }};
 /**
 * A 2x2 matrix containing values of type {@code {{ e }}}.`
 */
+@Immutable
 public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1;
@@ -20,7 +22,9 @@ public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     public static final Matrix2{{ E }} IDENTITY = new Matrix2{{ E }}();
     private final {{ e }} m00, m01;
     private final {{ e }} m10, m11;
+    @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
+    @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
     public Matrix2{{ E }}() {

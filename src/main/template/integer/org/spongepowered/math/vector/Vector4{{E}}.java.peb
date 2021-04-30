@@ -2,8 +2,10 @@ package org.spongepowered.math.vector;
 
 import java.io.Serializable;
 
+import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;
 
+@Immutable
 public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{ E }}>, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1;
@@ -17,7 +19,9 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
     private final {{ e }} y;
     private final {{ e }} z;
     private final {{ e }} w;
+    @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
+    @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
     public Vector4{{ E }}() {

@@ -2,6 +2,7 @@ package org.spongepowered.math.imaginary;
 
 import java.io.Serializable;
 
+import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.TrigMath;
 import org.spongepowered.math.matrix.Matrix3{{ E }};
@@ -13,6 +14,7 @@ import org.spongepowered.math.vector.Vector3{{ E }};
  * <p>The x, y, z and w components are stored as {@code {{ e }}}s. This class is
  * immutable.</p>
  */
+@Immutable
 public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Quaternion{{ E }}>, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1;
@@ -28,7 +30,9 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
     private final {{ e }} y;
     private final {{ e }} z;
     private final {{ e }} w;
+    @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
+    @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
     /**

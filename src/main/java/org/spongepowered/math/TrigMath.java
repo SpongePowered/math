@@ -28,7 +28,7 @@ package org.spongepowered.math;
 /**
  * A class designed for fast trigonometry operations. Sine, cosine, tangent, cotangent secant and cosecant use a sine float table.
  */
-public class TrigMath {
+public final class TrigMath {
     // Constants
     public static final double PI = Math.PI;
     public static final double SQUARED_PI = PI * PI;

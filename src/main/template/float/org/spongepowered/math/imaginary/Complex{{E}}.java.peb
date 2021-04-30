@@ -3,6 +3,7 @@ package org.spongepowered.math.imaginary;
 import java.io.Serializable;
 import java.lang.Override;
 
+import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.HashFunctions;
 import org.spongepowered.math.TrigMath;
@@ -12,6 +13,7 @@ import org.spongepowered.math.vector.Vector3{{ E }};
 /**
  * Represent a complex number of the form {@code x + yi}. The x and y components are stored as {@code {{ e }}}s. This class is immutable.
  */
+@Immutable
 public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E }}>, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1;
@@ -25,7 +27,9 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
     public static final Complex{{ E }} IDENTITY = new Complex{{ E }}(1, 0);
     private final {{ e }} x;
     private final {{ e }} y;
+    @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
+    @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
     /**

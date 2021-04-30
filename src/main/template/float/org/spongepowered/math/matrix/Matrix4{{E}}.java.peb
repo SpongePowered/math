@@ -2,6 +2,7 @@ package org.spongepowered.math.matrix;
 
 import java.io.Serializable;
 
+import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.HashFunctions;
 import org.spongepowered.math.TrigMath;
@@ -10,6 +11,7 @@ import org.spongepowered.math.imaginary.Quaternion{{ E }};
 import org.spongepowered.math.vector.Vector3{{ E }};
 import org.spongepowered.math.vector.Vector4{{ E }};
 
+@Immutable
 public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
     private static final long serialVersionUID = 1;
@@ -24,7 +26,9 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     private final {{ e }} m10, m11, m12, m13;
     private final {{ e }} m20, m21, m22, m23;
     private final {{ e }} m30, m31, m32, m33;
+    @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
+    @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
 
     public Matrix4{{ E }}() {

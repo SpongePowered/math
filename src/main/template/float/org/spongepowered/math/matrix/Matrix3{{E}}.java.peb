@@ -143,12 +143,12 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     @Override
-    public Vector3{{ E }} getRow(final int row) {
+    public Vector3{{ E }} row(final int row) {
         return new Vector3{{ E }}(this.get(row, 0), this.get(row, 1), this.get(row, 2));
     }
 
     @Override
-    public Vector3{{ E }} getColumn(final int col) {
+    public Vector3{{ E }} column(final int col) {
         return new Vector3{{ E }}(this.get(0, col), this.get(1, col), this.get(2, col));
     }
 
@@ -222,7 +222,7 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Matrix3{{ E }} translate(final Vector2{{ E }} v) {
-        return this.translate(v.getX(), v.getY());
+        return this.translate(v.x(), v.y());
     }
 
     public Matrix3{{ E }} translate(final {{ EOverload }} x, final {{ EOverload }} y) {
@@ -242,7 +242,7 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Matrix3{{ E }} scale(final Vector3{{ E }} v) {
-        return this.scale(v.getX(), v.getY(), v.getZ());
+        return this.scale(v.x(), v.y(), v.z());
     }
 
     public Matrix3{{ E }} scale(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z) {
@@ -262,7 +262,7 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Vector3{{ E }} transform(final Vector3{{ E }} v) {
-        return this.transform(v.getX(), v.getY(), v.getZ());
+        return this.transform(v.x(), v.y(), v.z());
     }
 
     public Vector3{{ E }} transform(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z) {
@@ -501,7 +501,7 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public static Matrix3{{ E }} createScaling(final Vector3{{ E }} v) {
-        return Matrix3{{ E }}.createScaling(v.getX(), v.getY(), v.getZ());
+        return Matrix3{{ E }}.createScaling(v.x(), v.y(), v.z());
     }
 
     public static Matrix3{{ E }} createScaling(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z) {
@@ -517,7 +517,7 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public static Matrix3{{ E }} createTranslation(final Vector2{{ E }} v) {
-        return Matrix3{{ E }}.createTranslation(v.getX(), v.getY());
+        return Matrix3{{ E }}.createTranslation(v.x(), v.y());
     }
 
     public static Matrix3{{ E }} createTranslation(final {{ EOverload }} x, final {{ EOverload }} y) {
@@ -535,8 +535,8 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     public static Matrix3{{ E }} createRotation(Complex{{ E }} rot) {
         rot = rot.normalize();
         return new Matrix3{{ E }}(
-            rot.getX(), -rot.getY(), 0,
-            rot.getY(), rot.getX(), 0,
+            rot.x(), -rot.y(), 0,
+            rot.y(), rot.x(), 0,
             0, 0, 1
         );
     }
@@ -544,15 +544,15 @@ public final class Matrix3{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     public static Matrix3{{ E }} createRotation(Quaternion{{ E }} rot) {
         rot = rot.normalize();
         return new Matrix3{{ E }}(
-            1 - 2 * rot.getY() * rot.getY() - 2 * rot.getZ() * rot.getZ(),
-            2 * rot.getX() * rot.getY() - 2 * rot.getW() * rot.getZ(),
-            2 * rot.getX() * rot.getZ() + 2 * rot.getW() * rot.getY(),
-            2 * rot.getX() * rot.getY() + 2 * rot.getW() * rot.getZ(),
-            1 - 2 * rot.getX() * rot.getX() - 2 * rot.getZ() * rot.getZ(),
-            2 * rot.getY() * rot.getZ() - 2 * rot.getW() * rot.getX(),
-            2 * rot.getX() * rot.getZ() - 2 * rot.getW() * rot.getY(),
-            2 * rot.getY() * rot.getZ() + 2 * rot.getX() * rot.getW(),
-            1 - 2 * rot.getX() * rot.getX() - 2 * rot.getY() * rot.getY()
+            1 - 2 * rot.y() * rot.y() - 2 * rot.z() * rot.z(),
+            2 * rot.x() * rot.y() - 2 * rot.w() * rot.z(),
+            2 * rot.x() * rot.z() + 2 * rot.w() * rot.y(),
+            2 * rot.x() * rot.y() + 2 * rot.w() * rot.z(),
+            1 - 2 * rot.x() * rot.x() - 2 * rot.z() * rot.z(),
+            2 * rot.y() * rot.z() - 2 * rot.w() * rot.x(),
+            2 * rot.x() * rot.z() - 2 * rot.w() * rot.y(),
+            2 * rot.y() * rot.z() + 2 * rot.x() * rot.w(),
+            1 - 2 * rot.x() * rot.x() - 2 * rot.y() * rot.y()
         );
     }
 

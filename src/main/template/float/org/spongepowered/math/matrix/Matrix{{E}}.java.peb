@@ -6,9 +6,9 @@ public interface Matrix{{ E }} {
 
     {{ e }} get(int row, int col);
 
-    Vector{{ E }} getRow(int row);
+    Vector{{ E }} row(int row);
 
-    Vector{{ E }} getColumn(int col);
+    Vector{{ E }} column(int col);
 
     Matrix{{ E }} mul({{ e }} a);
 

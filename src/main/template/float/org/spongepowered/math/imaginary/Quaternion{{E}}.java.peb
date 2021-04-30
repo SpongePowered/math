@@ -79,7 +79,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The x (imaginary) component
      */
-    public {{ e }} getX() {
+    public {{ e }} x() {
         return this.x;
     }
 
@@ -88,7 +88,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The y (imaginary) component
      */
-    public {{ e }} getY() {
+    public {{ e }} y() {
         return this.y;
     }
 
@@ -97,7 +97,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The z (imaginary) component
      */
-    public {{ e }} getZ() {
+    public {{ e }} z() {
         return this.z;
     }
 
@@ -106,7 +106,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The w (real) component
      */
-    public {{ e }} getW() {
+    public {{ e }} w() {
         return this.w;
     }
 
@@ -348,7 +348,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      * @return The rotated vector
      */
     public Vector3{{ E }} rotate(final Vector3{{ E }} v) {
-        return this.rotate(v.getX(), v.getY(), v.getZ());
+        return this.rotate(v.x(), v.y(), v.z());
     }
 
     /**
@@ -395,7 +395,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The vector representing the direction this quaternion is pointing to
      */
-    public Vector3{{ E }} getDirection() {
+    public Vector3{{ E }} direction() {
         return this.rotate(Vector3{{ E }}.FORWARD);
     }
 
@@ -404,7 +404,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The axis of rotation
      */
-    public Vector3{{ E }} getAxis() {
+    public Vector3{{ E }} axis() {
         final {{ e }} q = ({{ e }}) Math.sqrt(1 - this.w * this.w);
         return new Vector3{{ E }}(this.x / q, this.y / q, this.z / q);
     }
@@ -414,8 +414,8 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The angle in degrees for each axis, stored in a vector, in the corresponding component
      */
-    public Vector3{{ E }} getAxesAnglesDeg() {
-        return this.getAxesAnglesRad().mul(TrigMath.RAD_TO_DEG);
+    public Vector3{{ E }} axesAnglesDeg() {
+        return this.axesAnglesRad().mul(TrigMath.RAD_TO_DEG);
     }
 
     /**
@@ -423,7 +423,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      *
      * @return The angle in radians for each axis, stored in a vector, in the corresponding component
      */
-    public Vector3{{ E }} getAxesAnglesRad() {
+    public Vector3{{ E }} axesAnglesRad() {
         final double roll;
         final double pitch;
         final double yaw;
@@ -730,7 +730,7 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
      * @return The quaternion defined by the rotation around the axis
      */
     public static Quaternion{{ E }} fromAngleRadAxis(final {{ e }} angle, final Vector3{{ E }} axis) {
-        return Quaternion{{ E }}.fromAngleRadAxis(angle, axis.getX(), axis.getY(), axis.getZ());
+        return Quaternion{{ E }}.fromAngleRadAxis(angle, axis.x(), axis.y(), axis.z());
     }
 
     /**

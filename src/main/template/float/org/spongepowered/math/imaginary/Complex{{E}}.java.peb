@@ -71,7 +71,7 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      *
      * @return The x (real) component
      */
-    public {{ e }} getX() {
+    public {{ e }} x() {
         return this.x;
     }
 
@@ -80,7 +80,7 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      *
      * @return The y (imaginary) component
      */
-    public {{ e }} getY() {
+    public {{ e }} y() {
         return this.y;
     }
 
@@ -298,7 +298,7 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      * @return The rotated vector
      */
     public Vector2{{ E }} rotate(final Vector2{{ E }} v) {
-        return this.rotate(v.getX(), v.getY());
+        return this.rotate(v.x(), v.y());
     }
 
     /**
@@ -334,7 +334,7 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      *
      * @return The vector representing the direction this complex is pointing to
      */
-    public Vector2{{ E }} getDirection() {
+    public Vector2{{ E }} direction() {
         return new Vector2{{ E }}(this.x, this.y).normalize();
     }
 
@@ -343,7 +343,7 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      *
      * @return The angle in radians of the direction vector of this complex
      */
-    public {{ e }} getAngleRad() {
+    public {{ e }} angleRad() {
         return ({{ e }}) TrigMath.atan2(this.y, this.x);
     }
 
@@ -352,8 +352,8 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      *
      * @return The angle in degrees of the direction vector of this complex
      */
-    public {{ e }} getAngleDeg() {
-        return ({{ e }}) Math.toDegrees(this.getAngleRad());
+    public {{ e }} angleDeg() {
+        return ({{ e }}) Math.toDegrees(this.angleRad());
     }
 
     /**
@@ -435,7 +435,7 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      * @return A quaternion of this rotation around the given axis
      */
     public Quaternion{{ E }} toQuaternion(final Vector3{{ E }} axis) {
-        return this.toQuaternion(axis.getX(), axis.getY(), axis.getZ());
+        return this.toQuaternion(axis.x(), axis.y(), axis.z());
     }
 
     /**
@@ -463,7 +463,7 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      * @return A quaternion of this rotation around the given axis
      */
     public Quaternion{{ E }} toQuaternion(final {{ e }} x, final {{ e }} y, final {{ e }} z) {
-        return Quaternion{{ E }}.fromAngleRadAxis(this.getAngleRad(), x, y, z);
+        return Quaternion{{ E }}.fromAngleRadAxis(this.angleRad(), x, y, z);
     }
 
     @Override

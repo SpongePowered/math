@@ -58,15 +58,15 @@ public class Vector2{{ E }}Test {
     @Test
     void testGetters() {
         final Vector2{{ E }} vector = new Vector2{{ E }}(({{ e }}) 0.5, ({{ e }}) 1.7);
-        TestUtil{{ E }}.assertEquals(vector.getX(), ({{ e }}) 0.5);
-        TestUtil{{ E }}.assertEquals(vector.getY(), ({{ e }}) 1.7);
+        TestUtil{{ E }}.assertEquals(vector.x(), ({{ e }}) 0.5);
+        TestUtil{{ E }}.assertEquals(vector.y(), ({{ e }}) 1.7);
     }
 
     @Test
     void testFloorGetters() {
         final Vector2{{ E }} vector = new Vector2{{ E }}(0.5, 1.7);
-        TestUtil{{ E }}.assertEquals(vector.getFloorX(), 0);
-        TestUtil{{ E }}.assertEquals(vector.getFloorY(), 1);
+        TestUtil{{ E }}.assertEquals(vector.floorX(), 0);
+        TestUtil{{ E }}.assertEquals(vector.floorY(), 1);
     }
 
     @Test
@@ -341,19 +341,19 @@ public class Vector2{{ E }}Test {
     }
 
     @Test
-    void testGetMinAxis() {
+    void testMinAxis() {
         final Vector2{{ E }} vector1 = new Vector2{{ E }}(1, 2);
-        TestUtil{{ E }}.assertEquals(vector1.getMinAxis(), 0);
+        TestUtil{{ E }}.assertEquals(vector1.minAxis(), 0);
         final Vector2{{ E }} vector2 = new Vector2{{ E }}(2, 1);
-        TestUtil{{ E }}.assertEquals(vector2.getMinAxis(), 1);
+        TestUtil{{ E }}.assertEquals(vector2.minAxis(), 1);
     }
 
     @Test
-    void testGetMaxAxis() {
+    void testMaxAxis() {
         final Vector2{{ E }} vector1 = new Vector2{{ E }}(2, 1);
-        TestUtil{{ E }}.assertEquals(vector1.getMaxAxis(), 0);
+        TestUtil{{ E }}.assertEquals(vector1.maxAxis(), 0);
         final Vector2{{ E }} vector2 = new Vector2{{ E }}(1, 2);
-        TestUtil{{ E }}.assertEquals(vector2.getMaxAxis(), 1);
+        TestUtil{{ E }}.assertEquals(vector2.maxAxis(), 1);
     }
 
     @Test

@@ -70,13 +70,13 @@ public class VectorN{{ E }}Test {
     @Test
     void testFlooredGetter() {
         final VectorN{{ E }} vector = new VectorN{{ E }}(0, ({{ e }}) 1.1, ({{ e }}) 2.2, ({{ e }}) 3.3, ({{ e }}) 4.4, ({{ e }}) 5.5, ({{ e }}) -6.6);
-        TestUtil{{ E }}.assertEquals(vector.getFloored(0), 0);
-        TestUtil{{ E }}.assertEquals(vector.getFloored(1), 1);
-        TestUtil{{ E }}.assertEquals(vector.getFloored(2), 2);
-        TestUtil{{ E }}.assertEquals(vector.getFloored(3), 3);
-        TestUtil{{ E }}.assertEquals(vector.getFloored(4), 4);
-        TestUtil{{ E }}.assertEquals(vector.getFloored(5), 5);
-        TestUtil{{ E }}.assertEquals(vector.getFloored(6), -7);
+        TestUtil{{ E }}.assertEquals(vector.floored(0), 0);
+        TestUtil{{ E }}.assertEquals(vector.floored(1), 1);
+        TestUtil{{ E }}.assertEquals(vector.floored(2), 2);
+        TestUtil{{ E }}.assertEquals(vector.floored(3), 3);
+        TestUtil{{ E }}.assertEquals(vector.floored(4), 4);
+        TestUtil{{ E }}.assertEquals(vector.floored(5), 5);
+        TestUtil{{ E }}.assertEquals(vector.floored(6), -7);
     }
 
     @Test
@@ -314,27 +314,27 @@ public class VectorN{{ E }}Test {
     }
 
     @Test
-    void testGetMinAxis() {
+    void testMinAxis() {
         final VectorN{{ E }} vector1 = new VectorN{{ E }}(1, 2, 3, 4);
-        TestUtil{{ E }}.assertEquals(vector1.getMinAxis(), 0);
+        TestUtil{{ E }}.assertEquals(vector1.minAxis(), 0);
         final VectorN{{ E }} vector2 = new VectorN{{ E }}(2, 1, 3, 4);
-        TestUtil{{ E }}.assertEquals(vector2.getMinAxis(), 1);
+        TestUtil{{ E }}.assertEquals(vector2.minAxis(), 1);
         final VectorN{{ E }} vector3 = new VectorN{{ E }}(3, 2, 1, 4);
-        TestUtil{{ E }}.assertEquals(vector3.getMinAxis(), 2);
+        TestUtil{{ E }}.assertEquals(vector3.minAxis(), 2);
         final VectorN{{ E }} vector4 = new VectorN{{ E }}(4, 2, 3, 1);
-        TestUtil{{ E }}.assertEquals(vector4.getMinAxis(), 3);
+        TestUtil{{ E }}.assertEquals(vector4.minAxis(), 3);
     }
 
     @Test
-    void testGetMaxAxis() {
+    void testMaxAxis() {
         final VectorN{{ E }} vector1 = new VectorN{{ E }}(4, 2, 3, 1);
-        TestUtil{{ E }}.assertEquals(vector1.getMaxAxis(), 0);
+        TestUtil{{ E }}.assertEquals(vector1.maxAxis(), 0);
         final VectorN{{ E }} vector2 = new VectorN{{ E }}(1, 4, 3, 2);
-        TestUtil{{ E }}.assertEquals(vector2.getMaxAxis(), 1);
+        TestUtil{{ E }}.assertEquals(vector2.maxAxis(), 1);
         final VectorN{{ E }} vector3 = new VectorN{{ E }}(1, 2, 4, 3);
-        TestUtil{{ E }}.assertEquals(vector3.getMaxAxis(), 2);
+        TestUtil{{ E }}.assertEquals(vector3.maxAxis(), 2);
         final VectorN{{ E }} vector4 = new VectorN{{ E }}(1, 2, 3, 4);
-        TestUtil{{ E }}.assertEquals(vector4.getMaxAxis(), 3);
+        TestUtil{{ E }}.assertEquals(vector4.maxAxis(), 3);
     }
 
     @Test

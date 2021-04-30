@@ -39,8 +39,8 @@ public class Complex{{ E }}Test {
     @Test
     void testGetters() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3);
-        TestUtil{{ E }}.assertEquals(complex.getX(), 2);
-        TestUtil{{ E }}.assertEquals(complex.getY(), 3);
+        TestUtil{{ E }}.assertEquals(complex.x(), 2);
+        TestUtil{{ E }}.assertEquals(complex.y(), 3);
     }
 
     @Test
@@ -127,25 +127,25 @@ public class Complex{{ E }}Test {
         final Complex{{ E }} complex2 = new Complex{{ E }}(2, 5);
         final Complex{{ E }} div = complex1.div(complex2);
         final Complex{{ E }} invMul = complex1.mul(complex2.invert());
-        TestUtil{{ E }}.assertEquals(div, invMul.getX(), invMul.getY());
+        TestUtil{{ E }}.assertEquals(div, invMul.x(), invMul.y());
     }
 
     @Test
     void testDoubleComponentsDivision() {
         final Complex{{ E }} complex1 = new Complex{{ E }}(7, 3);
         final Complex{{ E }} complex2 = new Complex{{ E }}(2, 5);
-        final Complex{{ E }} div = complex1.div((double) complex2.getX(), (double) complex2.getY());
+        final Complex{{ E }} div = complex1.div((double) complex2.x(), (double) complex2.y());
         final Complex{{ E }} invMul = complex1.mul(complex2.invert());
-        TestUtil{{ E }}.assertEquals(div, invMul.getX(), invMul.getY());
+        TestUtil{{ E }}.assertEquals(div, invMul.x(), invMul.y());
     }
 
     @Test
     void testFloatComponentsDivision() {
         final Complex{{ E }} complex1 = new Complex{{ E }}(7, 3);
         final Complex{{ E }} complex2 = new Complex{{ E }}(2, 5);
-        final Complex{{ E }} div = complex1.div(complex2.getX(), complex2.getY());
+        final Complex{{ E }} div = complex1.div(complex2.x(), complex2.y());
         final Complex{{ E }} invMul = complex1.mul(complex2.invert());
-        TestUtil{{ E }}.assertEquals(div, invMul.getX(), invMul.getY());
+        TestUtil{{ E }}.assertEquals(div, invMul.x(), invMul.y());
     }
 
     @Test
@@ -186,27 +186,27 @@ public class Complex{{ E }}Test {
 
     @Test
     void testDirection() {
-        final Vector2{{ E }} vector = new Complex{{ E }}(4, 3).getDirection();
+        final Vector2{{ E }} vector = new Complex{{ E }}(4, 3).direction();
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) 0.8, ({{ e }}) 0.6);
     }
 
     @Test
     void testAngleRadians() {
-        final {{ e }} f1 = new Complex{{ E }}(1, 0).getAngleRad();
+        final {{ e }} f1 = new Complex{{ E }}(1, 0).angleRad();
         TestUtil{{ E }}.assertEquals(f1, 0);
-        final {{ e }} f2 = new Complex{{ E }}(0, 1).getAngleRad();
+        final {{ e }} f2 = new Complex{{ E }}(0, 1).angleRad();
         TestUtil{{ E }}.assertEquals(f2, ({{ e }}) TrigMath.HALF_PI);
-        final {{ e }} f3 = new Complex{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAngleRad();
+        final {{ e }} f3 = new Complex{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).angleRad();
         TestUtil{{ E }}.assertEquals(f3, ({{ e }}) TrigMath.QUARTER_PI);
     }
 
     @Test
     void testAngleDegrees() {
-        final {{ e }} f1 = new Complex{{ E }}(1, 0).getAngleDeg();
+        final {{ e }} f1 = new Complex{{ E }}(1, 0).angleDeg();
         TestUtil{{ E }}.assertEquals(f1, 0);
-        final {{ e }} f2 = new Complex{{ E }}(0, 1).getAngleDeg();
+        final {{ e }} f2 = new Complex{{ E }}(0, 1).angleDeg();
         TestUtil{{ E }}.assertEquals(f2, 90);
-        final {{ e }} f3 = new Complex{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAngleDeg();
+        final {{ e }} f3 = new Complex{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).angleDeg();
         TestUtil{{ E }}.assertEquals(f3, 45);
     }
 
@@ -254,32 +254,32 @@ public class Complex{{ E }}Test {
     void testConvertToQuaternionDefaultAxis() {
         Complex{{ E }} complex = new Complex{{ E }}(3, 4);
         final Vector3{{ E }} axis = Vector3{{ E }}.UNIT_Z;
-        final Vector3{{ E }} axisPerpendicular = new Vector3{{ E }}(axis.getZ(), -axis.getX(), 0);
+        final Vector3{{ E }} axisPerpendicular = new Vector3{{ E }}(axis.z(), -axis.x(), 0);
         final Quaternion{{ E }} quaternion = complex.toQuaternion();
         final Matrix3{{ E }} quaternionMatrix = Matrix3{{ E }}.createRotation(quaternion);
         final Vector3{{ E }} quaternionAxis = quaternionMatrix.transform(axis);
-        final Vector3{{ E }} quaternionAxisPerpendicular = new Vector3{{ E }}(quaternionAxis.getZ(), -quaternionAxis.getX(), 0);
+        final Vector3{{ E }} quaternionAxisPerpendicular = new Vector3{{ E }}(quaternionAxis.z(), -quaternionAxis.x(), 0);
         final Vector3{{ E }} rotatedAxisPerpendicular = quaternionMatrix.transform(axisPerpendicular);
         final Complex{{ E }} quaternionComplex = Complex{{ E }}.fromRotationTo(quaternionAxisPerpendicular, rotatedAxisPerpendicular);
         complex = complex.normalize();
-        TestUtil{{ E }}.assertEquals(quaternionAxis, axis.getX(), axis.getY(), axis.getZ());
-        TestUtil{{ E }}.assertEquals(quaternionComplex, complex.getX(), complex.getY());
+        TestUtil{{ E }}.assertEquals(quaternionAxis, axis.x(), axis.y(), axis.z());
+        TestUtil{{ E }}.assertEquals(quaternionComplex, complex.x(), complex.y());
     }
 
     @Test
     void testConvertToQuaternionAxis() {
         Complex{{ E }} complex = new Complex{{ E }}(3, 4);
         final Vector3{{ E }} axis = new Vector3{{ E }}(-2, 1, 4);
-        final Vector3{{ E }} axisPerpendicular = new Vector3{{ E }}(axis.getY(), -axis.getX(), 0);
+        final Vector3{{ E }} axisPerpendicular = new Vector3{{ E }}(axis.y(), -axis.x(), 0);
         final Quaternion{{ E }} quaternion = complex.toQuaternion(axis);
         final Matrix3{{ E }} quaternionMatrix = Matrix3{{ E }}.createRotation(quaternion);
         final Vector3{{ E }} quaternionAxis = quaternionMatrix.transform(axis);
-        final Vector3{{ E }} quaternionAxisPerpendicular = new Vector3{{ E }}(quaternionAxis.getY(), -quaternionAxis.getX(), 0);
+        final Vector3{{ E }} quaternionAxisPerpendicular = new Vector3{{ E }}(quaternionAxis.y(), -quaternionAxis.x(), 0);
         final Vector3{{ E }} rotatedAxisPerpendicular = quaternionMatrix.transform(axisPerpendicular);
         final Complex{{ E }} quaternionComplex = Complex{{ E }}.fromRotationTo(quaternionAxisPerpendicular, rotatedAxisPerpendicular);
         complex = complex.normalize();
-        TestUtil{{ E }}.assertEquals(quaternionAxis, axis.getX(), axis.getY(), axis.getZ());
-        TestUtil{{ E }}.assertEquals(quaternionComplex, complex.getX(), complex.getY());
+        TestUtil{{ E }}.assertEquals(quaternionAxis, axis.x(), axis.y(), axis.z());
+        TestUtil{{ E }}.assertEquals(quaternionComplex, complex.x(), complex.y());
     }
 
     @Test

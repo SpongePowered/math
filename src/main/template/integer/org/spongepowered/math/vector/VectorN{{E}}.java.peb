@@ -21,15 +21,15 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
     }
 
     public VectorN{{ E }}(final Vector2{{ E }} v) {
-        this(v.getX(), v.getY());
+        this(v.x(), v.y());
     }
 
     public VectorN{{ E }}(final Vector3{{ E }} v) {
-        this(v.getX(), v.getY(), v.getZ());
+        this(v.x(), v.y(), v.z());
     }
 
     public VectorN{{ E }}(final Vector4{{ E }} v) {
-        this(v.getX(), v.getY(), v.getZ(), v.getW());
+        this(v.x(), v.y(), v.z(), v.w());
     }
 
     public VectorN{{ E }}(final VectorN{{ E }} v) {
@@ -301,7 +301,7 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
     }
 
     @Override
-    public int getMinAxis() {
+    public int minAxis() {
         int axis = 0;
         {{ e }} value = this.vec[axis];
         final int size = this.size();
@@ -315,7 +315,7 @@ public class VectorN{{ E }} implements Vector{{ E }}, Comparable<VectorN{{ E }}>
     }
 
     @Override
-    public int getMaxAxis() {
+    public int maxAxis() {
         int axis = 0;
         {{ e }} value = vec[axis];
         final int size = this.size();

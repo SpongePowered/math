@@ -37,7 +37,7 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
     }
 
     public Vector3{{ E }}(final Vector2{{ E }} v, final {{ e }} z) {
-        this(v.getX(), v.getY(), z);
+        this(v.x(), v.y(), z);
     }
 
     public Vector3{{ E }}(final Vector3{{ E }} v) {
@@ -45,7 +45,7 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
     }
 
     public Vector3{{ E }}(final Vector4{{ E }} v) {
-        this(v.getX(), v.getY(), v.getZ());
+        this(v.x(), v.y(), v.z());
     }
 
     public Vector3{{ E }}(final VectorN{{ E }} v) {
@@ -62,27 +62,27 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
         this.z = z;
     }
 
-    public {{ e }} getX() {
+    public {{ e }} x() {
         return this.x;
     }
 
-    public {{ e }} getY() {
+    public {{ e }} y() {
         return this.y;
     }
 
-    public {{ e }} getZ() {
+    public {{ e }} z() {
         return this.z;
     }
 
-    public int getFloorX() {
+    public int floorX() {
         return GenericMath.floor(this.x);
     }
 
-    public int getFloorY() {
+    public int floorY() {
         return GenericMath.floor(this.y);
     }
 
-    public int getFloorZ() {
+    public int floorZ() {
         return GenericMath.floor(this.z);
     }
 
@@ -303,7 +303,7 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
      * @return {@link int} axis with minimal value
      */
     @Override
-    public int getMinAxis() {
+    public int minAxis() {
         return this.x < this.y ? (this.x < this.z ? 0 : 2) : (this.y < this.z ? 1 : 2);
     }
 
@@ -313,7 +313,7 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
      * @return {@link int} axis with maximum value
      */
     @Override
-    public int getMaxAxis() {
+    public int maxAxis() {
         return this.x < this.y ? (this.y < this.z ? 2 : 1) : (this.x < this.z ? 2 : 0);
     }
 

@@ -34,7 +34,7 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
     }
 
     public Vector4{{ E }}(final Vector2{{ E }} v, final {{ e }} z, final {{ e }} w) {
-        this(v.getX(), v.getY(), z, w);
+        this(v.x(), v.y(), z, w);
     }
 
     public Vector4{{ E }}(final Vector3{{ E }} v) {
@@ -46,7 +46,7 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
     }
 
     public Vector4{{ E }}(final Vector3{{ E }} v, final {{ e }} w) {
-        this(v.getX(), v.getY(), v.getZ(), w);
+        this(v.x(), v.y(), v.z(), w);
     }
 
     public Vector4{{ E }}(final Vector4{{ E }} v) {
@@ -68,35 +68,35 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
         this.w = w;
     }
 
-    public {{ e }} getX() {
+    public {{ e }} x() {
         return this.x;
     }
 
-    public {{ e }} getY() {
+    public {{ e }} y() {
         return this.y;
     }
 
-    public {{ e }} getZ() {
+    public {{ e }} z() {
         return this.z;
     }
 
-    public {{ e }} getW() {
+    public {{ e }} w() {
         return this.w;
     }
 
-    public int getFloorX() {
+    public int floorX() {
         return GenericMath.floor(this.x);
     }
 
-    public int getFloorY() {
+    public int floorY() {
         return GenericMath.floor(this.y);
     }
 
-    public int getFloorZ() {
+    public int floorZ() {
         return GenericMath.floor(this.z);
     }
 
-    public int getFloorW() {
+    public int floorW() {
         return GenericMath.floor(this.w);
     }
 
@@ -306,7 +306,7 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
      * @return {@link int} axis with minimal value
      */
     @Override
-    public int getMinAxis() {
+    public int minAxis() {
         {{ e }} value = this.x;
         int axis = 0;
         if (this.y < value) {
@@ -329,7 +329,7 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
      * @return {@link int} axis with maximum value
      */
     @Override
-    public int getMaxAxis() {
+    public int maxAxis() {
         {{ e }} value = this.x;
         int axis = 0;
         if (this.y > value) {

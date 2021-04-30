@@ -9,7 +9,7 @@ import org.spongepowered.math.imaginary.Complex{{ E }};
 import org.spongepowered.math.vector.Vector2{{ E }};
 
 /**
-* A 2x2 matrix containing values of type {@code {{ e }}}
+* A 2x2 matrix containing values of type {@code {{ e }}}.`
 */
 public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
 
@@ -99,12 +99,12 @@ public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     @Override
-    public Vector2{{ E }} getRow(final int row) {
+    public Vector2{{ E }} row(final int row) {
         return new Vector2{{ E }}(this.get(row, 0), this.get(row, 1));
     }
 
     @Override
-    public Vector2{{ E }} getColumn(final int col) {
+    public Vector2{{ E }} column(final int col) {
         return new Vector2{{ E }}(this.get(0, col), this.get(1, col));
     }
 
@@ -186,7 +186,7 @@ public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Matrix2{{ E }} scale(final Vector2{{ E }} v) {
-        return this.scale(v.getX(), v.getY());
+        return this.scale(v.x(), v.y());
     }
 
     public Matrix2{{ E }} scale(final {{ EOverload }} x, final {{ EOverload }} y) {
@@ -202,7 +202,7 @@ public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Vector2{{ E }} transform(final Vector2{{ E }} v) {
-        return this.transform(v.getX(), v.getY());
+        return this.transform(v.x(), v.y());
     }
 
     public Vector2{{ E }} transform(final {{ EOverload }} x, final {{ EOverload }} y) {
@@ -392,7 +392,7 @@ public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public static Matrix2{{ E }} createScaling(final Vector2{{ E }} v) {
-        return Matrix2{{ E }}.createScaling(v.getX(), v.getY());
+        return Matrix2{{ E }}.createScaling(v.x(), v.y());
     }
 
     public static Matrix2{{ E }} createScaling(final {{ EOverload }} x, final {{ EOverload }} y) {
@@ -419,8 +419,8 @@ public final class Matrix2{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     public static Matrix2{{ E }} createRotation(Complex{{ E }} rot) {
         rot = rot.normalize();
         return new Matrix2{{ E }}(
-                rot.getX(), -rot.getY(),
-                rot.getY(), rot.getX());
+                rot.x(), -rot.y(),
+                rot.y(), rot.x());
     }
 
 }

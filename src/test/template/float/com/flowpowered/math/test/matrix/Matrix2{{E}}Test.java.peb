@@ -68,15 +68,15 @@ public class Matrix2{{ E }}Test {
     @Test
     void testRowGetter() {
         final Matrix2{{ E }} matrix = new Matrix2{{ E }}(1, 2, 3, 4);
-        TestUtil{{ E }}.assertEquals(matrix.getRow(0), 1, 2);
-        TestUtil{{ E }}.assertEquals(matrix.getRow(1), 3, 4);
+        TestUtil{{ E }}.assertEquals(matrix.row(0), 1, 2);
+        TestUtil{{ E }}.assertEquals(matrix.row(1), 3, 4);
     }
 
     @Test
     void testColumnGetter() {
         final Matrix2{{ E }} matrix = new Matrix2{{ E }}(1, 2, 3, 4);
-        TestUtil{{ E }}.assertEquals(matrix.getColumn(0), 1, 3);
-        TestUtil{{ E }}.assertEquals(matrix.getColumn(1), 2, 4);
+        TestUtil{{ E }}.assertEquals(matrix.column(0), 1, 3);
+        TestUtil{{ E }}.assertEquals(matrix.column(1), 2, 4);
     }
 
     @Test

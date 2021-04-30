@@ -25,11 +25,11 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
     }
 
     public Vector2{{ E }}(final Vector3{{ E }} v) {
-        this(v.getX(), v.getY());
+        this(v.x(), v.y());
     }
 
     public Vector2{{ E }}(final Vector4{{ E }} v) {
-        this(v.getX(), v.getY());
+        this(v.x(), v.y());
     }
 
     public Vector2{{ E }}(final VectorN{{ E }} v) {
@@ -45,11 +45,11 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
         this.y = y;
     }
 
-    public {{ e }} getX() {
+    public {{ e }} x() {
         return this.x;
     }
 
-    public {{ e }} getY() {
+    public {{ e }} y() {
         return this.y;
     }
 
@@ -233,7 +233,7 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
      * @return {@link int} axis with minimal value
      */
     @Override
-    public int getMinAxis() {
+    public int minAxis() {
         return this.x < this.y ? 0 : 1;
     }
 
@@ -243,7 +243,7 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
      * @return {@link int} axis with maximum value
      */
     @Override
-    public int getMaxAxis() {
+    public int maxAxis() {
         return this.x > this.y ? 0 : 1;
     }
 

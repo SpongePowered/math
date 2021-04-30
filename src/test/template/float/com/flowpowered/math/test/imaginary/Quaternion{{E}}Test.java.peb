@@ -40,10 +40,10 @@ public class Quaternion{{ E }}Test {
     @Test
     void testGetters() {
         final Quaternion{{ E }} quaternion = new Quaternion{{ E }}(1, 2, 3, 4);
-        TestUtil{{ E }}.assertEquals(quaternion.getX(), 1);
-        TestUtil{{ E }}.assertEquals(quaternion.getY(), 2);
-        TestUtil{{ E }}.assertEquals(quaternion.getZ(), 3);
-        TestUtil{{ E }}.assertEquals(quaternion.getW(), 4);
+        TestUtil{{ E }}.assertEquals(quaternion.x(), 1);
+        TestUtil{{ E }}.assertEquals(quaternion.y(), 2);
+        TestUtil{{ E }}.assertEquals(quaternion.z(), 3);
+        TestUtil{{ E }}.assertEquals(quaternion.w(), 4);
     }
 
     @Test
@@ -130,25 +130,25 @@ public class Quaternion{{ E }}Test {
         final Quaternion{{ E }} quaternion2 = new Quaternion{{ E }}(2, 3, 4, 5);
         final Quaternion{{ E }} div = quaternion1.div(quaternion2);
         final Quaternion{{ E }} invMul = quaternion2.invert().mul(quaternion1);
-        TestUtil{{ E }}.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+        TestUtil{{ E }}.assertEquals(div, invMul.x(), invMul.y(), invMul.z(), invMul.w());
     }
 
     @Test
     void testDoubleComponentsDivision() {
         final Quaternion{{ E }} quaternion1 = new Quaternion{{ E }}(7, 3, 1, 9);
         final Quaternion{{ E }} quaternion2 = new Quaternion{{ E }}(2, 3, 4, 5);
-        final Quaternion{{ E }} div = quaternion1.div((double) quaternion2.getX(), (double) quaternion2.getY(), (double) quaternion2.getZ(), (double) quaternion2.getW());
+        final Quaternion{{ E }} div = quaternion1.div((double) quaternion2.x(), (double) quaternion2.y(), (double) quaternion2.z(), (double) quaternion2.w());
         final Quaternion{{ E }} invMul = quaternion2.invert().mul(quaternion1);
-        TestUtil{{ E }}.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+        TestUtil{{ E }}.assertEquals(div, invMul.x(), invMul.y(), invMul.z(), invMul.w());
     }
 
     @Test
     void testFloatComponentsDivision() {
         final Quaternion{{ E }} quaternion1 = new Quaternion{{ E }}(7, 3, 1, 9);
         final Quaternion{{ E }} quaternion2 = new Quaternion{{ E }}(2, 3, 4, 5);
-        final Quaternion{{ E }} div = quaternion1.div(quaternion2.getX(), quaternion2.getY(), quaternion2.getZ(), quaternion2.getW());
+        final Quaternion{{ E }} div = quaternion1.div(quaternion2.x(), quaternion2.y(), quaternion2.z(), quaternion2.w());
         final Quaternion{{ E }} invMul = quaternion2.invert().mul(quaternion1);
-        TestUtil{{ E }}.assertEquals(div, invMul.getX(), invMul.getY(), invMul.getZ(), invMul.getW());
+        TestUtil{{ E }}.assertEquals(div, invMul.x(), invMul.y(), invMul.z(), invMul.w());
     }
 
     @Test
@@ -201,40 +201,40 @@ public class Quaternion{{ E }}Test {
 
     @Test
     void testDirection() {
-        final Vector3{{ E }} vector = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getDirection();
+        final Vector3{{ E }} vector = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).direction();
         TestUtil{{ E }}.assertEquals(vector, 0, -1, 0);
     }
 
     @Test
     void testAxis() {
-        final Vector3{{ E }} vector1 = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        final Vector3{{ E }} vector1 = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axis();
         TestUtil{{ E }}.assertEquals(vector1, 1, 0, 0);
-        final Vector3{{ E }} vector2 = new Quaternion{{ E }}(0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        final Vector3{{ E }} vector2 = new Quaternion{{ E }}(0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axis();
         TestUtil{{ E }}.assertEquals(vector2, 0, 1, 0);
-        final Vector3{{ E }} vector3 = new Quaternion{{ E }}(0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxis();
+        final Vector3{{ E }} vector3 = new Quaternion{{ E }}(0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axis();
         TestUtil{{ E }}.assertEquals(vector3, 0, 0, 1);
-        final Vector3{{ E }} vector4 = Quaternion{{ E }}.fromAngleDegAxis(135, Vector3{{ E }}.ONE).getAxis();
+        final Vector3{{ E }} vector4 = Quaternion{{ E }}.fromAngleDegAxis(135, Vector3{{ E }}.ONE).axis();
         final {{ e }} a4 = ({{ e }}) (1 / Math.sqrt(3));
         TestUtil{{ E }}.assertEquals(vector4, a4, a4, a4);
     }
 
     @Test
     void testAxesAnglesDegrees() {
-        final Vector3{{ E }} vector1 = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
+        final Vector3{{ E }} vector1 = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axesAnglesDeg();
         TestUtil{{ E }}.assertEquals(vector1, 90, 0, 0);
-        final Vector3{{ E }} vector2 = new Quaternion{{ E }}(0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
+        final Vector3{{ E }} vector2 = new Quaternion{{ E }}(0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axesAnglesDeg();
         TestUtil{{ E }}.assertEquals(vector2, 0, 90, 0);
-        final Vector3{{ E }} vector3 = new Quaternion{{ E }}(0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesDeg();
+        final Vector3{{ E }} vector3 = new Quaternion{{ E }}(0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axesAnglesDeg();
         TestUtil{{ E }}.assertEquals(vector3, 0, 0, 90);
     }
 
     @Test
     void testAxesAnglesRadians() {
-        final Vector3{{ E }} vector1 = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesRad();
+        final Vector3{{ E }} vector1 = new Quaternion{{ E }}(({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axesAnglesRad();
         TestUtil{{ E }}.assertEquals(vector1, ({{ e }}) TrigMath.HALF_PI, 0, 0);
-        final Vector3{{ E }} vector2 = new Quaternion{{ E }}(0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesRad();
+        final Vector3{{ E }} vector2 = new Quaternion{{ E }}(0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axesAnglesRad();
         TestUtil{{ E }}.assertEquals(vector2, 0, ({{ e }}) TrigMath.HALF_PI, 0);
-        final Vector3{{ E }} vector3 = new Quaternion{{ E }}(0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).getAxesAnglesRad();
+        final Vector3{{ E }} vector3 = new Quaternion{{ E }}(0, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO).axesAnglesRad();
         TestUtil{{ E }}.assertEquals(vector3, 0, 0, ({{ e }}) TrigMath.HALF_PI);
     }
 
@@ -282,7 +282,7 @@ public class Quaternion{{ E }}Test {
     void testConvertToComplex() {
         final Quaternion{{ E }} quaternion = Quaternion{{ E }}.fromAngleDegAxis(135, Vector3{{ E }}.ONE);
         final Complex{{ E }} complex = quaternion.toComplex();
-        TestUtil{{ E }}.assertEquals(complex.getAngleDeg(), 135);
+        TestUtil{{ E }}.assertEquals(complex.angleDeg(), 135);
     }
 
     @Test

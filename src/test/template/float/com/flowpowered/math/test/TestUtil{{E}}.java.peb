@@ -28,21 +28,21 @@ public class TestUtil{{ E }} {
     }
 
     public static void assertEquals(final Vector2{{ E }} v, final {{ e }} x, final {{ e }} y) {
-        assertEquals(v.getX(), x);
-        assertEquals(v.getY(), y);
+        assertEquals(v.x(), x);
+        assertEquals(v.y(), y);
     }
 
     public static void assertEquals(final Vector3{{ E }} v, final {{ e }} x, final {{ e }} y, final {{ e }} z) {
-        assertEquals(v.getX(), x);
-        assertEquals(v.getY(), y);
-        assertEquals(v.getZ(), z);
+        assertEquals(v.x(), x);
+        assertEquals(v.y(), y);
+        assertEquals(v.z(), z);
     }
 
     public static void assertEquals(final Vector4{{ E }} v, final {{ e }} x, final {{ e }} y, final {{ e }} z, final {{ e }} w) {
-        assertEquals(v.getX(), x);
-        assertEquals(v.getY(), y);
-        assertEquals(v.getZ(), z);
-        assertEquals(v.getW(), w);
+        assertEquals(v.x(), x);
+        assertEquals(v.y(), y);
+        assertEquals(v.z(), z);
+        assertEquals(v.w(), w);
     }
 
     public static void assertEquals(final VectorN{{ E }} v, final {{ e }}... f) {
@@ -50,15 +50,15 @@ public class TestUtil{{ E }} {
     }
 
     public static void assertEquals(final Complex{{ E }} c, final {{ e }} x, final {{ e }} y) {
-        assertEquals(c.getX(), x);
-        assertEquals(c.getY(), y);
+        assertEquals(c.x(), x);
+        assertEquals(c.y(), y);
     }
 
     public static void assertEquals(final Quaternion{{ E }} q, final {{ e }} x, final {{ e }} y, final {{ e }} z, final {{ e }} w) {
-        assertEquals(q.getX(), x);
-        assertEquals(q.getY(), y);
-        assertEquals(q.getZ(), z);
-        assertEquals(q.getW(), w);
+        assertEquals(q.x(), x);
+        assertEquals(q.y(), y);
+        assertEquals(q.z(), z);
+        assertEquals(q.w(), w);
     }
 
     public static void assertEquals(final Matrix2{{ E }} m, final {{ e }} m00, final {{ e }} m01, final {{ e }} m10, final {{ e }} m11) {

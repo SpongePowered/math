@@ -16,9 +16,9 @@ public interface Vector{{ E }} {
 
     {{ e }} lengthSquared();
 
-    int getMinAxis();
+    int minAxis();
 
-    int getMaxAxis();
+    int maxAxis();
 
     {{ e }}[] toArray();
 

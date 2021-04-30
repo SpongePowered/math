@@ -198,12 +198,12 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     @Override
-    public Vector4{{ E }} getRow(final int row) {
+    public Vector4{{ E }} row(final int row) {
         return new Vector4{{ E }}(this.get(row, 0), this.get(row, 1), this.get(row, 2), this.get(row, 3));
     }
 
     @Override
-    public Vector4{{ E }} getColumn(final int col) {
+    public Vector4{{ E }} column(final int col) {
         return new Vector4{{ E }}(this.get(0, col), this.get(1, col), this.get(2, col), this.get(3, col));
     }
 
@@ -293,7 +293,7 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Matrix4{{ E }} translate(final Vector3{{ E }} v) {
-        return this.translate(v.getX(), v.getY(), v.getZ());
+        return this.translate(v.x(), v.y(), v.z());
     }
 
     public Matrix4{{ E }} translate(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z) {
@@ -313,7 +313,7 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Matrix4{{ E }} scale(final Vector4{{ E }} v) {
-        return this.scale(v.getX(), v.getY(), v.getZ(), v.getW());
+        return this.scale(v.x(), v.y(), v.z(), v.w());
     }
 
     public Matrix4{{ E }} scale(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z, final {{ EOverload }} w) {
@@ -333,7 +333,7 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public Vector4{{ E }} transform(final Vector4{{ E }} v) {
-        return this.transform(v.getX(), v.getY(), v.getZ(), v.getW());
+        return this.transform(v.x(), v.y(), v.z(), v.w());
     }
 
     public Vector4{{ E }} transform(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z, final {{ EOverload }} w) {
@@ -640,7 +640,7 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public static Matrix4{{ E }} createScaling(final Vector4{{ E }} v) {
-        return Matrix4{{ E }}.createScaling(v.getX(), v.getY(), v.getZ(), v.getW());
+        return Matrix4{{ E }}.createScaling(v.x(), v.y(), v.z(), v.w());
     }
 
     public static Matrix4{{ E }} createScaling(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z, final {{ EOverload }} w) {
@@ -657,7 +657,7 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     }
 
     public static Matrix4{{ E }} createTranslation(final Vector3{{ E }} v) {
-        return Matrix4{{ E }}.createTranslation(v.getX(), v.getY(), v.getZ());
+        return Matrix4{{ E }}.createTranslation(v.x(), v.y(), v.z());
     }
 
     public static Matrix4{{ E }} createTranslation(final {{ EOverload }} x, final {{ EOverload }} y, final {{ EOverload }} z) {
@@ -676,8 +676,8 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     public static Matrix4{{ E }} createRotation(Complex{{ E }} rot) {
         rot = rot.normalize();
         return new Matrix4{{ E }}(
-            rot.getX(), -rot.getY(), 0, 0,
-            rot.getY(), rot.getX(), 0, 0,
+            rot.x(), -rot.y(), 0, 0,
+            rot.y(), rot.x(), 0, 0,
             0, 0, 1, 0,
             0, 0, 0, 1
         );
@@ -686,15 +686,15 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
     public static Matrix4{{ E }} createRotation(Quaternion{{ E }} rot) {
         rot = rot.normalize();
         return new Matrix4{{ E }}(
-            1 - 2 * rot.getY() * rot.getY() - 2 * rot.getZ() * rot.getZ(),
-            2 * rot.getX() * rot.getY() - 2 * rot.getW() * rot.getZ(),
-            2 * rot.getX() * rot.getZ() + 2 * rot.getW() * rot.getY(), 0,
-            2 * rot.getX() * rot.getY() + 2 * rot.getW() * rot.getZ(),
-            1 - 2 * rot.getX() * rot.getX() - 2 * rot.getZ() * rot.getZ(),
-            2 * rot.getY() * rot.getZ() - 2 * rot.getW() * rot.getX(), 0,
-            2 * rot.getX() * rot.getZ() - 2 * rot.getW() * rot.getY(),
-            2 * rot.getY() * rot.getZ() + 2 * rot.getX() * rot.getW(),
-            1 - 2 * rot.getX() * rot.getX() - 2 * rot.getY() * rot.getY(), 0,
+            1 - 2 * rot.y() * rot.y() - 2 * rot.z() * rot.z(),
+            2 * rot.x() * rot.y() - 2 * rot.w() * rot.z(),
+            2 * rot.x() * rot.z() + 2 * rot.w() * rot.y(), 0,
+            2 * rot.x() * rot.y() + 2 * rot.w() * rot.z(),
+            1 - 2 * rot.x() * rot.x() - 2 * rot.z() * rot.z(),
+            2 * rot.y() * rot.z() - 2 * rot.w() * rot.x(), 0,
+            2 * rot.x() * rot.z() - 2 * rot.w() * rot.y(),
+            2 * rot.y() * rot.z() + 2 * rot.x() * rot.w(),
+            1 - 2 * rot.x() * rot.x() - 2 * rot.y() * rot.y(), 0,
             0, 0, 0, 1
         );
     }
@@ -712,9 +712,9 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
         final Vector3{{ E }} s = f.cross(up).normalize();
         final Vector3{{ E }} u = s.cross(f);
         final Matrix4{{ E }} mat = new Matrix4{{ E }}(
-            s.getX(), s.getY(), s.getZ(), 0,
-            u.getX(), u.getY(), u.getZ(), 0,
-            -f.getX(), -f.getY(), -f.getZ(), 0,
+            s.x(), s.y(), s.z(), 0,
+            u.x(), u.y(), u.z(), 0,
+            -f.x(), -f.y(), -f.z(), 0,
             0, 0, 0, 1
         );
         return mat.translate(eye.negate());

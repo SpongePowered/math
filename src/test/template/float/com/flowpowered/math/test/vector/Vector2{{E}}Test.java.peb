@@ -8,6 +8,7 @@ import org.spongepowered.math.TrigMath;
 import org.spongepowered.math.test.TestUtil{{ E }};
 import org.spongepowered.math.vector.Vector2{{ E }};
 import org.spongepowered.math.vector.Vector3{{ E }};
+import org.spongepowered.math.vector.Vector3i;
 import org.spongepowered.math.vector.Vector4{{ E }};
 import org.spongepowered.math.vector.VectorN{{ E }};
 
@@ -333,11 +334,7 @@ public class Vector2{{ E }}Test {
     void testNormalize() {
         final Vector2{{ E }} vector = new Vector2{{ E }}(2, 2).normalize();
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO);
-        try {
-            Vector2{{ E }}.ZERO.normalize();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Vector2{{ E }}.ZERO.normalize());
     }
 
     @Test

@@ -367,11 +367,7 @@ public class Vector3{{ E }}Test {
     void testNormalize() {
         final Vector3{{ E }} vector = new Vector3{{ E }}(2, 2, 0).normalize();
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0);
-        try {
-            Vector3{{ E }}.ZERO.normalize();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Vector3{{ E }}.ZERO.normalize());
     }
 
     @Test

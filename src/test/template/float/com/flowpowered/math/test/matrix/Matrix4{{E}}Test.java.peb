@@ -642,11 +642,7 @@ public class Matrix4{{ E }}Test {
                 ({{ e }}) 0.0625, ({{ e }}) -0.225, ({{ e }}) 0.3125, ({{ e }}) -0.05,
                 ({{ e }}) 0.4375, ({{ e }}) 0.025, ({{ e }}) 0.1875, ({{ e }}) -0.55,
                 ({{ e }}) -0.0625, ({{ e }}) 0.025, ({{ e }}) -0.3125, ({{ e }}) 0.45);
-        try {
-            Matrix4{{ E }}.ZERO.invert();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Matrix4{{ E }}.ZERO.invert());
     }
 
     @Test

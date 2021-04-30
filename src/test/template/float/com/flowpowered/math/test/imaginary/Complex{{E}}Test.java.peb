@@ -220,11 +220,7 @@ public class Complex{{ E }}Test {
     void testInvert() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).invert();
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) (2/13d), ({{ e }}) (-3/13d));
-        try {
-            Complex{{ E }}.ZERO.invert();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Complex{{ E }}.ZERO.invert());
     }
 
     @Test
@@ -243,11 +239,7 @@ public class Complex{{ E }}Test {
     void testNormalize() {
         final Complex{{ E }} complex = new Complex{{ E }}(3, 4).normalize();
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) 0.6, ({{ e }}) 0.8);
-        try {
-            Complex{{ E }}.ZERO.normalize();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Complex{{ E }}.ZERO.normalize());
     }
 
     @Test

@@ -257,11 +257,7 @@ public class Matrix2{{ E }}Test {
     void testInvert() {
         final Matrix2{{ E }} matrix = new Matrix2{{ E }}(1, 2, 3, 4).invert();
         TestUtil{{ E }}.assertEquals(matrix, -2, 1, ({{ e }}) 1.5, ({{ e }}) -0.5);
-        try {
-            Matrix2{{ E }}.ZERO.invert();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Matrix2{{ E }}.ZERO.invert());
     }
 
     @Test

@@ -363,11 +363,7 @@ public class Vector4{{ E }}Test {
         TestUtil{{ E }}.assertEquals(v1, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, 0);
         final Vector4{{ E }} v2 = new Vector4{{ E }}(0, 1, 0, 1).normalize();
         TestUtil{{ E }}.assertEquals(v2, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, 0, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO);
-        try {
-            Vector4{{ E }}.ZERO.normalize();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Vector4{{ E }}.ZERO.normalize());
     }
 
     @Test

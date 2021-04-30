@@ -25,9 +25,12 @@
  */
 package org.spongepowered.math;
 
+import com.google.errorprone.annotations.CheckReturnValue;
+
 /**
  * A class designed for fast trigonometry operations. Sine, cosine, tangent, cotangent secant and cosecant use a sine float table.
  */
+@CheckReturnValue
 public final class TrigMath {
     // Constants
     public static final double PI = Math.PI;

@@ -295,11 +295,7 @@ public class Matrix3{{ E }}Test {
                 ({{ e }}) (-5/18d), ({{ e }}) (7/18d), ({{ e }}) (1/18d),
                 ({{ e }}) (1/18d), ({{ e }}) (-5/18d), ({{ e }}) (7/18d),
                 ({{ e }}) (7/18d), ({{ e }}) (1/18d), ({{ e }}) (-5/18d));
-        try {
-            Matrix3{{ E }}.ZERO.invert();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Matrix3{{ E }}.ZERO.invert());
     }
 
     @Test

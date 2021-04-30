@@ -248,11 +248,7 @@ public class Quaternion{{ E }}Test {
     void testInvert() {
         final Quaternion{{ E }} quaternion = new Quaternion{{ E }}(2, 3, 4, 5).invert();
         TestUtil{{ E }}.assertEquals(quaternion, ({{ e }}) (-2/54d), ({{ e }}) (-3/54d), ({{ e }}) (-4/54d),({{ e }}) (5/54d));
-        try {
-            Quaternion{{ E }}.ZERO.invert();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Quaternion{{ E }}.ZERO.invert());
     }
 
     @Test
@@ -271,11 +267,7 @@ public class Quaternion{{ E }}Test {
     void testNormalize() {
         final Quaternion{{ E }} quaternion = new Quaternion{{ E }}(2, 3, 4, 5).normalize();
         TestUtil{{ E }}.assertEquals(quaternion, ({{ e }}) (2/SQRT54), ({{ e }}) (3/SQRT54), ({{ e }}) (4/SQRT54), ({{ e }}) (5/SQRT54));
-        try {
-            Quaternion{{ E }}.ZERO.normalize();
-            Assertions.fail();
-        } catch (ArithmeticException ex) {
-        }
+        Assertions.assertThrows(ArithmeticException.class, () -> Quaternion{{ E }}.ZERO.normalize());
     }
 
     @Test

@@ -1,7 +1,6 @@
 package org.spongepowered.math.test;
 
-import org.junit.Assert;
-
+import org.junit.jupiter.api.Assertions;
 import org.spongepowered.math.vector.Vector2{{ E }};
 import org.spongepowered.math.vector.Vector3{{ E }};
 import org.spongepowered.math.vector.Vector4{{ E }};
@@ -9,7 +8,7 @@ import org.spongepowered.math.vector.VectorN{{ E }};
 
 public class TestUtil{{ E }} {
     public static void assertEquals(final {{ e }} value, final {{ e }} expected) {
-        Assert.assertEquals(expected, value);
+        Assertions.assertEquals(expected, value);
     }
 
     public static void assertEquals(final {{ e }} value, final {{ EOverload }} expected) {
@@ -46,10 +45,10 @@ public class TestUtil{{ E }} {
     }
 
     public static void assertEquals(final VectorN{{ E }} v, final {{ e }}... f) {
-        Assert.assertArrayEquals(f, v.toArray());
+        Assertions.assertArrayEquals(f, v.toArray());
     }
 
     public static void assertEquals(final {{ e }}[] a, final {{ e }}... f) {
-        Assert.assertArrayEquals(f, a);
+        Assertions.assertArrayEquals(f, a);
     }
 }

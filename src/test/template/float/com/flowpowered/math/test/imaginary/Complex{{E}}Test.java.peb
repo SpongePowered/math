@@ -1,8 +1,7 @@
 package org.spongepowered.math.test.imaginary;
 
-import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.spongepowered.math.TrigMath;
 import org.spongepowered.math.imaginary.Complex{{ E }};
 import org.spongepowered.math.imaginary.Quaternion{{ E }};
@@ -12,117 +11,118 @@ import org.spongepowered.math.vector.Vector2{{ E }};
 import org.spongepowered.math.vector.Vector3{{ E }};
 
 public class Complex{{ E }}Test {
+
     @Test
-    public void testDefaultConstructor() {
+    void testDefaultConstructor() {
         final Complex{{ E }} complex = new Complex{{ E }}();
         TestUtil{{ E }}.assertEquals(complex, 1, 0);
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
+    void testDoubleComponentsConstructor() {
         final Complex{{ E }} complex = new Complex{{ E }}(2d, 3d);
         TestUtil{{ E }}.assertEquals(complex, 2, 3);
     }
 
     @Test
-    public void testFloatComponentsConstructor() {
+    void testFloatComponentsConstructor() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3);
         TestUtil{{ E }}.assertEquals(complex, 2, 3);
     }
 
     @Test
-    public void testCopyConstructor() {
+    void testCopyConstructor() {
         final Complex{{ E }} complex = new Complex{{ E }}(new Complex{{ E }}(2, 3));
         TestUtil{{ E }}.assertEquals(complex, 2, 3);
     }
 
     @Test
-    public void testGetters() {
+    void testGetters() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3);
         TestUtil{{ E }}.assertEquals(complex.getX(), 2);
         TestUtil{{ E }}.assertEquals(complex.getY(), 3);
     }
 
     @Test
-    public void testComplexAddition() {
+    void testComplexAddition() {
         Complex{{ E }} vector = new Complex{{ E }}(0, 1).add(new Complex{{ E }}(5.5, -0.5));
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) 5.5, ({{ e }}) 0.5);
     }
 
     @Test
-    public void testDoubleComponentsAddition() {
+    void testDoubleComponentsAddition() {
         Complex{{ E }} complex = new Complex{{ E }}(0, 1).add(5.5, -0.5);
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) 5.5, ({{ e }}) 0.5);
     }
 
     @Test
-    public void testFloatComponentsAddition() {
+    void testFloatComponentsAddition() {
         final Complex{{ E }} complex = new Complex{{ E }}(0, 1).add(5.5f, -0.5f);
         TestUtil{{ E }}.assertEquals(complex, 5.5f, 0.5f);
     }
 
     @Test
-    public void testComplexSubtraction() {
+    void testComplexSubtraction() {
         Complex{{ E }} complex = new Complex{{ E }}(10, 5).sub(new Complex{{ E }}(9f, 4.5));
         TestUtil{{ E }}.assertEquals(complex, 1, ({{ e }}) 0.5);
     }
 
     @Test
-    public void testDoubleComponentsSubtraction() {
+    void testDoubleComponentsSubtraction() {
         final Complex{{ E }} complex = new Complex{{ E }}(10, 5).sub(9, 4.5);
         TestUtil{{ E }}.assertEquals(complex, 1, ({{ e }}) 0.5);
     }
 
     @Test
-    public void testFloatComponentsSubtraction() {
+    void testFloatComponentsSubtraction() {
         final Complex{{ E }} complex = new Complex{{ E }}(10, 5).sub(9f, 4.5f);
         TestUtil{{ E }}.assertEquals(complex, 1, 0.5f);
     }
 
     @Test
-    public void testDoubleFactorMultiplication() {
+    void testDoubleFactorMultiplication() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).mul(1.5);
         TestUtil{{ E }}.assertEquals(complex, 3, ({{ e }}) 4.5);
     }
 
     @Test
-    public void testFloatFactorMultiplication() {
+    void testFloatFactorMultiplication() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).mul(1.5f);
         TestUtil{{ E }}.assertEquals(complex, 3, 4.5f);
     }
 
     @Test
-    public void testComplexMultiplication() {
+    void testComplexMultiplication() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).mul(new Complex{{ E }}(6, 9));
         TestUtil{{ E }}.assertEquals(complex, -15, 36);
     }
 
     @Test
-    public void testDoubleComponentsMultiplication() {
+    void testDoubleComponentsMultiplication() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).mul(6d, 9d);
         TestUtil{{ E }}.assertEquals(complex, -15, 36);
     }
 
     @Test
-    public void testFloatComponentsMultiplication() {
+    void testFloatComponentsMultiplication() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).mul(6, 9);
         TestUtil{{ E }}.assertEquals(complex, -15, 36);
     }
 
     @Test
-    public void testDoubleFactorDivision() {
+    void testDoubleFactorDivision() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).div(2d);
         TestUtil{{ E }}.assertEquals(complex, 1, ({{ e }}) 1.5);
     }
 
     @Test
-    public void testFloatFactorDivision() {
+    void testFloatFactorDivision() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).div(2);
         TestUtil{{ E }}.assertEquals(complex, 1, ({{ e }}) 1.5);
     }
 
     @Test
-    public void testComplexDivision() {
+    void testComplexDivision() {
         final Complex{{ E }} complex1 = new Complex{{ E }}(7, 3);
         final Complex{{ E }} complex2 = new Complex{{ E }}(2, 5);
         final Complex{{ E }} div = complex1.div(complex2);
@@ -131,7 +131,7 @@ public class Complex{{ E }}Test {
     }
 
     @Test
-    public void testDoubleComponentsDivision() {
+    void testDoubleComponentsDivision() {
         final Complex{{ E }} complex1 = new Complex{{ E }}(7, 3);
         final Complex{{ E }} complex2 = new Complex{{ E }}(2, 5);
         final Complex{{ E }} div = complex1.div((double) complex2.getX(), (double) complex2.getY());
@@ -140,7 +140,7 @@ public class Complex{{ E }}Test {
     }
 
     @Test
-    public void testFloatComponentsDivision() {
+    void testFloatComponentsDivision() {
         final Complex{{ E }} complex1 = new Complex{{ E }}(7, 3);
         final Complex{{ E }} complex2 = new Complex{{ E }}(2, 5);
         final Complex{{ E }} div = complex1.div(complex2.getX(), complex2.getY());
@@ -149,49 +149,49 @@ public class Complex{{ E }}Test {
     }
 
     @Test
-    public void testComplexDotProduct() {
+    void testComplexDotProduct() {
         final {{ e }} f = new Complex{{ E }}(2, 3).dot(new Complex{{ E }}(4, 5));
         TestUtil{{ E }}.assertEquals(f, 23);
     }
 
     @Test
-    public void testDoubleComponentsDotProduct() {
+    void testDoubleComponentsDotProduct() {
         final {{ e }} f = new Complex{{ E }}(2, 3).dot(4d, 5d);
         TestUtil{{ E }}.assertEquals(f, 23);
     }
 
     @Test
-    public void testFloatComponentsDotProduct() {
+    void testFloatComponentsDotProduct() {
         final {{ e }} f = new Complex{{ E }}(2, 3).dot(4, 5);
         TestUtil{{ E }}.assertEquals(f, 23);
     }
 
     @Test
-    public void testVectorRotate() {
+    void testVectorRotate() {
         final Vector2{{ E }} vector = new Complex{{ E }}(0, 1).rotate(new Vector2{{ E }}(-1, 1));
         TestUtil{{ E }}.assertEquals(vector, -1, -1);
     }
 
     @Test
-    public void testDoubleComponentsRotate() {
+    void testDoubleComponentsRotate() {
         final Vector2{{ E }} vector = new Complex{{ E }}(0, 1).rotate(-1d, 1d);
         TestUtil{{ E }}.assertEquals(vector, -1, -1);
     }
 
     @Test
-    public void testFloatComponentsRotate() {
+    void testFloatComponentsRotate() {
         final Vector2{{ E }} vector = new Complex{{ E }}(0, 1).rotate(-1, 1);
         TestUtil{{ E }}.assertEquals(vector, -1, -1);
     }
 
     @Test
-    public void testDirection() {
+    void testDirection() {
         final Vector2{{ E }} vector = new Complex{{ E }}(4, 3).getDirection();
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) 0.8, ({{ e }}) 0.6);
     }
 
     @Test
-    public void testAngleRadians() {
+    void testAngleRadians() {
         final {{ e }} f1 = new Complex{{ E }}(1, 0).getAngleRad();
         TestUtil{{ E }}.assertEquals(f1, 0);
         final {{ e }} f2 = new Complex{{ E }}(0, 1).getAngleRad();
@@ -201,7 +201,7 @@ public class Complex{{ E }}Test {
     }
 
     @Test
-    public void testAngleDegrees() {
+    void testAngleDegrees() {
         final {{ e }} f1 = new Complex{{ E }}(1, 0).getAngleDeg();
         TestUtil{{ E }}.assertEquals(f1, 0);
         final {{ e }} f2 = new Complex{{ E }}(0, 1).getAngleDeg();
@@ -211,47 +211,47 @@ public class Complex{{ E }}Test {
     }
 
     @Test
-    public void testConjugate() {
+    void testConjugate() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).conjugate();
         TestUtil{{ E }}.assertEquals(complex, 2, -3);
     }
 
     @Test
-    public void testInvert() {
+    void testInvert() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3).invert();
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) (2/13d), ({{ e }}) (-3/13d));
         try {
             Complex{{ E }}.ZERO.invert();
-            Assert.fail();
+            Assertions.fail();
         } catch (ArithmeticException ex) {
         }
     }
 
     @Test
-    public void testLengthSquared() {
+    void testLengthSquared() {
         final {{ e }} f = new Complex{{ E }}(3, 4).lengthSquared();
         TestUtil{{ E }}.assertEquals(f, 25);
     }
 
     @Test
-    public void testLength() {
+    void testLength() {
         final {{ e }} f = new Complex{{ E }}(3, 4).length();
         TestUtil{{ E }}.assertEquals(f, 5);
     }
 
     @Test
-    public void testNormalize() {
+    void testNormalize() {
         final Complex{{ E }} complex = new Complex{{ E }}(3, 4).normalize();
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) 0.6, ({{ e }}) 0.8);
         try {
             Complex{{ E }}.ZERO.normalize();
-            Assert.fail();
+            Assertions.fail();
         } catch (ArithmeticException ex) {
         }
     }
 
     @Test
-    public void testConvertToQuaternionDefaultAxis() {
+    void testConvertToQuaternionDefaultAxis() {
         Complex{{ E }} complex = new Complex{{ E }}(3, 4);
         final Vector3{{ E }} axis = Vector3{{ E }}.UNIT_Z;
         final Vector3{{ E }} axisPerpendicular = new Vector3{{ E }}(axis.getZ(), -axis.getX(), 0);
@@ -267,7 +267,7 @@ public class Complex{{ E }}Test {
     }
 
     @Test
-    public void testConvertToQuaternionAxis() {
+    void testConvertToQuaternionAxis() {
         Complex{{ E }} complex = new Complex{{ E }}(3, 4);
         final Vector3{{ E }} axis = new Vector3{{ E }}(-2, 1, 4);
         final Vector3{{ E }} axisPerpendicular = new Vector3{{ E }}(axis.getY(), -axis.getX(), 0);
@@ -283,80 +283,81 @@ public class Complex{{ E }}Test {
     }
 
     @Test
-    public void testEquals() {
-        Assert.assertTrue(new Complex{{ E }}(122, 43).equals(new Complex{{ E }}(122, 43)));
-        Assert.assertFalse(new Complex{{ E }}(122, 43).equals(new Complex{{ E }}(378, 95)));
+    void testEquals() {
+        Assertions.assertTrue(new Complex{{ E }}(122, 43).equals(new Complex{{ E }}(122, 43)));
+        Assertions.assertFalse(new Complex{{ E }}(122, 43).equals(new Complex{{ E }}(378, 95)));
     }
 
     @Test
-    public void testComparison() {
+    void testComparison() {
         final int c1 = new Complex{{ E }}(10, 20).compareTo(new Complex{{ E }}(20, 20));
-        Assert.assertTrue(c1 < 0);
+        Assertions.assertTrue(c1 < 0);
         final int c2 = new Complex{{ E }}(10, 20).compareTo(new Complex{{ E }}(10, 20));
-        Assert.assertTrue(c2 == 0);
+        Assertions.assertTrue(c2 == 0);
         final int c3 = new Complex{{ E }}(10, 20).compareTo(new Complex{{ E }}(10, 10));
-        Assert.assertTrue(c3 > 0);
+        Assertions.assertTrue(c3 > 0);
         final int c4 = new Complex{{ E }}(0.2, 0.2).compareTo(new Complex{{ E }}(0.1, 0.1));
-        Assert.assertTrue(c4 > 0);
+        Assertions.assertTrue(c4 > 0);
     }
 
     @Test
-    public void testCloning() {
+    void testCloning() {
         final Complex{{ E }} complex = new Complex{{ E }}(3, 2);
-        Assert.assertEquals(complex, complex.clone());
+        Assertions.assertEquals(complex, complex.clone());
     }
 
     @Test
-    public void testComplexFromReal() {
+    void testComplexFromReal() {
         final Complex{{ E }} complex = Complex{{ E }}.fromReal(1);
         TestUtil{{ E }}.assertEquals(complex, 1, 0);
     }
 
     @Test
-    public void testComplexFromImaginary() {
+    void testComplexFromImaginary() {
         final Complex{{ E }} complex = Complex{{ E }}.fromImaginary(1);
         TestUtil{{ E }}.assertEquals(complex, 0, 1);
     }
 
     @Test
-    public void testComplexFrom() {
+    void testComplexFrom() {
         final Complex{{ E }} complex = Complex{{ E }}.from(1, 2);
         TestUtil{{ E }}.assertEquals(complex, 1, 2);
     }
 
     @Test
-    public void testCreateFromRotationBetweenTwoVector2() {
+    void testCreateFromRotationBetweenTwoVector2() {
         final Complex{{ E }} complex = Complex{{ E }}.fromRotationTo(new Vector2{{ E }}(0, 1), new Vector2{{ E }}(-1, 0));
         TestUtil{{ E }}.assertEquals(complex, 0, 1);
     }
 
     @Test
-    public void testCreateFromRotationBetweenTwoVector3() {
+    void testCreateFromRotationBetweenTwoVector3() {
         final Complex{{ E }} complex = Complex{{ E }}.fromRotationTo(new Vector3{{ E }}(0, 0, 1), new Vector3{{ E }}(0, -1, 0));
         TestUtil{{ E }}.assertEquals(complex, 0, 1);
     }
 
     @Test
-    public void testCreateFromDoubleAngleDegrees() {
+    void testCreateFromDoubleAngleDegrees() {
         final Complex{{ E }} complex = Complex{{ E }}.fromAngleDeg(45d);
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test
-    public void testCreateFromFloatAngleDegrees() {
+    void testCreateFromFloatAngleDegrees() {
         final Complex{{ E }} complex = Complex{{ E }}.fromAngleDeg(45);
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test
-    public void testCreateFromDoubleAngleRadians() {
+    void testCreateFromDoubleAngleRadians() {
         final Complex{{ E }} complex = Complex{{ E }}.fromAngleRad(TrigMath.QUARTER_PI);
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO);
     }
 
     @Test
-    public void testCreateFromFloatAngleRadians() {
+    void testCreateFromFloatAngleRadians() {
         final Complex{{ E }} complex = Complex{{ E }}.fromAngleRad(({{ e }}) TrigMath.QUARTER_PI);
         TestUtil{{ E }}.assertEquals(complex, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO, ({{ e }}) TrigMath.HALF_SQRT_OF_TWO);
     }
+
 }

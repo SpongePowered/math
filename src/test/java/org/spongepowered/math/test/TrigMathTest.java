@@ -25,100 +25,99 @@
  */
 package org.spongepowered.math.test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Test;
 import org.spongepowered.math.TrigMath;
 
-import static org.junit.Assert.assertTrue;
-
 public class TrigMathTest {
-    private void testValue(float angle, float result, float realValue) {
-        assertTrue("angle=" + angle + " expected " + realValue + " but got " + result, Math.abs(result - realValue) < 0.0001);
+    private void testValue(final float angle, final float result, final float realValue) {
+        assertTrue(Math.abs(result - realValue) < 0.0001, "angle=" + angle + " expected " + realValue + " but got " + result);
     }
 
-    private void testSin(float value) {
-        testValue(value, TrigMath.sin(value), (float) Math.sin(value));
+    private void testSin(final float value) {
+        this.testValue(value, TrigMath.sin(value), (float) Math.sin(value));
     }
 
-    private void testCos(float value) {
-        testValue(value, TrigMath.cos(value), (float) Math.cos(value));
+    private void testCos(final float value) {
+        this.testValue(value, TrigMath.cos(value), (float) Math.cos(value));
     }
 
     @Test
-    public void testSinCos() {
-        float step = (float) (TrigMath.TWO_PI / 100.0); //100 steps in the circle
+    void testSinCos() {
+        final float step = (float) (TrigMath.TWO_PI / 100.0); //100 steps in the circle
         for (float i = (float) -TrigMath.PI; i < TrigMath.TWO_PI; i += step) {
-            testSin(i);
-            testCos(i);
+            this.testSin(i);
+            this.testCos(i);
         }
     }
 
-    private void testValue(double value, double result, double realValue) {
-        assertTrue("value=" + value + " expected " + realValue + " but got " + result, Math.abs(result - realValue) < 0.0000001);
+    private void testValue(final double value, final double result, final double realValue) {
+        assertTrue(Math.abs(result - realValue) < 0.0000001, "value=" + value + " expected " + realValue + " but got " + result);
     }
 
-    private void testAsin(double value) {
-        testValue(value, TrigMath.asin(value), Math.asin(value));
+    private void testAsin(final double value) {
+        this.testValue(value, TrigMath.asin(value), Math.asin(value));
     }
 
-    private void testAcos(double value) {
-        testValue(value, TrigMath.acos(value), Math.acos(value));
+    private void testAcos(final double value) {
+        this.testValue(value, TrigMath.acos(value), Math.acos(value));
     }
 
-    private void testAsec(double value) {
-        testValue(value, TrigMath.asec(value), Math.acos(1 / value));
+    private void testAsec(final double value) {
+        this.testValue(value, TrigMath.asec(value), Math.acos(1 / value));
     }
 
-    private void testAcosec(double value) {
-        testValue(value, TrigMath.acsc(value), Math.asin(1 / value));
+    private void testAcosec(final double value) {
+        this.testValue(value, TrigMath.acsc(value), Math.asin(1 / value));
     }
 
-    private void testAtan(double value) {
-        testValue(value, TrigMath.atan(value), Math.atan(value));
+    private void testAtan(final double value) {
+        this.testValue(value, TrigMath.atan(value), Math.atan(value));
     }
 
-    private void testAtan2(double y, double x) {
-        double realValue = Math.atan2(y, x);
-        double result = TrigMath.atan2(y, x);
-        assertTrue("x=" + x + ",y=" + y + " expected " + realValue + " but got " + result, Math.abs(result - realValue) < 0.0000001);
+    private void testAtan2(final double y, final double x) {
+        final double realValue = Math.atan2(y, x);
+        final double result = TrigMath.atan2(y, x);
+        assertTrue(Math.abs(result - realValue) < 0.0000001, "x=" + x + ",y=" + y + " expected " + realValue + " but got " + result);
     }
 
     @Test
-    public void testAsinAcos() {
-        double step = 2.0 / 100.0;
+    void testAsinAcos() {
+        final double step = 2.0 / 100.0;
         for (double i = -1.0; i <= 1.0; i += step) {
-            testAsin(i);
-            testAcos(i);
+            this.testAsin(i);
+            this.testAcos(i);
         }
     }
 
     @Test
-    public void testAsecAcosec() {
-        double step = 4.0 / 100.0;
+    void testAsecAcosec() {
+        final double step = 4.0 / 100.0;
         for (double i = -2.0; i <= -1; i += step) {
-            testAsec(i);
-            testAcosec(i);
+            this.testAsec(i);
+            this.testAcosec(i);
         }
         for (double i = 1; i <= 2; i += step) {
-            testAsec(i);
-            testAcosec(i);
+            this.testAsec(i);
+            this.testAcosec(i);
         }
     }
 
     @Test
-    public void testAtan() {
-        double step = 0.1;
+    void testAtan() {
+        final double step = 0.1;
         for (double i = -10.0; i <= 10.0; i += step) {
-            testAtan(i);
+            this.testAtan(i);
         }
     }
 
     @Test
-    public void testAtan2() {
-        double step = 0.2;
+    void testAtan2() {
+        final double step = 0.2;
         for (double x = -5.0; x <= 5.0; x += step) {
             for (double y = -5.0; y <= 5.0; y += step) {
-                testAtan2(y, x);
+                this.testAtan2(y, x);
             }
         }
     }

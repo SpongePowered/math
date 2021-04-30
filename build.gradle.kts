@@ -59,14 +59,12 @@ sourceSets {
 }
 
 dependencies {
-    testImplementation("junit:junit:4.13.1")
+    testImplementation(platform("org.junit:junit-bom:5.7.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 tasks {
-    withType(Test::class) {
-        useJUnit() // junit 4
-    }
-
     jar {
         from(rootProject.file("LICENSE.txt")) {
             rename { "LICENSE-spongepowered-math.txt" }

@@ -25,18 +25,17 @@
  */
 package org.spongepowered.math.test;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.spongepowered.math.GenericMath.floor;
 import static org.spongepowered.math.GenericMath.mean;
 import static org.spongepowered.math.GenericMath.mod;
 import static org.spongepowered.math.GenericMath.roundUpPow2;
 
+import org.junit.jupiter.api.Test;
+
 public final class GenericMathTest {
     @Test
-    public void testMean() {
+    void testMean() {
         final int[] intTestValues = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
         final int intTestResult = 8;
         final double[] doubleTestValues = new double[intTestValues.length];
@@ -49,7 +48,7 @@ public final class GenericMathTest {
     }
 
     @Test
-    public void testRoundUpPow2() {
+    void testRoundUpPow2() {
         assertEquals(1, roundUpPow2(-1));
         assertEquals(1, roundUpPow2(0));
         assertEquals(16, roundUpPow2(9));
@@ -58,7 +57,7 @@ public final class GenericMathTest {
     }
 
     @Test
-    public void testFloor() {
+    void testFloor() {
         assertEquals(1, floor(1.5f));
         assertEquals(1, floor(1.5));
         assertEquals(59, floor(59.987));
@@ -68,7 +67,7 @@ public final class GenericMathTest {
     }
 
     @Test
-    public void testModInt() {
+    void testModInt() {
         assertEquals(0, mod(-32, 16));
         assertEquals(15, mod(-17, 16));
         assertEquals(0, mod(-16, 16));
@@ -81,7 +80,7 @@ public final class GenericMathTest {
     }
 
     @Test
-    public void testModFloat() {
+    void testModFloat() {
         assertEquals(0f, mod(-32f, 16f), 0f);
         assertEquals(15f, mod(-17f, 16f), 0f);
         assertEquals(0f, mod(-16f, 16f), 0f);
@@ -94,7 +93,7 @@ public final class GenericMathTest {
     }
 
     @Test
-    public void testModDouble() {
+    void testModDouble() {
         assertEquals(0d, mod(-32d, 16d), 0d);
         assertEquals(15d, mod(-17d, 16d), 0d);
         assertEquals(0d, mod(-16d, 16d), 0d);

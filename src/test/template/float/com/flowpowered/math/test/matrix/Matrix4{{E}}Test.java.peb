@@ -1,8 +1,7 @@
 package org.spongepowered.math.test.matrix;
 
-import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.spongepowered.math.imaginary.Complex{{ E }};
 import org.spongepowered.math.imaginary.Quaternion{{ E }};
 import org.spongepowered.math.matrix.Matrix2{{ E }};
@@ -17,7 +16,7 @@ import static org.spongepowered.math.test.TestUtil{{ E }}.SQRT13;
 
 public class Matrix4{{ E }}Test {
     @Test
-    public void testDefaultConstructor() {
+    void testDefaultConstructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}();
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 0,
@@ -27,7 +26,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCopyMatrix2Constructor() {
+    void testCopyMatrix2Constructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(new Matrix2{{ E }}(1, 2, 3, 4));
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 2, 0, 0,
@@ -37,7 +36,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCopyMatrix3Constructor() {
+    void testCopyMatrix3Constructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9));
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 2, 3, 0,
@@ -47,7 +46,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCopyMatrix4Constructor() {
+    void testCopyMatrix4Constructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -61,7 +60,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCopyMatrixNConstructor() {
+    void testCopyMatrixNConstructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(new MatrixN{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -76,7 +75,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testDoubleComponentsConstructor() {
+    void testDoubleComponentsConstructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1d, 2d, 3d, 4d,
                 5d, 6d, 7d, 8d,
@@ -90,7 +89,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testFloatComponentsConstructor() {
+    void testFloatComponentsConstructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -104,7 +103,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testGetter() {
+    void testGetter() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -129,7 +128,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testRowGetter() {
+    void testRowGetter() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -142,7 +141,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testColumnGetter() {
+    void testColumnGetter() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -155,7 +154,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testMatrix4Addition() {
+    void testMatrix4Addition() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -175,7 +174,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testMatrix4Subtraction() {
+    void testMatrix4Subtraction() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -195,7 +194,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testFloatFactorMultiplication() {
+    void testFloatFactorMultiplication() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -210,7 +209,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testDoubleFactorMultiplication() {
+    void testDoubleFactorMultiplication() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -225,7 +224,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testMatrix4Multiplication() {
+    void testMatrix4Multiplication() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 10, 0, 0,
                 0, 1, 0, 4,
@@ -245,7 +244,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testFloatFactorDivision() {
+    void testFloatFactorDivision() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -260,7 +259,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testDoubleFactorDivision() {
+    void testDoubleFactorDivision() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -275,7 +274,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testMatrix4Division() {
+    void testMatrix4Division() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 10, 0, 0,
                 0, 1, 0, 4,
@@ -295,7 +294,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testRaiseToFloatPower() {
+    void testRaiseToFloatPower() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -310,7 +309,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testRaiseToDoublePower() {
+    void testRaiseToDoublePower() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -325,7 +324,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTranslateVector3() {
+    void testTranslateVector3() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -340,7 +339,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTranslateDoubleComponents() {
+    void testTranslateDoubleComponents() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -355,7 +354,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTranslateFloatComponents() {
+    void testTranslateFloatComponents() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -370,7 +369,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testScaleDoubleFactor() {
+    void testScaleDoubleFactor() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -385,7 +384,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testScaleFloatFactor() {
+    void testScaleFloatFactor() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -400,7 +399,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testScaleVector4() {
+    void testScaleVector4() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -415,7 +414,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testScaleDoubleComponents() {
+    void testScaleDoubleComponents() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -430,7 +429,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testScaleFloatComponents() {
+    void testScaleFloatComponents() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -445,7 +444,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testRotateComplex() {
+    void testRotateComplex() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -460,7 +459,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testRotateQuaternion() {
+    void testRotateQuaternion() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -475,7 +474,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTransformVector4() {
+    void testTransformVector4() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -486,7 +485,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTransformDoubleComponents() {
+    void testTransformDoubleComponents() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -497,7 +496,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTransformFloatComponents() {
+    void testTransformFloatComponents() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 1, 0, 0,
@@ -508,7 +507,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testFloor() {
+    void testFloor() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 -1.1, 2.5, 2.9, 3.2,
                 -6.3, 2.2, 2.1, 5.6,
@@ -523,7 +522,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCeiling() {
+    void testCeiling() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 -1.1, 2.5, 2.9, 3.2,
                 -6.3, 2.2, 2.1, 5.6,
@@ -538,7 +537,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testRound() {
+    void testRound() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 -1.1, 2.5, 2.9, 3.2,
                 -6.3, 2.2, 2.1, 5.6,
@@ -553,7 +552,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testAbsolute() {
+    void testAbsolute() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 -1, -1, -1, -1,
                 -1, -1, -1, -1,
@@ -579,7 +578,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testNegate() {
+    void testNegate() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, -1, 1, -1,
                 -1, 1, -1, 1,
@@ -594,7 +593,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTranspose() {
+    void testTranspose() {
         Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 5, 6, 7, 8,
@@ -609,7 +608,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testTrace() {
+    void testTrace() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -620,7 +619,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testDeterminant() {
+    void testDeterminant() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -631,7 +630,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testInvert() {
+    void testInvert() {
         Matrix4{{ E }} matrix0 = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 4, 1, 2, 3,
@@ -645,13 +644,13 @@ public class Matrix4{{ E }}Test {
                 ({{ e }}) -0.0625, ({{ e }}) 0.025, ({{ e }}) -0.3125, ({{ e }}) 0.45);
         try {
             Matrix4{{ E }}.ZERO.invert();
-            Assert.fail();
+            Assertions.fail();
         } catch (ArithmeticException ex) {
         }
     }
 
     @Test
-    public void testConvertToMatrix2() {
+    void testConvertToMatrix2() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -664,7 +663,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testConvertToMatrix3() {
+    void testConvertToMatrix3() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -678,7 +677,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testConvertToMatrixN() {
+    void testConvertToMatrixN() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 0, 0, 0,
                 0, 2, 0, 0,
@@ -693,7 +692,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testConvertToArrayRowMajorDefault() {
+    void testConvertToArrayRowMajorDefault() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
@@ -708,7 +707,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testConvertToArray() {
+    void testConvertToArray() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
@@ -723,7 +722,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testEquals() {
+    void testEquals() {
         final Matrix4{{ E }} matrix01 = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
@@ -734,7 +733,7 @@ public class Matrix4{{ E }}Test {
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        Assert.assertEquals(matrix01, matrix02);
+        Assertions.assertEquals(matrix01, matrix02);
         final Matrix4{{ E }} matrix11 = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
@@ -745,27 +744,27 @@ public class Matrix4{{ E }}Test {
                 0, 2, 4, 0,
                 0, 7, 3, 0,
                 0, 0, 0, 4);
-        Assert.assertNotEquals(matrix11, matrix12);
+        Assertions.assertNotEquals(matrix11, matrix12);
     }
 
     @Test
-    public void testCloning() {
+    void testCloning() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
                 1, 2, 3, 4,
                 0, 2, 0, 0,
                 0, 0, 3, 0,
                 0, 0, 0, 4);
-        Assert.assertEquals(matrix, matrix.clone());
+        Assertions.assertEquals(matrix, matrix.clone());
     }
 
     @Test
-    public void testMatrixFromN() {
+    void testMatrixFromN() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.from(1);
         TestUtil{{ E }}.assertEquals(matrix, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
     }
 
     @Test
-    public void testMatrixFromMany() {
+    void testMatrixFromMany() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.from(
             1, 2, 3, 4,
             5, 6, 7, 8,
@@ -779,7 +778,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testMatrixFromDiagonal() {
+    void testMatrixFromDiagonal() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.fromDiagonal(1, 2, 3, 4);
         TestUtil{{ E }}.assertEquals(matrix,
             1, 0, 0, 0,
@@ -789,7 +788,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateFromScalingDoubleFactor() {
+    void testCreateFromScalingDoubleFactor() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createScaling(2d);
         TestUtil{{ E }}.assertEquals(matrix,
                 2, 0, 0, 0,
@@ -799,7 +798,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateFromScalingFloatFactor() {
+    void testCreateFromScalingFloatFactor() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createScaling(2);
         TestUtil{{ E }}.assertEquals(matrix,
                 2, 0, 0, 0,
@@ -809,7 +808,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateFromScalingVector4() {
+    void testCreateFromScalingVector4() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createScaling(new Vector4{{ E }}(1, 2, 3, 4));
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 0,
@@ -819,7 +818,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateFromScalingDoubleComponents() {
+    void testCreateFromScalingDoubleComponents() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createScaling(1d, 2d, 3d, 4d);
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 0,
@@ -829,7 +828,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateFromScalingFloatComponents() {
+    void testCreateFromScalingFloatComponents() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createScaling(1, 2, 3, 4);
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 0,
@@ -839,7 +838,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateTranslationVector3() {
+    void testCreateTranslationVector3() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createTranslation(new Vector3{{ E }}(1, 2, 3));
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 1,
@@ -849,7 +848,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateTranslationDoubleComponents() {
+    void testCreateTranslationDoubleComponents() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createTranslation(1d, 2d, 3d);
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 1,
@@ -859,7 +858,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateTranslationFloatComponents() {
+    void testCreateTranslationFloatComponents() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createTranslation(1, 2, 3);
         TestUtil{{ E }}.assertEquals(matrix,
                 1, 0, 0, 1,
@@ -869,7 +868,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateRotationFromComplex() {
+    void testCreateRotationFromComplex() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createRotation(new Complex{{ E }}(2, 3));
         TestUtil{{ E }}.assertEquals(matrix,
                 ({{ e }}) (2/SQRT13), ({{ e }}) (-3/SQRT13), 0, 0,
@@ -879,7 +878,7 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    public void testCreateRotationFromQuaternion() {
+    void testCreateRotationFromQuaternion() {
         final Matrix4{{ E }} matrix = Matrix4{{ E }}.createRotation(new Quaternion{{ E }}(4, 3, 2, 0));
         TestUtil{{ E }}.assertEquals(matrix,
                 ({{ e }}) (3/29d), ({{ e }}) (24/29d), ({{ e }}) (16/29d), 0,
@@ -888,28 +887,28 @@ public class Matrix4{{ E }}Test {
                 0, 0, 0, 1);
     }
 
-    @Test
-    public void testCreateLookAt() {
+    {#  @Test
+    void testCreateLookAt() {
         // TODO: figure out a test for this
     }
 
     @Test
-    public void testCreatePerspectiveDouble() {
+    void testCreatePerspectiveDouble() {
         // TODO: figure out a test for this
     }
 
     @Test
-    public void testCreatePerspectiveFloat() {
+    void testCreatePerspectiveFloat() {
         // TODO: figure out a test for this
     }
 
     @Test
-    public void testCreateOrthographicDouble() {
+    void testCreateOrthographicDouble() {
         // TODO: figure out a test for this
     }
 
     @Test
-    public void testCreateOrthographicFloat() {
+    void testCreateOrthographicFloat() {
         // TODO: figure out a test for this
-    }
+    } #}
 }

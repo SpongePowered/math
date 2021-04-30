@@ -1,7 +1,6 @@
 package org.spongepowered.math.test;
 
-import org.junit.Assert;
-
+import org.junit.jupiter.api.Assertions;
 import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.imaginary.Complex{{ E }};
 import org.spongepowered.math.imaginary.Quaternion{{ E }};
@@ -25,7 +24,7 @@ public class TestUtil{{ E }} {
     private static final {{ e }} EPSILON = {{ Eteps }};
 
     public static void assertEquals(final {{ e }} value, final {{ e }} expected) {
-        Assert.assertEquals(expected, value, EPSILON);
+        Assertions.assertEquals(expected, value, EPSILON);
     }
 
     public static void assertEquals(final Vector2{{ E }} v, final {{ e }} x, final {{ e }} y) {
@@ -47,7 +46,7 @@ public class TestUtil{{ E }} {
     }
 
     public static void assertEquals(final VectorN{{ E }} v, final {{ e }}... f) {
-        Assert.assertArrayEquals(f, v.toArray(), EPSILON);
+        Assertions.assertArrayEquals(f, v.toArray(), EPSILON);
     }
 
     public static void assertEquals(final Complex{{ E }} c, final {{ e }} x, final {{ e }} y) {
@@ -104,11 +103,11 @@ public class TestUtil{{ E }} {
     }
 
     public static void assertEquals(final MatrixN{{ E }} m, final {{ e }}... f) {
-        Assert.assertArrayEquals(f, m.toArray(), EPSILON);
+        Assertions.assertArrayEquals(f, m.toArray(), EPSILON);
     }
 
     public static void assertEquals(final {{ e }}[] a, final {{ e }}... f) {
-        Assert.assertArrayEquals(f, a, EPSILON);
+        Assertions.assertArrayEquals(f, a, EPSILON);
     }
 
 }

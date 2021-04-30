@@ -12,7 +12,7 @@ import org.spongepowered.math.vector.Vector3{{ E }};
 import org.spongepowered.math.vector.Vector4{{ E }};
 
 @Immutable
-public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
+public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable {
 
     private static final long serialVersionUID = 1;
     public static final Matrix4{{ E }} ZERO = new Matrix4{{ E }}(
@@ -53,14 +53,6 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
                 m.get(1, 0), m.get(1, 1), m.get(1, 2), 0,
                 m.get(2, 0), m.get(2, 1), m.get(2, 2), 0,
                 0, 0, 0, 0);
-    }
-
-    public Matrix4{{ E }}(final Matrix4{{ E }} m) {
-        this(
-                m.m00, m.m01, m.m02, m.m03,
-                m.m10, m.m11, m.m12, m.m13,
-                m.m20, m.m21, m.m22, m.m23,
-                m.m30, m.m31, m.m32, m.m33);
     }
 
     public Matrix4{{ E }}(final MatrixN{{ E }} m) {
@@ -597,11 +589,6 @@ public final class Matrix4{{ E }} implements Matrix{{ E }}, Serializable, Clonea
             this.hashed = true;
         }
         return this.hashCode;
-    }
-
-    @Override
-    public Matrix4{{ E }} clone() {
-        return new Matrix4{{ E }}(this);
     }
 
     public static Matrix4{{ E }} from(final {{ e }} n) {

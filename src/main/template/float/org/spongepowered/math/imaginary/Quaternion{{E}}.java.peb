@@ -15,7 +15,7 @@ import org.spongepowered.math.vector.Vector3{{ E }};
  * immutable.</p>
  */
 @Immutable
-public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Quaternion{{ E }}>, Serializable, Cloneable {
+public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Quaternion{{ E }}>, Serializable {
 
     private static final long serialVersionUID = 1;
     /**
@@ -67,15 +67,6 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
         this.y = y;
         this.z = z;
         this.w = w;
-    }
-
-    /**
-     * Copy constructor.
-     *
-     * @param q The quaternion to copy
-     */
-    public Quaternion{{ E }}(final Quaternion{{ E }} q) {
-        this(q.x, q.y, q.z, q.w);
     }
 
     /**
@@ -577,11 +568,6 @@ public final class Quaternion{{ E }} implements Imaginary{{ E }}, Comparable<Qua
     @Override
     public int compareTo(final Quaternion{{ E }} q) {
         return (int) Math.signum(this.lengthSquared() - q.lengthSquared());
-    }
-
-    @Override
-    public Quaternion{{ E }} clone() {
-        return new Quaternion{{ E }}(this);
     }
 
     @Override

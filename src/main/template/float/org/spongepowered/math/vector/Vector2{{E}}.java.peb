@@ -10,7 +10,7 @@ import org.spongepowered.math.HashFunctions;
 import org.spongepowered.math.TrigMath;
 
 @Immutable
-public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>, Serializable, Cloneable {
+public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{ E }}>, Serializable {
 
     private static final long serialVersionUID = 1;
     public static final Vector2{{ E }} ZERO = new Vector2{{ E }}(0, 0);
@@ -26,10 +26,6 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
 
     public Vector2{{ E }}() {
         this(0, 0);
-    }
-
-    public Vector2{{ E }}(final Vector2{{ E }} v) {
-        this(v.x, v.y);
     }
 
     public Vector2{{ E }}(final Vector3{{ E }} v) {
@@ -371,11 +367,6 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
             this.hashed = true;
         }
         return this.hashCode;
-    }
-
-    @Override
-    public Vector2{{ E }} clone() {
-        return new Vector2{{ E }}(this);
     }
 
     @Override

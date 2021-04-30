@@ -21,12 +21,6 @@ public class Vector2{{ E }}Test {
     }
 
     @Test
-    void testCopyVector2Constructor() {
-        final Vector2{{ E }} vector = new Vector2{{ E }}(new Vector2{{ E }}(0, 1));
-        TestUtil{{ E }}.assertEquals(vector, 0, 1);
-    }
-
-    @Test
     void testCopyVector3Constructor() {
         final Vector2{{ E }} vector = new Vector2{{ E }}(new Vector3{{ E }}(0, 1, 2));
         TestUtil{{ E }}.assertEquals(vector, 0, 1);
@@ -417,12 +411,6 @@ public class Vector2{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Vector2{{ E }}(122, 43).equals(new Vector2{{ E }}(122, 43)));
         Assertions.assertFalse(new Vector2{{ E }}(122, 43).equals(new Vector2{{ E }}(378, 95)));
-    }
-
-    @Test
-    void testCloning() {
-        final Vector2{{ E }} vector = new Vector2{{ E }}(3, 2);
-        Assertions.assertEquals(vector, vector.clone());
     }
 
     @Test

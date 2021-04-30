@@ -21,12 +21,6 @@ public class Matrix2{{ E }}Test {
     }
 
     @Test
-    void testCopyMatrix2Constructor() {
-        final Matrix2{{ E }} matrix = new Matrix2{{ E }}(new Matrix2{{ E }}(1, 2, 3, 4));
-        TestUtil{{ E }}.assertEquals(matrix, 1, 2, 3, 4);
-    }
-
-    @Test
     void testCopyMatrix3Constructor() {
         final Matrix2{{ E }} matrix = new Matrix2{{ E }}(new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9));
         TestUtil{{ E }}.assertEquals(matrix, 1, 2, 4, 5);
@@ -294,12 +288,6 @@ public class Matrix2{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Matrix2{{ E }}(1, 2, 3, 4).equals(new Matrix2{{ E }}(1, 2, 3, 4)));
         Assertions.assertFalse(new Matrix2{{ E }}(1, 2, 3, 4).equals(new Matrix2{{ E }}(1, 2, 3, 5)));
-    }
-
-    @Test
-    void testCloning() {
-        final Matrix2{{ E }} matrix = new Matrix2{{ E }}(1, 2, 3, 4);
-        Assertions.assertEquals(matrix, matrix.clone());
     }
 
     @Test

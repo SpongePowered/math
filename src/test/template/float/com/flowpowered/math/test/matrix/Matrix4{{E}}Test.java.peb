@@ -46,20 +46,6 @@ public class Matrix4{{ E }}Test {
     }
 
     @Test
-    void testCopyMatrix4Constructor() {
-        final Matrix4{{ E }} matrix = new Matrix4{{ E }}(new Matrix4{{ E }}(
-                1, 2, 3, 4,
-                5, 6, 7, 8,
-                9, 10, 11, 12,
-                13, 14, 15, 16));
-        TestUtil{{ E }}.assertEquals(matrix,
-                1, 2, 3, 4,
-                5, 6, 7, 8,
-                9, 10, 11, 12,
-                13, 14, 15, 16);
-    }
-
-    @Test
     void testCopyMatrixNConstructor() {
         final Matrix4{{ E }} matrix = new Matrix4{{ E }}(new MatrixN{{ E }}(
                 1, 2, 3, 4,
@@ -741,16 +727,6 @@ public class Matrix4{{ E }}Test {
                 0, 7, 3, 0,
                 0, 0, 0, 4);
         Assertions.assertNotEquals(matrix11, matrix12);
-    }
-
-    @Test
-    void testCloning() {
-        final Matrix4{{ E }} matrix = new Matrix4{{ E }}(
-                1, 2, 3, 4,
-                0, 2, 0, 0,
-                0, 0, 3, 0,
-                0, 0, 0, 4);
-        Assertions.assertEquals(matrix, matrix.clone());
     }
 
     @Test

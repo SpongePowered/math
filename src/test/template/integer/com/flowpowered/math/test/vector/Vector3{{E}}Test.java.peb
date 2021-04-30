@@ -33,12 +33,6 @@ public class Vector3{{ E }}Test {
     }
 
     @Test
-    void testCopyVector3Constructor() {
-        final Vector3{{ E }} vector = new Vector3{{ E }}(new Vector3{{ E }}(0, 1, 2));
-        TestUtil{{ E }}.assertEquals(vector, ({{ e }}) 0, ({{ e }}) 1, ({{ e }}) 2);
-    }
-
-    @Test
     void testCopyVector4Constructor() {
         final Vector3{{ E }} vector = new Vector3{{ E }}(new Vector4{{ E }}(0, 1, 2, 3));
         TestUtil{{ E }}.assertEquals(vector, ({{ e }}) 0, ({{ e }}) 1, ({{ e }}) 2);
@@ -400,12 +394,6 @@ public class Vector3{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Vector3{{ E }}(122, 43, 96).equals(new Vector3{{ E }}(122, 43, 96)));
         Assertions.assertFalse(new Vector3{{ E }}(122, 43, 96).equals(new Vector3{{ E }}(378, 95, 96)));
-    }
-
-    @Test
-    void testCloning() {
-        final Vector3{{ E }} vector = new Vector3{{ E }}(3, 2, 5);
-        Assertions.assertEquals(vector, vector.clone());
     }
 
 }

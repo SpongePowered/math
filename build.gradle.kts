@@ -92,6 +92,11 @@ tasks {
 // Metadata
 
 spongeConvention {
+    repository("math") {
+        ci(true)
+        publishing(true)
+    }
+
     mitLicense()
     licenseParameters {
         val organization: String by project
@@ -106,6 +111,8 @@ spongeConvention {
             "Specification-Title" to project.name,
             "Specification-Vendor" to "SpongePowered - https://spongepowered.org"
         )
+
+        indraGit.applyVcsInformationToManifest(this)
     }
 }
 

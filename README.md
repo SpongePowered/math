@@ -40,7 +40,7 @@ repositories {
 }
 
 dependencies {
-  implementation "org.spongepowered:math:2.0.0-SNAPSHOT"
+  implementation "org.spongepowered:math:2.0.0"
 }
 ```
 
@@ -49,7 +49,7 @@ If you're using [Maven] to manage project dependencies, simply include the follo
 <dependency>
   <groupId>org.spongepowered</groupId>
   <artifactId>math</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 

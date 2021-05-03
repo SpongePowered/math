@@ -15,15 +15,9 @@ import static org.spongepowered.math.test.TestUtil{{ E }}.SQRT13;
 public class Matrix2{{ E }}Test {
 
     @Test
-    void testDefaultConstructor() {
-        final Matrix2{{ E }} matrix = new Matrix2{{ E }}();
+    void testIdentity() {
+        final Matrix2{{ E }} matrix = Matrix2{{ E }}.IDENTITY;
         TestUtil{{ E }}.assertEquals(matrix, 1, 0, 0, 1);
-    }
-
-    @Test
-    void testCopyMatrix2Constructor() {
-        final Matrix2{{ E }} matrix = new Matrix2{{ E }}(new Matrix2{{ E }}(1, 2, 3, 4));
-        TestUtil{{ E }}.assertEquals(matrix, 1, 2, 3, 4);
     }
 
     @Test
@@ -294,12 +288,6 @@ public class Matrix2{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Matrix2{{ E }}(1, 2, 3, 4).equals(new Matrix2{{ E }}(1, 2, 3, 4)));
         Assertions.assertFalse(new Matrix2{{ E }}(1, 2, 3, 4).equals(new Matrix2{{ E }}(1, 2, 3, 5)));
-    }
-
-    @Test
-    void testCloning() {
-        final Matrix2{{ E }} matrix = new Matrix2{{ E }}(1, 2, 3, 4);
-        Assertions.assertEquals(matrix, matrix.clone());
     }
 
     @Test

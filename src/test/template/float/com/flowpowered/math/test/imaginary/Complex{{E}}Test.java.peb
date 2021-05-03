@@ -13,8 +13,8 @@ import org.spongepowered.math.vector.Vector3{{ E }};
 public class Complex{{ E }}Test {
 
     @Test
-    void testDefaultConstructor() {
-        final Complex{{ E }} complex = new Complex{{ E }}();
+    void testIdentity() {
+        final Complex{{ E }} complex = Complex{{ E }}.IDENTITY;
         TestUtil{{ E }}.assertEquals(complex, 1, 0);
     }
 
@@ -27,12 +27,6 @@ public class Complex{{ E }}Test {
     @Test
     void testFloatComponentsConstructor() {
         final Complex{{ E }} complex = new Complex{{ E }}(2, 3);
-        TestUtil{{ E }}.assertEquals(complex, 2, 3);
-    }
-
-    @Test
-    void testCopyConstructor() {
-        final Complex{{ E }} complex = new Complex{{ E }}(new Complex{{ E }}(2, 3));
         TestUtil{{ E }}.assertEquals(complex, 2, 3);
     }
 
@@ -290,12 +284,6 @@ public class Complex{{ E }}Test {
         Assertions.assertTrue(c3 > 0);
         final int c4 = new Complex{{ E }}(0.2, 0.2).compareTo(new Complex{{ E }}(0.1, 0.1));
         Assertions.assertTrue(c4 > 0);
-    }
-
-    @Test
-    void testCloning() {
-        final Complex{{ E }} complex = new Complex{{ E }}(3, 2);
-        Assertions.assertEquals(complex, complex.clone());
     }
 
     @Test

@@ -7,7 +7,7 @@ import org.spongepowered.math.GenericMath;
 import org.spongepowered.math.HashFunctions;
 
 @Immutable
-public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{ E }}>, Serializable, Cloneable {
+public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{ E }}>, Serializable {
 
     private static final long serialVersionUID = 1;
     public static final Vector4{{ E }} ZERO = new Vector4{{ E }}(0, 0, 0, 0);
@@ -24,10 +24,6 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
     private transient volatile boolean hashed = false;
     @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
-
-    public Vector4{{ E }}() {
-        this(0, 0, 0, 0);
-    }
 
     public Vector4{{ E }}(final Vector2{{ E }} v) {
         this(v, 0, 0);
@@ -51,10 +47,6 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
 
     public Vector4{{ E }}(final Vector3{{ E }} v, final {{ e }} w) {
         this(v.x(), v.y(), v.z(), w);
-    }
-
-    public Vector4{{ E }}(final Vector4{{ E }} v) {
-        this(v.x, v.y, v.z, v.w);
     }
 
     public Vector4{{ E }}(final VectorN{{ E }} v) {
@@ -426,11 +418,6 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
             this.hashed = true;
         }
         return this.hashCode;
-    }
-
-    @Override
-    public Vector4{{ E }} clone() {
-        return new Vector4{{ E }}(this);
     }
 
     @Override

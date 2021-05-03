@@ -17,8 +17,8 @@ import static org.spongepowered.math.test.TestUtil{{ E }}.SQRT13;
 public class Matrix3{{ E }}Test {
 
     @Test
-    void testDefaultConstructor() {
-        final Matrix3{{ E }} matrix = new Matrix3{{ E }}();
+    void testIdentity() {
+        final Matrix3{{ E }} matrix = Matrix3{{ E }}.IDENTITY;
         TestUtil{{ E }}.assertEquals(matrix, 1, 0, 0, 0, 1, 0, 0, 0, 1);
     }
 
@@ -26,12 +26,6 @@ public class Matrix3{{ E }}Test {
     void testCopyMatrix2Constructor() {
         final Matrix3{{ E }} matrix = new Matrix3{{ E }}(new Matrix2{{ E }}(1, 2, 3, 4));
         TestUtil{{ E }}.assertEquals(matrix, 1, 2, 0, 3, 4, 0, 0, 0, 0);
-    }
-
-    @Test
-    void testCopyMatrix3Constructor() {
-        final Matrix3{{ E }} matrix = new Matrix3{{ E }}(new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9));
-        TestUtil{{ E }}.assertEquals(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     }
 
     @Test
@@ -332,12 +326,6 @@ public class Matrix3{{ E }}Test {
     void testEquals() {
         Assertions.assertEquals(new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9), new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9));
         Assertions.assertNotEquals(new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9), new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 0));
-    }
-
-    @Test
-    void testCloning() {
-        final Matrix3{{ E }} matrix = new Matrix3{{ E }}(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        Assertions.assertEquals(matrix, matrix.clone());
     }
 
     @Test

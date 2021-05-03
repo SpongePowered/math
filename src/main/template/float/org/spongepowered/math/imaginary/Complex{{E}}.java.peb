@@ -14,7 +14,7 @@ import org.spongepowered.math.vector.Vector3{{ E }};
  * Represent a complex number of the form {@code x + yi}. The x and y components are stored as {@code {{ e }}}s. This class is immutable.
  */
 @Immutable
-public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E }}>, Serializable, Cloneable {
+public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Complex{{ E }}>, Serializable {
 
     private static final long serialVersionUID = 1;
     /**
@@ -25,19 +25,13 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
      * An immutable identity (1, 0) complex.
      */
     public static final Complex{{ E }} IDENTITY = new Complex{{ E }}(1, 0);
+
     private final {{ e }} x;
     private final {{ e }} y;
     @SuppressWarnings("Immutable")
     private transient volatile boolean hashed = false;
     @SuppressWarnings("Immutable")
     private transient volatile int hashCode = 0;
-
-    /**
-     * Constructs a new complex. The components are set to the identity (1, 0).
-     */
-    public Complex{{ E }}() {
-        this(1, 0);
-    }
 
     /**
      * Constructs a new complex from the {{ EOverload }} components.
@@ -58,16 +52,6 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
     public Complex{{ E }}(final {{ e }} x, final {{ e }} y) {
         this.x = x;
         this.y = y;
-    }
-
-    /**
-     * Copy constructor.
-     *
-     * @param c The complex to copy
-     */
-    public Complex{{ E }}(final Complex{{ E }} c) {
-        this.x = c.x;
-        this.y = c.y;
     }
 
     /**
@@ -511,11 +495,6 @@ public final class Complex{{ E }} implements Imaginary{{ E }}, Comparable<Comple
     @Override
     public int compareTo(final Complex{{ E }} that) {
         return (int) Math.signum(this.lengthSquared() - that.lengthSquared());
-    }
-
-    @Override
-    public Complex{{ E }} clone() {
-        return new Complex{{ E }}(this);
     }
 
     @Override

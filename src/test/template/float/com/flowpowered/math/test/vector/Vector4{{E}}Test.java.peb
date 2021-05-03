@@ -14,8 +14,8 @@ import org.spongepowered.math.vector.VectorN{{ E }};
 public class Vector4{{ E }}Test {
 
     @Test
-    void testEmptyConstructor() {
-        final Vector4{{ E }} vector = new Vector4{{ E }}();
+    void testZero() {
+        final Vector4{{ E }} vector = Vector4{{ E }}.ZERO;
         TestUtil{{ E }}.assertEquals(vector, 0, 0, 0, 0);
     }
 
@@ -52,12 +52,6 @@ public class Vector4{{ E }}Test {
     @Test
     void testCopyVector3FloatWConstructor() {
         final Vector4{{ E }} vector = new Vector4{{ E }}(new Vector3{{ E }}(0, 1, 1), 2);
-        TestUtil{{ E }}.assertEquals(vector, 0, 1, 1, 2);
-    }
-
-    @Test
-    void testCopyVector4Constructor() {
-        final Vector4{{ E }} vector = new Vector4{{ E }}(new Vector4{{ E }}(0, 1, 1, 2));
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 1, 2);
     }
 
@@ -430,12 +424,6 @@ public class Vector4{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Vector4{{ E }}(122, 43, 96, 50).equals(new Vector4{{ E }}(122, 43, 96, 50)));
         Assertions.assertFalse(new Vector4{{ E }}(122, 43, 96, 50).equals(new Vector4{{ E }}(378, 95, 96, 0)));
-    }
-
-    @Test
-    void testCloning() {
-        final Vector4{{ E }} vector = new Vector4{{ E }}(3, 2, 5, 6);
-        Assertions.assertEquals(vector, vector.clone());
     }
 
     @Test

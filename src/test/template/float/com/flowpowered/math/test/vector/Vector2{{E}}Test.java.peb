@@ -15,15 +15,9 @@ import org.spongepowered.math.vector.VectorN{{ E }};
 public class Vector2{{ E }}Test {
 
     @Test
-    void testEmptyConstructor() {
-        final Vector2{{ E }} vector = new Vector2{{ E }}();
+    void testZero() {
+        final Vector2{{ E }} vector = Vector2{{ E }}.ZERO;
         TestUtil{{ E }}.assertEquals(vector, 0, 0);
-    }
-
-    @Test
-    void testCopyVector2Constructor() {
-        final Vector2{{ E }} vector = new Vector2{{ E }}(new Vector2{{ E }}(0, 1));
-        TestUtil{{ E }}.assertEquals(vector, 0, 1);
     }
 
     @Test
@@ -417,12 +411,6 @@ public class Vector2{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Vector2{{ E }}(122, 43).equals(new Vector2{{ E }}(122, 43)));
         Assertions.assertFalse(new Vector2{{ E }}(122, 43).equals(new Vector2{{ E }}(378, 95)));
-    }
-
-    @Test
-    void testCloning() {
-        final Vector2{{ E }} vector = new Vector2{{ E }}(3, 2);
-        Assertions.assertEquals(vector, vector.clone());
     }
 
     @Test

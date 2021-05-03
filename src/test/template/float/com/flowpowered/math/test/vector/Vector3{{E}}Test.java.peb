@@ -16,8 +16,8 @@ import org.spongepowered.math.vector.VectorN{{ E }};
 
 public class Vector3{{ E }}Test {
     @Test
-    void testEmptyConstructor() {
-        final Vector3{{ E }} vector = new Vector3{{ E }}();
+    void testZero() {
+        final Vector3{{ E }} vector = Vector3{{ E }}.ZERO;
         TestUtil{{ E }}.assertEquals(vector, 0, 0, 0);
     }
 
@@ -37,12 +37,6 @@ public class Vector3{{ E }}Test {
     void testCopyVector2FloatZConstructor() {
         final Vector3{{ E }} vector = new Vector3{{ E }}(new Vector2{{ E }}(0, 1), 3);
         TestUtil{{ E }}.assertEquals(vector, 0, 1, 3);
-    }
-
-    @Test
-    void testCopyVector3Constructor() {
-        final Vector3{{ E }} vector = new Vector3{{ E }}(new Vector3{{ E }}(0, 1, 2));
-        TestUtil{{ E }}.assertEquals(vector, 0, 1, 2);
     }
 
     @Test
@@ -442,12 +436,6 @@ public class Vector3{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Vector3{{ E }}(122, 43, 96).equals(new Vector3{{ E }}(122, 43, 96)));
         Assertions.assertFalse(new Vector3{{ E }}(122, 43, 96).equals(new Vector3{{ E }}(378, 95, 96)));
-    }
-
-    @Test
-    void testCloning() {
-        final Vector3{{ E }} vector = new Vector3{{ E }}(3, 2, 5);
-        Assertions.assertEquals(vector, vector.clone());
     }
 
     @Test

@@ -11,7 +11,7 @@ plugins {
 // -- General setup -- //
 
 group = "org.spongepowered"
-version = "2.0.0-SNAPSHOT"
+version = "2.0.0"
 description = "Immutable math library for Java with a focus on games and computer graphics."
 
 repositories {

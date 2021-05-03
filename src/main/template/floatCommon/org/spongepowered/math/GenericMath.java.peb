@@ -29,7 +29,7 @@ public final class GenericMath {
      * @param angle2 The second angle
      * @return the positive angle difference
      */
-    public static float getDegreeDifference(final float angle1, final float angle2) {
+    public static float degreeDifference(final float angle1, final float angle2) {
         return Math.abs(GenericMath.wrapAngleDeg(angle1 - angle2));
     }
 
@@ -40,7 +40,7 @@ public final class GenericMath {
      * @param radian2 The second angle
      * @return the positive radian difference
      */
-    public static double getRadianDifference(final double radian1, final double radian2) {
+    public static double radianDifference(final double radian1, final double radian2) {
         return Math.abs(GenericMath.wrapAngleRad(radian1 - radian2));
     }
 

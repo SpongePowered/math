@@ -2,9 +2,9 @@ import org.spongepowered.gradle.math.templates.GenerateTemplates
 
 plugins {
     jacoco
-    id("org.spongepowered.gradle.sponge.dev") version "1.1.0-SNAPSHOT"
+    id("org.spongepowered.gradle.sponge.dev") version "1.1.0"
     id("math-templates")
-    id("net.kyori.indra.publishing.sonatype")  version "2.0.1"
+    id("net.kyori.indra.publishing.sonatype")  version "2.0.2"
     id("net.ltgt.errorprone") version "2.0.1"
 }
 
@@ -111,8 +111,6 @@ spongeConvention {
             "Specification-Title" to project.name,
             "Specification-Vendor" to "SpongePowered - https://spongepowered.org"
         )
-
-        indraGit.applyVcsInformationToManifest(this)
     }
 }
 

@@ -10,6 +10,9 @@ on:
   release:
     types: [released]
 
+env:
+  PROJECT_NAME: math
+
 jobs:
   build:
     # Only run on PRs if the source branch is on someone else's repo
@@ -20,63 +23,67 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     steps:
-      # Setup
-      - name: Check out
-        uses: actions/checkout@v2
-      - name: Setup JDK 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: adopt
-          java-version: 11
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
+    # Setup
+    - name: Check out
+      uses: actions/checkout@v2
+      with:
+        ssh-key: ${{ secrets.SPONGE_JD_DEPLOY_KEY }}
+    - name: Setup JDK 11
+      uses: actions/setup-java@v2
+      with:
+        distribution: adopt
+        java-version: 11
+    - name: Validate Gradle wrapper
+      uses: gradle/wrapper-validation-action@v1
 
-      # Actually build
-      - name: Build with Gradle
-        run: ./gradlew build
-      - name: Archive test results
-        if: "${{ always() }}"
-        uses: actions/upload-artifact@v2
-        with:
-          name: "test-results-${{ matrix.os }}"
-          path: |
-            build/reports/
-            */build/reports/
+    # Actually build
+    - name: Build with Gradle
+      run: ./gradlew build
+    - name: Archive test results
+      if: "${{ always() }}"
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: |
+          build/reports/
+          */build/reports/
 
-      # Then publish if we are all set up to do so
-      - name: Determine status
-        if: "${{ runner.os == 'Linux' }}"
-        run: |
-          if [ "$(./gradlew properties | awk '/^version:/ { print $2; }' | grep '\-SNAPSHOT')" ]; then
-            echo "STATUS=snapshot" >> $GITHUB_ENV
-          else
-            echo "STATUS=release" >> $GITHUB_ENV
-          fi
-      - name: Publish with Gradle (snapshot)
-        if: "${{ runner.os == 'Linux' && env.STATUS != 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master' }}"
-        run: ./gradlew -PforceSign=true publish
-        env:
-          ORG_GRADLE_PROJECT_githubPackagesUsername: "${{ github.actor }}"
-          ORG_GRADLE_PROJECT_githubPackagesPassword: "${{ secrets.GITHUB_TOKEN }}"
-          ORG_GRADLE_PROJECT_spongeSnapshotRepo: "${{ secrets.SPONGE_MAVEN_SNAPSHOT_REPO_URL }}"
-          ORG_GRADLE_PROJECT_spongeReleaseRepo: "${{ secrets.SPONGE_MAVEN_RELEASE_REPO_URL }}"
-          ORG_GRADLE_PROJECT_spongeUsername: "${{ secrets.SPONGE_MAVEN_REPO_USER }}"
-          ORG_GRADLE_PROJECT_spongePassword: "${{ secrets.SPONGE_MAVEN_REPO_PASSWORD }}"
-          ORG_GRADLE_PROJECT_sonatypeUsername: "${{ secrets.SPONGE_MAVEN_OSSRH_USER }}"
-          ORG_GRADLE_PROJECT_sonatypePassword: "${{ secrets.SPONGE_MAVEN_OSSRH_PASSWORD }}"
-          ORG_GRADLE_PROJECT_spongeSigningKey: "${{ secrets.SPONGE_SIGNING_KEY }}"
-          ORG_GRADLE_PROJECT_spongeSigningPassword: "${{ secrets.SPONGE_SIGNING_PASSWORD }}"
-      - name: Publish with Gradle (release)
-        if: "${{ runner.os == 'Linux' && env.STATUS == 'release' && github.event_name == 'release' }}"
-        run: ./gradlew publish closeSonatypeStagingRepository
-        env:
-          ORG_GRADLE_PROJECT_githubPackagesUsername: "${{ github.actor }}"
-          ORG_GRADLE_PROJECT_githubPackagesPassword: "${{ secrets.GITHUB_TOKEN }}"
-          ORG_GRADLE_PROJECT_spongeSnapshotRepo: "${{ secrets.SPONGE_MAVEN_SNAPSHOT_REPO_URL }}"
-          ORG_GRADLE_PROJECT_spongeReleaseRepo: "${{ secrets.SPONGE_MAVEN_RELEASE_REPO_URL }}"
-          ORG_GRADLE_PROJECT_spongeUsername: "${{ secrets.SPONGE_MAVEN_REPO_USER }}"
-          ORG_GRADLE_PROJECT_spongePassword: "${{ secrets.SPONGE_MAVEN_REPO_PASSWORD }}"
-          ORG_GRADLE_PROJECT_sonatypeUsername: "${{ secrets.SPONGE_MAVEN_OSSRH_USER }}"
-          ORG_GRADLE_PROJECT_sonatypePassword: "${{ secrets.SPONGE_MAVEN_OSSRH_PASSWORD }}"
-          ORG_GRADLE_PROJECT_spongeSigningKey: "${{ secrets.SPONGE_SIGNING_KEY }}"
-          ORG_GRADLE_PROJECT_spongeSigningPassword: "${{ secrets.SPONGE_SIGNING_PASSWORD }}"
+    # Then publish if we are all set up to do so
+    - name: Determine status
+      if: "${{ runner.os == 'Linux' }}"
+      run: |
+        VERSION=$(./gradlew :properties | awk '/^version:/ { print $2; }')
+        if [ "$(echo $VERSION | grep '\-SNAPSHOT')" ]; then
+          echo "STATUS=snapshot" >> $GITHUB_ENV
+        else
+          echo "STATUS=release" >> $GITHUB_ENV
+        fi
+        echo "PROJECT_VERSION=$VERSION" >> $GITHUB_ENV
+    - name: Publish with Gradle
+      if: "${{ runner.os == 'Linux' && ((env.STATUS != 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master') || (env.STATUS == 'release' && github.event_name == 'release')) }}"
+      run: ./gradlew -PforceSign=true publish
+      env:
+        ORG_GRADLE_PROJECT_githubPackagesUsername: "${{ github.actor }}"
+        ORG_GRADLE_PROJECT_githubPackagesPassword: "${{ secrets.GITHUB_TOKEN }}"
+        ORG_GRADLE_PROJECT_spongeSnapshotRepo: "${{ secrets.SPONGE_MAVEN_SNAPSHOT_REPO_URL }}"
+        ORG_GRADLE_PROJECT_spongeReleaseRepo: "${{ secrets.SPONGE_MAVEN_RELEASE_REPO_URL }}"
+        ORG_GRADLE_PROJECT_spongeUsername: "${{ secrets.SPONGE_MAVEN_REPO_USER }}"
+        ORG_GRADLE_PROJECT_spongePassword: "${{ secrets.SPONGE_MAVEN_REPO_PASSWORD }}"
+        ORG_GRADLE_PROJECT_sonatypeUsername: "${{ secrets.SPONGE_MAVEN_OSSRH_USER }}"
+        ORG_GRADLE_PROJECT_sonatypePassword: "${{ secrets.SPONGE_MAVEN_OSSRH_PASSWORD }}"
+        ORG_GRADLE_PROJECT_spongeSigningKey: "${{ secrets.SPONGE_SIGNING_KEY }}"
+        ORG_GRADLE_PROJECT_spongeSigningPassword: "${{ secrets.SPONGE_SIGNING_PASSWORD }}"
+    - name: Publish Javadoc
+      if: "${{ runner.os == 'Linux' && ((env.STATUS != 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master') || (env.STATUS == 'release' && github.event_name == 'release')) }}"
+      run: |
+        git clone git@github.com:SpongePowered/APIJavadocs.git publish-jd -b data -c core.sshCommand="$(git config --local --get core.sshCommand)" -c user.name=Spongie -c user.email="staff@spongepowered.org"
+        cd publish-jd
+        DESTDIR="$PROJECT_NAME/$PROJECT_VERSION"
+        rm -rf $DESTDIR
+        mkdir -p $DESTDIR
+        cp -R ../build/docs/javadoc/* $DESTDIR
+        git add .
+        git commit -m "Publishing javadoc for $PROJECT_NAME $PROJECT_VERSION"
+        git push origin
+        cd ..
+        rm -rf publish-jd

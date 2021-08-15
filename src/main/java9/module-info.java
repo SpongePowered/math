@@ -23,9 +23,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+/**
+ * Immutable math library for Java with a focus on games and computer graphics.
+ */
 module org.spongepowered.math {
     exports org.spongepowered.math;
     exports org.spongepowered.math.imaginary;
     exports org.spongepowered.math.matrix;
     exports org.spongepowered.math.vector;
+
+    requires static transitive com.google.errorprone.annotations;
+    requires java.desktop; // java.awt.Color
 }

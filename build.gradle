@@ -1,3 +1,5 @@
+import org.gradle.external.javadoc.StandardJavadocDocletOptions
+
 import java.io.StringWriter
 import java.util.stream.Collectors
 
@@ -117,6 +119,25 @@ jar {
 
 tasks.withType(JavaCompile.class) {
     options.compilerArgs << "-Xlint:-cast" // skip cast warnings, the generated source is most likely just overly safe.
+}
+
+// Handle JD publishing with modules
+javadoc {
+    source("src/main/java9")
+    options {
+        addStringOption("-patch-module", "org.spongepowered.math=${sourceSets.main.allJava.srcDirs.collect { it.absolutePath }.join(File.pathSeparator)}")
+    }
+}
+
+afterEvaluate {
+    javadoc {
+        classpath += sourceSets.java9.output
+
+        options {
+            addStringOption("-release", "9")
+            addBooleanOption("-no-module-directories", false)
+        }
+    }
 }
 
 // -- Publishing -- //

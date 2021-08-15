@@ -1,6 +1,5 @@
-import org.gradle.external.javadoc.StandardJavadocDocletOptions
+import groovy.text.SimpleTemplateEngine
 
-import java.io.StringWriter
 import java.util.stream.Collectors
 
 plugins {
@@ -14,7 +13,7 @@ plugins {
 // -- General setup -- //
 
 group = "org.spongepowered"
-version = "2.0.1-SNAPSHOT"
+version = "2.0.1"
 description = "Immutable math library for Java with a focus on games and computer graphics."
 
 repositories {
@@ -50,7 +49,7 @@ def intData = file("src/templateData/integer.yaml")
 def licenseText = objects.property(String)
 licenseText.set(provider {
     def properties = [*: license.ext.properties]
-    def template = new groovy.text.SimpleTemplateEngine().createTemplate(file("HEADER.txt")).make(properties)
+    def template = new SimpleTemplateEngine().createTemplate(file("HEADER.txt")).make(properties)
     def text = template.toString()
     def lineEnding = license.lineEnding.get()
     Arrays.stream(text.split("\r?\n"))

@@ -335,7 +335,7 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
 
     @Override
     public Vector4d toDouble() {
-        return new Vector4d(this.x, this.y, this.z, this.w);
+        return new Vector4d((double) this.x, (double) this.y, (double) this.z, (double) this.w);
     }
 
 

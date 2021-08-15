@@ -9,6 +9,7 @@ import org.spongepowered.math.test.{{ EDecEquiTest }};
 import org.spongepowered.math.test.TestUtili;
 import org.spongepowered.math.vector.Vector2{{ E }};
 import org.spongepowered.math.vector.Vector3{{ E }};
+import org.spongepowered.math.vector.Vector3d;
 import org.spongepowered.math.vector.Vector4{{ E }};
 import org.spongepowered.math.vector.VectorN{{ E }};
 
@@ -394,6 +395,11 @@ public class Vector3{{ E }}Test {
     void testEquals() {
         Assertions.assertTrue(new Vector3{{ E }}(122, 43, 96).equals(new Vector3{{ E }}(122, 43, 96)));
         Assertions.assertFalse(new Vector3{{ E }}(122, 43, 96).equals(new Vector3{{ E }}(378, 95, 96)));
+    }
+
+    @Test
+    void testPrecisionKept() {
+        Assertions.assertEquals(new Vector3{{ E }}(29999999, 0, 0).toDouble(), new Vector3d(29999999d, 0, 0));
     }
 
 }

@@ -322,7 +322,7 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
 
     @Override
     public Vector3d toDouble() {
-        return new Vector3d(this.x, this.y, this.z);
+        return new Vector3d((double) this.x, (double) this.y, (double) this.z);
     }
 
     @Override

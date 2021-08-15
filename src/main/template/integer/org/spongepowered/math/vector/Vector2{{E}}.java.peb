@@ -293,7 +293,7 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
 
     @Override
     public Vector2d toDouble() {
-        return new Vector2d(this.x, this.y);
+        return new Vector2d((double) this.x, (double) this.y);
     }
 
     @Override

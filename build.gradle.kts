@@ -1,4 +1,5 @@
-import org.spongepowered.gradle.math.templates.GenerateTemplates
+import java.io.StringWriter
+import java.util.stream.Collectors
 
 plugins {
     jacoco
@@ -20,8 +21,48 @@ repositories {
     }
 }
 
+// Metadata
+
+spongeConvention {
+    repository("math") {
+        ci(true)
+        publishing(true)
+    }
+
+    mitLicense()
+    licenseParameters {
+        val organization: String by project
+        val url: String by project
+        this["name"] = "Math"
+        this["organization"] = organization
+        this["url"] = url
+    }
+
+    sharedManifest {
+        attributes(
+                "Specification-Title" to project.name,
+                "Specification-Vendor" to "SpongePowered - https://spongepowered.org"
+        )
+    }
+}
+
 val floatData = file("src/templateData/float.yaml")
 val intData = file("src/templateData/integer.yaml")
+val licenseText = objects.property(String::class)
+licenseText.set(provider {
+    val properties = (license as ExtensionAware).extra.properties.toMutableMap()
+    val template = groovy.text.SimpleTemplateEngine().createTemplate(file("HEADER.txt")).make(properties)
+
+    val writer = StringWriter()
+    template.writeTo(writer)
+    val text = writer.toString()
+    val lineEnding = license.lineEnding.get()
+    text.split(Regex("\r?\n")).stream()
+            .map { if (it.isEmpty()) { " *" } else { " * $it" } }
+            .collect(Collectors.joining(lineEnding, "/*$lineEnding", "$lineEnding */"))
+})
+licenseText.finalizeValueOnRead()
+
 sourceSets {
     main {
         templates.templateSets {
@@ -57,7 +98,13 @@ sourceSets {
             }
         }
     }
+    configureEach {
+        templates.templateSets.configureEach {
+            header.set(licenseText)
+        }
+    }
 }
+
 
 dependencies {
     val errorproneVersion: String by project
@@ -81,36 +128,6 @@ tasks {
     withType(JavaCompile::class) {
         options.compilerArgs.add("-Xlint:-cast") // skip cast warnings, the generated source is most likely just overly safe.
 
-    }
-
-    // Put a license header on generated source
-    withType(GenerateTemplates::class) {
-        finalizedBy(licenseFormat)
-    }
-}
-
-// Metadata
-
-spongeConvention {
-    repository("math") {
-        ci(true)
-        publishing(true)
-    }
-
-    mitLicense()
-    licenseParameters {
-        val organization: String by project
-        val url: String by project
-        this["name"] = "Math"
-        this["organization"] = organization
-        this["url"] = url
-    }
-
-    sharedManifest {
-        attributes(
-            "Specification-Title" to project.name,
-            "Specification-Vendor" to "SpongePowered - https://spongepowered.org"
-        )
     }
 }
 

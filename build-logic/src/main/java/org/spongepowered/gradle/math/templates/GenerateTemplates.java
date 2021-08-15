@@ -29,6 +29,8 @@ import com.mitchellbosecke.pebble.loader.DelegatingLoader;
 import com.mitchellbosecke.pebble.loader.FileLoader;
 import com.mitchellbosecke.pebble.loader.Loader;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
+import net.kyori.mammoth.Properties;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.InvalidUserDataException;
 import org.gradle.api.file.DirectoryProperty;
@@ -107,6 +109,7 @@ public abstract class GenerateTemplates extends DefaultTask {
         final Path outputDirectory = this.getOutputDir().get().getAsFile().toPath();
         Files.createDirectories(outputDirectory);
         final Set<Map<String, Object>> variants = this.getBaseSet().get().prepareDataForGeneration();
+        final @Nullable String header = Properties.finalized(this.getBaseSet().get().getHeader()).getOrNull();
 
         final Set<String> seenOutputs = new HashSet<>();
         Files.walkFileTree(sourceDirectory, new FileVisitor<Path>() {
@@ -139,6 +142,10 @@ public abstract class GenerateTemplates extends DefaultTask {
                     final Path output = outputDirectory.resolve(outputFile);
                     Files.createDirectories(output.getParent());
                     try (final BufferedWriter writer = Files.newBufferedWriter(output, StandardCharsets.UTF_8)) {
+                        if (header != null) {
+                            writer.write(header);
+                            writer.write(System.lineSeparator());
+                        }
                         template.evaluate(writer, variant);
                     }
                 }

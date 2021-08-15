@@ -34,9 +34,12 @@ import org.gradle.api.NamedDomainObjectSet;
 import org.gradle.api.file.ConfigurableFileCollection;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.provider.MapProperty;
+import org.gradle.api.provider.Property;
+import org.gradle.api.resources.TextResource;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.InputFiles;
 import org.gradle.api.tasks.Nested;
+import org.gradle.api.tasks.Optional;
 import org.snakeyaml.engine.v2.api.Load;
 import org.snakeyaml.engine.v2.api.LoadSettings;
 import org.snakeyaml.engine.v2.exceptions.YamlEngineException;
@@ -68,6 +71,7 @@ public abstract class TemplateSet implements Named {
     private final ConfigurableFileCollection dataFiles;
     private final MapProperty<String, Object> properties;
     private final NamedDomainObjectContainer<Variant> variants;
+    private final Property<String> header;
     private final String name;
 
     @Inject
@@ -76,6 +80,7 @@ public abstract class TemplateSet implements Named {
         this.dataFiles = objects.fileCollection();
         this.properties = objects.mapProperty(String.class, Object.class);
         this.variants = objects.domainObjectContainer(Variant.class);
+        this.header = objects.property(String.class);
     }
 
     @Input
@@ -106,6 +111,19 @@ public abstract class TemplateSet implements Named {
     @Nested
     public MapProperty<String, Object> getProperties() {
         return this.properties;
+    }
+
+    /**
+     * A literal header to insert at the top of generated source files.
+     *
+     * <p>This property is optional.</p>
+     *
+     * @return the header
+     */
+    @Input
+    @Optional
+    public Property<String> getHeader() {
+        return this.header;
     }
 
     // variant

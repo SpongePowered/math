@@ -4,9 +4,9 @@ import java.util.stream.Collectors
 
 plugins {
     id 'jacoco'
-    id "org.spongepowered.gradle.sponge.dev" version "1.1.0"
+    id "org.spongepowered.gradle.sponge.dev" version "1.1.1"
     id "math-templates"
-    id "net.kyori.indra.publishing.sonatype" version "2.0.2"
+    id "net.kyori.indra.publishing.sonatype" version "2.0.6"
     id "net.ltgt.errorprone" version "2.0.1"
 }
 

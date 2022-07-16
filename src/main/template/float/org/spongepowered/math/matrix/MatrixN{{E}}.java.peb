@@ -368,7 +368,7 @@ public class MatrixN{{ E }} implements Matrix{{ E }}, Serializable, Cloneable {
     @Override
     public {{ e }} determinant() {
         final int size = this.size();
-        final {{ e }}[][] m = MatrixN{{ E }}.deepClone(mat);
+        final {{ e }}[][] m = MatrixN{{ E }}.deepClone(this.mat);
         {{ e }} det;
         for (int i = 0; i < size - 1; i++) {
             for (int col = i + 1; col < size; col++) {

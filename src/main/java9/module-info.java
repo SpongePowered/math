@@ -33,5 +33,5 @@ module org.spongepowered.math {
     exports org.spongepowered.math.vector;
 
     requires static transitive com.google.errorprone.annotations;
-    requires java.desktop; // java.awt.Color
+    requires transitive java.desktop; // java.awt.Color
 }

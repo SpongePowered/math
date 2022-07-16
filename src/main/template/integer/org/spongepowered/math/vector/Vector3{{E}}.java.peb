@@ -2,7 +2,6 @@ package org.spongepowered.math.vector;
 
 import java.io.Serializable;
 import java.lang.Override;
-import java.util.Random;
 
 import com.google.errorprone.annotations.Immutable;
 import org.spongepowered.math.GenericMath;

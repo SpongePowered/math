@@ -25,21 +25,19 @@
 package org.spongepowered.gradle.math.templates;
 
 import net.kyori.mammoth.ProjectPlugin;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.file.Directory;
-import org.gradle.api.plugins.Convention;
 import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.plugins.JavaBasePlugin;
 import org.gradle.api.plugins.PluginContainer;
-import org.gradle.api.plugins.PluginManager;
 import org.gradle.api.provider.Provider;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradle.api.tasks.TaskContainer;
 import org.gradle.api.tasks.TaskProvider;
 import org.gradle.plugins.ide.eclipse.EclipsePlugin;
 import org.gradle.plugins.ide.eclipse.model.EclipseModel;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Simple template generator.
@@ -52,11 +50,10 @@ public class TemplateGeneratorPlugin implements ProjectPlugin {
 
     @Override
     public void apply(
-        final @NonNull Project project,
-        final @NonNull PluginContainer plugins,
-        final @NonNull ExtensionContainer extensions,
-        final @NonNull Convention convention,
-        final @NonNull TaskContainer tasks
+        final @NotNull Project project,
+        final @NotNull PluginContainer plugins,
+        final @NotNull ExtensionContainer extensions,
+        final @NotNull TaskContainer tasks
     ) {
         plugins.withType(JavaBasePlugin.class, $ -> {
             this.registerGenerateAllTask(plugins, extensions, tasks);
@@ -90,7 +87,7 @@ public class TemplateGeneratorPlugin implements ProjectPlugin {
         });
 
         plugins.withType(EclipsePlugin.class, eclipse -> {
-            extensions.getByType(EclipseModel.class).autoBuildTasks(generateTemplates);
+            extensions.getByType(EclipseModel.class).synchronizationTasks(generateTemplates);
         });
     }
 }

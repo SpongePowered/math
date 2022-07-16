@@ -27,10 +27,6 @@ package org.spongepowered.gradle.math.templates;
 import net.kyori.mammoth.Configurable;
 import org.gradle.api.Action;
 import org.gradle.api.NamedDomainObjectContainer;
-import org.gradle.api.file.ConfigurableFileCollection;
-import org.gradle.api.provider.MapProperty;
-import org.gradle.api.tasks.InputFiles;
-import org.gradle.api.tasks.Nested;
 
 /**
  * Templates per-SourceSet

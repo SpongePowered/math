@@ -6,7 +6,8 @@ plugins {
     id 'jacoco'
     id "org.spongepowered.gradle.sponge.dev" version "2.0.2"
     id "math-templates"
-    id "net.kyori.indra.publishing.sonatype" version "2.0.6"
+    id "net.kyori.indra" version "2.1.1"
+    id "net.kyori.indra.publishing.sonatype" version "2.1.1"
     id "net.ltgt.errorprone" version "2.0.1"
 }
 
@@ -79,6 +80,8 @@ sourceSets {
         multirelease {
             alternateVersions(9)
             moduleName("org.spongepowered.math")
+            requireAllPackagesExported()
+            applyToJavadoc(true)
         }
     }
     test {
@@ -120,21 +123,25 @@ tasks.withType(JavaCompile.class) {
     options.compilerArgs << "-Xlint:-cast" // skip cast warnings, the generated source is most likely just overly safe.
 }
 
-// Handle JD publishing with modules
-javadoc {
-    source("src/main/java9")
-    options {
-        addStringOption("-patch-module", "org.spongepowered.math=${sourceSets.main.allJava.srcDirs.collect { it.absolutePath }.join(File.pathSeparator)}")
+afterEvaluate {
+    javadoc {
+        options {
+            addBooleanOption("-no-module-directories", false)
+        }
     }
 }
 
-afterEvaluate {
-    javadoc {
-        classpath += sourceSets.java9.output
-
-        options {
-            addStringOption("-release", "9")
-            addBooleanOption("-no-module-directories", false)
+plugins.withId 'eclipse', {
+    eclipse {
+        classpath.file.whenMerged { path ->
+            path.entries.each {
+                if (it instanceof org.gradle.plugins.ide.eclipse.model.SourceFolder) {
+                    def extraReads = ['org.junit.jupiter.api']
+                        .collect { mod -> "org.spongepowered.math=$mod" }
+                        .join(':')
+                    it.entryAttributes['add-reads'] = extraReads
+                }
+            }
         }
     }
 }
@@ -142,7 +149,7 @@ afterEvaluate {
 // -- Publishing -- //
 indra {
     javaVersions {
-        testWith(8, 11, 16)
+        testWith(8, 11, 17)
     }
     configurePublications {
             pom {

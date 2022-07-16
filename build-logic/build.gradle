@@ -2,7 +2,6 @@ plugins {
     id "java"
     id "java-gradle-plugin"
     id "org.spongepowered.gradle.sponge.dev" version "2.0.2"
-    id "org.cadixdev.licenser" version "0.6.1"
 }
 
 repositories {
@@ -15,7 +14,7 @@ repositories {
 dependencies {
     implementation("io.pebbletemplates:pebble:3.1.5")
     implementation("org.snakeyaml:snakeyaml-engine:2.3")
-    implementation("net.kyori:mammoth:1.0.0")
+    implementation("net.kyori:mammoth:1.1.0")
 }
 
 gradlePlugin {

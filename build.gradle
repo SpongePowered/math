@@ -3,12 +3,12 @@ import groovy.text.SimpleTemplateEngine
 import java.util.stream.Collectors
 
 plugins {
+    alias libs.plugins.spongeConvention
+    alias libs.plugins.indra
+    alias libs.plugins.indra.sonatype
+    alias libs.plugins.errorprone
     id 'jacoco'
-    id "org.spongepowered.gradle.sponge.dev" version "2.0.2"
     id "math-templates"
-    id "net.kyori.indra" version "2.1.1"
-    id "net.kyori.indra.publishing.sonatype" version "2.1.1"
-    id "net.ltgt.errorprone" version "2.0.1"
 }
 
 // -- General setup -- //
@@ -16,13 +16,6 @@ plugins {
 group = "org.spongepowered"
 version = "2.0.2-SNAPSHOT"
 description = "Immutable math library for Java with a focus on games and computer graphics."
-
-repositories {
-    maven {
-        url = "https://repo.spongepowered.org/repository/maven-public/"
-        name = "sponge"
-    }
-}
 
 // Metadata
 
@@ -105,12 +98,12 @@ sourceSets {
 
 
 dependencies {
-    compileOnlyApi("com.google.errorprone:error_prone_annotations:$errorproneVersion")
-    errorprone("com.google.errorprone:error_prone_core:$errorproneVersion")
+    compileOnlyApi libs.errorprone.annotations
+    errorprone libs.errorprone
 
-    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation platform(libs.junit.bom)
+    testImplementation libs.junit.api
+    testRuntimeOnly libs.junit.engine
 }
 
 jar {

@@ -1,0 +1,31 @@
+[metadata]
+version = "1.0"
+
+[versions]
+errorprone="2.14.0"
+errorproneGradle = "2.0.2"
+indra = "2.1.1"
+junit="5.8.2"
+mammoth = "1.1.0"
+pebble = "3.1.5"
+snakeyaml = "2.3"
+spongeConvention = "2.0.2"
+
+[libraries]
+errorprone = { module = "com.google.errorprone:error_prone_core", version.ref = "errorprone" }
+errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "errorprone" }
+
+junit-api = { module = "org.junit.jupiter:junit-jupiter-api" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
+
+# build-logic
+mammoth = { module = "net.kyori:mammoth", version.ref = "mammoth" }
+pebble = { module = "io.pebbletemplates:pebble", version.ref = "pebble" }
+snakeyamlEngine = { module = "org.snakeyaml:snakeyaml-engine", version.ref = "snakeyaml" }
+
+[plugins]
+errorprone = { id = "net.ltgt.errorprone", version.ref = "errorproneGradle" }
+indra = { id = "net.kyori.indra", version.ref = "indra" }
+indra-sonatype = { id = "net.kyori.indra.publishing.sonatype", version.ref = "indra" }
+spongeConvention = { id = "org.spongepowered.gradle.sponge.dev", version.ref = "spongeConvention" }

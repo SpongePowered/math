@@ -27,5 +27,6 @@ snakeyamlEngine = { module = "org.snakeyaml:snakeyaml-engine", version.ref = "sn
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version.ref = "errorproneGradle" }
 indra = { id = "net.kyori.indra", version.ref = "indra" }
+indra-crossdoc = { id = "net.kyori.indra.crossdoc", version.ref = "indra" }
 indra-sonatype = { id = "net.kyori.indra.publishing.sonatype", version.ref = "indra" }
 spongeConvention = { id = "org.spongepowered.gradle.sponge.dev", version.ref = "spongeConvention" }

@@ -5,6 +5,7 @@ import java.util.stream.Collectors
 plugins {
     alias libs.plugins.spongeConvention
     alias libs.plugins.indra
+    alias libs.plugins.indra.crossdoc
     alias libs.plugins.indra.sonatype
     alias libs.plugins.errorprone
     id 'jacoco'
@@ -36,6 +37,10 @@ spongeConvention {
         attributes "Specification-Title": project.name,
                 "Specification-Vendor": "SpongePowered - https://spongepowered.org"
     }
+}
+
+indraCrossdoc {
+    baseUrl providers.gradleProperty('javadocPublishRoot')
 }
 
 def floatData = file("src/templateData/float.yaml")
@@ -142,6 +147,7 @@ plugins.withId 'eclipse', {
 // -- Publishing -- //
 indra {
     javaVersions {
+        minimumToolchain 17
         testWith(8, 11, 17)
     }
     configurePublications {

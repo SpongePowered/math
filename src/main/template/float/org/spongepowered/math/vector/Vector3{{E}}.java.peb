@@ -70,6 +70,30 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
         return this.z;
     }
 
+    public Vector3{{ E }} withX(final {{ e }} x) {
+        return from(x, this.y, this.z);
+    }
+
+    public Vector3{{ E }} withX(final {{ EOverload }} x) {
+        return withX(({{ e }}) x);
+    }
+
+    public Vector3{{ E }} withY(final {{ e }} y) {
+        return from(this.x, y, this.z);
+    }
+
+    public Vector3{{ E }} withY(final {{ EOverload }} y) {
+        return withY(({{ e }}) y);
+    }
+
+    public Vector3{{ E }} withZ(final {{ e }} z) {
+        return from(this.x, this.y, z);
+    }
+
+    public Vector3{{ E }} withZ(final {{ EOverload }} z) {
+        return withZ(({{ e }}) z);
+    }
+
     public int floorX() {
         return GenericMath.floor(this.x);
     }

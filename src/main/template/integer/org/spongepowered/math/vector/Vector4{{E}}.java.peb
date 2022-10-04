@@ -67,24 +67,16 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
         return this.x;
     }
 
-    public {{ e }} y() {
-        return this.y;
-    }
-
-    public {{ e }} z() {
-        return this.z;
-    }
-
-    public {{ e }} w() {
-        return this.w;
-    }
-
     public Vector4{{ E }} withX(final {{ e }} x) {
         return from(x, this.y, this.z, this.w);
     }
 
     public Vector4{{ E }} withX(final {{ EOverload }} x) {
         return withX({{ EFloorFunc }}(x));
+    }
+
+    public {{ e }} y() {
+        return this.y;
     }
 
     public Vector4{{ E }} withY(final {{ e }} y) {
@@ -95,12 +87,20 @@ public final class Vector4{{ E }} implements Vector{{ E }}, Comparable<Vector4{{
         return withY({{ EFloorFunc }}(y));
     }
 
+    public {{ e }} z() {
+        return this.z;
+    }
+
     public Vector4{{ E }} withZ(final {{ e }} z) {
         return from(this.x, this.y, z, this.w);
     }
 
     public Vector4{{ E }} withZ(final {{ EOverload }} z) {
         return withZ({{ EFloorFunc }}(z));
+    }
+
+    public {{ e }} w() {
+        return this.w;
     }
 
     public Vector4{{ E }} withW(final {{ e }} w) {

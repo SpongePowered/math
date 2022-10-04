@@ -45,16 +45,16 @@ public final class Vector2{{ E }} implements Vector{{ E }}, Comparable<Vector2{{
         return this.x;
     }
 
-    public {{ e }} y() {
-        return this.y;
-    }
-
     public Vector2{{ E }} withX(final {{ e }} x) {
         return from(x, this.y);
     }
 
     public Vector2{{ E }} withX(final {{ EOverload }} x) {
         return withX({{ EFloorFunc }}(x));
+    }
+
+    public {{ e }} y() {
+        return this.y;
     }
 
     public Vector2{{ E }} withY(final {{ e }} y) {

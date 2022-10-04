@@ -62,14 +62,6 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
         return this.x;
     }
 
-    public {{ e }} y() {
-        return this.y;
-    }
-
-    public {{ e }} z() {
-        return this.z;
-    }
-
     public Vector3{{ E }} withX(final {{ e }} x) {
         return from(x, this.y, this.z);
     }
@@ -78,12 +70,20 @@ public final class Vector3{{ E }} implements Vector{{ E }}, Comparable<Vector3{{
         return withX(({{ e }}) x);
     }
 
+    public {{ e }} y() {
+        return this.y;
+    }
+
     public Vector3{{ E }} withY(final {{ e }} y) {
         return from(this.x, y, this.z);
     }
 
     public Vector3{{ E }} withY(final {{ EOverload }} y) {
         return withY(({{ e }}) y);
+    }
+
+    public {{ e }} z() {
+        return this.z;
     }
 
     public Vector3{{ E }} withZ(final {{ e }} z) {

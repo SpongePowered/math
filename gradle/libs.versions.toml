@@ -4,7 +4,7 @@ version = "1.0"
 [versions]
 errorprone="2.15.0"
 errorproneGradle = "2.0.2"
-indra = "2.2.0"
+indra = "3.0.0"
 junit="5.9.1"
 mammoth = "1.1.0"
 pebble = "3.1.6"

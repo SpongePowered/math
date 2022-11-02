@@ -4,12 +4,12 @@ version = "1.0"
 [versions]
 errorprone="2.15.0"
 errorproneGradle = "2.0.2"
-indra = "3.0.0"
+indra = "3.0.1"
 junit="5.9.1"
 mammoth = "1.1.0"
 pebble = "3.1.6"
 snakeyaml = "2.4"
-spongeConvention = "2.0.2"
+spongeConvention = "2.1.1"
 
 [libraries]
 errorprone = { module = "com.google.errorprone:error_prone_core", version.ref = "errorprone" }

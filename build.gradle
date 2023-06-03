@@ -6,8 +6,10 @@ plugins {
     alias libs.plugins.spongeConvention
     alias libs.plugins.indra
     alias libs.plugins.indra.crossdoc
+    alias libs.plugins.indra.licenser.spotless
     alias libs.plugins.indra.sonatype
     alias libs.plugins.errorprone
+    alias libs.plugins.spotless
     id 'jacoco'
     id "math-templates"
 }
@@ -28,7 +30,6 @@ spongeConvention {
 
     mitLicense()
     licenseParameters {
-        name = "Math"
         organization = project.organization
         url = project.url
     }
@@ -36,6 +37,14 @@ spongeConvention {
     sharedManifest {
         attributes "Specification-Title": project.name,
                 "Specification-Vendor": "SpongePowered - https://spongepowered.org"
+    }
+}
+
+indraSpotlessLicenser.property('name', "Math")
+spotless {
+    java {
+        // This file has its own custom header
+        targetExclude 'src/main/java/org/spongepowered/math/HashFunctions.java'
     }
 }
 
@@ -47,10 +56,10 @@ def floatData = file("src/templateData/float.yaml")
 def intData = file("src/templateData/integer.yaml")
 def licenseText = objects.property(String)
 licenseText.set(provider {
-    def properties = [*: license.ext.properties]
+    def properties = [*: indraSpotlessLicenser.properties().get()]
     def template = new SimpleTemplateEngine().createTemplate(file("HEADER.txt")).make(properties)
     def text = template.toString()
-    def lineEnding = license.lineEnding.get()
+    def lineEnding = System.getProperty("line.separator")
     Arrays.stream(text.split("\r?\n"))
             .map { if (it.isEmpty()) { " *" } else { " * $it" } }
             .collect(Collectors.joining(lineEnding, "/*$lineEnding", "$lineEnding */"))
@@ -96,7 +105,7 @@ sourceSets {
     }
     configureEach {
         templates.templateSets.configureEach {
-            header.set(licenseText)
+            header = licenseText
         }
     }
 }
@@ -117,7 +126,7 @@ jar {
     }
 }
 
-tasks.withType(JavaCompile.class) {
+tasks.withType(JavaCompile.class).configureEach {
     options.compilerArgs << "-Xlint:-cast" // skip cast warnings, the generated source is most likely just overly safe.
 }
 

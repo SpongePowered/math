@@ -1,6 +1,7 @@
-# Normalize as LF in the repository, OS native locally
+# Normalize as LF in the repository, and all Java files as LF locally
 * text=auto
-*.java text
+*.java text eol=lf
+*.peb text eol=lf
 
 # Binary files that should not be modified
 *.dat binary

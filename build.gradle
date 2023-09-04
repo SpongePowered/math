@@ -10,8 +10,9 @@ plugins {
     alias libs.plugins.indra.sonatype
     alias libs.plugins.errorprone
     alias libs.plugins.spotless
+    alias libs.plugins.blossom
+    alias libs.plugins.ideaExt
     id 'jacoco'
-    id "math-templates"
 }
 
 // -- General setup -- //
@@ -68,18 +69,18 @@ licenseText.finalizeValueOnRead()
 
 sourceSets {
     main {
-        templates.templateSets {
-            register("float") {
-                dataFiles.from(floatData)
+        blossom.templateSets {
+            register("float", net.kyori.blossom.SourceTemplateSet) {
+                propertyFile(floatData)
                 variants("float", "double")
             }
-            register("integer") {
-                dataFiles.from(intData)
+            register("integer", net.kyori.blossom.SourceTemplateSet) {
+                propertyFile(intData)
                 variants("int", "long")
             }
             // no variants
-            register("floatCommon") {
-                dataFiles.from(floatData)
+            register("floatCommon", net.kyori.blossom.SourceTemplateSet) {
+                propertyFile(floatData)
             }
         }
 
@@ -92,19 +93,20 @@ sourceSets {
         }
     }
     test {
-        templates.templateSets {
-            register("integer") {
-                dataFiles.from(intData)
-                variants("int", "long")
-            }
-            register("float") {
-                dataFiles.from(floatData)
+        blossom.templateSets {
+            register("float", net.kyori.blossom.SourceTemplateSet) {
+                propertyFile(floatData)
                 variants("float", "double")
+            }
+            register("integer", net.kyori.blossom.SourceTemplateSet) {
+                propertyFile(intData)
+                variants("int", "long")
             }
         }
     }
     configureEach {
-        templates.templateSets.configureEach {
+        blossom.templateSets.withType(net.kyori.blossom.SourceTemplateSet).configureEach {
+            java()
             header = licenseText
         }
     }

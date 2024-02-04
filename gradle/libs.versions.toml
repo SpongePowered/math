@@ -26,4 +26,4 @@ indra-crossdoc = { id = "net.kyori.indra.crossdoc", version.ref = "indra" }
 indra-licenser-spotless = { id = "net.kyori.indra.licenser.spotless", version.ref = "indra" }
 indra-sonatype = { id = "net.kyori.indra.publishing.sonatype", version.ref = "indra" }
 spongeConvention = { id = "org.spongepowered.gradle.sponge.dev", version.ref = "spongeConvention" }
-spotless = { id = "com.diffplug.spotless", version = "6.23.2" }
+spotless = { id = "com.diffplug.spotless", version = "6.25.0" }

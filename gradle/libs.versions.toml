@@ -20,7 +20,7 @@ junit-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 [plugins]
 blossom = { id = "net.kyori.blossom", version = "2.1.0"}
 errorprone = { id = "net.ltgt.errorprone", version.ref = "errorproneGradle" }
-ideaExt = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.8" }
+ideaExt = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.9" }
 indra = { id = "net.kyori.indra", version.ref = "indra" }
 indra-crossdoc = { id = "net.kyori.indra.crossdoc", version.ref = "indra" }
 indra-licenser-spotless = { id = "net.kyori.indra.licenser.spotless", version.ref = "indra" }
